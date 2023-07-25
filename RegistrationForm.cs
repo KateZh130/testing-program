@@ -314,7 +314,9 @@ namespace testing_program
             {
                 table_name = "student";
             }
-            NpgsqlCommand save_id = new NpgsqlCommand("SELECT "+ table_name + "_id FROM "+ table_name + " WHERE login = '" + login_registration.Text + "' AND password ='"+ password_registration.Text + "';", connection);
+            NpgsqlCommand save_id = new NpgsqlCommand("SELECT "+ table_name + "_id FROM "+ table_name + " " +
+                "WHERE login = '" + login_registration.Text + "' " +
+                "AND password ='"+ password_registration.Text + "';", connection);
             user_id = Convert.ToInt32(save_id.ExecuteScalar());
         }
 
@@ -393,7 +395,9 @@ namespace testing_program
         //поиск аккаунта среди преподавателей
         private int seachingUserIdInTeacherTable()
         {
-            NpgsqlCommand select_user_id = new NpgsqlCommand("SELECT teacher_id FROM teacher WHERE login = '" + sign_in_login.Text + "' AND password = '" + sign_in_password.Text + "';", connection);
+            NpgsqlCommand select_user_id = new NpgsqlCommand("SELECT teacher_id FROM teacher " +
+                "WHERE login = '" + sign_in_login.Text + "' " +
+                "AND password = '" + sign_in_password.Text + "';", connection);
             user_id = Convert.ToInt32(select_user_id.ExecuteScalar());
 
             if (user_id == 0)
@@ -407,7 +411,9 @@ namespace testing_program
         //поиск аккаунта среди студентов
         private int seachingUserIdInStudentTable()
         {
-            NpgsqlCommand select_user_id1 = new NpgsqlCommand("SELECT student_id FROM student WHERE login = '" + sign_in_login.Text + "' AND password = '" + sign_in_password.Text + "';", connection);
+            NpgsqlCommand select_user_id1 = new NpgsqlCommand("SELECT student_id FROM student " +
+                "WHERE login = '" + sign_in_login.Text + "' " +
+                "AND password = '" + sign_in_password.Text + "';", connection);
             user_id = Convert.ToInt32(select_user_id1.ExecuteScalar());
 
             if (user_id == 0)
@@ -471,7 +477,9 @@ namespace testing_program
         {
             //заполнение коллекции выбор имени
 
-            NpgsqlCommand select_full_name_registration_cmd = new NpgsqlCommand("SELECT full_name FROM student JOIN groups ON groups.group_id = student.group_id WHERE group_name LIKE '" + select_group_registration.SelectedItem.ToString() + "';", connection);
+            NpgsqlCommand select_full_name_registration_cmd = new NpgsqlCommand("SELECT full_name " +
+                "FROM student JOIN groups ON groups.group_id = student.group_id " +
+                "WHERE group_name LIKE '" + select_group_registration.SelectedItem.ToString() + "';", connection);
             NpgsqlDataReader reader_select_full_name_registration_cmd = select_full_name_registration_cmd.ExecuteReader();
 
             if (reader_select_full_name_registration_cmd.HasRows)
