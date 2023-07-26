@@ -24,7 +24,7 @@ namespace testing_program
         List<string> right_answers = new List<string>();
         List<string> answers = new List<string>();
         List<string> questions = new List<string>();
-        List<string> words = new List<string>();
+        List<string> profil_info_list = new List<string>();
         int question_index = 0;
 
         private DataSet set1 = new DataSet();
@@ -83,12 +83,12 @@ namespace testing_program
                 }
             }
             reader.Close();
-            words = profile_info?.Split(' ').ToList();
-           // string[] words = profile_info.Split(' ');
-            full_name_student_profile.Text = words[0] + " " + words[1] + " " + words[2];
-            group_student_profile.Text = words[3];
-            login_student_profile.Text = words[4];
-            password_student_profile.Text = words[5];
+            profil_info_list = profile_info?.Split(' ').ToList();
+           // string[] profil_info_list = profile_info.Split(' ');
+            full_name_student_profile.Text = profil_info_list[0] + " " + profil_info_list[1] + " " + profil_info_list[2];
+            group_student_profile.Text = profil_info_list[3];
+            login_student_profile.Text = profil_info_list[4];
+            password_student_profile.Text = profil_info_list[5];
 
         }
         public void resetTestTable()
@@ -735,7 +735,7 @@ namespace testing_program
             {
                 MessageBox.Show("Введите пароль.");
             }
-            else if (student_old_password_textBox.Text != words[5])
+            else if (student_old_password_textBox.Text != profil_info_list[5])
             {
                 MessageBox.Show("Указан неверный пароль.");
             }
@@ -776,7 +776,16 @@ namespace testing_program
             }
             finishTesting();
         }
-       
+
+        private void profile_page_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void student_profile_main_panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 
