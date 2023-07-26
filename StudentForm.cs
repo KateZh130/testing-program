@@ -180,14 +180,14 @@ namespace testing_program
         private void StudentForm_Load(object sender, EventArgs e)
         {
         }
-        //ДОБАВИТЬ ВЫБОР ВАРИАНТОВ ПО ФОРМУЛЕ( ЕСТЬ В ФАЙЛЕ ФУНКЦИИ ПРОГИ)
-        //ДАЛЕЕ ИСПОЛЬЗУЕМ ТЕСТ ID И ID ВАРИАНТА(ID ВАРИАНТА УНИКАЛЕН, НО МОЖЕТ БЫТЬ В РАЗНЫХ ТЕСТАХ)
-        //ДЛЯ ТЕСТИРОВАНИЯ ID ТЕСТА В ПРИНЦИПЕ НАВЕРНОЕ НЕ НУЖЕН, ТОЛЬКО ДЛЯ ЗАПИСИ РЕЗУЛЬТАТОВ И ФОРМЫ УЧИТЕЛЯ
-        //ОН НУЖЕН И ДЛЯ ФОРМЫ УЧИТЕЛЯ ПРИ СОЗДАНИИ ТЕСТОВ, УДАЛЕНИИ ВАРИАНТОВ, РЕДАКТИРОВАНИИ)
+        //ДОБАВИТЬ ВЫБОР ВАРИАНТОВ ПО ФОРМУЛЕ( ЕСТЬ В ФАЙЛЕ ФУНКЦИИ ПРОГИ) *
+        //ДАЛЕЕ ИСПОЛЬЗУЕМ ID ВАРИАНТА(ID ВАРИАНТА УНИКАЛЕН) *
+        //ДЛЯ ТЕСТИРОВАНИЯ ID ТЕСТА В ПРИНЦИПЕ НАВЕРНОЕ НЕ НУЖЕН, ТОЛЬКО ДЛЯ ЗАПИСИ РЕЗУЛЬТАТОВ И ФОРМЫ УЧИТЕЛЯ *
+        //ОН НУЖЕН И ДЛЯ ФОРМЫ УЧИТЕЛЯ ПРИ СОЗДАНИИ ТЕСТОВ, УДАЛЕНИИ ВАРИАНТОВ, РЕДАКТИРОВАНИИ) *
 
-        //ПОМЕНЯТЬ ВСЕ ЗАПРОСЫ
+        //ПОМЕНЯТЬ ВСЕ ЗАПРОСЫ *
 
-        /// СТОИТ ЛИ ДЕЛАТЬ ЗАПРОС НА ПОЛУЧЕНИЕ test_version_id ЧТОБЫ ВО ВСЕ ЗАПРОСАХ ПИСАТЬ ЭТО А НЕ test_id version_id????
+        /// СТОИТ ЛИ ДЕЛАТЬ ЗАПРОС НА ПОЛУЧЕНИЕ test_version_id ЧТОБЫ ВО ВСЕ ЗАПРОСАХ ПИСАТЬ ЭТО А НЕ test_id version_id???? нет
 
         //запрос на получение варианта *
         private void getTestVersion()
@@ -472,8 +472,26 @@ namespace testing_program
         }
         private bool checkManyAnswer()
         {
-            int flag = 0;
-            for (int j = 0; j < right_answers.Count; j++)
+            List<string> choosen_answers = new List<string>();
+            if (checkBox1.Checked == true)
+                choosen_answers.Add(checkBox1.Text);
+            if (checkBox2.Checked == true)
+                choosen_answers.Add(checkBox2.Text);
+            if (checkBox3.Checked == true)
+                choosen_answers.Add(checkBox3.Text);
+           
+            if (choosen_answers.OrderBy(m => m).SequenceEqual(right_answers.OrderBy(m => m)))
+            {
+                choosen_answers.Clear(); //возможно его не нужно чистить т к он локальный. нужно проверить при отладке
+                return true;
+            }
+            else
+            {
+                choosen_answers.Clear(); //возможно его не нужно чистить т к он локальный. нужно проверить при отладке
+                return false;
+            }
+            /*int flag = 0;
+            for (int j = 0; j < answers.Count; j++)
             {
                 if (checkBox1.Checked == true && right_answers[j] == checkBox1.Text)
                     ++flag;
@@ -486,7 +504,7 @@ namespace testing_program
             {
                 return true;
             }
-            return false;
+            return false;*/
         }
         private void many_answer_button_Click(object sender, EventArgs e)
         {
