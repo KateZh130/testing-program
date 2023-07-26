@@ -204,6 +204,7 @@ namespace testing_program
             get_test_version_reader.Close();
             int index= user_id % versions.Count;
             version_id = versions[index];
+            versions.Clear();
         }
 
 
@@ -365,7 +366,11 @@ namespace testing_program
                 "AND student_id = " + user_id + ";", connection);
             addMarkAtDatabase.ExecuteNonQuery();
             resetTestTable();
+            questions.Clear();
             test_id = -1;
+            version_id = -1;
+            scores = 0;
+            question_index = 0;
             choose_test_panel.Visible = true;
         }
         
@@ -497,8 +502,8 @@ namespace testing_program
                 "INTO results(student_id, version_question_id, answer) VALUES('" + user_id+"', " +
                 "(SELECT version_question_id FROM version_question " +
                 "JOIN questions ON questions.question_id = version_question.question_id " +
-                "JOIN version ON version.version_id = version_question.version_question_id " +
-                "WHERE test_id = "+test_id+" " +
+                "JOIN version ON version.version_id = version_question.version_id " +
+                "WHERE version.version_id = "+version_id+" " +
                 "AND question_text = '"+questions[question_index]+"')," +
                 " '"+answer+"'); ", connection);
             add_student_answer_to_database.ExecuteNonQuery();
