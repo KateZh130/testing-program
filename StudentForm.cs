@@ -44,6 +44,22 @@ namespace testing_program
             fillStudentProfileMainPanel();
             //главная панель профиля
         }
+        //обнуление выбора кнопок(чтобы в след вопросе такого же типа не были выбраны)
+        private void resetSelection(int question_type)
+        {
+            if(question_type==1)
+            {
+                radioButton1.Checked = false;
+                radioButton2.Checked = false;
+                radioButton3.Checked = false;
+            }
+            else
+            {
+                checkBox1.Checked = false;
+                checkBox2.Checked = false;
+                checkBox3.Checked = false;
+            }
+        }
 
         private void fillStudentProfileMainPanel()
         {
@@ -276,6 +292,7 @@ namespace testing_program
                     {
                         fillLabelsAndButtons(question_type);
                         getAnswers();
+                        resetSelection(question_type);
                         radioButton1.Text = answers[0];
                         radioButton2.Text = answers[1];
                         radioButton3.Text = answers[2];
@@ -294,7 +311,8 @@ namespace testing_program
                     {
                         fillLabelsAndButtons(question_type);
                         getAnswers();
-                       // MessageBox.Show("Тут");
+                        resetSelection(question_type);
+                        // MessageBox.Show("Тут");
                         checkBox1.Text = answers[0];
                         checkBox2.Text = answers[1];
                         checkBox3.Text = answers[2];
@@ -313,6 +331,25 @@ namespace testing_program
                 test_timer.Stop();
                 finishTesting();
                
+            }
+        }
+        private void fillLabelsAndButtons(int type)
+        {
+            string button_text = "Следующий вопрос";
+            if (question_index + 1 == number_of_questions)
+                button_text = "Закончить попытку";
+
+            if (type == 1)
+            {
+                question_number_label2.Text = "Вопрос " + (question_index + 1);
+                question_text_label2.Text = questions[question_index];
+                one_answer_button.Text = button_text;
+            }
+            else
+            {
+                question_number_label.Text = "Вопрос " + (question_index + 1);
+                question_text_label.Text = questions[question_index];
+                many_answer_button.Text = button_text;
             }
         }
         // *
@@ -389,25 +426,7 @@ namespace testing_program
             reader_get_right_answer.Close();
         }
 
-        private void fillLabelsAndButtons(int type)
-        {
-            string button_text = "Следующий вопрос";
-            if (question_index+1 == number_of_questions)
-                button_text = "Закончить попытку";
-
-            if(type==1)
-            {
-                question_number_label2.Text = "Вопрос " + (question_index + 1);
-                question_text_label2.Text = questions[question_index];
-                one_answer_button.Text = button_text;
-            }
-            else
-            {
-                question_number_label.Text = "Вопрос " + (question_index + 1);
-                question_text_label.Text = questions[question_index];
-                many_answer_button.Text = button_text;
-            }
-        }
+        
         
 
         private void available_test_table_CellClick(object sender, DataGridViewCellEventArgs e)
