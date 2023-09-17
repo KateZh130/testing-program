@@ -19,16 +19,13 @@ namespace testing_program
         readonly ComboboxClass comboboxclass = new ComboboxClass();
         readonly DatabaseClass database;
 
-
-
         private int test_id=0;
         private int version_id = 0;
         private int version_counter = 0;
         private int question_counter = 1;
-        int user_id;
+        readonly int user_id;
 
         List<string> profil_info_list = new  List<string>();
-        //readonly NpgsqlConnection connection = new NpgsqlConnection();
        
         public TeacherForm(DatabaseClass database, int user_id)
         {
@@ -38,35 +35,14 @@ namespace testing_program
             this.Text = database.Get_name(user_id, "teacher");
             FillTeacherProfileMainPanel();
         }
-        //Заполнение текста формы именем пользователя
-       /* private void FillTeacherFormName()
-        {
-            NpgsqlCommand select_teacher_name = new NpgsqlCommand("SELECT full_name " +
-                "FROM teacher WHERE teacher_id = " + user_id + ";", connection);
-            this.Text = select_teacher_name.ExecuteScalar().ToString();
-        }*/
-
+        
         private void FillTeacherProfileMainPanel()
         {
-            //string profile_info = "";
             teacher_profile_main_panel.Visible = true;
             change_teacher_login_panel.Visible = false;
             change_teacher_password_panel.Visible = false;
             teacher_identity_check_panel.Visible = false;
 
-            /*NpgsqlCommand get_profile_info = new NpgsqlCommand("SELECT " +
-                "full_name, login, password FROM teacher " +
-                "WHERE teacher_id = " + user_id + "; ", connection);
-
-            NpgsqlDataReader reader = get_profile_info.ExecuteReader();
-            while (reader.Read())
-            {
-                for (int s = 0; s < 3; ++s)
-                {
-                    profile_info += reader.GetValue(s).ToString() + " ";
-                }
-            }
-            reader.Close();*/
             profil_info_list = database.Get_teacherForm_profile_info(user_id)?.Split(' ').ToList();
             full_name_teacher_profile_textBox.Text = profil_info_list[0] + " " + profil_info_list[1] + " " + profil_info_list[2];
             login_teacher_profile.Text = profil_info_list[3];
@@ -87,15 +63,8 @@ namespace testing_program
         {
             if (new_teacher_login_textbox.Text != "")
             {
-                //запись логина в бд
                 database.Update_user_login_or_password(new_teacher_login_textbox, user_id, "login", "teacher");
-                /*NpgsqlCommand updateTeacherLoginAtDatabase = new NpgsqlCommand("UPDATE teacher " +
-                    "SET login = '" + new_teacher_login_textbox.Text + "'" +
-                    "WHERE teacher_id = " + user_id + "; ", connection);
-                updateTeacherLoginAtDatabase.ExecuteNonQuery();*/
-                //обновить панель
                 FillTeacherProfileMainPanel();
-                //логин изменен
                 MessageBox.Show("Логин успешно изменен!");
                 new_teacher_login_textbox.Clear();
             }
@@ -130,18 +99,10 @@ namespace testing_program
             else
             {
                 database.Update_user_login_or_password(teacher_test_new_password_textBox, user_id, "password", "teacher");
-                /*NpgsqlCommand updateStudentPasswordAtDatabase = new NpgsqlCommand("UPDATE teacher " +
-                    "SET password = '" + teacher_test_new_password_textBox.Text + "'" +
-                    "WHERE teacher_id = " + user_id + "; ", connection);
-                updateStudentPasswordAtDatabase.ExecuteNonQuery();*/
-                //обновить панель
                 FillTeacherProfileMainPanel();
-                //логин изменен
                 MessageBox.Show("Пароль успешно изменен!");
                 teacher_test_new_password_textBox.Clear();
                 teacher_new_password_textBox.Clear();
-
-
             }
         }
 
@@ -153,7 +114,6 @@ namespace testing_program
 
         private void Continue_teacher_change_password_button_Click(object sender, EventArgs e)
         {
-            //проверка совпадения старого пароля
             if (teacher_old_password_textBox.Text == "")
             {
                 MessageBox.Show("Введите пароль.");
@@ -177,8 +137,6 @@ namespace testing_program
             teacher_profile_main_panel.Visible = true;
         }
 
-      
-
         private void New_timer_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
@@ -190,19 +148,14 @@ namespace testing_program
 
         private void Create_new_test_buttton_Click(object sender, EventArgs e)
         {
-            
-
         }
 
         private void New_test_name_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
-
         }
 
         private void New_timer_textBox_TextChanged(object sender, EventArgs e)
         {
-            
         }
 
         bool NewTestNameIsChanged=false;
@@ -221,8 +174,6 @@ namespace testing_program
             textboxclass.TextBox_return_original_text(new_test_name_textBox, "Введите название теста");
         }
 
-
-
         private void Full_name_teacher_profile_texBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled= true;
@@ -231,20 +182,14 @@ namespace testing_program
         private void Add_new_test_to_db_Click(object sender, EventArgs e)
         {
             if(textboxclass.Check_textBox_text_is_changed(new_test_name_textBox, "Введите название теста"))
-            //if (new_test_name_textBox.Text== "Введите название теста" || new_timer_textBox.Text=="")
             {
-                /* NpgsqlCommand add_test_to_database = new NpgsqlCommand("INSERT INTO " +
-                 "test (test_name,timer) " +
-                 "VALUES ('" + new_test_name_textBox.Text + "'," + new_timer_textBox.Text + ") " +
-                 "RETURNING test_id", connection);
-                 test_id = Convert.ToInt32(add_test_to_database.ExecuteScalar());*/
                 test_id = database.Add_new_test_to_database(new_test_name_textBox, new_timer_textBox);
                 create_test_groupBox.Visible = true;
                 create_version_questions_groupBox.Visible = true;
                 create_version_questions_groupBox.Text = "Вопрос " + question_counter;
                 ++version_counter;
                 version_id = database.Create_new_test_version(test_id, version_counter);
-                //Create_new_test_version(); //автоматом создать 1 вариант
+                //автоматом создать 1 вариант
 
                 //окно выбора типа вопроса
                 //окно создания вопроса
@@ -258,17 +203,6 @@ namespace testing_program
             }
             
         }
-        /*private void Create_new_test_version()
-        {
-            ++version_counter;
-            NpgsqlCommand add_version_test_to_database = new NpgsqlCommand("INSERT INTO " +
-               "version (version_number,test_id) " +
-               "VALUES (" + version_counter + "," + test_id + ") " +
-               "RETURNING version_id", connection);
-            version_id = Convert.ToInt32(add_version_test_to_database.ExecuteScalar());
-            
-        }*/
-        
 
         private void Add_next_question_button_Click(object sender, EventArgs e)
         {
@@ -301,39 +235,6 @@ namespace testing_program
                 create_version_questions_groupBox.Text = "Вопрос " + question_counter;
             }
         }
-        /*private void Create_question_answer_connection(int question_id, int answer_id,bool is_correct)
-        {
-            NpgsqlCommand question_answer_connection = new NpgsqlCommand("INSERT INTO " +
-              "question_answer (question_id, version_id, right_answer) " +
-              "VALUES (" + question_id + ","+ answer_id + ","+ is_correct + ")", connection);
-            question_answer_connection.ExecuteNonQuery();
-        }*/
-    
-        /*private void Create_version_question_connection(int question_id)
-        {
-            NpgsqlCommand version_question_connection = new NpgsqlCommand("INSERT INTO " +
-             "version_question (question_id, version_id) " +
-             "VALUES (" + question_id + ","+version_id+")", connection);
-            version_question_connection.ExecuteNonQuery();
-        }*/
-        /*private int Create_answer_text(string text)
-        {
-            NpgsqlCommand add_answer_to_database = new NpgsqlCommand("INSERT INTO " +
-              "answers (answers_text) " +
-              "VALUES ('" + text + "') " +
-              "RETURNING answer_id", connection);
-            return Convert.ToInt32(add_answer_to_database.ExecuteScalar());
-        }*/
-       /* private int Create_question(string text)
-        {
-
-                NpgsqlCommand add_question_to_database = new NpgsqlCommand("INSERT INTO " +
-               "questions (question_text, question_type) " +
-               "VALUES ('" + text + "'," + (question_type_comboBox.SelectedIndex+1) + ") " +
-               "RETURNING question_id", connection);
-            return Convert.ToInt32(add_question_to_database.ExecuteScalar());
-
-        }*/
 
         private void TabControl1_Click(object sender, EventArgs e)
         {
@@ -351,10 +252,8 @@ namespace testing_program
             create_test_groupBox.Visible = true;
         }
 
-
         private void Create_next_version_Click(object sender, EventArgs e)
         {
-
         }
 
         private void TeacherForm_FormClosed(object sender, FormClosedEventArgs e)

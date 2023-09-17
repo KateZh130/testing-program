@@ -37,14 +37,10 @@ namespace testing_program
 
             if (reader_group_names.HasRows)
             {
-                //combobox.Items.Clear();
                 c.Delete_collection(combobox);
-
                 while (reader_group_names.Read())
                 {
-                    //combobox.Items.Add(reader_group_names.GetString(0));
                     c.Add_item(combobox, reader_group_names.GetString(0));
-
                 }
             }
 
@@ -52,8 +48,6 @@ namespace testing_program
         }
         public void Fill_registrationForm_collection_select_student_name(ComboBox group_combobox, ComboBox name_combobox)
         {
-            //заполнение коллекции выбор имени
-
             NpgsqlCommand student_names = new NpgsqlCommand("SELECT full_name " +
                 "FROM student JOIN groups ON groups.group_id = student.group_id " +
                 "WHERE group_names LIKE '" + group_combobox.SelectedItem.ToString() + "';", connection);
@@ -61,20 +55,15 @@ namespace testing_program
 
             if (reader_student_names.HasRows)
             {
-                //name_combobox.Items.Clear();
                 c.Delete_collection(name_combobox);
-
                 while (reader_student_names.Read())
                 {
-                    // name_combobox.Items.Add(reader_student_names.GetString(0));
                     c.Add_item(name_combobox, reader_student_names.GetString(0));
                 }
             }
-
             reader_student_names.Close();
-
         }
-        //Занесение логина и пароля в бд для преподавателя
+
         public int Save_registrationForm_new_teacher(TextBox name, TextBox login, TextBox password)
         {
             NpgsqlCommand new_teacher = new NpgsqlCommand("INSERT INTO " +
@@ -83,10 +72,8 @@ namespace testing_program
                 + login.Text + "', '"
                 + password.Text + "') RETURNING teacher_id;", connection);
             return Convert.ToInt32(new_teacher.ExecuteScalar());
-            //SaveId(teacher_code);
         }
 
-        //Занесение логина и пароля в бд для студента
         public int Save_registrationForm_new_student(TextBox login, TextBox password, ComboBox name, ComboBox group)
         {
             NpgsqlCommand new_student = new NpgsqlCommand("UPDATE student " +
@@ -98,10 +85,8 @@ namespace testing_program
                 "where group_names = '" + group.SelectedItem.ToString() + "')" +
                 " RETURNING student_id;", connection);
             return Convert.ToInt32(new_student.ExecuteScalar());
-            //SaveId(student_code);
         }
 
-        //поиск аккаунта среди преподавателей
         public int Search_registrationForm_user_id(TextBox login, TextBox password, int user_code)
         {
             string table = "teacher";
@@ -159,13 +144,13 @@ namespace testing_program
             reader.Close();
             return profile_info;
         }
+
         public string Get_name(int user_id, string role)
         {
             NpgsqlCommand user_name = new NpgsqlCommand("SELECT full_name FROM " + role + " " +
                 "WHERE " + role + "_id = " + user_id + ";", connection);
             return user_name.ExecuteScalar().ToString();
         }
-
 
         public List<int> Get_test_versions(int test_id)
         {
@@ -180,6 +165,7 @@ namespace testing_program
             test_versions_reader.Close();
             return versions;
         }
+
         public int Get_question_type(int version_id, string question)
         {
             NpgsqlCommand type = new NpgsqlCommand("SELECT question_type FROM questions " +
@@ -217,6 +203,7 @@ namespace testing_program
                "AND student_id = " + user_id + ";", connection);
             add_mark.ExecuteNonQuery();
         }
+
         public int Add_new_test_to_database(TextBox name, TextBox timer)
         {
             NpgsqlCommand new_test = new NpgsqlCommand("INSERT INTO " +
@@ -225,6 +212,7 @@ namespace testing_program
                "RETURNING test_id", connection);
             return Convert.ToInt32(new_test.ExecuteScalar());
         }
+
         public int Create_new_test_version(int test_id, int number)
         {
             NpgsqlCommand add_version_test_to_database = new NpgsqlCommand("INSERT INTO " +
@@ -234,6 +222,7 @@ namespace testing_program
             return Convert.ToInt32(add_version_test_to_database.ExecuteScalar());
 
         }
+
         public int Create_question_text(ComboBox type, string text)
         {
 
@@ -252,6 +241,7 @@ namespace testing_program
               "VALUES (" + question_id + "," + answer_id + "," + is_correct + ")", connection);
             question_answer_connection.ExecuteNonQuery();
         }
+
         public void Create_version_question_connection(int question_id, int version_id)
         {
             NpgsqlCommand version_question_connection = new NpgsqlCommand("INSERT INTO " +
@@ -299,16 +289,14 @@ namespace testing_program
                 "AND right_answer = 1 " +
                 "GROUP BY answers_text;", connection);
             NpgsqlDataReader reader_get_right_answer = get_right_answer.ExecuteReader();
-            // int s = 0;
             while (reader_get_right_answer.Read())
             {
                 answers.Add((string)reader_get_right_answer.GetValue(0));
-                // MessageBox.Show(answers[s], "answers");
-                //  ++s;
             }
             reader_get_right_answer.Close();
             return answers;
         }
+
         public void Fill_studentForm_collection_passed_tests(int user_id, ComboBox combobox)
         {
             NpgsqlCommand choose_test_result_combobox = new NpgsqlCommand("SELECT test_name FROM test " +
@@ -381,6 +369,7 @@ namespace testing_program
             completed_tests.ExecuteNonQuery();
             return new NpgsqlDataAdapter(completed_tests);
         }
+
         public NpgsqlDataAdapter Get_test_analysis(int user_id, ComboBox test_name)
         {
             NpgsqlCommand test_analysis = new NpgsqlCommand("SELECT question_text, results.answer FROM questions " +
@@ -396,6 +385,7 @@ namespace testing_program
             test_analysis.ExecuteNonQuery();
             return new NpgsqlDataAdapter(test_analysis);
         }
+
         //******************************************************************************
         //вспомогательная кнопка
         //УДАЛИТЬ ПОСЛЕ ТЕСТИРОВАНИЯ
