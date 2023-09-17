@@ -13,7 +13,11 @@ namespace testing_program
 {
     public partial class StudentForm : Form
     {
-        NpgsqlConnection connection = new NpgsqlConnection();
+        DatabaseClass database;
+        CheckboxClass checkboxclass = new CheckboxClass();
+        ComboboxClass comboboxclass = new ComboboxClass();
+
+        DataGridViewClass data = new DataGridViewClass();
         readonly int user_id;
         int test_id = -1;
         int number_of_questions;
@@ -22,54 +26,55 @@ namespace testing_program
         int version_id = -1;
 
         List<string> right_answers = new List<string>();
-        List<string> answers = new List<string>();
+        List<string> answers_text = new List<string>();
         List<string> questions = new List<string>();
         List<string> profil_info_list = new List<string>();
         int question_index = 0;
 
-        private DataSet set1 = new DataSet();
+        /*private DataSet set1 = new DataSet();
         private DataTable table1 = new DataTable();
         private DataSet set2 = new DataSet();
         private DataTable table2 = new DataTable();
         private DataSet set3 = new DataSet();
-        private DataTable table3 = new DataTable();
+        private DataTable table3 = new DataTable();*/
 
-        public StudentForm(NpgsqlConnection connection, int user_id)
+        public StudentForm(DatabaseClass database, int user_id)
         {
             InitializeComponent();
-            this.connection = connection;
+            this.database = database;
             this.user_id = user_id;
-            fillFormName();
+            this.Text = database.Get_name(user_id, "student");
             fillTestPage();
             fillStudentProfileMainPanel();
-            //главная панель профиля
         }
         //обнуление выбора кнопок(чтобы в след вопросе такого же типа не были выбраны)
         private void resetSelection(int question_type)
         {
-            if(question_type==1)
+            RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3 };
+            CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3 };
+            for (int i = 0; i < radioButtons.Length; ++i)
             {
-                radioButton1.Checked = false;
-                radioButton2.Checked = false;
-                radioButton3.Checked = false;
-            }
-            else
-            {
-                checkBox1.Checked = false;
-                checkBox2.Checked = false;
-                checkBox3.Checked = false;
+                if (question_type == 1)
+                {
+                    radioButtons[i].Checked = false;
+                }
+                else
+                {
+                    checkboxclass.Clear(checkBoxes[i]);
+                    //checkBoxes[i].Checked = false;
+                }
             }
         }
 
         private void fillStudentProfileMainPanel()
         {
-            string profile_info="";
+            //string profile_info="";
             student_profile_main_panel.Visible = true;
             change_student_login_panel.Visible = false;
             change_student_password_panel.Visible = false;
             student_identity_check_panel.Visible = false;
 
-            NpgsqlCommand get_profile_info = new NpgsqlCommand("SELECT " +
+            /*NpgsqlCommand get_profile_info = new NpgsqlCommand("SELECT " +
                 "student.full_name, groups.group_name, student.login, student.password FROM student " +
                 "JOIN groups ON groups.group_id = student.group_id " +
                 "WHERE student.student_id = "+user_id+"; ", connection);
@@ -82,8 +87,8 @@ namespace testing_program
                 profile_info += reader.GetValue(s).ToString() +" ";
                 }
             }
-            reader.Close();
-            profil_info_list = profile_info?.Split(' ').ToList();
+            reader.Close();*/
+            profil_info_list = database.Get_studentForm_profil_info(user_id)?.Split(' ').ToList();
            // string[] profil_info_list = profile_info.Split(' ');
             full_name_student_profile.Text = profil_info_list[0] + " " + profil_info_list[1] + " " + profil_info_list[2];
             group_student_profile.Text = profil_info_list[3];
@@ -91,7 +96,7 @@ namespace testing_program
             password_student_profile.Text = profil_info_list[5];
 
         }
-        public void resetTestTable()
+        /*public void Reset_test_table()
         {
             NpgsqlCommand fill_available_test_table = new NpgsqlCommand("SELECT test.test_id, test_name " +
                 "FROM test " +
@@ -105,9 +110,9 @@ namespace testing_program
             da1.Fill(set1);
             table1 = set1.Tables[0];
             available_test_table.DataSource = table1;
-        }
+        }*/
 
-        public void resetListOfCompletedTestsTable()
+       /*public void Reset_completed_tests_list_table()
         {
             one_result_dataGridView.Visible = false;
             results_dataGridView.Visible = true;
@@ -131,9 +136,9 @@ namespace testing_program
             results_dataGridView.Columns[1].Width = 70;
             results_dataGridView.Columns[2].HeaderText = "Дата и время прохождения";
             results_dataGridView.Columns[2].Width = 140;
-        }
+        }*/
         //таблица подробных результатов *
-        public void resetOneTestResultTable()
+       /* public void resetOneTestResultTable()
         {
             one_result_dataGridView.Visible = true;
             results_dataGridView.Visible = false;
@@ -157,25 +162,29 @@ namespace testing_program
             one_result_dataGridView.Columns[0].Width = 460;
             one_result_dataGridView.Columns[1].HeaderText = "Правильность выполнения";
             one_result_dataGridView.Columns[1].Width = 100;
-        }
+        }*/
 
         public void fillTestPage()
         {
             choose_test_panel.Visible = true;
-            resetTestTable();
-            available_test_table.Columns[1].HeaderText = "Название теста";
-            available_test_table.Columns[1].Width = 605;
+            data.Reset_test_table( database, user_id, available_test_table);
+            data.Change_column_header_text(available_test_table, 1, "Название теста");
+            //available_test_table.Columns[1].HeaderText = "Название теста";
+            data.Change_column_width(available_test_table, 1, 605);
+            //available_test_table.Columns[1].Width = 605;
             this.available_test_table.Columns[0].Visible = false;
-            available_test_table.RowsDefaultCellStyle.SelectionBackColor = Color.White;
-            available_test_table.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+            data.Change_back_color(available_test_table, Color.White);
+            //available_test_table.RowsDefaultCellStyle.SelectionBackColor = Color.White;
+            data.Change_fore_color(available_test_table, Color.Black);
+            //available_test_table.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
-        private void fillFormName()
+        /*private void fillFormName()
         {
             NpgsqlCommand select_student_name = new NpgsqlCommand("SELECT full_name FROM student " +
                 "WHERE student_id = " + user_id + ";", connection);
             this.Text = select_student_name.ExecuteScalar().ToString();
-        }
+        }*/
        
         private void StudentForm_Load(object sender, EventArgs e)
         {
@@ -192,16 +201,7 @@ namespace testing_program
         //запрос на получение варианта *
         private void getTestVersion()
         {
-           
-            NpgsqlCommand get_test_version = new NpgsqlCommand("SELECT version_id " +
-                "FROM version WHERE test_id = "+test_id+"; ", connection);
-            NpgsqlDataReader get_test_version_reader = get_test_version.ExecuteReader();
-            List<int> versions = new List<int>();
-            while (get_test_version_reader.Read())
-            {
-                versions.Add(Convert.ToInt32(get_test_version_reader.GetValue(0)));
-            }
-            get_test_version_reader.Close();
+            List<int> versions=database.Get_test_versions(test_id);
             int index= user_id % versions.Count;
             version_id = versions[index];
             versions.Clear();
@@ -210,8 +210,8 @@ namespace testing_program
 
         //*********************************************************************************
 
-        //запрос на тип вопроса *
-        private int getTypeOfQuestion()
+       /* //запрос на тип вопроса *
+        private int Get_question_type()
         {
             NpgsqlCommand get_type_of_questions = new NpgsqlCommand("SELECT question_type FROM questions " +
                 "JOIN version_question ON questions.question_id = version_question.question_id " +
@@ -219,17 +219,17 @@ namespace testing_program
                 "AND question_text = '" + questions[question_index] + "';", connection);
             return Convert.ToInt32(get_type_of_questions.ExecuteScalar());
             
-        }
+        }*/
         //**********************************************************************************
-        //запрос на количество вопросов в тесте *
-        private void getNumberOfQuestions()
+        /*//запрос на количество вопросов в тесте *
+        private void Get_number_of_questions()
         {
             NpgsqlCommand get_number_of_questions = new NpgsqlCommand("SELECT COUNT(question_id) FROM version_question " +
                 "WHERE version_id = '" + version_id + "';", connection);
             number_of_questions = Convert.ToInt32(get_number_of_questions.ExecuteScalar());
-        }
-        //список вопросов для теста *
-        private void getTestQuestions()
+        }*/
+        /*//список вопросов для теста *
+        private void Get_test_questions()
         {
             NpgsqlCommand get_questions = new NpgsqlCommand("SELECT question_text FROM questions " +
                 "JOIN version_question ON questions.question_id = version_question.question_id " +
@@ -243,14 +243,14 @@ namespace testing_program
                // ++s;
             }
             reader.Close();
-        }
+        }*/
 
-        private void getTestTimer()
+        /*private void Get_test_timer()
         {
             NpgsqlCommand get_timer = new NpgsqlCommand("SELECT timer FROM test WHERE test_id = "+test_id+"; ", connection);
             timer = Convert.ToInt32(get_timer.ExecuteScalar());
             test_timer.Interval = timer * 60000;
-        }
+        }*/
 
         private void start_test_button_Click(object sender, EventArgs e)
         {
@@ -261,14 +261,19 @@ namespace testing_program
             }
             else
             {
-                getTestTimer();
-                DialogResult dialogResult = MessageBox.Show("Ограничение по времени: "+timer+" мин.\n"+ available_test_table.SelectedCells[1].Value.ToString() + " можно пройти только 1 раз. Вы уверены, что хотите начать прямо сейчас? ", "Начать попытку", MessageBoxButtons.YesNo);
+                timer = database.Get_test_timer(test_id);
+                test_timer.Interval = timer * 60000;
+                //getTestTimer();
+                DialogResult dialogResult = MessageBox.Show("Ограничение по времени: " +
+                    ""+timer+" мин.\n"+ available_test_table.SelectedCells[1].Value.ToString() + 
+                    " можно пройти только 1 раз. Вы уверены, что хотите начать прямо сейчас? ",
+                    "Начать попытку", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     choose_test_panel.Visible = false;
                     getTestVersion();
-                    getNumberOfQuestions();
-                    getTestQuestions();
+                    number_of_questions= database.Get_number_of_questions(version_id);
+                    questions = database.Get_test_questions(version_id, questions);
                     fillTestingPanelAndGetRightAnswer();
                     //запустить счетчик
                     test_timer.Start();
@@ -284,7 +289,7 @@ namespace testing_program
             int question_type;
             if (question_index < number_of_questions)
             {
-                question_type = getTypeOfQuestion();
+                question_type = database.Get_question_type(version_id, questions[question_index]);
                 if (question_type == 1) //вопрос с одним правильным ответом
                 {
                     one_answer_panel.Visible = true;
@@ -292,18 +297,18 @@ namespace testing_program
                     try
                     {
                         fillLabelsAndButtons(question_type);
-                        getAnswers();
+                        answers_text = database.Get_answers_text( version_id, questions[question_index], answers_text);
                         resetSelection(question_type);
-                        radioButton1.Text = answers[0];
-                        radioButton2.Text = answers[1];
-                        radioButton3.Text = answers[2];
+                        radioButton1.Text = answers_text[0];
+                        radioButton2.Text = answers_text[1];
+                        radioButton3.Text = answers_text[2];
                     }
-                    catch { MessageBox.Show("error1/1"); }
+                    catch { MessageBox.Show("Ошибка получения текста ответов"); }
                     try
                     {
-                        getRightAnswer();
+                        right_answers = database.Get_answers(version_id, questions[question_index], right_answers);
                     }
-                    catch { MessageBox.Show("error1/2"); }
+                    catch { MessageBox.Show("Ошибка получения ответов"); }
                 }
                 else if (question_type == 2)  //вопрос с несколькими правильными ответами
                 {
@@ -311,19 +316,20 @@ namespace testing_program
                     try
                     {
                         fillLabelsAndButtons(question_type);
-                        getAnswers();
+                        answers_text = database.Get_answers_text(version_id, questions[question_index], answers_text);
                         resetSelection(question_type);
                         // MessageBox.Show("Тут");
-                        checkBox1.Text = answers[0];
-                        checkBox2.Text = answers[1];
-                        checkBox3.Text = answers[2];
+                        checkBox1.Text = answers_text[0];
+                        checkBox2.Text = answers_text[1];
+                        checkBox3.Text = answers_text[2];
                     }
-                    catch (Exception e) { MessageBox.Show("error1" + e); }
+                    catch { MessageBox.Show("Ошибка получения текста ответов"); }
                     try
                     {
-                        getRightAnswer();
+                        //getRightAnswer();
+                        right_answers = database.Get_answers(version_id, questions[question_index], right_answers);
                     }
-                    catch { MessageBox.Show("error2"); }
+                    catch { MessageBox.Show("Ошибка получения ответов"); }
                 }
             }
             else
@@ -331,7 +337,6 @@ namespace testing_program
                 //добавить сохранение и остановку времени
                 test_timer.Stop();
                 finishTesting();
-               
             }
         }
         private void fillLabelsAndButtons(int type)
@@ -356,16 +361,17 @@ namespace testing_program
         // *
         private void finishTesting()
         {
-            int mark;
-            mark = calculateMarkForTest();
-            MessageBox.Show("Тест пройден!\nВаша оценка: " + mark + "\nЧтобы получить больше информации зайдите в раздел Результаты", "Результат");
+            int mark = calculateMarkForTest();
+            MessageBox.Show("Тест пройден!\nВаша оценка: " + mark + "\n" +
+                "Чтобы получить больше информации зайдите в раздел Результаты", "Результат");
             //добавление результата в Результаты
-            NpgsqlCommand addMarkAtDatabase = new NpgsqlCommand("UPDATE student_test " +
+            /*NpgsqlCommand addMarkAtDatabase = new NpgsqlCommand("UPDATE student_test " +
                 "SET mark = " + mark + ", time=TIMESTAMP(0)'now' " +
                 "WHERE test_id = " + test_id + " " +
                 "AND student_id = " + user_id + ";", connection);
-            addMarkAtDatabase.ExecuteNonQuery();
-            resetTestTable();
+            addMarkAtDatabase.ExecuteNonQuery();*/
+            database.Add_mark_to_database( mark,  test_id,  user_id);
+            data.Reset_test_table(database, user_id, available_test_table);
             questions.Clear();
             test_id = -1;
             version_id = -1;
@@ -387,8 +393,8 @@ namespace testing_program
             return 5;
 
         }
-        //запрос на получение ответов *
-        private void getAnswers()
+        /*//запрос на получение ответов *
+        private void Get_answers_text()
         {
             string str = "SELECT answers.answers_text FROM answers " +
                 "JOIN question_answer ON question_answer.answer_id = answers.answer_id " +
@@ -403,14 +409,14 @@ namespace testing_program
            // int s = 0;
             while (reader.Read())
             {
-                answers.Add(reader.GetValue(0).ToString());
-                // MessageBox.Show(answers[s], "answers");
+                answers_text.Add(reader.GetValue(0).ToString());
+                // MessageBox.Show(answers_text[s], "answers_text");
                 //++s;
             }
             reader.Close();
-        }
+        }*/
         //запрос на получение правильных ответов *
-        private void getRightAnswer()
+        /*private void getRightAnswer()
         {
             NpgsqlCommand get_right_answer = new NpgsqlCommand("SELECT answers_text FROM answers " +
                 "JOIN question_answer ON question_answer.answer_id = answers.answer_id " +
@@ -424,12 +430,12 @@ namespace testing_program
            // int s = 0;
             while (reader_get_right_answer.Read())
             {
-                right_answers.Add((string)reader_get_right_answer.GetValue(0));
-               // MessageBox.Show(right_answers[s], "right_answers");
+                answers.Add((string)reader_get_right_answer.GetValue(0));
+               // MessageBox.Show(answers[s], "answers");
               //  ++s;
             }
             reader_get_right_answer.Close();
-        }
+        }*/
 
         
         
@@ -437,14 +443,16 @@ namespace testing_program
         private void available_test_table_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             test_id = Convert.ToInt32(available_test_table.SelectedCells[0].Value);
-            available_test_table.RowsDefaultCellStyle.SelectionBackColor = Color.SkyBlue;
-            available_test_table.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+            data.Change_back_color(available_test_table, Color.SkyBlue);
+            //available_test_table.RowsDefaultCellStyle.SelectionBackColor = Color.SkyBlue;
+            data.Change_fore_color(available_test_table, Color.Black);
+            //available_test_table.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
 
         private void one_answer_button_Click(object sender, EventArgs e)
         {
-            addStudentAnswerToDatabase(checkOneAnswer());
+            Save_and_count_scores(checkOneAnswer());
             //MessageBox.Show(scores.ToString());
             one_answer_panel.Visible = false;
             clearListsAndCallNextQuestion();
@@ -470,9 +478,10 @@ namespace testing_program
             }
             return result;
         }
-        private bool checkManyAnswer()
+        public bool checkManyAnswer()
         {
             List<string> choosen_answers = new List<string>();
+            
             if (checkBox1.Checked == true)
                 choosen_answers.Add(checkBox1.Text);
             if (checkBox2.Checked == true)
@@ -491,9 +500,9 @@ namespace testing_program
                 return false;
             }
             /*int flag = 0;
-            for (int j = 0; j < answers.Count; j++)
+            for (int j = 0; j < answers_text.Count; j++)
             {
-                if (checkBox1.Checked == true && right_answers[j] == checkBox1.Text)
+                if (checkBox1.Checked == true && answers[j] == checkBox1.Text)
                     ++flag;
                 if (checkBox2.Checked == true && right_answers[j] == checkBox2.Text)
                     ++flag;
@@ -508,29 +517,22 @@ namespace testing_program
         }
         private void many_answer_button_Click(object sender, EventArgs e)
         {
-            addStudentAnswerToDatabase(checkManyAnswer());
+            Save_and_count_scores(checkManyAnswer());
             many_answer_panel.Visible = false;
             clearListsAndCallNextQuestion();
         }
-        private void addStudentAnswerToDatabase(bool answer) // *
+      private void Save_and_count_scores(bool answer) 
         {
             if(answer)
                 ++scores;
-            NpgsqlCommand add_student_answer_to_database = new NpgsqlCommand("INSERT " +
-                "INTO results(student_id, version_question_id, answer) VALUES('" + user_id+"', " +
-                "(SELECT version_question_id FROM version_question " +
-                "JOIN questions ON questions.question_id = version_question.question_id " +
-                "JOIN version ON version.version_id = version_question.version_id " +
-                "WHERE version.version_id = "+version_id+" " +
-                "AND question_text = '"+questions[question_index]+"')," +
-                " '"+answer+"'); ", connection);
-            add_student_answer_to_database.ExecuteNonQuery();
-           
+            database.Save_student_answer(user_id, version_id, questions[question_index], answer);
+
+
         }
         private void clearListsAndCallNextQuestion()
         {
             right_answers.Clear();
-            answers.Clear();
+            answers_text.Clear();
             ++question_index;
             fillTestingPanelAndGetRightAnswer();
         }
@@ -548,34 +550,15 @@ namespace testing_program
         private void show_list_of_completed_tests_CheckedChanged(object sender, EventArgs e)
         {
             //общий список тестов
-            choose_test_result.Visible = false;
-            resetListOfCompletedTestsTable();
+            passed_tests.Visible = false;
+            data.Hide(one_result_dataGridView);
+            data.Reset_completed_tests_list_table(database, user_id, results_dataGridView);
         }
 
         private void show_one_test_result_CheckedChanged(object sender, EventArgs e)
         {
-            //показываем чекбокс
-            choose_test_result.Visible = true;
-            //список тестов в чекбокс
-            NpgsqlCommand choose_test_result_combobox = new NpgsqlCommand("SELECT test_name FROM test " +
-                "JOIN student_test ON student_test.test_id = test.test_id " +
-                "WHERE student_id = " + user_id + " " +
-                "AND mark is not null; ", connection);
-            NpgsqlDataReader reader_choose_test_result_combobox = choose_test_result_combobox.ExecuteReader();
-
-            if (reader_choose_test_result_combobox.HasRows)
-            {
-                choose_test_result.Items.Clear();
-
-                while (reader_choose_test_result_combobox.Read())
-                {
-                    choose_test_result.Items.Add(reader_choose_test_result_combobox.GetString(0));
-                }
-            }
-
-            reader_choose_test_result_combobox.Close();
-            
-            //показываем выбранные тест
+            comboboxclass.Change_visible(passed_tests, true);
+            database.Fill_studentForm_collection_passed_tests(user_id, passed_tests);
         }
 
         private void choose_test_result_KeyPress(object sender, KeyPressEventArgs e)
@@ -583,9 +566,10 @@ namespace testing_program
             e.Handled = true;
         }
 
-        private void choose_test_result_SelectedIndexChanged(object sender, EventArgs e)
+        private void passed_tests_SelectedIndexChanged(object sender, EventArgs e)
         {
-                resetOneTestResultTable();
+            data.Hide(results_dataGridView);
+            data.Reset_one_test_result_table(database, user_id, one_result_dataGridView, passed_tests);
         }
 
         private void group_student_profile_label_Click(object sender, EventArgs e)
@@ -638,11 +622,12 @@ namespace testing_program
         {
             if(new_student_login_textbox.Text!="")
             {
+                database.Update_user_login_or_password(new_student_login_textbox, user_id, "login","student");
                 //запись логина в бд
-                NpgsqlCommand updateStudentLoginAtDatabase = new NpgsqlCommand("UPDATE student " +
-                    "SET login = '" + new_student_login_textbox.Text + "' " +
-                    "WHERE student_id = " + user_id + "; ", connection);
-                updateStudentLoginAtDatabase.ExecuteNonQuery();
+                /* NpgsqlCommand updateStudentLoginAtDatabase = new NpgsqlCommand("UPDATE student " +
+                     "SET login = '" + new_student_login_textbox.Text + "' " +
+                     "WHERE student_id = " + user_id + "; ", connection);
+                 updateStudentLoginAtDatabase.ExecuteNonQuery();*/
                 //обновить панель
                 fillStudentProfileMainPanel();
                 //логин изменен
@@ -703,11 +688,8 @@ namespace testing_program
             }
             else
             {
-                //запись логина в бд
-                NpgsqlCommand updateStudentPasswordAtDatabase = new NpgsqlCommand("UPDATE student " +
-                    "SET password = '" + student_test_new_password_textBox.Text + "' " +
-                    "WHERE student_id = " + user_id + "; ", connection);
-                updateStudentPasswordAtDatabase.ExecuteNonQuery();
+                database.Update_user_login_or_password(student_test_new_password_textBox, user_id, "password","student");
+                
                 //обновить панель
                 fillStudentProfileMainPanel();
                 //логин изменен
@@ -751,27 +733,26 @@ namespace testing_program
         //УДАЛИТЬ ПОСЛЕ ТЕСТИРОВАНИЯ
         private void button1_Click(object sender, EventArgs e)
         {
-            NpgsqlCommand deleteResultsAtDatabase = new NpgsqlCommand("delete from results;", connection);
-            deleteResultsAtDatabase.ExecuteNonQuery();
-            NpgsqlCommand updateMarksAtDatabase = new NpgsqlCommand("update student_test set mark = null, time=null;", connection);
-            updateMarksAtDatabase.ExecuteNonQuery();
-            resetListOfCompletedTestsTable();
-            resetOneTestResultTable();
-            resetTestTable();
+            database.Delete_results_and_mark();
+            data.Hide(one_result_dataGridView);
+            data.Reset_completed_tests_list_table(database, user_id, results_dataGridView);
+            data.Hide(results_dataGridView);
+            data.Reset_one_test_result_table(database, user_id, one_result_dataGridView, passed_tests);
+            data.Reset_test_table(database, user_id, available_test_table);
         }
         //*****************************************************************************************
 
         private void test_timer_Tick(object sender, EventArgs e)
         {
             test_timer.Stop();
-            if (getTypeOfQuestion() == 1)
+            if (database.Get_question_type(version_id, questions[question_index]) == 1)
             {
-                addStudentAnswerToDatabase(checkOneAnswer());
+                Save_and_count_scores(checkOneAnswer());
                 one_answer_panel.Visible = false;
             }
             else
             {
-                addStudentAnswerToDatabase(checkManyAnswer());
+                Save_and_count_scores(checkManyAnswer());
                 many_answer_panel.Visible = false;
             }
             finishTesting();
@@ -785,6 +766,13 @@ namespace testing_program
         private void student_profile_main_panel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void exit_student_profile_button_Click(object sender, EventArgs e)
+        {
+            
+            Application.OpenForms[0].Show();
+            this.Hide();
         }
     }
 }

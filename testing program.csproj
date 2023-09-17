@@ -94,6 +94,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckboxClass.cs" />
+    <Compile Include="ComboboxClass.cs" />
+    <Compile Include="DatabaseClass.cs" />
+    <Compile Include="DataGridViewClass.cs" />
+    <Compile Include="TextboxClass.cs" />
     <Compile Include="RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>

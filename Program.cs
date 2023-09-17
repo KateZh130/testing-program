@@ -16,7 +16,9 @@ namespace testing_program
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RegistrationForm());
+            DatabaseClass databaseclass = new DatabaseClass();
+            databaseclass.Connect_to_database();
+            Application.Run(new RegistrationForm(databaseclass));
         }
     }
 }

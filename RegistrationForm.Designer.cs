@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.sign_in_role = new System.Windows.Forms.ComboBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.enter_button = new System.Windows.Forms.Button();
             this.sign_in_password = new System.Windows.Forms.TextBox();
@@ -41,10 +42,10 @@
             this.password_registration = new System.Windows.Forms.TextBox();
             this.test_password_registration = new System.Windows.Forms.TextBox();
             this.sign_up_button = new System.Windows.Forms.Button();
-            this.choose_role = new System.Windows.Forms.ComboBox();
-            this.teacher_name = new System.Windows.Forms.TextBox();
+            this.registration_role = new System.Windows.Forms.ComboBox();
             this.select_group_registration = new System.Windows.Forms.ComboBox();
             this.select_full_name_registration = new System.Windows.Forms.ComboBox();
+            this.teacher_name = new System.Windows.Forms.TextBox();
             this.sign_in_button = new System.Windows.Forms.Button();
             this.registration_button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -54,11 +55,11 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Honeydew;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.sign_in_role);
             this.panel1.Controls.Add(this.checkBox2);
             this.panel1.Controls.Add(this.enter_button);
             this.panel1.Controls.Add(this.sign_in_password);
@@ -68,13 +69,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(405, 392);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // sign_in_role
+            // 
+            this.sign_in_role.BackColor = System.Drawing.Color.MintCream;
+            this.sign_in_role.Font = new System.Drawing.Font("Calibri", 10.8F);
+            this.sign_in_role.FormattingEnabled = true;
+            this.sign_in_role.Items.AddRange(new object[] {
+            "Преподаватель",
+            "Студент"});
+            this.sign_in_role.Location = new System.Drawing.Point(20, 42);
+            this.sign_in_role.Name = "sign_in_role";
+            this.sign_in_role.Size = new System.Drawing.Size(363, 30);
+            this.sign_in_role.TabIndex = 12;
+            this.sign_in_role.Text = "Выберите роль";
+            this.sign_in_role.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sign_in_role_KeyPress);
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox2.Location = new System.Drawing.Point(21, 191);
+            this.checkBox2.Location = new System.Drawing.Point(21, 224);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(154, 25);
             this.checkBox2.TabIndex = 11;
@@ -106,14 +121,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sign_in_password.BackColor = System.Drawing.Color.MintCream;
             this.sign_in_password.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sign_in_password.Location = new System.Drawing.Point(21, 143);
+            this.sign_in_password.Location = new System.Drawing.Point(21, 176);
             this.sign_in_password.MinimumSize = new System.Drawing.Size(228, 35);
             this.sign_in_password.Name = "sign_in_password";
             this.sign_in_password.Size = new System.Drawing.Size(363, 29);
             this.sign_in_password.TabIndex = 1;
             this.sign_in_password.Text = "Введите пароль";
             this.sign_in_password.Click += new System.EventHandler(this.sign_in_password_Click);
-            this.sign_in_password.TextChanged += new System.EventHandler(this.sign_in_password_TextChanged);
+            this.sign_in_password.TextChanged += new System.EventHandler(this.Sign_in_password_TextChanged);
             this.sign_in_password.Leave += new System.EventHandler(this.sign_in_password_Leave);
             // 
             // sign_in_login
@@ -122,7 +137,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sign_in_login.BackColor = System.Drawing.Color.MintCream;
             this.sign_in_login.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sign_in_login.Location = new System.Drawing.Point(20, 72);
+            this.sign_in_login.Location = new System.Drawing.Point(20, 105);
             this.sign_in_login.MinimumSize = new System.Drawing.Size(228, 35);
             this.sign_in_login.Name = "sign_in_login";
             this.sign_in_login.Size = new System.Drawing.Size(363, 29);
@@ -141,7 +156,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.sign_up_button);
-            this.panel2.Controls.Add(this.choose_role);
+            this.panel2.Controls.Add(this.registration_role);
             this.panel2.Controls.Add(this.select_group_registration);
             this.panel2.Controls.Add(this.select_full_name_registration);
             this.panel2.Controls.Add(this.teacher_name);
@@ -151,7 +166,6 @@
             this.panel2.Size = new System.Drawing.Size(405, 392);
             this.panel2.TabIndex = 2;
             this.panel2.Visible = false;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel3
             // 
@@ -251,41 +265,23 @@
             this.sign_up_button.UseVisualStyleBackColor = false;
             this.sign_up_button.Click += new System.EventHandler(this.sign_up_button_Click);
             // 
-            // choose_role
+            // registration_role
             // 
-            this.choose_role.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.registration_role.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.choose_role.BackColor = System.Drawing.Color.MintCream;
-            this.choose_role.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.choose_role.FormattingEnabled = true;
-            this.choose_role.Items.AddRange(new object[] {
+            this.registration_role.BackColor = System.Drawing.Color.MintCream;
+            this.registration_role.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.registration_role.FormattingEnabled = true;
+            this.registration_role.Items.AddRange(new object[] {
             "Преподаватель",
             "Студент"});
-            this.choose_role.Location = new System.Drawing.Point(21, 37);
-            this.choose_role.Name = "choose_role";
-            this.choose_role.Size = new System.Drawing.Size(362, 29);
-            this.choose_role.TabIndex = 8;
-            this.choose_role.Text = "Выберите роль";
-            this.choose_role.SelectedIndexChanged += new System.EventHandler(this.choose_role_SelectedIndexChanged);
-            this.choose_role.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.choose_role_KeyPress);
-            // 
-            // teacher_name
-            // 
-            this.teacher_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.teacher_name.BackColor = System.Drawing.Color.MintCream;
-            this.teacher_name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.teacher_name.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.teacher_name.Location = new System.Drawing.Point(21, 84);
-            this.teacher_name.MinimumSize = new System.Drawing.Size(363, 28);
-            this.teacher_name.Name = "teacher_name";
-            this.teacher_name.Size = new System.Drawing.Size(363, 28);
-            this.teacher_name.TabIndex = 9;
-            this.teacher_name.Text = "Введите ФИО";
-            this.teacher_name.Visible = false;
-            this.teacher_name.Click += new System.EventHandler(this.teacher_name_Click);
-            this.teacher_name.TextChanged += new System.EventHandler(this.teacher_name_TextChanged);
-            this.teacher_name.Leave += new System.EventHandler(this.teacher_name_Leave);
+            this.registration_role.Location = new System.Drawing.Point(21, 37);
+            this.registration_role.Name = "registration_role";
+            this.registration_role.Size = new System.Drawing.Size(362, 29);
+            this.registration_role.TabIndex = 8;
+            this.registration_role.Text = "Выберите роль";
+            this.registration_role.SelectedIndexChanged += new System.EventHandler(this.choose_role_SelectedIndexChanged);
+            this.registration_role.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.choose_role_KeyPress);
             // 
             // select_group_registration
             // 
@@ -302,7 +298,7 @@
             this.select_group_registration.TabIndex = 3;
             this.select_group_registration.Text = "Выберите группу из списка";
             this.select_group_registration.Visible = false;
-            this.select_group_registration.SelectedIndexChanged += new System.EventHandler(this.select_group_registration_SelectedIndexChanged);
+            this.select_group_registration.SelectedIndexChanged += new System.EventHandler(this.Select_group_registration_SelectedIndexChanged);
             this.select_group_registration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.select_group_registration_KeyPress);
             // 
             // select_full_name_registration
@@ -322,6 +318,24 @@
             this.select_full_name_registration.Text = "Выберите свое имя из списка группы";
             this.select_full_name_registration.Visible = false;
             this.select_full_name_registration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.select_full_name_registration_KeyPress);
+            // 
+            // teacher_name
+            // 
+            this.teacher_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.teacher_name.BackColor = System.Drawing.Color.MintCream;
+            this.teacher_name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.teacher_name.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.teacher_name.Location = new System.Drawing.Point(21, 84);
+            this.teacher_name.MinimumSize = new System.Drawing.Size(363, 28);
+            this.teacher_name.Name = "teacher_name";
+            this.teacher_name.Size = new System.Drawing.Size(363, 28);
+            this.teacher_name.TabIndex = 9;
+            this.teacher_name.Text = "Введите ФИО";
+            this.teacher_name.Visible = false;
+            this.teacher_name.Click += new System.EventHandler(this.teacher_name_Click);
+            this.teacher_name.TextChanged += new System.EventHandler(this.teacher_name_TextChanged);
+            this.teacher_name.Leave += new System.EventHandler(this.teacher_name_Leave);
             // 
             // sign_in_button
             // 
@@ -363,8 +377,8 @@
             this.ClientSize = new System.Drawing.Size(405, 441);
             this.Controls.Add(this.sign_in_button);
             this.Controls.Add(this.registration_button);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(403, 441);
             this.Name = "RegistrationForm";
@@ -393,12 +407,13 @@
         private System.Windows.Forms.TextBox password_registration;
         private System.Windows.Forms.ComboBox select_full_name_registration;
         private System.Windows.Forms.TextBox teacher_name;
-        private System.Windows.Forms.ComboBox choose_role;
+        private System.Windows.Forms.ComboBox registration_role;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button sign_in_button;
         private System.Windows.Forms.Button registration_button;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.ComboBox sign_in_role;
     }
 }
 
