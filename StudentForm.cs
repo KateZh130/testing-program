@@ -37,7 +37,7 @@ namespace testing_program
             FillTestPage();
             FillStudentProfileMainPanel();
         }
-        //обнуление выбора кнопок(чтобы в след вопросе такого же типа не были выбраны)
+
         private void ResetSelection(int question_type)
         {
             RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3 };
@@ -66,10 +66,6 @@ namespace testing_program
             TextBox[] textBoxes = { full_name_student_profile, group_student_profile, login_student_profile, password_student_profile };
             string[] text = { profil_info_list[0] + " " + profil_info_list[1] + " " + profil_info_list[2], profil_info_list[3], profil_info_list[4], profil_info_list[5] };
             textbox.Fill_textboxes(textBoxes, text);
-            /*full_name_student_profile.Text = profil_info_list[0] + " " + profil_info_list[1] + " " + profil_info_list[2];
-            group_student_profile.Text = profil_info_list[3];
-            login_student_profile.Text = profil_info_list[4];
-            password_student_profile.Text = profil_info_list[5];*/
         }
 
         public void FillTestPage()
@@ -95,7 +91,6 @@ namespace testing_program
 
         /// СТОИТ ЛИ ДЕЛАТЬ ЗАПРОС НА ПОЛУЧЕНИЕ test_version_id ЧТОБЫ ВО ВСЕ ЗАПРОСАХ ПИСАТЬ ЭТО А НЕ test_id version_id???? нет
 
-        //запрос на получение варианта *
         private void GetTestVersion()
         {
             List<int> versions = database.Get_test_versions(test_id);
@@ -152,18 +147,12 @@ namespace testing_program
                     one_answer_panel.Visible = true;
                     RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3 };
                     radiobutton.Fill_text(radioButtons, answers_text);
-                    /*radioButton1.Text = answers_text[0];
-                        radioButton2.Text = answers_text[1];
-                        radioButton3.Text = answers_text[2];*/
                 }
                 else if (question_type == 2)  //вопрос с несколькими правильными ответами
                 {
                     many_answer_panel.Visible = true;
                     CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3 };
                     checkbox.Fill_text(checkBoxes, answers_text);
-                        /*checkBox1.Text = answers_text[0];
-                        checkBox2.Text = answers_text[1];
-                        checkBox3.Text = answers_text[2];*/
                 }
             }
             else
@@ -249,22 +238,6 @@ namespace testing_program
                 }
             }
             return false;
-           /* for (int j = 0; j < right_answers.Count; j++)
-            {
-                if (radioButton1.Checked == true && right_answers[j] == radioButton1.Text)
-                {
-                    result = true;
-                }
-                else if (radioButton2.Checked == true && right_answers[j] == radioButton2.Text)
-                {
-                    result = true;
-                }
-                else if (radioButton3.Checked == true && right_answers[j] == radioButton3.Text)
-                {
-                    result = true;
-                }
-            }
-            return result;*/
         }
         public bool Check_many_answers()
         {
@@ -275,25 +248,9 @@ namespace testing_program
                 if (checkBoxes[i].Checked == true)
                     choosen_answers.Add(checkBoxes[i].Text);
             }
-           /* if (checkBox1.Checked == true)
-                choosen_answers.Add(checkBox1.Text);
-            if (checkBox2.Checked == true)
-                choosen_answers.Add(checkBox2.Text);
-            if (checkBox3.Checked == true)
-                choosen_answers.Add(checkBox3.Text);*/
            bool result= choosen_answers.OrderBy(m => m).SequenceEqual(right_answers.OrderBy(m => m));
             choosen_answers.Clear();
             return result;
-            /*if (choosen_answers.OrderBy(m => m).SequenceEqual(right_answers.OrderBy(m => m)))
-            {
-                choosen_answers.Clear(); //возможно его не нужно чистить т к он локальный. нужно проверить при отладке
-                return true;
-            }
-            else
-            {
-                choosen_answers.Clear(); //возможно его не нужно чистить т к он локальный. нужно проверить при отладке
-                return false;
-            }*/
         }
 
         private void Many_answers_button_Click(object sender, EventArgs e)
@@ -325,8 +282,7 @@ namespace testing_program
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
+                    }
 
         private void Show_list_of_completed_tests_CheckedChanged(object sender, EventArgs e)
         {
@@ -354,7 +310,6 @@ namespace testing_program
 
         private void group_student_profile_label_Click(object sender, EventArgs e)
         {
-
         }
 
         private void Full_name_student_profile_KeyPress(object sender, KeyPressEventArgs e)
@@ -379,17 +334,14 @@ namespace testing_program
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void change_student_login_label_Click(object sender, EventArgs e)
         {
-
         }
 
         private void Change_student_login_button_Click(object sender, EventArgs e)
@@ -420,17 +372,14 @@ namespace testing_program
 
         private void label3_Click(object sender, EventArgs e)
         {
-
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-
         }
 
         private void Change_student_password_button_Click(object sender, EventArgs e)
@@ -461,7 +410,6 @@ namespace testing_program
 
         private void Student_old_password_textBox_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void Cancel_student_change_password_button_Click(object sender, EventArgs e)
@@ -473,7 +421,6 @@ namespace testing_program
 
         private void Continue_student_change_password_button_Click(object sender, EventArgs e)
         {
-            //проверка совпадения старого пароля
             if (student_old_password_textBox.Text == "")
             {
                 MessageBox.Show("Введите пароль.");

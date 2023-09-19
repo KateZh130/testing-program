@@ -16,10 +16,5 @@ namespace testing_program
                 checkBoxes[i].Text = text[i];
             }
         }
-
-        /*public bool Is_checked(CheckBox checkbox)
-        {
-            return checkbox.Checked;
-        }*/
     }
 }
