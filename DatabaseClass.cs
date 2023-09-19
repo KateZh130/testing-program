@@ -246,9 +246,12 @@ namespace testing_program
 
         public void Create_question_answer_connection(int question_id, int answer_id, bool is_correct)
         {
+            int value = 0;
+            if (is_correct)
+                value = 1;
             NpgsqlCommand question_answer_connection = new NpgsqlCommand("INSERT INTO " +
-              "question_answer (question_id, version_id, right_answer) " +
-              "VALUES (" + question_id + "," + answer_id + "," + is_correct + ")", connection);
+              "question_answer (question_id, answer_id, right_answer) " +
+              "VALUES (" + question_id + "," + answer_id + "," + value + ")", connection);
             question_answer_connection.ExecuteNonQuery();
         }
 
