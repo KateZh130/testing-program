@@ -1,12 +1,5 @@
-﻿using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace testing_program
@@ -16,9 +9,10 @@ namespace testing_program
         public int user_id;
         private const int student_code = 1;
         private const int teacher_code = 0;
-        DatabaseClass database;
-        TextboxClass textboxclass = new TextboxClass();
-        ComboboxClass comboboxclass = new ComboboxClass();
+        readonly DatabaseClass database;
+        readonly TextboxClass textboxclass = new TextboxClass();
+        readonly ComboboxClass comboboxclass = new ComboboxClass();
+        readonly CheckboxClass checkboxclass = new CheckboxClass();
 
         public RegistrationForm(DatabaseClass database)
         {
@@ -34,53 +28,69 @@ namespace testing_program
         bool signInPasswordTextIsChanged = false;
         private void Sign_in_password_TextChanged(object sender, EventArgs e)
         {
-            signInPasswordTextIsChanged = textboxclass.Check_textBox_text_is_changed(sign_in_password, "Введите пароль");
+
+            signInPasswordTextIsChanged = textboxclass.Check_text_is_changed(sign_in_password, "Введите пароль");
         }
 
-        private void sign_in_password_Click(object sender, EventArgs e)
+        private void Sign_in_password_Click(object sender, EventArgs e)
         {
-
-            if (signInPasswordTextIsChanged == false || sign_in_password.Text == "Введите пароль")
-            {
-                if (checkBox2.Checked)
-                    sign_in_password.UseSystemPasswordChar = false;
-                else
-                    sign_in_password.UseSystemPasswordChar = true;
-                sign_in_password.Text = "";
-                signInPasswordTextIsChanged = false;
-            }
+            sign_in_password.UseSystemPasswordChar = !checkBox2.Checked;
+            signInPasswordTextIsChanged = textboxclass.Check_is_cleared(sign_in_password, "Введите пароль", signInPasswordTextIsChanged);
         }
 
-        private void sign_in_password_Leave(object sender, EventArgs e)
+        private void Sign_in_password_Leave(object sender, EventArgs e)
         {
-            if (sign_in_password.Text == "")
-            {
-                sign_in_password.UseSystemPasswordChar = false;
-                sign_in_password.Text = "Введите пароль";
-            }
+
+            sign_in_password.UseSystemPasswordChar = !textboxclass.Return_original_text(sign_in_password, "Введите пароль");
+            //sign_in_password.UseSystemPasswordChar = false;
+            /* if (sign_in_password.Text == "")
+             {
+                 sign_in_password.UseSystemPasswordChar = false;
+                 sign_in_password.Text = "Введите пароль";
+             }*/
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (!checkBox2.Checked && sign_in_password.Text != "Введите пароль" )
+            /*
+             TextBox[] textBoxes = { test_password_registration, password_registration };
+            string[] text = { "Повторно введите пароль", "Введите пароль" };
+            bool is_hidden = true;
+           
+            if (checkBox1.Checked || !textbox.Check_textboxes_text_are_changed(text, textBoxes))
+            {
+                is_hidden = false;
+            }
+            password_registration.UseSystemPasswordChar = is_hidden;
+            test_password_registration.UseSystemPasswordChar = is_hidden;
+             */
+
+            bool is_hidden = true;
+            if (checkBox2.Checked || !textboxclass.Check_text_is_changed(sign_in_password, "Введите пароль"))
+            {
+                is_hidden = false;
+            }
+            sign_in_password.UseSystemPasswordChar = is_hidden;
+
+            /*if (!checkBox2.Checked && sign_in_password.Text != "Введите пароль" )
                 sign_in_password.UseSystemPasswordChar = true;
             else
-                sign_in_password.UseSystemPasswordChar = false;
+                sign_in_password.UseSystemPasswordChar = false;*/
         }
 
         bool signInLoginTextIsChanged = false;
         private void sign_in_login_Click(object sender, EventArgs e)
         {
-            signInLoginTextIsChanged = textboxclass.Check_textBox_text_is_cleared(sign_in_login, "Введите логин", signInLoginTextIsChanged);
+            signInLoginTextIsChanged = textboxclass.Check_is_cleared(sign_in_login, "Введите логин", signInLoginTextIsChanged);
         }
 
         private void sign_in_login_TextChanged(object sender, EventArgs e)
         {
-            signInLoginTextIsChanged = textboxclass.Check_textBox_text_is_changed(sign_in_login, "Введите логин");
+            signInLoginTextIsChanged = textboxclass.Check_text_is_changed(sign_in_login, "Введите логин");
         }
         private void sign_in_login_Leave(object sender, EventArgs e)
         {
-            textboxclass.TextBox_return_original_text(sign_in_login, "Введите логин");
+            textboxclass.Return_original_text(sign_in_login, "Введите логин");
         }
 
         private void sign_in_button_Click(object sender, EventArgs e)
@@ -94,7 +104,7 @@ namespace testing_program
             panel1.Visible = false;
             panel2.Visible = true;
         }
-        
+
         private void select_group_registration_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -112,134 +122,142 @@ namespace testing_program
         bool registrationLoginTextIsChanged = false;
         private void login_registration_Click(object sender, EventArgs e)
         {
-            registrationLoginTextIsChanged = textboxclass.Check_textBox_text_is_cleared(login_registration, "Введите логин", registrationLoginTextIsChanged);
+            registrationLoginTextIsChanged = textboxclass.Check_is_cleared(login_registration, "Введите логин", registrationLoginTextIsChanged);
         }
         private void login_registration_Leave(object sender, EventArgs e)
         {
-            textboxclass.TextBox_return_original_text(login_registration, "Введите логин");
+            textboxclass.Return_original_text(login_registration, "Введите логин");
 
         }
         private void login_registration_TextChanged(object sender, EventArgs e)
         {
-            registrationLoginTextIsChanged=textboxclass.Check_textBox_text_is_changed(login_registration, "Введите логин");
+            registrationLoginTextIsChanged = textboxclass.Check_text_is_changed(login_registration, "Введите логин");
         }
 
         bool registrationPasswordTextIsChanged = false;
         private void password_registration_Click(object sender, EventArgs e)
         {
-            if (registrationPasswordTextIsChanged == false || password_registration.Text == "Введите пароль")
-            {
-                if (checkBox1.Checked)
-                    password_registration.UseSystemPasswordChar = false;
-                else
-                    password_registration.UseSystemPasswordChar = true;
-                password_registration.Text = "";
-                registrationPasswordTextIsChanged = false;
-            }
+            password_registration.UseSystemPasswordChar = !checkBox1.Checked;
+            registrationPasswordTextIsChanged = textboxclass.Check_is_cleared(password_registration, "Введите пароль", registrationPasswordTextIsChanged);
+            /* if (registrationPasswordTextIsChanged == false || password_registration.Text == "Введите пароль")
+             {
+                 if (checkBox1.Checked)
+                     password_registration.UseSystemPasswordChar = false;
+                 else
+                     password_registration.UseSystemPasswordChar = true;
+                 password_registration.Text = "";
+                 registrationPasswordTextIsChanged = false;
+             }*/
         }
 
         private void password_registration_Leave(object sender, EventArgs e)
         {
-            if (password_registration.Text == "")
-            {
-                password_registration.UseSystemPasswordChar = false;
-                password_registration.Text = "Введите пароль";
-            }
+            password_registration.UseSystemPasswordChar = !textboxclass.Return_original_text(password_registration, "Введите пароль");
+            // password_registration.UseSystemPasswordChar = false;
+            /* if (password_registration.Text == "")
+             {
+                 password_registration.UseSystemPasswordChar = false;
+                 password_registration.Text = "Введите пароль";
+             }*/
         }
         private void password_registration_TextChanged(object sender, EventArgs e)
         {
-            registrationPasswordTextIsChanged = textboxclass.Check_textBox_text_is_changed(password_registration, "Введите пароль");
-
+            registrationPasswordTextIsChanged = textboxclass.Check_text_is_changed(password_registration, "Введите пароль");
         }
 
-        bool secondPasswordTextIsChanged=false;
+        bool secondPasswordTextIsChanged = false;
         private void test_password_registration_Leave(object sender, EventArgs e)
         {
-            if (test_password_registration.Text == "")
-            {
-                test_password_registration.UseSystemPasswordChar = false;
-                test_password_registration.Text = "Повторно введите пароль";
-            }
+            test_password_registration.UseSystemPasswordChar = !textboxclass.Return_original_text(test_password_registration, "Повторно введите пароль");
+            // test_password_registration.UseSystemPasswordChar = false;
+            /* if (test_password_registration.Text == "")
+             {
+                 test_password_registration.UseSystemPasswordChar = false;
+                 test_password_registration.Text = "Повторно введите пароль";
+             }*/
         }
 
         private void test_password_registration_Click(object sender, EventArgs e)
         {
-            if (secondPasswordTextIsChanged == false || test_password_registration.Text == "Повторно введите пароль")
-            {
-                if(checkBox1.Checked)
-                    test_password_registration.UseSystemPasswordChar = false;
-                else
-                    test_password_registration.UseSystemPasswordChar = true;
-                test_password_registration.Text = "";
-                secondPasswordTextIsChanged = false;
-            }
+            test_password_registration.UseSystemPasswordChar = !checkBox1.Checked;
+            secondPasswordTextIsChanged = textboxclass.Check_is_cleared(test_password_registration, "Повторно введите пароль", secondPasswordTextIsChanged);
+
+            /* if (checkBox1.Checked)
+                 test_password_registration.UseSystemPasswordChar = false;
+             else
+                 test_password_registration.UseSystemPasswordChar = true;
+             if (secondPasswordTextIsChanged == false || test_password_registration.Text == "Повторно введите пароль")
+             {
+
+                 test_password_registration.Text = "";
+                 secondPasswordTextIsChanged = false;
+             }*/
         }
 
-        private void test_password_registration_TextChanged(object sender, EventArgs e)
+        private void Test_password_registration_TextChanged(object sender, EventArgs e)
         {
-            secondPasswordTextIsChanged = textboxclass.Check_textBox_text_is_changed(test_password_registration, "Повторно введите пароль");
+            secondPasswordTextIsChanged = textboxclass.Check_text_is_changed(test_password_registration, "Повторно введите пароль");
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (!checkBox1.Checked && test_password_registration.Text != "Повторно введите пароль" && password_registration.Text != "Введите пароль")
-            {
-                password_registration.UseSystemPasswordChar = true;
-                test_password_registration.UseSystemPasswordChar = true;
-            }
-            else
-            {
-                password_registration.UseSystemPasswordChar = false;
-                test_password_registration.UseSystemPasswordChar = false;
-            }
-        } 
+            bool is_hidden1 = true;
+            bool is_hidden2 = true;
 
-        private void choose_role_SelectedIndexChanged(object sender, EventArgs e)
+            if (checkBox1.Checked || !textboxclass.Check_text_is_changed(password_registration, "Введите пароль"))
+            {
+                is_hidden1 = false;
+            }
+            if (checkBox1.Checked || !textboxclass.Check_text_is_changed(test_password_registration, "Повторно введите пароль"))
+            {
+                is_hidden2 = false;
+            }
+            password_registration.UseSystemPasswordChar = is_hidden1;
+            test_password_registration.UseSystemPasswordChar = is_hidden2;
+        }
+
+        private void Choose_role_SelectedIndexChanged(object sender, EventArgs e)
         {
+            textboxclass.Change_visible(new TextBox[] { login_registration, password_registration, test_password_registration }, true);
+            ComboBox[] comboBoxes = { select_group_registration, select_full_name_registration };
             string selectedState = registration_role.SelectedItem.ToString();
             if (selectedState == "Преподаватель")
             {
-                select_group_registration.Visible = false;
-                select_full_name_registration.Visible = false;
+                comboboxclass.Change_visible(comboBoxes, false);
                 teacher_name.Visible = true;
-                login_registration.Visible = true;
-                password_registration.Visible = true;
-                test_password_registration.Visible = true;
                 panel3.Location = new Point(16, 105);
             }
             else if (selectedState == "Студент")
             {
+                comboboxclass.Change_visible(comboBoxes, true);
                 teacher_name.Visible = false;
-                select_group_registration.Visible = true;
-                select_full_name_registration.Visible = true;
-                login_registration.Visible = true;
-                password_registration.Visible = true;
-                test_password_registration.Visible = true;
                 panel3.Location = new Point(16, 144);
             }
         }
 
         bool teacherNameIsChanged = false;
-        private void teacher_name_TextChanged(object sender, EventArgs e)
+        private void Teacher_name_TextChanged(object sender, EventArgs e)
         {
-            teacherNameIsChanged=textboxclass.Check_textBox_text_is_changed(teacher_name, "Введите ФИО");
+            teacherNameIsChanged = textboxclass.Check_text_is_changed(teacher_name, "Введите ФИО");
         }
 
-        private void teacher_name_Click(object sender, EventArgs e)
+        private void Teacher_name_Click(object sender, EventArgs e)
         {
-            if (teacherNameIsChanged == false || teacher_name.Text == "Введите ФИО")
+            teacherNameIsChanged = textboxclass.Check_is_cleared(teacher_name, "Введите ФИО", teacherNameIsChanged);
+
+              /*  if (teacherNameIsChanged == false || teacher_name.Text == "Введите ФИО")
             {
                 teacher_name.Text = "";
                 teacherNameIsChanged = false;
-            }
+            }*/
         }
 
-        private void teacher_name_Leave(object sender, EventArgs e)
+        private void Teacher_name_Leave(object sender, EventArgs e)
         {
-            textboxclass.TextBox_return_original_text(teacher_name, "Введите ФИО");
+            textboxclass.Return_original_text(teacher_name, "Введите ФИО");
         }
 
-        private bool checkingForMatchingPasswords(string first, string second)
+        /*private bool checkingForMatchingPasswords(string first, string second)
         {
             if (first != second)
             {
@@ -247,72 +265,73 @@ namespace testing_program
                 return false;
             }
             return true;
-        }
+        }*/
 
-        private void sign_up_button_Click(object sender, EventArgs e)
+        private void Sign_up_button_Click(object sender, EventArgs e)
         {
-            if (registration_role.SelectedIndex == -1 || login_registration.Text == "Введите логин" || password_registration.Text == "Введите пароль" || test_password_registration.Text == "Повторно введите пароль")
+            TextBox[] textBoxes = { login_registration, password_registration, test_password_registration };
+            string[] text = { "Введите логин", "Введите пароль", "Повторно введите пароль" };
+
+            if (!textboxclass.Check_textboxes_text_are_changed(text, textBoxes) || !comboboxclass.Check_is_changed(registration_role))
             {
                 MessageBox.Show("Заполните обязательные поля!");
+            }
+            else if (database.Check_login_exists(login_registration.Text))
+            {
+                MessageBox.Show("Логин занят");
             }
             else
             {
                 if (registration_role.SelectedIndex == student_code)
                 {
-                    if(select_group_registration.SelectedIndex == -1 || select_full_name_registration.SelectedIndex == -1 )
+                    
+                    //ComboBox[] comboBoxes = { select_group_registration, select_full_name_registration };
+                    if (!comboboxclass.Check_selected_indexes_are_changed(new ComboBox[] { select_group_registration, select_full_name_registration }))
                     {
                         MessageBox.Show("Заполните обязательные поля!");
                     }
-                    else
+                    else if (textboxclass.Check_passwords_are_matching(password_registration.Text, test_password_registration.Text))
                     {
-                        if (checkingForMatchingPasswords(password_registration.Text, test_password_registration.Text))
-                        {
-                            user_id=database.Save_registrationForm_new_student(login_registration, password_registration, select_full_name_registration, select_group_registration);
-                            goToUserForm(student_code);
-
-                        }
+                        user_id = database.Save_registrationForm_new_student(login_registration, password_registration, select_full_name_registration, select_group_registration);
+                        Go_to_user_form(student_code);
                     }
-                   
                 }
-                else if(registration_role.SelectedIndex == teacher_code)
+                else
                 {
-                    if(teacher_name.Text == "Введите ФИО")
+                    if (textboxclass.Check_text_is_changed(teacher_name, "Введите ФИО"))
                     {
                         MessageBox.Show("Заполните обязательные поля!");
                     }
-                    else
+                    else if (textboxclass.Check_passwords_are_matching(password_registration.Text, test_password_registration.Text))
                     {
-                        if (checkingForMatchingPasswords(password_registration.Text, test_password_registration.Text))
-                        {
-                            user_id = database.Save_registrationForm_new_teacher(teacher_name, login_registration, password_registration);
-                            goToUserForm(teacher_code);
-                        }
+                        user_id = database.Save_registrationForm_new_teacher(teacher_name, login_registration, password_registration);
+                        Go_to_user_form(teacher_code);
                     }
                 }
             }
-           
         }
-      
-        private void goToUserForm(int code)
+
+        private void Go_to_user_form(int code)
         {
             if (code == 1)
             {
                 StudentForm studentForm = new StudentForm(database, user_id);
                 studentForm.Show();
-                this.Hide();
             }
             else
             {
                 TeacherForm teacherForm = new TeacherForm(database, user_id);
                 teacherForm.Show();
-                this.Hide();
-
             }
+            this.Hide();
         }
 
-        private void enter_button_Click(object sender, EventArgs e)
+        private void Enter_button_Click(object sender, EventArgs e)
         {
-            if (sign_in_role.SelectedIndex == -1 || sign_in_login.Text == "Введите логин" || sign_in_password.Text == "Введите пароль")
+            TextBox[] textBoxes = { sign_in_login, sign_in_password };
+            string[] text = { "Введите логин", "Введите пароль" };
+            if(!comboboxclass.Check_is_changed(sign_in_role) || !textboxclass.Check_textboxes_text_are_changed(text, textBoxes))
+            //if (sign_in_role.SelectedIndex == -1 || sign_in_login.Text == "Введите логин" || sign_in_password.Text == "Введите пароль")
             {
                 MessageBox.Show("Заполните обязательные поля!");
             }
@@ -321,7 +340,7 @@ namespace testing_program
                 user_id = database.Search_registrationForm_user_id(sign_in_login, sign_in_password, sign_in_role.SelectedIndex);
                 if (user_id != -1)
                 {
-                    goToUserForm(sign_in_role.SelectedIndex);
+                    Go_to_user_form(sign_in_role.SelectedIndex);
                 }
                 else
                 {
@@ -330,13 +349,14 @@ namespace testing_program
             }
         }
 
-
         private void Select_group_registration_SelectedIndexChanged(object sender, EventArgs e)
         {
+            comboboxclass.Return_original_text(select_full_name_registration, "Выберите свое имя из списка группы");
+            comboboxclass.Delete_collection(select_full_name_registration);
             database.Fill_registrationForm_collection_select_student_name(select_group_registration, select_full_name_registration);
         }
 
-        private void sign_in_role_KeyPress(object sender, KeyPressEventArgs e)
+        private void Sign_in_role_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }

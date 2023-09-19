@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace testing_program
@@ -13,5 +9,17 @@ namespace testing_program
         {
             checkbox.Checked = false;
         }
+        public void Fill_text(CheckBox[] checkBoxes, List<string> text)
+        {
+            for (int i = 0; i < checkBoxes.Length; ++i)
+            {
+                checkBoxes[i].Text = text[i];
+            }
+        }
+
+        /*public bool Is_checked(CheckBox checkbox)
+        {
+            return checkbox.Checked;
+        }*/
     }
 }

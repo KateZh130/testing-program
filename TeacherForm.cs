@@ -1,12 +1,7 @@
-﻿using Npgsql;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -19,14 +14,14 @@ namespace testing_program
         readonly ComboboxClass comboboxclass = new ComboboxClass();
         readonly DatabaseClass database;
 
-        private int test_id=0;
+        private int test_id = 0;
         private int version_id = 0;
         private int version_counter = 0;
         private int question_counter = 1;
         readonly int user_id;
 
-        List<string> profil_info_list = new  List<string>();
-       
+        List<string> profil_info_list = new List<string>();
+
         public TeacherForm(DatabaseClass database, int user_id)
         {
             InitializeComponent();
@@ -35,7 +30,7 @@ namespace testing_program
             this.Text = database.Get_name(user_id, "teacher");
             FillTeacherProfileMainPanel();
         }
-        
+
         private void FillTeacherProfileMainPanel()
         {
             teacher_profile_main_panel.Visible = true;
@@ -92,11 +87,7 @@ namespace testing_program
             {
                 MessageBox.Show("Введите пароль.");
             }
-            else if (teacher_test_new_password_textBox.Text != teacher_new_password_textBox.Text)
-            {
-                MessageBox.Show("Пароли не совпадают.");
-            }
-            else
+            else if (textboxclass.Check_passwords_are_matching(teacher_test_new_password_textBox.Text, teacher_new_password_textBox.Text))
             {
                 database.Update_user_login_or_password(teacher_test_new_password_textBox, user_id, "password", "teacher");
                 FillTeacherProfileMainPanel();
@@ -118,11 +109,7 @@ namespace testing_program
             {
                 MessageBox.Show("Введите пароль.");
             }
-            else if (teacher_old_password_textBox.Text != profil_info_list[4])
-            {
-                MessageBox.Show("Указан неверный пароль.");
-            }
-            else
+            else if (textboxclass.Check_passwords_are_matching(teacher_old_password_textBox.Text, profil_info_list[4]))
             {
                 teacher_old_password_textBox.Clear();
                 teacher_identity_check_panel.Visible = false;
@@ -140,7 +127,7 @@ namespace testing_program
         private void New_timer_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            if (!char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
             {
                 e.Handled = true;
             }
@@ -158,30 +145,30 @@ namespace testing_program
         {
         }
 
-        bool NewTestNameIsChanged=false;
+        bool NewTestNameIsChanged = false;
         private void New_test_name_textBox_TextChanged(object sender, EventArgs e)
         {
-            NewTestNameIsChanged = textboxclass.Check_textBox_text_is_changed(new_test_name_textBox, "Введите название теста");
+            NewTestNameIsChanged = textboxclass.Check_text_is_changed(new_test_name_textBox, "Введите название теста");
         }
 
         private void New_test_name_textBox_Click(object sender, EventArgs e)
         {
-            NewTestNameIsChanged = textboxclass.Check_textBox_text_is_cleared(new_test_name_textBox, "Введите название теста", NewTestNameIsChanged);
+            NewTestNameIsChanged = textboxclass.Check_is_cleared(new_test_name_textBox, "Введите название теста", NewTestNameIsChanged);
         }
 
         private void New_test_name_textBox_Leave(object sender, EventArgs e)
         {
-            textboxclass.TextBox_return_original_text(new_test_name_textBox, "Введите название теста");
+            textboxclass.Return_original_text(new_test_name_textBox, "Введите название теста");
         }
 
         private void Full_name_teacher_profile_texBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled= true;
+            e.Handled = true;
         }
 
         private void Add_new_test_to_db_Click(object sender, EventArgs e)
         {
-            if(textboxclass.Check_textBox_text_is_changed(new_test_name_textBox, "Введите название теста"))
+            if (textboxclass.Check_text_is_changed(new_test_name_textBox, "Введите название теста"))
             {
                 test_id = database.Add_new_test_to_database(new_test_name_textBox, new_timer_textBox);
                 create_test_groupBox.Visible = true;
@@ -201,30 +188,31 @@ namespace testing_program
             {
                 MessageBox.Show("Заполните обязательные поля!");
             }
-            
+
         }
 
         private void Add_next_question_button_Click(object sender, EventArgs e)
         {
             string q_text = "Введите текст вопроса";
             string a_text = "Введите текст варианта ответа";
-
-            if (question_type_comboBox.SelectedIndex==-1 ||
-                !textboxclass.Check_textboxes_are_filled_in(new string[] { q_text, a_text , a_text , a_text }, 
+            
+            if (!comboboxclass.Check_is_changed(question_type_comboBox) ||
+                !textboxclass.Check_textboxes_text_are_changed(new string[] { q_text, a_text, a_text, a_text },
                 new TextBox[] { question_textBox, answer_textBox1, answer_textBox2, answer_textBox3 }))
             {
                 MessageBox.Show("Заполните обязательные поля!");
             }
             else
             {
-                CheckBox[]  is_answer_correct = { checkBox1, checkBox2, checkBox3 };
                 int question_id = database.Create_question_text(question_type_comboBox, question_textBox.Text);
                 question_textBox.Clear();
                 comboboxclass.Clear_selection(question_type_comboBox);
                 database.Create_version_question_connection(question_id, version_id);
+
                 TextBox[] answers_textboxes = { answer_textBox1, answer_textBox2, answer_textBox3 };
+                CheckBox[] is_answer_correct = { checkBox1, checkBox2, checkBox3 };
                 int answer_id;
-                for (int i=0; i<answers_textboxes.Length;++i)
+                for (int i = 0; i < answers_textboxes.Length; ++i)
                 {
                     answer_id = database.Create_answer_text(answers_textboxes[i].Text);
                     database.Create_question_answer_connection(question_id, answer_id, is_answer_correct[i].Checked);
@@ -238,9 +226,8 @@ namespace testing_program
 
         private void TabControl1_Click(object sender, EventArgs e)
         {
-            if(tabControl1.SelectedTab.Name== "test_constructor")
+            if (tabControl1.SelectedTab.Name == "test_constructor")
             {
-
                 TabControl tabcon = (TabControl)sender;
                 contextMenuStrip1.Show(tabcon, new Point(66, 28));
             }

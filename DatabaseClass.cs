@@ -14,7 +14,7 @@ namespace testing_program
      "Username=postgres;" +
      "Password=rjirf567;" +
      "Database=test_prog";
-        ComboboxClass c = new ComboboxClass();
+        readonly ComboboxClass c = new ComboboxClass();
 
 
         public void Connect_to_database()
@@ -50,7 +50,8 @@ namespace testing_program
         {
             NpgsqlCommand student_names = new NpgsqlCommand("SELECT full_name " +
                 "FROM student JOIN groups ON groups.group_id = student.group_id " +
-                "WHERE group_names LIKE '" + group_combobox.SelectedItem.ToString() + "';", connection);
+                "WHERE group_name LIKE '" + group_combobox.SelectedItem.ToString() + "'" +
+                "AND login is null AND password is null;", connection);
             NpgsqlDataReader reader_student_names = student_names.ExecuteReader();
 
             if (reader_student_names.HasRows)
@@ -82,9 +83,18 @@ namespace testing_program
                 "WHERE student_id = (select student_id from student " +
                 "where full_name = '" + name.SelectedItem.ToString() + "') " +
                 "AND group_id = (select group_id from groups " +
-                "where group_names = '" + group.SelectedItem.ToString() + "')" +
+                "where group_name = '" + group.SelectedItem.ToString() + "')" +
                 " RETURNING student_id;", connection);
             return Convert.ToInt32(new_student.ExecuteScalar());
+        }
+
+        public bool Check_login_exists(string login)
+        {
+            NpgsqlCommand exist = new NpgsqlCommand("SELECT EXISTS " +
+                "(SELECT * FROM student, teacher " +
+                "WHERE student.login = '"+login+"' " +
+                "OR teacher.login = '"+ login + "'); ", connection);
+            return (bool)exist.ExecuteScalar();
         }
 
         public int Search_registrationForm_user_id(TextBox login, TextBox password, int user_code)

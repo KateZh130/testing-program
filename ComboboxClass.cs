@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 
 namespace testing_program
@@ -22,9 +17,38 @@ namespace testing_program
         {
             combobox.Items.Add(item);
         }
-        public void Change_visible(ComboBox combobox, bool value)
+        public void Return_original_text(ComboBox combobox, string text)
         {
-            combobox.Visible = value;
+            Clear_selection(combobox);
+            combobox.Text = text;
+        }
+        public void Change_visible(ComboBox[] arr, bool value)
+        {
+            for (int i = 0; i < arr.Length; ++i)
+            {
+                arr[i].Visible = value;
+            }
+        }
+        public bool Check_is_changed(ComboBox combobox)
+        {
+            if (combobox.SelectedIndex == -1)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool Check_selected_indexes_are_changed(ComboBox[] arr)
+        {
+
+            for (int i = 0; i < arr.Length; ++i)
+            {
+                if (arr[i].SelectedIndex == -1)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

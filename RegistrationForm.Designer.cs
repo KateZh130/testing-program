@@ -83,7 +83,7 @@
             this.sign_in_role.Size = new System.Drawing.Size(363, 30);
             this.sign_in_role.TabIndex = 12;
             this.sign_in_role.Text = "Выберите роль";
-            this.sign_in_role.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sign_in_role_KeyPress);
+            this.sign_in_role.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Sign_in_role_KeyPress);
             // 
             // checkBox2
             // 
@@ -113,7 +113,7 @@
             this.enter_button.TabIndex = 2;
             this.enter_button.Text = "ВОЙТИ";
             this.enter_button.UseVisualStyleBackColor = false;
-            this.enter_button.Click += new System.EventHandler(this.enter_button_Click);
+            this.enter_button.Click += new System.EventHandler(this.Enter_button_Click);
             // 
             // sign_in_password
             // 
@@ -127,9 +127,9 @@
             this.sign_in_password.Size = new System.Drawing.Size(363, 29);
             this.sign_in_password.TabIndex = 1;
             this.sign_in_password.Text = "Введите пароль";
-            this.sign_in_password.Click += new System.EventHandler(this.sign_in_password_Click);
+            this.sign_in_password.Click += new System.EventHandler(this.Sign_in_password_Click);
             this.sign_in_password.TextChanged += new System.EventHandler(this.Sign_in_password_TextChanged);
-            this.sign_in_password.Leave += new System.EventHandler(this.sign_in_password_Leave);
+            this.sign_in_password.Leave += new System.EventHandler(this.Sign_in_password_Leave);
             // 
             // sign_in_login
             // 
@@ -191,7 +191,7 @@
             this.checkBox1.TabIndex = 7;
             this.checkBox1.Text = "Показать пароль";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // login_registration
             // 
@@ -244,7 +244,7 @@
             this.test_password_registration.Text = "Повторно введите пароль";
             this.test_password_registration.Visible = false;
             this.test_password_registration.Click += new System.EventHandler(this.test_password_registration_Click);
-            this.test_password_registration.TextChanged += new System.EventHandler(this.test_password_registration_TextChanged);
+            this.test_password_registration.TextChanged += new System.EventHandler(this.Test_password_registration_TextChanged);
             this.test_password_registration.Leave += new System.EventHandler(this.test_password_registration_Leave);
             // 
             // sign_up_button
@@ -263,7 +263,7 @@
             this.sign_up_button.TabIndex = 7;
             this.sign_up_button.Text = "РЕГИСТРАЦИЯ";
             this.sign_up_button.UseVisualStyleBackColor = false;
-            this.sign_up_button.Click += new System.EventHandler(this.sign_up_button_Click);
+            this.sign_up_button.Click += new System.EventHandler(this.Sign_up_button_Click);
             // 
             // registration_role
             // 
@@ -280,7 +280,7 @@
             this.registration_role.Size = new System.Drawing.Size(362, 29);
             this.registration_role.TabIndex = 8;
             this.registration_role.Text = "Выберите роль";
-            this.registration_role.SelectedIndexChanged += new System.EventHandler(this.choose_role_SelectedIndexChanged);
+            this.registration_role.SelectedIndexChanged += new System.EventHandler(this.Choose_role_SelectedIndexChanged);
             this.registration_role.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.choose_role_KeyPress);
             // 
             // select_group_registration
@@ -333,9 +333,9 @@
             this.teacher_name.TabIndex = 9;
             this.teacher_name.Text = "Введите ФИО";
             this.teacher_name.Visible = false;
-            this.teacher_name.Click += new System.EventHandler(this.teacher_name_Click);
-            this.teacher_name.TextChanged += new System.EventHandler(this.teacher_name_TextChanged);
-            this.teacher_name.Leave += new System.EventHandler(this.teacher_name_Leave);
+            this.teacher_name.Click += new System.EventHandler(this.Teacher_name_Click);
+            this.teacher_name.TextChanged += new System.EventHandler(this.Teacher_name_TextChanged);
+            this.teacher_name.Leave += new System.EventHandler(this.Teacher_name_Leave);
             // 
             // sign_in_button
             // 
@@ -377,8 +377,8 @@
             this.ClientSize = new System.Drawing.Size(405, 441);
             this.Controls.Add(this.sign_in_button);
             this.Controls.Add(this.registration_button);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(403, 441);
             this.Name = "RegistrationForm";
