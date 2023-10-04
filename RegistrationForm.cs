@@ -205,7 +205,7 @@ namespace testing_program
             }
             else if (database.Check_login_exists(login_registration.Text))
             {
-                MessageBox.Show("Логин занят");
+                MessageBox.Show("Логин уже занят");
             }
             else
             {

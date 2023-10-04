@@ -69,6 +69,14 @@ namespace testing_program
                 arr[i].Visible = value;
             }
         }
+        public void Clear_textboxes(TextBox[] arr)
+        {
+
+            for (int i = 0; i < arr.Length; ++i)
+            {
+                arr[i].Clear();
+            }
+        }
 
 
     }

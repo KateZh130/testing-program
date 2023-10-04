@@ -26,6 +26,7 @@ namespace testing_program
         List<string> answers_text = new List<string>();
         List<string> questions = new List<string>();
         List<string> profil_info_list = new List<string>();
+
         int question_index = 0;
 
         public StudentForm(DatabaseClass database, int user_id)
@@ -36,23 +37,24 @@ namespace testing_program
             this.Text = database.Get_name(user_id, "student");
             FillTestPage();
             FillStudentProfileMainPanel();
+
         }
 
         private void ResetSelection(int question_type)
         {
-            RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3 };
-            CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3 };
-            for (int i = 0; i < radioButtons.Length; ++i)
-            {
-                if (question_type == 1)
+            RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3, radioButton4 };
+            CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3, checkBox4 };
+            if (question_type == 1)
                 {
-                    radioButtons[i].Checked = false;
+                    for (int i = 0; i < radioButtons.Length; ++i)
+                        radioButtons[i].Checked = false;
                 }
                 else
                 {
-                    checkbox.Clear(checkBoxes[i]);
+                    for (int i = 0; i < checkBoxes.Length; ++i)
+                        checkbox.Clear(checkBoxes[i]);
                 }
-            }
+            
         }
 
         private void FillStudentProfileMainPanel()
@@ -61,6 +63,8 @@ namespace testing_program
             change_student_login_panel.Visible = false;
             change_student_password_panel.Visible = false;
             student_identity_check_panel.Visible = false;
+            change_full_name_panel.Visible = false;
+
 
             profil_info_list = database.Get_studentForm_profil_info(user_id)?.Split(' ').ToList();
             TextBox[] textBoxes = { full_name_student_profile, group_student_profile, login_student_profile, password_student_profile };
@@ -71,12 +75,8 @@ namespace testing_program
         public void FillTestPage()
         {
             choose_test_panel.Visible = true;
-            data.Reset_test_table(database, user_id, available_test_table);
-            data.Change_column_header_text(available_test_table, 1, "Название теста");
-            data.Change_column_width(available_test_table, 1, 605);
-            this.available_test_table.Columns[0].Visible = false;
-            data.Change_back_color(available_test_table, Color.White);
-            data.Change_fore_color(available_test_table, Color.Black);
+            data.Reset_student_available_test_table(database, user_id, available_test_table);
+            
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
@@ -103,7 +103,7 @@ namespace testing_program
         {
             if (test_id == -1)
             {
-                MessageBox.Show("Выберите тест", "Ошибка");
+                MessageBox.Show("Выберите тест из списка");
             }
             else
             {
@@ -137,21 +137,21 @@ namespace testing_program
                 {
                     FillLabelsAndButtons(question_type);
                     ResetSelection(question_type);
-                    answers_text = database.Get_answers_text(version_id, questions[question_index], answers_text);
-                    right_answers = database.Get_answers(version_id, questions[question_index], right_answers);
+                    answers_text = database.Get_answers_text(version_id, questions[question_index]);
+                    right_answers = database.Get_right_answers(version_id, questions[question_index]);
                 }
                 catch { MessageBox.Show("Ошибка получения ответов"); }
                 
                 if (question_type == 1) //вопрос с одним правильным ответом
                 {
                     one_answer_panel.Visible = true;
-                    RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3 };
+                    RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3, radioButton4 };
                     radiobutton.Fill_text(radioButtons, answers_text);
                 }
                 else if (question_type == 2)  //вопрос с несколькими правильными ответами
                 {
                     many_answer_panel.Visible = true;
-                    CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3 };
+                    CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3, checkBox4 };
                     checkbox.Fill_text(checkBoxes, answers_text);
                 }
             }
@@ -186,7 +186,7 @@ namespace testing_program
             MessageBox.Show("Тест пройден!\nВаша оценка: " + mark + "\n" +
                 "Чтобы получить больше информации зайдите в раздел Результаты", "Результат");
             database.Add_mark_to_database(mark, test_id, user_id);
-            data.Reset_test_table(database, user_id, available_test_table);
+            data.Reset_student_available_test_table(database, user_id, available_test_table);
             questions.Clear();
             Clear_test_variables();
             choose_test_panel.Visible = true;
@@ -211,13 +211,14 @@ namespace testing_program
                 return 4;
             return 5;
         }
-
+        //**********************для выбирания теста в таблице препода******************************************
         private void Available_test_table_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             test_id = Convert.ToInt32(available_test_table.SelectedCells[0].Value);
             data.Change_back_color(available_test_table, Color.SkyBlue);
             data.Change_fore_color(available_test_table, Color.Black);
         }
+        //**************************************************************************
 
         private void One_answer_button_Click(object sender, EventArgs e)
         {
@@ -229,7 +230,7 @@ namespace testing_program
 
         private bool Check_one_answer()
         {
-            RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3 };
+            RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3, radioButton4 };
             for(int i=0; i < radioButtons.Length; ++i)
             {
                 if( radioButtons[i].Text==right_answers[0])
@@ -242,7 +243,7 @@ namespace testing_program
         public bool Check_many_answers()
         {
             List<string> choosen_answers = new List<string>();
-            CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3 };
+            CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3, checkBox4 };
             for(int i = 0; i < checkBoxes.Length; ++i)
             {
                 if (checkBoxes[i].Checked == true)
@@ -282,7 +283,8 @@ namespace testing_program
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-                    }
+                    
+        }
 
         private void Show_list_of_completed_tests_CheckedChanged(object sender, EventArgs e)
         {
@@ -357,15 +359,17 @@ namespace testing_program
                 database.Update_user_login_or_password(new_student_login_textbox, user_id, "login", "student");
                 FillStudentProfileMainPanel();
                 MessageBox.Show("Логин успешно изменен!");
+                new_student_login_textbox.Clear();
             }
             else
             {
-                MessageBox.Show("Логин не введен", "Введите логин");
+                MessageBox.Show("Заполните обязательные поля!");
             }
         }
 
         private void Cancel_change_student_login_button_Click(object sender, EventArgs e)
         {
+            new_student_login_textbox.Clear();
             change_student_login_panel.Visible = false;
             student_profile_main_panel.Visible = true;
         }
@@ -390,6 +394,8 @@ namespace testing_program
 
         private void Cancel_change_student_password_button_Click(object sender, EventArgs e)
         {
+            student_test_new_password_textBox.Clear();
+            student_new_password_textBox.Clear();
             change_student_password_panel.Visible = false;
             student_profile_main_panel.Visible = true;
         }
@@ -398,13 +404,15 @@ namespace testing_program
         {
             if (student_test_new_password_textBox.Text == "" || student_new_password_textBox.Text == "")
             {
-                MessageBox.Show("Введите пароль.");
+                MessageBox.Show("Заполните обязательные поля!");
             }
             else if (textbox.Check_passwords_are_matching(student_test_new_password_textBox.Text, student_new_password_textBox.Text))
             {
                 database.Update_user_login_or_password(student_test_new_password_textBox, user_id, "password", "student");
                 FillStudentProfileMainPanel();
                 MessageBox.Show("Пароль успешно изменен!");
+                student_test_new_password_textBox.Clear();
+                student_new_password_textBox.Clear();
             }
         }
 
@@ -423,7 +431,7 @@ namespace testing_program
         {
             if (student_old_password_textBox.Text == "")
             {
-                MessageBox.Show("Введите пароль.");
+                MessageBox.Show("Заполните обязательные поля!");
             }
             else if (textbox.Check_passwords_are_matching(student_old_password_textBox.Text, profil_info_list[5]))
             {
@@ -442,7 +450,7 @@ namespace testing_program
             data.Reset_completed_tests_list_table(database, user_id, results_dataGridView);
             data.Hide(results_dataGridView);
             data.Reset_one_test_result_table(database, user_id, one_result_dataGridView, passed_tests);
-            data.Reset_test_table(database, user_id, available_test_table);
+            data.Reset_student_available_test_table(database, user_id, available_test_table);
         }
         //*****************************************************************************************
 
@@ -479,6 +487,63 @@ namespace testing_program
 
             Application.OpenForms[0].Show();
             this.Hide();
+        }
+
+        private void one_result_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Show_list_of_completed_tests_Click(object sender, EventArgs e)
+        {
+            combobox.Clear_selection(passed_tests);
+            combobox.Return_original_text(passed_tests, "Выберите тест");
+        }
+
+        private void result_page_Leave(object sender, EventArgs e)
+        {
+            combobox.Clear_selection(passed_tests);
+            combobox.Return_original_text(passed_tests, "Выберите тест");
+            radiobutton.Clear_selection(show_list_of_completed_tests);
+            radiobutton.Clear_selection(show_one_test_result);
+
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            change_full_name_panel.Visible = true;
+            student_profile_main_panel.Visible = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            change_full_name_panel.Visible = false;
+            student_profile_main_panel.Visible = true;
+            textbox.Clear_textboxes(new TextBox[]
+            { new_surname_textBox, new_student_name_textBox, new_patronymic_textBox });
+        }
+
+        private void new_patronymic_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            TextBox[] textBoxes = { new_surname_textBox, new_student_name_textBox, new_patronymic_textBox };
+            if (textbox.Check_textboxes_text_are_changed(new string[] { "", "", "" }, textBoxes))
+            {
+                database.Update_user_full_name(textBoxes, user_id, "student");
+                FillStudentProfileMainPanel();
+                textbox.Clear_textboxes(textBoxes);
+                Text = database.Get_name(user_id, "student");
+
+            }
+            else
+            {
+                MessageBox.Show("Заполните обязательные поля!");
+            }
         }
     }
 }

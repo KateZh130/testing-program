@@ -16,6 +16,10 @@ namespace testing_program
                 radioButtons[i].Text = text[i];
             }
         }
+        public void Clear_selection(RadioButton radioButton)
+        {
+            radioButton.Checked = false;
+        }
     }
    
 }

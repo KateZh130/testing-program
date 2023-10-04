@@ -17,6 +17,7 @@ namespace testing_program
         {
             combobox.Items.Add(item);
         }
+
         public void Return_original_text(ComboBox combobox, string text)
         {
             Clear_selection(combobox);
