@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace testing_program
@@ -21,5 +17,5 @@ namespace testing_program
             radioButton.Checked = false;
         }
     }
-   
+
 }

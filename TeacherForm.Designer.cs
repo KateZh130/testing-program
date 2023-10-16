@@ -47,21 +47,27 @@
             this.tests_page = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tests_table_page = new System.Windows.Forms.TabPage();
-            this.teacher_one_test_table = new System.Windows.Forms.DataGridView();
             this.return_to_available_tests_table_button = new System.Windows.Forms.Button();
             this.open_test_button = new System.Windows.Forms.Button();
             this.open_version_in_test_comboBox = new System.Windows.Forms.ComboBox();
             this.teacher_available_tests_table = new System.Windows.Forms.DataGridView();
+            this.teacher_one_test_table = new System.Windows.Forms.DataGridView();
             this.tasks_table_page = new System.Windows.Forms.TabPage();
             this.available_teacher_tasks_table = new System.Windows.Forms.DataGridView();
             this.create_tests_page = new System.Windows.Forms.TabPage();
+            this.create_test_groupBox = new System.Windows.Forms.GroupBox();
+            this.comment_textBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.add_new_test_to_db = new System.Windows.Forms.Button();
+            this.new_timer_textBox = new System.Windows.Forms.TextBox();
+            this.new_test_name_textBox = new System.Windows.Forms.TextBox();
             this.create_version_questions_groupBox = new System.Windows.Forms.GroupBox();
             this.select_existing_method_radioButton = new System.Windows.Forms.RadioButton();
             this.new_method_radioButton = new System.Windows.Forms.RadioButton();
-            this.finish_creating_test_button = new System.Windows.Forms.Button();
             this.add_next_question_button = new System.Windows.Forms.Button();
-            this.finish_editing_button = new System.Windows.Forms.Button();
+            this.finish_creating_test_button = new System.Windows.Forms.Button();
             this.create_next_version = new System.Windows.Forms.Button();
+            this.finish_editing_button = new System.Windows.Forms.Button();
             this.select_existing_question_panel = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.id_textBox = new System.Windows.Forms.TextBox();
@@ -88,12 +94,6 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.create_test_groupBox = new System.Windows.Forms.GroupBox();
-            this.comment_textBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.add_new_test_to_db = new System.Windows.Forms.Button();
-            this.new_timer_textBox = new System.Windows.Forms.TextBox();
-            this.new_test_name_textBox = new System.Windows.Forms.TextBox();
             this.edit_tests_page = new System.Windows.Forms.TabPage();
             this.edit_test_groupBox = new System.Windows.Forms.GroupBox();
             this.cancel_edit_button = new System.Windows.Forms.Button();
@@ -134,11 +134,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.new_comment_panel = new System.Windows.Forms.Panel();
             this.new_comment_textBox = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.открытьТестToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.редактироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вернутьсяКСпискуТестовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profile_page = new System.Windows.Forms.TabPage();
+            this.change_teacher_login_panel = new System.Windows.Forms.Panel();
+            this.cancel_change_teacher_login_button = new System.Windows.Forms.Button();
+            this.new_teacher_login_button = new System.Windows.Forms.Button();
+            this.new_teacher_login_textbox = new System.Windows.Forms.TextBox();
+            this.change_teacher_login_label = new System.Windows.Forms.Label();
             this.change_full_name_panel = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -154,7 +155,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.name_teacher_profile_textBox = new System.Windows.Forms.TextBox();
             this.patronimic_teacher_profile_textBox = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.delete_teacher_profile_button = new System.Windows.Forms.Button();
             this.exit_student_profile_button = new System.Windows.Forms.Button();
             this.change_teacher_password_button = new System.Windows.Forms.Button();
             this.change_teacher_login_button = new System.Windows.Forms.Button();
@@ -171,11 +172,6 @@
             this.cancel_change_teacher_password_button = new System.Windows.Forms.Button();
             this.teacher_new_password_textBox = new System.Windows.Forms.TextBox();
             this.teacher_test_new_password_textBox = new System.Windows.Forms.TextBox();
-            this.change_teacher_login_panel = new System.Windows.Forms.Panel();
-            this.cancel_change_teacher_login_button = new System.Windows.Forms.Button();
-            this.new_teacher_login_button = new System.Windows.Forms.Button();
-            this.new_teacher_login_textbox = new System.Windows.Forms.TextBox();
-            this.change_teacher_login_label = new System.Windows.Forms.Label();
             this.teacher_identity_check_panel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cancel_teacher_change_password_button = new System.Windows.Forms.Button();
@@ -183,22 +179,73 @@
             this.continue_teacher_change_password_button = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.students_page = new System.Windows.Forms.TabPage();
-            this.statistics_page = new System.Windows.Forms.TabPage();
+            this.test_access_panel = new System.Windows.Forms.Panel();
+            this.prohibit_radioButton = new System.Windows.Forms.RadioButton();
+            this.allow_radioButton = new System.Windows.Forms.RadioButton();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cancel_test_access_button = new System.Windows.Forms.Button();
+            this.ok_test_access_button = new System.Windows.Forms.Button();
+            this.test_access_comboBox = new System.Windows.Forms.ComboBox();
+            this.change_student_group_panel = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cancel_change_student_group_button = new System.Windows.Forms.Button();
+            this.ok_change_student_group_button = new System.Windows.Forms.Button();
+            this.groups_comboBox = new System.Windows.Forms.ComboBox();
+            this.change_group_name_panel = new System.Windows.Forms.Panel();
+            this.group_name_textBox = new System.Windows.Forms.TextBox();
+            this.cancel_change_group_name_button = new System.Windows.Forms.Button();
+            this.ok_change_group_name_button = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.show_students_comboBox = new System.Windows.Forms.ComboBox();
+            this.students_dataGridView = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.change_group_name_button = new System.Windows.Forms.Button();
+            this.change_group_access_to_test_button = new System.Windows.Forms.Button();
+            this.delete_group_button = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.change_student_group_button = new System.Windows.Forms.Button();
+            this.change_student_access_to_test_button = new System.Windows.Forms.Button();
+            this.delete_student_profile_button = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.add_new_group_button = new System.Windows.Forms.Button();
+            this.add_new_student_button = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.create_student_groupBox = new System.Windows.Forms.GroupBox();
+            this.cancel_create_student_button = new System.Windows.Forms.Button();
+            this.create_student_button = new System.Windows.Forms.Button();
+            this.create_student_group_comboBox = new System.Windows.Forms.ComboBox();
+            this.full_name_textBox3 = new System.Windows.Forms.TextBox();
+            this.full_name_textBox2 = new System.Windows.Forms.TextBox();
+            this.full_name_textBox1 = new System.Windows.Forms.TextBox();
+            this.marks_journal_page = new System.Windows.Forms.TabPage();
+            this.tabControl4 = new System.Windows.Forms.TabControl();
+            this.group_journal_page = new System.Windows.Forms.TabPage();
+            this.choose_group_for_marks_comboBox = new System.Windows.Forms.ComboBox();
+            this.group_marks_table = new System.Windows.Forms.DataGridView();
+            this.student_journal_page = new System.Windows.Forms.TabPage();
+            this.choose_student_group_for_marks_comboBox = new System.Windows.Forms.ComboBox();
+            this.student_marks_table = new System.Windows.Forms.DataGridView();
+            this.choose_student_for_marks_comboBox = new System.Windows.Forms.ComboBox();
+            this.tip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.tip3 = new System.Windows.Forms.ToolTip(this.components);
             this.test_constructor.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tests_page.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tests_table_page.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teacher_one_test_table)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teacher_available_tests_table)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teacher_one_test_table)).BeginInit();
             this.tasks_table_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.available_teacher_tasks_table)).BeginInit();
             this.create_tests_page.SuspendLayout();
+            this.create_test_groupBox.SuspendLayout();
             this.create_version_questions_groupBox.SuspendLayout();
             this.select_existing_question_panel.SuspendLayout();
             this.create_new_question_panel.SuspendLayout();
-            this.create_test_groupBox.SuspendLayout();
             this.edit_tests_page.SuspendLayout();
             this.edit_test_groupBox.SuspendLayout();
             this.edit_task_panel.SuspendLayout();
@@ -208,14 +255,31 @@
             this.new_name_panel.SuspendLayout();
             this.new_timer_panel.SuspendLayout();
             this.new_comment_panel.SuspendLayout();
-            this.contextMenuStrip2.SuspendLayout();
             this.profile_page.SuspendLayout();
+            this.change_teacher_login_panel.SuspendLayout();
             this.change_full_name_panel.SuspendLayout();
             this.teacher_profile_main_panel.SuspendLayout();
             this.change_teacher_password_panel.SuspendLayout();
-            this.change_teacher_login_panel.SuspendLayout();
             this.teacher_identity_check_panel.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.students_page.SuspendLayout();
+            this.test_access_panel.SuspendLayout();
+            this.change_student_group_panel.SuspendLayout();
+            this.change_group_name_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.students_dataGridView)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.create_student_groupBox.SuspendLayout();
+            this.marks_journal_page.SuspendLayout();
+            this.tabControl4.SuspendLayout();
+            this.group_journal_page.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.group_marks_table)).BeginInit();
+            this.student_journal_page.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.student_marks_table)).BeginInit();
             this.SuspendLayout();
             // 
             // test_constructor
@@ -226,7 +290,7 @@
             this.test_constructor.Location = new System.Drawing.Point(4, 30);
             this.test_constructor.Name = "test_constructor";
             this.test_constructor.Padding = new System.Windows.Forms.Padding(3);
-            this.test_constructor.Size = new System.Drawing.Size(1005, 630);
+            this.test_constructor.Size = new System.Drawing.Size(1008, 628);
             this.test_constructor.TabIndex = 1;
             this.test_constructor.Text = "Конструктор тестов";
             this.test_constructor.Click += new System.EventHandler(this.test_constructor_Click);
@@ -255,14 +319,14 @@
             // add_version_ToolStripMenuItem1
             // 
             this.add_version_ToolStripMenuItem1.Name = "add_version_ToolStripMenuItem1";
-            this.add_version_ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.add_version_ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.add_version_ToolStripMenuItem1.Text = "Вариант";
             this.add_version_ToolStripMenuItem1.Click += new System.EventHandler(this.add_version_ToolStripMenuItem1_Click);
             // 
             // add_task_ToolStripMenuItem2
             // 
             this.add_task_ToolStripMenuItem2.Name = "add_task_ToolStripMenuItem2";
-            this.add_task_ToolStripMenuItem2.Size = new System.Drawing.Size(216, 26);
+            this.add_task_ToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
             this.add_task_ToolStripMenuItem2.Text = "Тестовое задание";
             this.add_task_ToolStripMenuItem2.Click += new System.EventHandler(this.Add_task_ToolStripMenuItem2_Click);
             // 
@@ -319,21 +383,21 @@
             // delete_task_ToolStripMenuItem1
             // 
             this.delete_task_ToolStripMenuItem1.Name = "delete_task_ToolStripMenuItem1";
-            this.delete_task_ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.delete_task_ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.delete_task_ToolStripMenuItem1.Text = "Тестовое задание";
             this.delete_task_ToolStripMenuItem1.Click += new System.EventHandler(this.delete_task_ToolStripMenuItem1_Click);
             // 
             // delete_version_ToolStripMenuItem
             // 
             this.delete_version_ToolStripMenuItem.Name = "delete_version_ToolStripMenuItem";
-            this.delete_version_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.delete_version_ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.delete_version_ToolStripMenuItem.Text = "Вариант";
             this.delete_version_ToolStripMenuItem.Click += new System.EventHandler(this.delete_version_ToolStripMenuItem_Click);
             // 
             // delete_test_ToolStripMenuItem
             // 
             this.delete_test_ToolStripMenuItem.Name = "delete_test_ToolStripMenuItem";
-            this.delete_test_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.delete_test_ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.delete_test_ToolStripMenuItem.Text = "Тест";
             this.delete_test_ToolStripMenuItem.Click += new System.EventHandler(this.delete_test_ToolStripMenuItem_Click);
             // 
@@ -348,9 +412,10 @@
             this.tabControl2.Location = new System.Drawing.Point(-2, -2);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1009, 634);
+            this.tabControl2.Size = new System.Drawing.Size(1012, 632);
             this.tabControl2.TabIndex = 13;
-            this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
+            this.tabControl2.TabStop = false;
+            this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.TabControl2_SelectedIndexChanged);
             this.tabControl2.Click += new System.EventHandler(this.tabControl2_Click_1);
             this.tabControl2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl2_MouseDown);
             // 
@@ -359,7 +424,7 @@
             this.tests_page.Controls.Add(this.tabControl3);
             this.tests_page.Location = new System.Drawing.Point(4, 30);
             this.tests_page.Name = "tests_page";
-            this.tests_page.Size = new System.Drawing.Size(1001, 600);
+            this.tests_page.Size = new System.Drawing.Size(1004, 598);
             this.tests_page.TabIndex = 2;
             this.tests_page.Text = "Тесты";
             this.tests_page.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tests_page_MouseDown);
@@ -379,9 +444,10 @@
             this.tabControl3.Padding = new System.Drawing.Point(7, 3);
             this.tabControl3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(1001, 600);
+            this.tabControl3.Size = new System.Drawing.Size(1004, 600);
             this.tabControl3.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl3.TabIndex = 1;
+            this.tabControl3.TabStop = false;
             this.tabControl3.Resize += new System.EventHandler(this.tabControl3_Resize);
             // 
             // tests_table_page
@@ -395,31 +461,10 @@
             this.tests_table_page.Location = new System.Drawing.Point(4, 4);
             this.tests_table_page.Name = "tests_table_page";
             this.tests_table_page.Padding = new System.Windows.Forms.Padding(3);
-            this.tests_table_page.Size = new System.Drawing.Size(993, 552);
+            this.tests_table_page.Size = new System.Drawing.Size(996, 562);
             this.tests_table_page.TabIndex = 0;
             this.tests_table_page.Text = "Таблица тестов";
             this.tests_table_page.Click += new System.EventHandler(this.tests_table_page_Click);
-            // 
-            // teacher_one_test_table
-            // 
-            this.teacher_one_test_table.AllowUserToAddRows = false;
-            this.teacher_one_test_table.AllowUserToDeleteRows = false;
-            this.teacher_one_test_table.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.teacher_one_test_table.ColumnHeadersHeight = 29;
-            this.teacher_one_test_table.Location = new System.Drawing.Point(6, 52);
-            this.teacher_one_test_table.MultiSelect = false;
-            this.teacher_one_test_table.Name = "teacher_one_test_table";
-            this.teacher_one_test_table.ReadOnly = true;
-            this.teacher_one_test_table.RowHeadersWidth = 10;
-            this.teacher_one_test_table.RowTemplate.Height = 55;
-            this.teacher_one_test_table.RowTemplate.ReadOnly = true;
-            this.teacher_one_test_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.teacher_one_test_table.Size = new System.Drawing.Size(985, 494);
-            this.teacher_one_test_table.TabIndex = 1;
-            this.teacher_one_test_table.Visible = false;
-            this.teacher_one_test_table.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.teacher_one_test_table_CellClick);
             // 
             // return_to_available_tests_table_button
             // 
@@ -427,6 +472,7 @@
             this.return_to_available_tests_table_button.Name = "return_to_available_tests_table_button";
             this.return_to_available_tests_table_button.Size = new System.Drawing.Size(272, 37);
             this.return_to_available_tests_table_button.TabIndex = 4;
+            this.return_to_available_tests_table_button.TabStop = false;
             this.return_to_available_tests_table_button.Text = "Вернуться к списку тестов";
             this.return_to_available_tests_table_button.UseVisualStyleBackColor = true;
             this.return_to_available_tests_table_button.Visible = false;
@@ -435,10 +481,11 @@
             // open_test_button
             // 
             this.open_test_button.Enabled = false;
-            this.open_test_button.Location = new System.Drawing.Point(725, 498);
+            this.open_test_button.Location = new System.Drawing.Point(725, 496);
             this.open_test_button.Name = "open_test_button";
             this.open_test_button.Size = new System.Drawing.Size(257, 38);
             this.open_test_button.TabIndex = 3;
+            this.open_test_button.TabStop = false;
             this.open_test_button.Text = "Открыть тест";
             this.open_test_button.UseVisualStyleBackColor = true;
             this.open_test_button.Click += new System.EventHandler(this.open_test_button_Click);
@@ -450,6 +497,7 @@
             this.open_version_in_test_comboBox.Name = "open_version_in_test_comboBox";
             this.open_version_in_test_comboBox.Size = new System.Drawing.Size(316, 29);
             this.open_version_in_test_comboBox.TabIndex = 2;
+            this.open_version_in_test_comboBox.TabStop = false;
             this.open_version_in_test_comboBox.Text = "Выберите вариант";
             this.open_version_in_test_comboBox.Visible = false;
             this.open_version_in_test_comboBox.SelectionChangeCommitted += new System.EventHandler(this.open_version_in_test_comboBox_SelectionChangeCommitted);
@@ -469,13 +517,36 @@
             this.teacher_available_tests_table.RowHeadersWidth = 51;
             this.teacher_available_tests_table.RowTemplate.Height = 24;
             this.teacher_available_tests_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.teacher_available_tests_table.Size = new System.Drawing.Size(986, 484);
+            this.teacher_available_tests_table.Size = new System.Drawing.Size(989, 494);
             this.teacher_available_tests_table.TabIndex = 0;
+            this.teacher_available_tests_table.TabStop = false;
             this.teacher_available_tests_table.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.teacher_available_tests_table_CellClick);
             this.teacher_available_tests_table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.teacher_available_tests_table_CellContentClick);
             this.teacher_available_tests_table.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.teacher_available_tests_table_CellMouseClick);
             this.teacher_available_tests_table.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.teacher_available_tests_table_CellMouseDown);
             this.teacher_available_tests_table.SelectionChanged += new System.EventHandler(this.teacher_available_tests_table_SelectionChanged);
+            // 
+            // teacher_one_test_table
+            // 
+            this.teacher_one_test_table.AllowUserToAddRows = false;
+            this.teacher_one_test_table.AllowUserToDeleteRows = false;
+            this.teacher_one_test_table.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.teacher_one_test_table.ColumnHeadersHeight = 29;
+            this.teacher_one_test_table.Location = new System.Drawing.Point(6, 52);
+            this.teacher_one_test_table.MultiSelect = false;
+            this.teacher_one_test_table.Name = "teacher_one_test_table";
+            this.teacher_one_test_table.ReadOnly = true;
+            this.teacher_one_test_table.RowHeadersWidth = 10;
+            this.teacher_one_test_table.RowTemplate.Height = 55;
+            this.teacher_one_test_table.RowTemplate.ReadOnly = true;
+            this.teacher_one_test_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.teacher_one_test_table.Size = new System.Drawing.Size(988, 504);
+            this.teacher_one_test_table.TabIndex = 1;
+            this.teacher_one_test_table.TabStop = false;
+            this.teacher_one_test_table.Visible = false;
+            this.teacher_one_test_table.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.teacher_one_test_table_CellClick);
             // 
             // tasks_table_page
             // 
@@ -483,7 +554,7 @@
             this.tasks_table_page.Location = new System.Drawing.Point(4, 4);
             this.tasks_table_page.Name = "tasks_table_page";
             this.tasks_table_page.Padding = new System.Windows.Forms.Padding(3);
-            this.tasks_table_page.Size = new System.Drawing.Size(993, 562);
+            this.tasks_table_page.Size = new System.Drawing.Size(993, 497);
             this.tasks_table_page.TabIndex = 1;
             this.tasks_table_page.Text = "Таблица тестовых заданий";
             this.tasks_table_page.UseVisualStyleBackColor = true;
@@ -507,8 +578,8 @@
             // 
             // create_tests_page
             // 
-            this.create_tests_page.Controls.Add(this.create_version_questions_groupBox);
             this.create_tests_page.Controls.Add(this.create_test_groupBox);
+            this.create_tests_page.Controls.Add(this.create_version_questions_groupBox);
             this.create_tests_page.Location = new System.Drawing.Point(4, 30);
             this.create_tests_page.Name = "create_tests_page";
             this.create_tests_page.Padding = new System.Windows.Forms.Padding(3);
@@ -517,6 +588,74 @@
             this.create_tests_page.Text = "Создать тест";
             this.create_tests_page.Click += new System.EventHandler(this.create_tests_page_Click);
             // 
+            // create_test_groupBox
+            // 
+            this.create_test_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.create_test_groupBox.Controls.Add(this.comment_textBox);
+            this.create_test_groupBox.Controls.Add(this.label2);
+            this.create_test_groupBox.Controls.Add(this.add_new_test_to_db);
+            this.create_test_groupBox.Controls.Add(this.new_timer_textBox);
+            this.create_test_groupBox.Controls.Add(this.new_test_name_textBox);
+            this.create_test_groupBox.Location = new System.Drawing.Point(0, 40);
+            this.create_test_groupBox.Name = "create_test_groupBox";
+            this.create_test_groupBox.Size = new System.Drawing.Size(782, 411);
+            this.create_test_groupBox.TabIndex = 3;
+            this.create_test_groupBox.TabStop = false;
+            this.create_test_groupBox.Text = "Создание теста";
+            this.create_test_groupBox.Visible = false;
+            this.create_test_groupBox.VisibleChanged += new System.EventHandler(this.create_test_groupBox_VisibleChanged);
+            // 
+            // comment_textBox
+            // 
+            this.comment_textBox.Location = new System.Drawing.Point(6, 227);
+            this.comment_textBox.Multiline = true;
+            this.comment_textBox.Name = "comment_textBox";
+            this.comment_textBox.Size = new System.Drawing.Size(763, 96);
+            this.comment_textBox.TabIndex = 2;
+            this.comment_textBox.Text = "Комментарий к тесту (необязательно)";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(334, 21);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Введите ограничение по времени в минутах:";
+            // 
+            // add_new_test_to_db
+            // 
+            this.add_new_test_to_db.Location = new System.Drawing.Point(470, 350);
+            this.add_new_test_to_db.Name = "add_new_test_to_db";
+            this.add_new_test_to_db.Size = new System.Drawing.Size(299, 46);
+            this.add_new_test_to_db.TabIndex = 3;
+            this.add_new_test_to_db.Text = "Создать тест";
+            this.add_new_test_to_db.UseVisualStyleBackColor = true;
+            this.add_new_test_to_db.Click += new System.EventHandler(this.Add_new_test_to_db_Click);
+            // 
+            // new_timer_textBox
+            // 
+            this.new_timer_textBox.Location = new System.Drawing.Point(6, 160);
+            this.new_timer_textBox.Name = "new_timer_textBox";
+            this.new_timer_textBox.Size = new System.Drawing.Size(125, 28);
+            this.new_timer_textBox.TabIndex = 1;
+            this.new_timer_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_timer_textBox_KeyPress);
+            // 
+            // new_test_name_textBox
+            // 
+            this.new_test_name_textBox.Location = new System.Drawing.Point(6, 38);
+            this.new_test_name_textBox.Multiline = true;
+            this.new_test_name_textBox.Name = "new_test_name_textBox";
+            this.new_test_name_textBox.Size = new System.Drawing.Size(763, 54);
+            this.new_test_name_textBox.TabIndex = 0;
+            this.new_test_name_textBox.Text = "Введите название теста";
+            this.new_test_name_textBox.Click += new System.EventHandler(this.New_test_name_textBox_Click);
+            this.new_test_name_textBox.TextChanged += new System.EventHandler(this.New_test_name_textBox_TextChanged);
+            this.new_test_name_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_test_name_textBox_KeyPress);
+            this.new_test_name_textBox.Leave += new System.EventHandler(this.New_test_name_textBox_Leave);
+            // 
             // create_version_questions_groupBox
             // 
             this.create_version_questions_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -524,10 +663,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.create_version_questions_groupBox.Controls.Add(this.select_existing_method_radioButton);
             this.create_version_questions_groupBox.Controls.Add(this.new_method_radioButton);
-            this.create_version_questions_groupBox.Controls.Add(this.finish_creating_test_button);
             this.create_version_questions_groupBox.Controls.Add(this.add_next_question_button);
-            this.create_version_questions_groupBox.Controls.Add(this.finish_editing_button);
+            this.create_version_questions_groupBox.Controls.Add(this.finish_creating_test_button);
             this.create_version_questions_groupBox.Controls.Add(this.create_next_version);
+            this.create_version_questions_groupBox.Controls.Add(this.finish_editing_button);
             this.create_version_questions_groupBox.Controls.Add(this.select_existing_question_panel);
             this.create_version_questions_groupBox.Controls.Add(this.create_new_question_panel);
             this.create_version_questions_groupBox.Location = new System.Drawing.Point(0, 0);
@@ -544,7 +683,7 @@
             this.select_existing_method_radioButton.Location = new System.Drawing.Point(7, 70);
             this.select_existing_method_radioButton.Name = "select_existing_method_radioButton";
             this.select_existing_method_radioButton.Size = new System.Drawing.Size(310, 25);
-            this.select_existing_method_radioButton.TabIndex = 9;
+            this.select_existing_method_radioButton.TabIndex = 1;
             this.select_existing_method_radioButton.TabStop = true;
             this.select_existing_method_radioButton.Text = "Выбрать вопрос из уже существующих";
             this.select_existing_method_radioButton.UseVisualStyleBackColor = true;
@@ -556,33 +695,48 @@
             this.new_method_radioButton.Location = new System.Drawing.Point(7, 39);
             this.new_method_radioButton.Name = "new_method_radioButton";
             this.new_method_radioButton.Size = new System.Drawing.Size(193, 25);
-            this.new_method_radioButton.TabIndex = 8;
+            this.new_method_radioButton.TabIndex = 0;
             this.new_method_radioButton.TabStop = true;
             this.new_method_radioButton.Text = "Создать новый вопрос";
             this.new_method_radioButton.UseVisualStyleBackColor = true;
             this.new_method_radioButton.CheckedChanged += new System.EventHandler(this.New_method_radioButton_CheckedChanged);
             // 
+            // add_next_question_button
+            // 
+            this.add_next_question_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.add_next_question_button.Location = new System.Drawing.Point(5, 543);
+            this.add_next_question_button.Name = "add_next_question_button";
+            this.add_next_question_button.Size = new System.Drawing.Size(310, 56);
+            this.add_next_question_button.TabIndex = 1;
+            this.add_next_question_button.TabStop = false;
+            this.add_next_question_button.Text = "Следующий вопрос";
+            this.add_next_question_button.UseVisualStyleBackColor = true;
+            this.add_next_question_button.Click += new System.EventHandler(this.Add_next_question_button_Click);
+            // 
             // finish_creating_test_button
             // 
             this.finish_creating_test_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.finish_creating_test_button.Location = new System.Drawing.Point(5, 543);
+            this.finish_creating_test_button.Location = new System.Drawing.Point(684, 543);
             this.finish_creating_test_button.Name = "finish_creating_test_button";
             this.finish_creating_test_button.Size = new System.Drawing.Size(310, 56);
             this.finish_creating_test_button.TabIndex = 3;
+            this.finish_creating_test_button.TabStop = false;
             this.finish_creating_test_button.Text = "Завершить тест";
             this.finish_creating_test_button.UseVisualStyleBackColor = true;
             this.finish_creating_test_button.Click += new System.EventHandler(this.Finish_creating_test_Click);
             // 
-            // add_next_question_button
+            // create_next_version
             // 
-            this.add_next_question_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.add_next_question_button.Location = new System.Drawing.Point(691, 543);
-            this.add_next_question_button.Name = "add_next_question_button";
-            this.add_next_question_button.Size = new System.Drawing.Size(310, 56);
-            this.add_next_question_button.TabIndex = 1;
-            this.add_next_question_button.Text = "Следующий вопрос";
-            this.add_next_question_button.UseVisualStyleBackColor = true;
-            this.add_next_question_button.Click += new System.EventHandler(this.Add_next_question_button_Click);
+            this.create_next_version.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.create_next_version.Location = new System.Drawing.Point(348, 543);
+            this.create_next_version.Name = "create_next_version";
+            this.create_next_version.Size = new System.Drawing.Size(310, 56);
+            this.create_next_version.TabIndex = 2;
+            this.create_next_version.TabStop = false;
+            this.create_next_version.Text = "Следующий вариант";
+            this.create_next_version.UseVisualStyleBackColor = true;
+            this.create_next_version.Click += new System.EventHandler(this.Create_next_version_Click);
             // 
             // finish_editing_button
             // 
@@ -592,22 +746,11 @@
             this.finish_editing_button.Name = "finish_editing_button";
             this.finish_editing_button.Size = new System.Drawing.Size(310, 56);
             this.finish_editing_button.TabIndex = 11;
+            this.finish_editing_button.TabStop = false;
             this.finish_editing_button.Text = "Завершить создание";
             this.finish_editing_button.UseVisualStyleBackColor = true;
             this.finish_editing_button.Visible = false;
             this.finish_editing_button.Click += new System.EventHandler(this.finish_editing_button_Click);
-            // 
-            // create_next_version
-            // 
-            this.create_next_version.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.create_next_version.Location = new System.Drawing.Point(349, 543);
-            this.create_next_version.Name = "create_next_version";
-            this.create_next_version.Size = new System.Drawing.Size(310, 56);
-            this.create_next_version.TabIndex = 2;
-            this.create_next_version.Text = "Следующий вариант";
-            this.create_next_version.UseVisualStyleBackColor = true;
-            this.create_next_version.Click += new System.EventHandler(this.Create_next_version_Click);
             // 
             // select_existing_question_panel
             // 
@@ -652,6 +795,7 @@
             this.id_textBox.Name = "id_textBox";
             this.id_textBox.Size = new System.Drawing.Size(100, 28);
             this.id_textBox.TabIndex = 24;
+            this.id_textBox.TabStop = false;
             this.id_textBox.Visible = false;
             // 
             // label6
@@ -680,6 +824,7 @@
             this.existing_question_type_textBox.ReadOnly = true;
             this.existing_question_type_textBox.Size = new System.Drawing.Size(579, 28);
             this.existing_question_type_textBox.TabIndex = 21;
+            this.existing_question_type_textBox.TabStop = false;
             // 
             // existing_answer_textBox1
             // 
@@ -689,6 +834,7 @@
             this.existing_answer_textBox1.ReadOnly = true;
             this.existing_answer_textBox1.Size = new System.Drawing.Size(693, 43);
             this.existing_answer_textBox1.TabIndex = 13;
+            this.existing_answer_textBox1.TabStop = false;
             // 
             // checkBox8
             // 
@@ -698,6 +844,7 @@
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(174, 25);
             this.checkBox8.TabIndex = 20;
+            this.checkBox8.TabStop = false;
             this.checkBox8.Text = "Правильный ответ?";
             this.checkBox8.UseVisualStyleBackColor = true;
             // 
@@ -709,6 +856,7 @@
             this.existing_answer_textBox2.ReadOnly = true;
             this.existing_answer_textBox2.Size = new System.Drawing.Size(693, 43);
             this.existing_answer_textBox2.TabIndex = 14;
+            this.existing_answer_textBox2.TabStop = false;
             // 
             // existing_answer_textBox3
             // 
@@ -718,6 +866,7 @@
             this.existing_answer_textBox3.ReadOnly = true;
             this.existing_answer_textBox3.Size = new System.Drawing.Size(693, 43);
             this.existing_answer_textBox3.TabIndex = 15;
+            this.existing_answer_textBox3.TabStop = false;
             // 
             // existing_answer_textBox4
             // 
@@ -727,6 +876,7 @@
             this.existing_answer_textBox4.ReadOnly = true;
             this.existing_answer_textBox4.Size = new System.Drawing.Size(693, 43);
             this.existing_answer_textBox4.TabIndex = 19;
+            this.existing_answer_textBox4.TabStop = false;
             // 
             // checkBox5
             // 
@@ -736,6 +886,7 @@
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(174, 25);
             this.checkBox5.TabIndex = 16;
+            this.checkBox5.TabStop = false;
             this.checkBox5.Text = "Правильный ответ?";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
@@ -747,6 +898,7 @@
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(174, 25);
             this.checkBox7.TabIndex = 18;
+            this.checkBox7.TabStop = false;
             this.checkBox7.Text = "Правильный ответ?";
             this.checkBox7.UseVisualStyleBackColor = true;
             // 
@@ -758,6 +910,7 @@
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(174, 25);
             this.checkBox6.TabIndex = 17;
+            this.checkBox6.TabStop = false;
             this.checkBox6.Text = "Правильный ответ?";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
@@ -768,6 +921,7 @@
             this.select_existing_question_comboBox.Name = "select_existing_question_comboBox";
             this.select_existing_question_comboBox.Size = new System.Drawing.Size(978, 29);
             this.select_existing_question_comboBox.TabIndex = 0;
+            this.select_existing_question_comboBox.TabStop = false;
             this.select_existing_question_comboBox.Text = "Выберите вопрос";
             this.select_existing_question_comboBox.SelectionChangeCommitted += new System.EventHandler(this.Select_existing_question_comboBox_SelectionChangeCommitted);
             // 
@@ -825,7 +979,7 @@
             this.answer_textBox1.Multiline = true;
             this.answer_textBox1.Name = "answer_textBox1";
             this.answer_textBox1.Size = new System.Drawing.Size(693, 43);
-            this.answer_textBox1.TabIndex = 3;
+            this.answer_textBox1.TabIndex = 2;
             this.answer_textBox1.Text = "Введите ответ №1";
             this.answer_textBox1.Click += new System.EventHandler(this.Answer_textBox1_Click);
             this.answer_textBox1.TextChanged += new System.EventHandler(this.Answer_textBox1_TextChanged);
@@ -837,7 +991,7 @@
             this.checkBox4.Location = new System.Drawing.Point(749, 379);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(174, 25);
-            this.checkBox4.TabIndex = 11;
+            this.checkBox4.TabIndex = 9;
             this.checkBox4.Text = "Правильный ответ?";
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
@@ -860,7 +1014,7 @@
             this.answer_textBox3.Multiline = true;
             this.answer_textBox3.Name = "answer_textBox3";
             this.answer_textBox3.Size = new System.Drawing.Size(693, 43);
-            this.answer_textBox3.TabIndex = 5;
+            this.answer_textBox3.TabIndex = 6;
             this.answer_textBox3.Text = "Введите ответ №3";
             this.answer_textBox3.Click += new System.EventHandler(this.Answer_textBox3_Click);
             this.answer_textBox3.TextChanged += new System.EventHandler(this.Answer_textBox3_TextChanged);
@@ -872,7 +1026,7 @@
             this.answer_textBox4.Multiline = true;
             this.answer_textBox4.Name = "answer_textBox4";
             this.answer_textBox4.Size = new System.Drawing.Size(693, 43);
-            this.answer_textBox4.TabIndex = 10;
+            this.answer_textBox4.TabIndex = 8;
             this.answer_textBox4.Text = "Введите ответ №4";
             this.answer_textBox4.Click += new System.EventHandler(this.Answer_textBox4_Click);
             this.answer_textBox4.TextChanged += new System.EventHandler(this.Answer_textBox4_TextChanged);
@@ -884,7 +1038,7 @@
             this.checkBox1.Location = new System.Drawing.Point(749, 184);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(174, 25);
-            this.checkBox1.TabIndex = 7;
+            this.checkBox1.TabIndex = 3;
             this.checkBox1.Text = "Правильный ответ?";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -895,7 +1049,7 @@
             this.checkBox3.Location = new System.Drawing.Point(749, 314);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(174, 25);
-            this.checkBox3.TabIndex = 9;
+            this.checkBox3.TabIndex = 7;
             this.checkBox3.Text = "Правильный ответ?";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
@@ -906,78 +1060,10 @@
             this.checkBox2.Location = new System.Drawing.Point(749, 248);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(174, 25);
-            this.checkBox2.TabIndex = 8;
+            this.checkBox2.TabIndex = 5;
             this.checkBox2.Text = "Правильный ответ?";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // create_test_groupBox
-            // 
-            this.create_test_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.create_test_groupBox.Controls.Add(this.comment_textBox);
-            this.create_test_groupBox.Controls.Add(this.label2);
-            this.create_test_groupBox.Controls.Add(this.add_new_test_to_db);
-            this.create_test_groupBox.Controls.Add(this.new_timer_textBox);
-            this.create_test_groupBox.Controls.Add(this.new_test_name_textBox);
-            this.create_test_groupBox.Location = new System.Drawing.Point(0, 40);
-            this.create_test_groupBox.Name = "create_test_groupBox";
-            this.create_test_groupBox.Size = new System.Drawing.Size(782, 411);
-            this.create_test_groupBox.TabIndex = 3;
-            this.create_test_groupBox.TabStop = false;
-            this.create_test_groupBox.Text = "Создание теста";
-            this.create_test_groupBox.Visible = false;
-            this.create_test_groupBox.VisibleChanged += new System.EventHandler(this.create_test_groupBox_VisibleChanged);
-            // 
-            // comment_textBox
-            // 
-            this.comment_textBox.Location = new System.Drawing.Point(6, 227);
-            this.comment_textBox.Multiline = true;
-            this.comment_textBox.Name = "comment_textBox";
-            this.comment_textBox.Size = new System.Drawing.Size(763, 96);
-            this.comment_textBox.TabIndex = 6;
-            this.comment_textBox.Text = "Комментарий к тесту (необязательно)";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 130);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(334, 21);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Введите ограничение по времени в минутах:";
-            // 
-            // add_new_test_to_db
-            // 
-            this.add_new_test_to_db.Location = new System.Drawing.Point(553, 360);
-            this.add_new_test_to_db.Name = "add_new_test_to_db";
-            this.add_new_test_to_db.Size = new System.Drawing.Size(216, 36);
-            this.add_new_test_to_db.TabIndex = 2;
-            this.add_new_test_to_db.Text = "Создать тест";
-            this.add_new_test_to_db.UseVisualStyleBackColor = true;
-            this.add_new_test_to_db.Click += new System.EventHandler(this.Add_new_test_to_db_Click);
-            // 
-            // new_timer_textBox
-            // 
-            this.new_timer_textBox.Location = new System.Drawing.Point(6, 160);
-            this.new_timer_textBox.Name = "new_timer_textBox";
-            this.new_timer_textBox.Size = new System.Drawing.Size(125, 28);
-            this.new_timer_textBox.TabIndex = 1;
-            this.new_timer_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_timer_textBox_KeyPress);
-            // 
-            // new_test_name_textBox
-            // 
-            this.new_test_name_textBox.Location = new System.Drawing.Point(6, 38);
-            this.new_test_name_textBox.Multiline = true;
-            this.new_test_name_textBox.Name = "new_test_name_textBox";
-            this.new_test_name_textBox.Size = new System.Drawing.Size(763, 54);
-            this.new_test_name_textBox.TabIndex = 0;
-            this.new_test_name_textBox.Text = "Введите название теста";
-            this.new_test_name_textBox.Click += new System.EventHandler(this.New_test_name_textBox_Click);
-            this.new_test_name_textBox.TextChanged += new System.EventHandler(this.New_test_name_textBox_TextChanged);
-            this.new_test_name_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_test_name_textBox_KeyPress);
-            this.new_test_name_textBox.Leave += new System.EventHandler(this.New_test_name_textBox_Leave);
             // 
             // edit_tests_page
             // 
@@ -998,12 +1084,12 @@
             this.edit_test_groupBox.Controls.Add(this.cancel_edit_button);
             this.edit_test_groupBox.Controls.Add(this.confirm_change_button);
             this.edit_test_groupBox.Controls.Add(this.available_teacher_tests_comboBox);
-            this.edit_test_groupBox.Controls.Add(this.edit_task_panel);
-            this.edit_test_groupBox.Controls.Add(this.delete_task_panel);
-            this.edit_test_groupBox.Controls.Add(this.add_task_or_delete_version_panel);
             this.edit_test_groupBox.Controls.Add(this.new_name_panel);
             this.edit_test_groupBox.Controls.Add(this.new_timer_panel);
             this.edit_test_groupBox.Controls.Add(this.new_comment_panel);
+            this.edit_test_groupBox.Controls.Add(this.edit_task_panel);
+            this.edit_test_groupBox.Controls.Add(this.delete_task_panel);
+            this.edit_test_groupBox.Controls.Add(this.add_task_or_delete_version_panel);
             this.edit_test_groupBox.Location = new System.Drawing.Point(1, 0);
             this.edit_test_groupBox.Name = "edit_test_groupBox";
             this.edit_test_groupBox.Size = new System.Drawing.Size(1000, 599);
@@ -1019,7 +1105,8 @@
             this.cancel_edit_button.Location = new System.Drawing.Point(561, 543);
             this.cancel_edit_button.Name = "cancel_edit_button";
             this.cancel_edit_button.Size = new System.Drawing.Size(120, 50);
-            this.cancel_edit_button.TabIndex = 12;
+            this.cancel_edit_button.TabIndex = 10;
+            this.cancel_edit_button.TabStop = false;
             this.cancel_edit_button.Text = "Отмена";
             this.cancel_edit_button.UseVisualStyleBackColor = true;
             this.cancel_edit_button.Click += new System.EventHandler(this.cancel_edit_button_Click);
@@ -1031,7 +1118,8 @@
             this.confirm_change_button.Location = new System.Drawing.Point(705, 543);
             this.confirm_change_button.Name = "confirm_change_button";
             this.confirm_change_button.Size = new System.Drawing.Size(291, 50);
-            this.confirm_change_button.TabIndex = 3;
+            this.confirm_change_button.TabIndex = 11;
+            this.confirm_change_button.TabStop = false;
             this.confirm_change_button.Text = "Подтвердить";
             this.confirm_change_button.UseVisualStyleBackColor = true;
             this.confirm_change_button.Click += new System.EventHandler(this.Confirm_change_button_Click);
@@ -1043,6 +1131,7 @@
             this.available_teacher_tests_comboBox.Name = "available_teacher_tests_comboBox";
             this.available_teacher_tests_comboBox.Size = new System.Drawing.Size(855, 29);
             this.available_teacher_tests_comboBox.TabIndex = 5;
+            this.available_teacher_tests_comboBox.TabStop = false;
             this.available_teacher_tests_comboBox.Text = "Выберите тест";
             this.available_teacher_tests_comboBox.SelectionChangeCommitted += new System.EventHandler(this.available_teacher_tests_comboBox_SelectionChangeCommitted);
             this.available_teacher_tests_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.available_teacher_tests_comboBox_KeyPress);
@@ -1080,6 +1169,7 @@
             this.choose_task_comboBox.Name = "choose_task_comboBox";
             this.choose_task_comboBox.Size = new System.Drawing.Size(858, 29);
             this.choose_task_comboBox.TabIndex = 5;
+            this.choose_task_comboBox.TabStop = false;
             this.choose_task_comboBox.Text = "Выберите вопрос для редактирования";
             this.choose_task_comboBox.SelectedIndexChanged += new System.EventHandler(this.choose_task_comboBox_SelectedIndexChanged);
             this.choose_task_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.choose_task_comboBox_KeyPress);
@@ -1120,6 +1210,7 @@
             this.edit_answer_id_textBox4.Name = "edit_answer_id_textBox4";
             this.edit_answer_id_textBox4.Size = new System.Drawing.Size(56, 28);
             this.edit_answer_id_textBox4.TabIndex = 20;
+            this.edit_answer_id_textBox4.TabStop = false;
             this.edit_answer_id_textBox4.Visible = false;
             // 
             // edit_answer_id_textBox3
@@ -1128,6 +1219,7 @@
             this.edit_answer_id_textBox3.Name = "edit_answer_id_textBox3";
             this.edit_answer_id_textBox3.Size = new System.Drawing.Size(56, 28);
             this.edit_answer_id_textBox3.TabIndex = 19;
+            this.edit_answer_id_textBox3.TabStop = false;
             this.edit_answer_id_textBox3.Visible = false;
             // 
             // edit_answer_id_textBox2
@@ -1136,6 +1228,7 @@
             this.edit_answer_id_textBox2.Name = "edit_answer_id_textBox2";
             this.edit_answer_id_textBox2.Size = new System.Drawing.Size(56, 28);
             this.edit_answer_id_textBox2.TabIndex = 18;
+            this.edit_answer_id_textBox2.TabStop = false;
             this.edit_answer_id_textBox2.Visible = false;
             // 
             // edit_answer_id_textBox1
@@ -1144,6 +1237,7 @@
             this.edit_answer_id_textBox1.Name = "edit_answer_id_textBox1";
             this.edit_answer_id_textBox1.Size = new System.Drawing.Size(56, 28);
             this.edit_answer_id_textBox1.TabIndex = 17;
+            this.edit_answer_id_textBox1.TabStop = false;
             this.edit_answer_id_textBox1.Visible = false;
             // 
             // edit_question_id_textBox
@@ -1152,6 +1246,7 @@
             this.edit_question_id_textBox.Name = "edit_question_id_textBox";
             this.edit_question_id_textBox.Size = new System.Drawing.Size(56, 28);
             this.edit_question_id_textBox.TabIndex = 16;
+            this.edit_question_id_textBox.TabStop = false;
             this.edit_question_id_textBox.Visible = false;
             // 
             // label12
@@ -1169,7 +1264,7 @@
             this.edit_test_name_textBox.Multiline = true;
             this.edit_test_name_textBox.Name = "edit_test_name_textBox";
             this.edit_test_name_textBox.Size = new System.Drawing.Size(858, 57);
-            this.edit_test_name_textBox.TabIndex = 15;
+            this.edit_test_name_textBox.TabIndex = 0;
             // 
             // label10
             // 
@@ -1199,7 +1294,7 @@
             this.edit_question_type_comboBox.Location = new System.Drawing.Point(7, 138);
             this.edit_question_type_comboBox.Name = "edit_question_type_comboBox";
             this.edit_question_type_comboBox.Size = new System.Drawing.Size(693, 29);
-            this.edit_question_type_comboBox.TabIndex = 0;
+            this.edit_question_type_comboBox.TabIndex = 1;
             this.edit_question_type_comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             this.edit_question_type_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edit_question_type_comboBox_KeyPress);
             // 
@@ -1209,7 +1304,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(693, 43);
-            this.textBox1.TabIndex = 3;
+            this.textBox1.TabIndex = 2;
             // 
             // checkBox12
             // 
@@ -1217,7 +1312,7 @@
             this.checkBox12.Location = new System.Drawing.Point(757, 428);
             this.checkBox12.Name = "checkBox12";
             this.checkBox12.Size = new System.Drawing.Size(174, 25);
-            this.checkBox12.TabIndex = 11;
+            this.checkBox12.TabIndex = 9;
             this.checkBox12.Text = "Правильный ответ?";
             this.checkBox12.UseVisualStyleBackColor = true;
             // 
@@ -1235,7 +1330,7 @@
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(693, 43);
-            this.textBox3.TabIndex = 5;
+            this.textBox3.TabIndex = 6;
             // 
             // textBox4
             // 
@@ -1243,7 +1338,7 @@
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(693, 43);
-            this.textBox4.TabIndex = 10;
+            this.textBox4.TabIndex = 8;
             // 
             // checkBox9
             // 
@@ -1251,7 +1346,7 @@
             this.checkBox9.Location = new System.Drawing.Point(757, 224);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(174, 25);
-            this.checkBox9.TabIndex = 7;
+            this.checkBox9.TabIndex = 3;
             this.checkBox9.Text = "Правильный ответ?";
             this.checkBox9.UseVisualStyleBackColor = true;
             // 
@@ -1261,7 +1356,7 @@
             this.checkBox11.Location = new System.Drawing.Point(757, 360);
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.Size = new System.Drawing.Size(174, 25);
-            this.checkBox11.TabIndex = 9;
+            this.checkBox11.TabIndex = 7;
             this.checkBox11.Text = "Правильный ответ?";
             this.checkBox11.UseVisualStyleBackColor = true;
             // 
@@ -1271,7 +1366,7 @@
             this.checkBox10.Location = new System.Drawing.Point(757, 292);
             this.checkBox10.Name = "checkBox10";
             this.checkBox10.Size = new System.Drawing.Size(174, 25);
-            this.checkBox10.TabIndex = 8;
+            this.checkBox10.TabIndex = 5;
             this.checkBox10.Text = "Правильный ответ?";
             this.checkBox10.UseVisualStyleBackColor = true;
             // 
@@ -1297,6 +1392,7 @@
             this.delete_task_comboBox.Name = "delete_task_comboBox";
             this.delete_task_comboBox.Size = new System.Drawing.Size(759, 29);
             this.delete_task_comboBox.TabIndex = 2;
+            this.delete_task_comboBox.TabStop = false;
             this.delete_task_comboBox.Text = "Выберите вопрос";
             // 
             // delete_mode_choose_version_comboBox
@@ -1306,6 +1402,7 @@
             this.delete_mode_choose_version_comboBox.Name = "delete_mode_choose_version_comboBox";
             this.delete_mode_choose_version_comboBox.Size = new System.Drawing.Size(759, 29);
             this.delete_mode_choose_version_comboBox.TabIndex = 1;
+            this.delete_mode_choose_version_comboBox.TabStop = false;
             this.delete_mode_choose_version_comboBox.Text = "Выберите вариант";
             this.delete_mode_choose_version_comboBox.SelectionChangeCommitted += new System.EventHandler(this.delete_mode_choose_version_comboBox_SelectionChangeCommitted);
             // 
@@ -1340,6 +1437,7 @@
             this.choose_deleted_version_comboBox.Name = "choose_deleted_version_comboBox";
             this.choose_deleted_version_comboBox.Size = new System.Drawing.Size(416, 29);
             this.choose_deleted_version_comboBox.TabIndex = 5;
+            this.choose_deleted_version_comboBox.TabStop = false;
             this.choose_deleted_version_comboBox.Text = "Выберите вариант";
             this.choose_deleted_version_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.choose_deleted_version_comboBox_KeyPress);
             // 
@@ -1363,6 +1461,7 @@
             this.new_name_textBox.Name = "new_name_textBox";
             this.new_name_textBox.Size = new System.Drawing.Size(853, 75);
             this.new_name_textBox.TabIndex = 0;
+            this.new_name_textBox.TabStop = false;
             this.new_name_textBox.Text = "Введите новое название";
             this.new_name_textBox.Click += new System.EventHandler(this.new_name_textBox_Click);
             this.new_name_textBox.TextChanged += new System.EventHandler(this.new_name_textBox_TextChanged);
@@ -1388,6 +1487,7 @@
             this.edit_timer_textBox.Name = "edit_timer_textBox";
             this.edit_timer_textBox.Size = new System.Drawing.Size(125, 28);
             this.edit_timer_textBox.TabIndex = 1;
+            this.edit_timer_textBox.TabStop = false;
             this.edit_timer_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edit_timer_textBox_KeyPress);
             // 
             // label8
@@ -1419,55 +1519,82 @@
             this.new_comment_textBox.Name = "new_comment_textBox";
             this.new_comment_textBox.Size = new System.Drawing.Size(853, 117);
             this.new_comment_textBox.TabIndex = 6;
+            this.new_comment_textBox.TabStop = false;
             this.new_comment_textBox.Text = "Введите комментарий";
             this.new_comment_textBox.Click += new System.EventHandler(this.new_comment_textBox_Click);
             this.new_comment_textBox.TextChanged += new System.EventHandler(this.new_comment_textBox_TextChanged);
             this.new_comment_textBox.Leave += new System.EventHandler(this.new_comment_textBox_Leave);
             // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.открытьТестToolStripMenuItem,
-            this.редактироватьToolStripMenuItem,
-            this.вернутьсяКСпискуТестовToolStripMenuItem});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(259, 76);
-            this.contextMenuStrip2.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip2_Opening);
-            // 
-            // открытьТестToolStripMenuItem
-            // 
-            this.открытьТестToolStripMenuItem.Name = "открытьТестToolStripMenuItem";
-            this.открытьТестToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.открытьТестToolStripMenuItem.Text = "Открыть тест...";
-            // 
-            // редактироватьToolStripMenuItem
-            // 
-            this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
-            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.редактироватьToolStripMenuItem.Text = "Редактировать тест";
-            this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.редактироватьToolStripMenuItem_Click);
-            // 
-            // вернутьсяКСпискуТестовToolStripMenuItem
-            // 
-            this.вернутьсяКСпискуТестовToolStripMenuItem.Name = "вернутьсяКСпискуТестовToolStripMenuItem";
-            this.вернутьсяКСпискуТестовToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.вернутьсяКСпискуТестовToolStripMenuItem.Text = "Вернуться к списку тестов";
-            // 
             // profile_page
             // 
             this.profile_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.profile_page.Controls.Add(this.teacher_identity_check_panel);
             this.profile_page.Controls.Add(this.change_teacher_login_panel);
             this.profile_page.Controls.Add(this.change_full_name_panel);
             this.profile_page.Controls.Add(this.teacher_profile_main_panel);
             this.profile_page.Controls.Add(this.change_teacher_password_panel);
+            this.profile_page.Controls.Add(this.teacher_identity_check_panel);
             this.profile_page.Location = new System.Drawing.Point(4, 30);
             this.profile_page.Name = "profile_page";
             this.profile_page.Padding = new System.Windows.Forms.Padding(3);
             this.profile_page.Size = new System.Drawing.Size(1005, 630);
             this.profile_page.TabIndex = 0;
             this.profile_page.Text = "Профиль";
+            // 
+            // change_teacher_login_panel
+            // 
+            this.change_teacher_login_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.change_teacher_login_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.change_teacher_login_panel.Controls.Add(this.cancel_change_teacher_login_button);
+            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_button);
+            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_textbox);
+            this.change_teacher_login_panel.Controls.Add(this.change_teacher_login_label);
+            this.change_teacher_login_panel.Location = new System.Drawing.Point(6, 23);
+            this.change_teacher_login_panel.Name = "change_teacher_login_panel";
+            this.change_teacher_login_panel.Size = new System.Drawing.Size(989, 174);
+            this.change_teacher_login_panel.TabIndex = 10;
+            this.change_teacher_login_panel.Visible = false;
+            // 
+            // cancel_change_teacher_login_button
+            // 
+            this.cancel_change_teacher_login_button.Location = new System.Drawing.Point(659, 122);
+            this.cancel_change_teacher_login_button.Name = "cancel_change_teacher_login_button";
+            this.cancel_change_teacher_login_button.Size = new System.Drawing.Size(99, 42);
+            this.cancel_change_teacher_login_button.TabIndex = 1;
+            this.cancel_change_teacher_login_button.Text = "Отмена";
+            this.cancel_change_teacher_login_button.UseVisualStyleBackColor = true;
+            this.cancel_change_teacher_login_button.Click += new System.EventHandler(this.Cancel_change_teacher_login_button_Click);
+            // 
+            // new_teacher_login_button
+            // 
+            this.new_teacher_login_button.Location = new System.Drawing.Point(764, 122);
+            this.new_teacher_login_button.Name = "new_teacher_login_button";
+            this.new_teacher_login_button.Size = new System.Drawing.Size(184, 42);
+            this.new_teacher_login_button.TabIndex = 2;
+            this.new_teacher_login_button.Text = "Изменить логин";
+            this.new_teacher_login_button.UseVisualStyleBackColor = true;
+            this.new_teacher_login_button.Click += new System.EventHandler(this.New_teacher_login_button_Click);
+            // 
+            // new_teacher_login_textbox
+            // 
+            this.new_teacher_login_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.new_teacher_login_textbox.Location = new System.Drawing.Point(303, 40);
+            this.new_teacher_login_textbox.Name = "new_teacher_login_textbox";
+            this.new_teacher_login_textbox.Size = new System.Drawing.Size(644, 28);
+            this.new_teacher_login_textbox.TabIndex = 0;
+            this.new_teacher_login_textbox.TabStop = false;
+            // 
+            // change_teacher_login_label
+            // 
+            this.change_teacher_login_label.AutoSize = true;
+            this.change_teacher_login_label.Location = new System.Drawing.Point(53, 43);
+            this.change_teacher_login_label.Name = "change_teacher_login_label";
+            this.change_teacher_login_label.Size = new System.Drawing.Size(169, 21);
+            this.change_teacher_login_label.TabIndex = 0;
+            this.change_teacher_login_label.Text = "Введите новый логин:";
             // 
             // change_full_name_panel
             // 
@@ -1490,7 +1617,7 @@
             this.button3.Location = new System.Drawing.Point(711, 252);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(184, 42);
-            this.button3.TabIndex = 24;
+            this.button3.TabIndex = 4;
             this.button3.Text = "Изменить";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -1500,7 +1627,7 @@
             this.button4.Location = new System.Drawing.Point(607, 252);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(89, 42);
-            this.button4.TabIndex = 25;
+            this.button4.TabIndex = 3;
             this.button4.Text = "Отмена";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -1530,7 +1657,7 @@
             this.new_teacher_name_textBox.Location = new System.Drawing.Point(248, 116);
             this.new_teacher_name_textBox.Name = "new_teacher_name_textBox";
             this.new_teacher_name_textBox.Size = new System.Drawing.Size(648, 28);
-            this.new_teacher_name_textBox.TabIndex = 21;
+            this.new_teacher_name_textBox.TabIndex = 1;
             // 
             // new_patronymic_textBox
             // 
@@ -1539,7 +1666,7 @@
             this.new_patronymic_textBox.Location = new System.Drawing.Point(248, 184);
             this.new_patronymic_textBox.Name = "new_patronymic_textBox";
             this.new_patronymic_textBox.Size = new System.Drawing.Size(648, 28);
-            this.new_patronymic_textBox.TabIndex = 20;
+            this.new_patronymic_textBox.TabIndex = 2;
             // 
             // label18
             // 
@@ -1557,7 +1684,7 @@
             this.new_surname_textBox.Location = new System.Drawing.Point(248, 48);
             this.new_surname_textBox.Name = "new_surname_textBox";
             this.new_surname_textBox.Size = new System.Drawing.Size(648, 28);
-            this.new_surname_textBox.TabIndex = 19;
+            this.new_surname_textBox.TabIndex = 0;
             // 
             // teacher_profile_main_panel
             // 
@@ -1567,7 +1694,7 @@
             this.teacher_profile_main_panel.Controls.Add(this.label14);
             this.teacher_profile_main_panel.Controls.Add(this.name_teacher_profile_textBox);
             this.teacher_profile_main_panel.Controls.Add(this.patronimic_teacher_profile_textBox);
-            this.teacher_profile_main_panel.Controls.Add(this.button2);
+            this.teacher_profile_main_panel.Controls.Add(this.delete_teacher_profile_button);
             this.teacher_profile_main_panel.Controls.Add(this.exit_student_profile_button);
             this.teacher_profile_main_panel.Controls.Add(this.change_teacher_password_button);
             this.teacher_profile_main_panel.Controls.Add(this.change_teacher_login_button);
@@ -1592,6 +1719,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(201, 48);
             this.button1.TabIndex = 17;
+            this.button1.TabStop = false;
             this.button1.Text = "Изменить ФИО";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
@@ -1621,8 +1749,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.name_teacher_profile_textBox.Location = new System.Drawing.Point(246, 147);
             this.name_teacher_profile_textBox.Name = "name_teacher_profile_textBox";
+            this.name_teacher_profile_textBox.ReadOnly = true;
             this.name_teacher_profile_textBox.Size = new System.Drawing.Size(648, 28);
             this.name_teacher_profile_textBox.TabIndex = 14;
+            this.name_teacher_profile_textBox.TabStop = false;
             // 
             // patronimic_teacher_profile_textBox
             // 
@@ -1630,26 +1760,30 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.patronimic_teacher_profile_textBox.Location = new System.Drawing.Point(246, 215);
             this.patronimic_teacher_profile_textBox.Name = "patronimic_teacher_profile_textBox";
+            this.patronimic_teacher_profile_textBox.ReadOnly = true;
             this.patronimic_teacher_profile_textBox.Size = new System.Drawing.Size(648, 28);
             this.patronimic_teacher_profile_textBox.TabIndex = 13;
+            this.patronimic_teacher_profile_textBox.TabStop = false;
             // 
-            // button2
+            // delete_teacher_profile_button
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.delete_teacher_profile_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.SystemColors.Control;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(671, 573);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 39);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Удалить профиль";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = false;
+            this.delete_teacher_profile_button.AutoSize = true;
+            this.delete_teacher_profile_button.BackColor = System.Drawing.SystemColors.Control;
+            this.delete_teacher_profile_button.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.delete_teacher_profile_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delete_teacher_profile_button.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.delete_teacher_profile_button.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.delete_teacher_profile_button.Location = new System.Drawing.Point(671, 573);
+            this.delete_teacher_profile_button.Name = "delete_teacher_profile_button";
+            this.delete_teacher_profile_button.Size = new System.Drawing.Size(158, 39);
+            this.delete_teacher_profile_button.TabIndex = 12;
+            this.delete_teacher_profile_button.TabStop = false;
+            this.delete_teacher_profile_button.Text = "Удалить профиль";
+            this.delete_teacher_profile_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.delete_teacher_profile_button.UseVisualStyleBackColor = false;
+            this.delete_teacher_profile_button.Click += new System.EventHandler(this.delete_teacher_profile_button_Click);
             // 
             // exit_student_profile_button
             // 
@@ -1665,6 +1799,7 @@
             this.exit_student_profile_button.Name = "exit_student_profile_button";
             this.exit_student_profile_button.Size = new System.Drawing.Size(158, 39);
             this.exit_student_profile_button.TabIndex = 11;
+            this.exit_student_profile_button.TabStop = false;
             this.exit_student_profile_button.Text = "Выйти из профиля";
             this.exit_student_profile_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.exit_student_profile_button.UseVisualStyleBackColor = false;
@@ -1680,6 +1815,7 @@
             this.change_teacher_password_button.Name = "change_teacher_password_button";
             this.change_teacher_password_button.Size = new System.Drawing.Size(167, 46);
             this.change_teacher_password_button.TabIndex = 9;
+            this.change_teacher_password_button.TabStop = false;
             this.change_teacher_password_button.Text = "Изменить пароль";
             this.change_teacher_password_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.change_teacher_password_button.UseVisualStyleBackColor = true;
@@ -1695,6 +1831,7 @@
             this.change_teacher_login_button.Name = "change_teacher_login_button";
             this.change_teacher_login_button.Size = new System.Drawing.Size(201, 48);
             this.change_teacher_login_button.TabIndex = 8;
+            this.change_teacher_login_button.TabStop = false;
             this.change_teacher_login_button.Text = "Изменить логин";
             this.change_teacher_login_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.change_teacher_login_button.UseVisualStyleBackColor = true;
@@ -1706,8 +1843,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.password_teacher_profile.Location = new System.Drawing.Point(246, 425);
             this.password_teacher_profile.Name = "password_teacher_profile";
+            this.password_teacher_profile.ReadOnly = true;
             this.password_teacher_profile.Size = new System.Drawing.Size(648, 28);
             this.password_teacher_profile.TabIndex = 7;
+            this.password_teacher_profile.TabStop = false;
             this.password_teacher_profile.UseSystemPasswordChar = true;
             // 
             // full_name_teacher_profile_label
@@ -1725,8 +1864,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.login_teacher_profile.Location = new System.Drawing.Point(246, 317);
             this.login_teacher_profile.Name = "login_teacher_profile";
+            this.login_teacher_profile.ReadOnly = true;
             this.login_teacher_profile.Size = new System.Drawing.Size(648, 28);
             this.login_teacher_profile.TabIndex = 6;
+            this.login_teacher_profile.TabStop = false;
             // 
             // surname_teacher_profile_textBox
             // 
@@ -1734,8 +1875,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.surname_teacher_profile_textBox.Location = new System.Drawing.Point(246, 79);
             this.surname_teacher_profile_textBox.Name = "surname_teacher_profile_textBox";
+            this.surname_teacher_profile_textBox.ReadOnly = true;
             this.surname_teacher_profile_textBox.Size = new System.Drawing.Size(648, 28);
             this.surname_teacher_profile_textBox.TabIndex = 2;
+            this.surname_teacher_profile_textBox.TabStop = false;
             this.surname_teacher_profile_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Full_name_teacher_profile_texBox_KeyPress);
             // 
             // password_teacher_profile_label
@@ -1788,7 +1931,7 @@
             this.new_teacher_password_button.Location = new System.Drawing.Point(764, 198);
             this.new_teacher_password_button.Name = "new_teacher_password_button";
             this.new_teacher_password_button.Size = new System.Drawing.Size(184, 42);
-            this.new_teacher_password_button.TabIndex = 2;
+            this.new_teacher_password_button.TabIndex = 3;
             this.new_teacher_password_button.Text = "Изменить пароль";
             this.new_teacher_password_button.UseVisualStyleBackColor = true;
             this.new_teacher_password_button.Click += new System.EventHandler(this.New_teacher_password_button_Click);
@@ -1807,7 +1950,7 @@
             this.cancel_change_teacher_password_button.Location = new System.Drawing.Point(660, 198);
             this.cancel_change_teacher_password_button.Name = "cancel_change_teacher_password_button";
             this.cancel_change_teacher_password_button.Size = new System.Drawing.Size(89, 42);
-            this.cancel_change_teacher_password_button.TabIndex = 3;
+            this.cancel_change_teacher_password_button.TabIndex = 2;
             this.cancel_change_teacher_password_button.Text = "Отмена";
             this.cancel_change_teacher_password_button.UseVisualStyleBackColor = true;
             this.cancel_change_teacher_password_button.Click += new System.EventHandler(this.Cancel_change_teacher_password_button_Click);
@@ -1820,7 +1963,7 @@
             this.teacher_new_password_textBox.Location = new System.Drawing.Point(303, 55);
             this.teacher_new_password_textBox.Name = "teacher_new_password_textBox";
             this.teacher_new_password_textBox.Size = new System.Drawing.Size(645, 28);
-            this.teacher_new_password_textBox.TabIndex = 5;
+            this.teacher_new_password_textBox.TabIndex = 0;
             // 
             // teacher_test_new_password_textBox
             // 
@@ -1830,62 +1973,7 @@
             this.teacher_test_new_password_textBox.Location = new System.Drawing.Point(303, 134);
             this.teacher_test_new_password_textBox.Name = "teacher_test_new_password_textBox";
             this.teacher_test_new_password_textBox.Size = new System.Drawing.Size(645, 28);
-            this.teacher_test_new_password_textBox.TabIndex = 7;
-            // 
-            // change_teacher_login_panel
-            // 
-            this.change_teacher_login_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.change_teacher_login_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.change_teacher_login_panel.Controls.Add(this.cancel_change_teacher_login_button);
-            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_button);
-            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_textbox);
-            this.change_teacher_login_panel.Controls.Add(this.change_teacher_login_label);
-            this.change_teacher_login_panel.Location = new System.Drawing.Point(6, 23);
-            this.change_teacher_login_panel.Name = "change_teacher_login_panel";
-            this.change_teacher_login_panel.Size = new System.Drawing.Size(989, 174);
-            this.change_teacher_login_panel.TabIndex = 10;
-            this.change_teacher_login_panel.Visible = false;
-            // 
-            // cancel_change_teacher_login_button
-            // 
-            this.cancel_change_teacher_login_button.Location = new System.Drawing.Point(659, 122);
-            this.cancel_change_teacher_login_button.Name = "cancel_change_teacher_login_button";
-            this.cancel_change_teacher_login_button.Size = new System.Drawing.Size(99, 42);
-            this.cancel_change_teacher_login_button.TabIndex = 3;
-            this.cancel_change_teacher_login_button.Text = "Отмена";
-            this.cancel_change_teacher_login_button.UseVisualStyleBackColor = true;
-            this.cancel_change_teacher_login_button.Click += new System.EventHandler(this.Cancel_change_teacher_login_button_Click);
-            // 
-            // new_teacher_login_button
-            // 
-            this.new_teacher_login_button.Location = new System.Drawing.Point(764, 122);
-            this.new_teacher_login_button.Name = "new_teacher_login_button";
-            this.new_teacher_login_button.Size = new System.Drawing.Size(184, 42);
-            this.new_teacher_login_button.TabIndex = 2;
-            this.new_teacher_login_button.Text = "Изменить логин";
-            this.new_teacher_login_button.UseVisualStyleBackColor = true;
-            this.new_teacher_login_button.Click += new System.EventHandler(this.New_teacher_login_button_Click);
-            // 
-            // new_teacher_login_textbox
-            // 
-            this.new_teacher_login_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.new_teacher_login_textbox.Location = new System.Drawing.Point(303, 40);
-            this.new_teacher_login_textbox.Name = "new_teacher_login_textbox";
-            this.new_teacher_login_textbox.Size = new System.Drawing.Size(644, 28);
-            this.new_teacher_login_textbox.TabIndex = 1;
-            // 
-            // change_teacher_login_label
-            // 
-            this.change_teacher_login_label.AutoSize = true;
-            this.change_teacher_login_label.Location = new System.Drawing.Point(57, 47);
-            this.change_teacher_login_label.Name = "change_teacher_login_label";
-            this.change_teacher_login_label.Size = new System.Drawing.Size(169, 21);
-            this.change_teacher_login_label.TabIndex = 0;
-            this.change_teacher_login_label.Text = "Введите новый логин:";
+            this.teacher_test_new_password_textBox.TabIndex = 1;
             // 
             // teacher_identity_check_panel
             // 
@@ -1920,7 +2008,7 @@
             this.cancel_teacher_change_password_button.Location = new System.Drawing.Point(161, 134);
             this.cancel_teacher_change_password_button.Name = "cancel_teacher_change_password_button";
             this.cancel_teacher_change_password_button.Size = new System.Drawing.Size(90, 36);
-            this.cancel_teacher_change_password_button.TabIndex = 10;
+            this.cancel_teacher_change_password_button.TabIndex = 1;
             this.cancel_teacher_change_password_button.Text = "Отмена";
             this.cancel_teacher_change_password_button.UseVisualStyleBackColor = false;
             this.cancel_teacher_change_password_button.Click += new System.EventHandler(this.Cancel_teacher_change_password_button_Click);
@@ -1933,7 +2021,7 @@
             this.teacher_old_password_textBox.Location = new System.Drawing.Point(23, 66);
             this.teacher_old_password_textBox.Name = "teacher_old_password_textBox";
             this.teacher_old_password_textBox.Size = new System.Drawing.Size(386, 28);
-            this.teacher_old_password_textBox.TabIndex = 1;
+            this.teacher_old_password_textBox.TabIndex = 0;
             // 
             // continue_teacher_change_password_button
             // 
@@ -1943,7 +2031,7 @@
             this.continue_teacher_change_password_button.Location = new System.Drawing.Point(257, 134);
             this.continue_teacher_change_password_button.Name = "continue_teacher_change_password_button";
             this.continue_teacher_change_password_button.Size = new System.Drawing.Size(152, 36);
-            this.continue_teacher_change_password_button.TabIndex = 9;
+            this.continue_teacher_change_password_button.TabIndex = 2;
             this.continue_teacher_change_password_button.Text = "Продолжить";
             this.continue_teacher_change_password_button.UseVisualStyleBackColor = false;
             this.continue_teacher_change_password_button.Click += new System.EventHandler(this.Continue_teacher_change_password_button_Click);
@@ -1956,34 +2044,636 @@
             this.tabControl1.Controls.Add(this.profile_page);
             this.tabControl1.Controls.Add(this.test_constructor);
             this.tabControl1.Controls.Add(this.students_page);
-            this.tabControl1.Controls.Add(this.statistics_page);
+            this.tabControl1.Controls.Add(this.marks_journal_page);
             this.tabControl1.Font = new System.Drawing.Font("Calibri", 10.2F);
             this.tabControl1.ItemSize = new System.Drawing.Size(150, 26);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1013, 664);
+            this.tabControl1.Size = new System.Drawing.Size(1016, 662);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabStop = false;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // students_page
             // 
             this.students_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.students_page.Controls.Add(this.test_access_panel);
+            this.students_page.Controls.Add(this.change_student_group_panel);
+            this.students_page.Controls.Add(this.change_group_name_panel);
+            this.students_page.Controls.Add(this.splitContainer1);
+            this.students_page.Controls.Add(this.create_student_groupBox);
             this.students_page.Location = new System.Drawing.Point(4, 30);
             this.students_page.Name = "students_page";
             this.students_page.Padding = new System.Windows.Forms.Padding(3);
-            this.students_page.Size = new System.Drawing.Size(1005, 630);
+            this.students_page.Size = new System.Drawing.Size(1008, 628);
             this.students_page.TabIndex = 3;
             this.students_page.Text = "Студенты и группы";
+            this.students_page.Click += new System.EventHandler(this.students_page_Click);
             // 
-            // statistics_page
+            // test_access_panel
             // 
-            this.statistics_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.statistics_page.Location = new System.Drawing.Point(4, 30);
-            this.statistics_page.Name = "statistics_page";
-            this.statistics_page.Padding = new System.Windows.Forms.Padding(3);
-            this.statistics_page.Size = new System.Drawing.Size(1005, 630);
-            this.statistics_page.TabIndex = 4;
-            this.statistics_page.Text = "Статистика";
+            this.test_access_panel.Controls.Add(this.prohibit_radioButton);
+            this.test_access_panel.Controls.Add(this.allow_radioButton);
+            this.test_access_panel.Controls.Add(this.label24);
+            this.test_access_panel.Controls.Add(this.label23);
+            this.test_access_panel.Controls.Add(this.cancel_test_access_button);
+            this.test_access_panel.Controls.Add(this.ok_test_access_button);
+            this.test_access_panel.Controls.Add(this.test_access_comboBox);
+            this.test_access_panel.Location = new System.Drawing.Point(10, 10);
+            this.test_access_panel.Name = "test_access_panel";
+            this.test_access_panel.Size = new System.Drawing.Size(601, 292);
+            this.test_access_panel.TabIndex = 4;
+            this.test_access_panel.Visible = false;
+            this.test_access_panel.VisibleChanged += new System.EventHandler(this.test_access_panel_VisibleChanged);
+            // 
+            // prohibit_radioButton
+            // 
+            this.prohibit_radioButton.AutoSize = true;
+            this.prohibit_radioButton.Location = new System.Drawing.Point(16, 181);
+            this.prohibit_radioButton.Name = "prohibit_radioButton";
+            this.prohibit_radioButton.Size = new System.Drawing.Size(157, 25);
+            this.prohibit_radioButton.TabIndex = 2;
+            this.prohibit_radioButton.TabStop = true;
+            this.prohibit_radioButton.Text = "Запретить доступ";
+            this.tip3.SetToolTip(this.prohibit_radioButton, "Все результаты студента/группы будут удалены.");
+            this.prohibit_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // allow_radioButton
+            // 
+            this.allow_radioButton.AutoSize = true;
+            this.allow_radioButton.Location = new System.Drawing.Point(16, 142);
+            this.allow_radioButton.Name = "allow_radioButton";
+            this.allow_radioButton.Size = new System.Drawing.Size(161, 25);
+            this.allow_radioButton.TabIndex = 1;
+            this.allow_radioButton.TabStop = true;
+            this.allow_radioButton.Text = "Разрешить доступ";
+            this.tip3.SetToolTip(this.allow_radioButton, "Студент получит возможность пройти тест 1 раз. \r\nЕсли необходимы еще попытка снов" +
+        "а предоставьте доступ к тесту.");
+            this.allow_radioButton.UseVisualStyleBackColor = true;
+            this.allow_radioButton.CheckedChanged += new System.EventHandler(this.allow_radioButton_CheckedChanged);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(20, 109);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(154, 21);
+            this.label24.TabIndex = 10;
+            this.label24.Text = "Выберите действие:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(20, 32);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(118, 21);
+            this.label23.TabIndex = 8;
+            this.label23.Text = "Выберите тест:";
+            this.label23.Click += new System.EventHandler(this.label23_Click);
+            // 
+            // cancel_test_access_button
+            // 
+            this.cancel_test_access_button.Location = new System.Drawing.Point(261, 235);
+            this.cancel_test_access_button.Name = "cancel_test_access_button";
+            this.cancel_test_access_button.Size = new System.Drawing.Size(112, 42);
+            this.cancel_test_access_button.TabIndex = 3;
+            this.cancel_test_access_button.Text = "Отмена";
+            this.cancel_test_access_button.UseVisualStyleBackColor = true;
+            this.cancel_test_access_button.Click += new System.EventHandler(this.cancel_test_access_button_Click);
+            // 
+            // ok_test_access_button
+            // 
+            this.ok_test_access_button.Location = new System.Drawing.Point(379, 235);
+            this.ok_test_access_button.Name = "ok_test_access_button";
+            this.ok_test_access_button.Size = new System.Drawing.Size(185, 42);
+            this.ok_test_access_button.TabIndex = 4;
+            this.ok_test_access_button.Text = "Подтвердить";
+            this.ok_test_access_button.UseVisualStyleBackColor = true;
+            this.ok_test_access_button.Click += new System.EventHandler(this.ok_test_access_button_Click);
+            // 
+            // test_access_comboBox
+            // 
+            this.test_access_comboBox.FormattingEnabled = true;
+            this.test_access_comboBox.Location = new System.Drawing.Point(16, 63);
+            this.test_access_comboBox.Name = "test_access_comboBox";
+            this.test_access_comboBox.Size = new System.Drawing.Size(548, 29);
+            this.test_access_comboBox.TabIndex = 0;
+            this.test_access_comboBox.SelectionChangeCommitted += new System.EventHandler(this.test_access_comboBox_SelectionChangeCommitted);
+            // 
+            // change_student_group_panel
+            // 
+            this.change_student_group_panel.Controls.Add(this.label22);
+            this.change_student_group_panel.Controls.Add(this.cancel_change_student_group_button);
+            this.change_student_group_panel.Controls.Add(this.ok_change_student_group_button);
+            this.change_student_group_panel.Controls.Add(this.groups_comboBox);
+            this.change_student_group_panel.Location = new System.Drawing.Point(10, 10);
+            this.change_student_group_panel.Name = "change_student_group_panel";
+            this.change_student_group_panel.Size = new System.Drawing.Size(501, 229);
+            this.change_student_group_panel.TabIndex = 1;
+            this.change_student_group_panel.Visible = false;
+            this.change_student_group_panel.VisibleChanged += new System.EventHandler(this.change_student_group_panel_VisibleChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(26, 29);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(204, 21);
+            this.label22.TabIndex = 8;
+            this.label22.Text = "Выберите учебную группу:";
+            // 
+            // cancel_change_student_group_button
+            // 
+            this.cancel_change_student_group_button.Location = new System.Drawing.Point(179, 155);
+            this.cancel_change_student_group_button.Name = "cancel_change_student_group_button";
+            this.cancel_change_student_group_button.Size = new System.Drawing.Size(112, 42);
+            this.cancel_change_student_group_button.TabIndex = 1;
+            this.cancel_change_student_group_button.Text = "Отмена";
+            this.cancel_change_student_group_button.UseVisualStyleBackColor = true;
+            this.cancel_change_student_group_button.Click += new System.EventHandler(this.cancel_change_student_group_button_Click);
+            // 
+            // ok_change_student_group_button
+            // 
+            this.ok_change_student_group_button.Location = new System.Drawing.Point(297, 155);
+            this.ok_change_student_group_button.Name = "ok_change_student_group_button";
+            this.ok_change_student_group_button.Size = new System.Drawing.Size(185, 42);
+            this.ok_change_student_group_button.TabIndex = 2;
+            this.ok_change_student_group_button.Text = "Подтвердить";
+            this.ok_change_student_group_button.UseVisualStyleBackColor = true;
+            this.ok_change_student_group_button.Click += new System.EventHandler(this.ok_change_student_group_button_button_Click);
+            // 
+            // groups_comboBox
+            // 
+            this.groups_comboBox.FormattingEnabled = true;
+            this.groups_comboBox.Location = new System.Drawing.Point(16, 71);
+            this.groups_comboBox.Name = "groups_comboBox";
+            this.groups_comboBox.Size = new System.Drawing.Size(466, 29);
+            this.groups_comboBox.TabIndex = 0;
+            // 
+            // change_group_name_panel
+            // 
+            this.change_group_name_panel.Controls.Add(this.group_name_textBox);
+            this.change_group_name_panel.Controls.Add(this.cancel_change_group_name_button);
+            this.change_group_name_panel.Controls.Add(this.ok_change_group_name_button);
+            this.change_group_name_panel.Location = new System.Drawing.Point(10, 10);
+            this.change_group_name_panel.Name = "change_group_name_panel";
+            this.change_group_name_panel.Size = new System.Drawing.Size(453, 229);
+            this.change_group_name_panel.TabIndex = 3;
+            this.change_group_name_panel.Visible = false;
+            this.change_group_name_panel.VisibleChanged += new System.EventHandler(this.change_group_name_panel_VisibleChanged);
+            // 
+            // group_name_textBox
+            // 
+            this.group_name_textBox.Location = new System.Drawing.Point(16, 46);
+            this.group_name_textBox.Name = "group_name_textBox";
+            this.group_name_textBox.Size = new System.Drawing.Size(390, 28);
+            this.group_name_textBox.TabIndex = 0;
+            this.group_name_textBox.Text = "Введите название группы";
+            // 
+            // cancel_change_group_name_button
+            // 
+            this.cancel_change_group_name_button.Location = new System.Drawing.Point(117, 164);
+            this.cancel_change_group_name_button.Name = "cancel_change_group_name_button";
+            this.cancel_change_group_name_button.Size = new System.Drawing.Size(112, 42);
+            this.cancel_change_group_name_button.TabIndex = 1;
+            this.cancel_change_group_name_button.Text = "Отмена";
+            this.cancel_change_group_name_button.UseVisualStyleBackColor = true;
+            this.cancel_change_group_name_button.Click += new System.EventHandler(this.cancel_change_group_name_button_Click);
+            // 
+            // ok_change_group_name_button
+            // 
+            this.ok_change_group_name_button.Location = new System.Drawing.Point(235, 164);
+            this.ok_change_group_name_button.Name = "ok_change_group_name_button";
+            this.ok_change_group_name_button.Size = new System.Drawing.Size(185, 42);
+            this.ok_change_group_name_button.TabIndex = 2;
+            this.ok_change_group_name_button.Text = "Подтвердить";
+            this.ok_change_group_name_button.UseVisualStyleBackColor = true;
+            this.ok_change_group_name_button.Click += new System.EventHandler(this.ok_change_group_name_button_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.show_students_comboBox);
+            this.splitContainer1.Panel1.Controls.Add(this.students_dataGridView);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.panel4);
+            this.splitContainer1.Panel2.Controls.Add(this.panel3);
+            this.splitContainer1.Panel2.Controls.Add(this.label21);
+            this.splitContainer1.Panel2.Controls.Add(this.label20);
+            this.splitContainer1.Panel2.Controls.Add(this.add_new_group_button);
+            this.splitContainer1.Panel2.Controls.Add(this.add_new_student_button);
+            this.splitContainer1.Panel2.Controls.Add(this.label19);
+            this.splitContainer1.Size = new System.Drawing.Size(998, 618);
+            this.splitContainer1.SplitterDistance = 694;
+            this.splitContainer1.TabIndex = 0;
+            this.splitContainer1.VisibleChanged += new System.EventHandler(this.splitContainer1_VisibleChanged);
+            // 
+            // show_students_comboBox
+            // 
+            this.show_students_comboBox.FormattingEnabled = true;
+            this.show_students_comboBox.Location = new System.Drawing.Point(12, 28);
+            this.show_students_comboBox.Name = "show_students_comboBox";
+            this.show_students_comboBox.Size = new System.Drawing.Size(415, 29);
+            this.show_students_comboBox.TabIndex = 1;
+            this.show_students_comboBox.TabStop = false;
+            this.show_students_comboBox.Text = "Отобразить...";
+            this.show_students_comboBox.SelectionChangeCommitted += new System.EventHandler(this.show_students_comboBox_SelectionChangeCommitted);
+            this.show_students_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.show_students_comboBox_KeyPress);
+            // 
+            // students_dataGridView
+            // 
+            this.students_dataGridView.AllowUserToAddRows = false;
+            this.students_dataGridView.AllowUserToDeleteRows = false;
+            this.students_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.students_dataGridView.CausesValidation = false;
+            this.students_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.students_dataGridView.Location = new System.Drawing.Point(3, 78);
+            this.students_dataGridView.MultiSelect = false;
+            this.students_dataGridView.Name = "students_dataGridView";
+            this.students_dataGridView.RowHeadersWidth = 10;
+            this.students_dataGridView.RowTemplate.Height = 24;
+            this.students_dataGridView.RowTemplate.ReadOnly = true;
+            this.students_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.students_dataGridView.Size = new System.Drawing.Size(663, 535);
+            this.students_dataGridView.TabIndex = 0;
+            this.students_dataGridView.TabStop = false;
+            this.students_dataGridView.ColumnHeadersHeightChanged += new System.EventHandler(this.students_dataGridView_ColumnHeadersHeightChanged);
+            this.students_dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.students_dataGridView_CellClick);
+            this.students_dataGridView.ClientSizeChanged += new System.EventHandler(this.students_dataGridView_ClientSizeChanged);
+            this.students_dataGridView.SizeChanged += new System.EventHandler(this.students_dataGridView_SizeChanged);
+            this.students_dataGridView.Resize += new System.EventHandler(this.students_dataGridView_Resize);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.change_group_name_button);
+            this.panel4.Controls.Add(this.change_group_access_to_test_button);
+            this.panel4.Controls.Add(this.delete_group_button);
+            this.panel4.Location = new System.Drawing.Point(-10, 424);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(309, 196);
+            this.panel4.TabIndex = 15;
+            // 
+            // change_group_name_button
+            // 
+            this.change_group_name_button.Location = new System.Drawing.Point(11, 4);
+            this.change_group_name_button.Name = "change_group_name_button";
+            this.change_group_name_button.Size = new System.Drawing.Size(298, 38);
+            this.change_group_name_button.TabIndex = 10;
+            this.change_group_name_button.TabStop = false;
+            this.change_group_name_button.Text = "Изменить название группы";
+            this.change_group_name_button.UseVisualStyleBackColor = true;
+            this.change_group_name_button.Click += new System.EventHandler(this.change_group_name_button_Click);
+            // 
+            // change_group_access_to_test_button
+            // 
+            this.change_group_access_to_test_button.Location = new System.Drawing.Point(11, 49);
+            this.change_group_access_to_test_button.Name = "change_group_access_to_test_button";
+            this.change_group_access_to_test_button.Size = new System.Drawing.Size(298, 38);
+            this.change_group_access_to_test_button.TabIndex = 8;
+            this.change_group_access_to_test_button.TabStop = false;
+            this.change_group_access_to_test_button.Text = "Изменить доступ группы к тесту";
+            this.change_group_access_to_test_button.UseVisualStyleBackColor = true;
+            this.change_group_access_to_test_button.Click += new System.EventHandler(this.allow_group_access_to_test_button_Click);
+            // 
+            // delete_group_button
+            // 
+            this.delete_group_button.Location = new System.Drawing.Point(11, 102);
+            this.delete_group_button.Name = "delete_group_button";
+            this.delete_group_button.Size = new System.Drawing.Size(295, 38);
+            this.delete_group_button.TabIndex = 9;
+            this.delete_group_button.TabStop = false;
+            this.delete_group_button.Text = "Удалить учебную группу";
+            this.delete_group_button.UseVisualStyleBackColor = true;
+            this.delete_group_button.Click += new System.EventHandler(this.delete_group_button_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.change_student_group_button);
+            this.panel3.Controls.Add(this.change_student_access_to_test_button);
+            this.panel3.Controls.Add(this.delete_student_profile_button);
+            this.panel3.Location = new System.Drawing.Point(-10, 149);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(309, 170);
+            this.panel3.TabIndex = 14;
+            // 
+            // change_student_group_button
+            // 
+            this.change_student_group_button.Location = new System.Drawing.Point(11, 3);
+            this.change_student_group_button.Name = "change_student_group_button";
+            this.change_student_group_button.Size = new System.Drawing.Size(298, 38);
+            this.change_student_group_button.TabIndex = 6;
+            this.change_student_group_button.TabStop = false;
+            this.change_student_group_button.Text = "Изменить учебную группу студента";
+            this.change_student_group_button.UseVisualStyleBackColor = true;
+            this.change_student_group_button.Click += new System.EventHandler(this.change_student_group_button_Click);
+            // 
+            // change_student_access_to_test_button
+            // 
+            this.change_student_access_to_test_button.Location = new System.Drawing.Point(11, 48);
+            this.change_student_access_to_test_button.Name = "change_student_access_to_test_button";
+            this.change_student_access_to_test_button.Size = new System.Drawing.Size(298, 38);
+            this.change_student_access_to_test_button.TabIndex = 7;
+            this.change_student_access_to_test_button.TabStop = false;
+            this.change_student_access_to_test_button.Text = "Изменить доступ студента к тесту";
+            this.change_student_access_to_test_button.UseVisualStyleBackColor = true;
+            this.change_student_access_to_test_button.Click += new System.EventHandler(this.allow_student_access_to_test_button_Click);
+            // 
+            // delete_student_profile_button
+            // 
+            this.delete_student_profile_button.Location = new System.Drawing.Point(11, 101);
+            this.delete_student_profile_button.Name = "delete_student_profile_button";
+            this.delete_student_profile_button.Size = new System.Drawing.Size(298, 38);
+            this.delete_student_profile_button.TabIndex = 11;
+            this.delete_student_profile_button.TabStop = false;
+            this.delete_student_profile_button.Text = "Удалить профиль студента";
+            this.delete_student_profile_button.UseVisualStyleBackColor = true;
+            this.delete_student_profile_button.Click += new System.EventHandler(this.delete_student_profile_button_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label21.Location = new System.Drawing.Point(13, 349);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(137, 21);
+            this.label21.TabIndex = 13;
+            this.label21.Text = "Учебные группы:";
+            this.label21.Click += new System.EventHandler(this.label21_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label20.Location = new System.Drawing.Point(13, 78);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(85, 21);
+            this.label20.TabIndex = 12;
+            this.label20.Text = "Студенты:";
+            this.label20.Click += new System.EventHandler(this.label20_Click);
+            // 
+            // add_new_group_button
+            // 
+            this.add_new_group_button.Location = new System.Drawing.Point(1, 383);
+            this.add_new_group_button.Name = "add_new_group_button";
+            this.add_new_group_button.Size = new System.Drawing.Size(298, 38);
+            this.add_new_group_button.TabIndex = 5;
+            this.add_new_group_button.TabStop = false;
+            this.add_new_group_button.Text = "Создать новую учебную группу";
+            this.add_new_group_button.UseVisualStyleBackColor = true;
+            this.add_new_group_button.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // add_new_student_button
+            // 
+            this.add_new_student_button.Location = new System.Drawing.Point(1, 107);
+            this.add_new_student_button.Name = "add_new_student_button";
+            this.add_new_student_button.Size = new System.Drawing.Size(298, 38);
+            this.add_new_student_button.TabIndex = 4;
+            this.add_new_student_button.TabStop = false;
+            this.add_new_student_button.Text = "Создать профиль нового студента";
+            this.add_new_student_button.UseVisualStyleBackColor = true;
+            this.add_new_student_button.Click += new System.EventHandler(this.add_new_student_button_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label19.Location = new System.Drawing.Point(13, 18);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(196, 24);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Доступные действия:";
+            // 
+            // create_student_groupBox
+            // 
+            this.create_student_groupBox.Controls.Add(this.cancel_create_student_button);
+            this.create_student_groupBox.Controls.Add(this.create_student_button);
+            this.create_student_groupBox.Controls.Add(this.create_student_group_comboBox);
+            this.create_student_groupBox.Controls.Add(this.full_name_textBox3);
+            this.create_student_groupBox.Controls.Add(this.full_name_textBox2);
+            this.create_student_groupBox.Controls.Add(this.full_name_textBox1);
+            this.create_student_groupBox.Location = new System.Drawing.Point(40, 30);
+            this.create_student_groupBox.Name = "create_student_groupBox";
+            this.create_student_groupBox.Size = new System.Drawing.Size(923, 240);
+            this.create_student_groupBox.TabIndex = 2;
+            this.create_student_groupBox.TabStop = false;
+            this.create_student_groupBox.Text = "Создание профиля студента";
+            this.create_student_groupBox.Visible = false;
+            this.create_student_groupBox.VisibleChanged += new System.EventHandler(this.create_student_groupBox_VisibleChanged);
+            // 
+            // cancel_create_student_button
+            // 
+            this.cancel_create_student_button.Location = new System.Drawing.Point(577, 188);
+            this.cancel_create_student_button.Name = "cancel_create_student_button";
+            this.cancel_create_student_button.Size = new System.Drawing.Size(112, 42);
+            this.cancel_create_student_button.TabIndex = 4;
+            this.cancel_create_student_button.Text = "Отмена";
+            this.cancel_create_student_button.UseVisualStyleBackColor = true;
+            this.cancel_create_student_button.VisibleChanged += new System.EventHandler(this.calcel_create_student_button_VisibleChanged);
+            this.cancel_create_student_button.Click += new System.EventHandler(this.cancel_create_student_button_Click);
+            // 
+            // create_student_button
+            // 
+            this.create_student_button.Location = new System.Drawing.Point(695, 188);
+            this.create_student_button.Name = "create_student_button";
+            this.create_student_button.Size = new System.Drawing.Size(215, 42);
+            this.create_student_button.TabIndex = 5;
+            this.create_student_button.Text = "Подтвердить";
+            this.create_student_button.UseVisualStyleBackColor = true;
+            this.create_student_button.Click += new System.EventHandler(this.create_student_button_Click);
+            // 
+            // create_student_group_comboBox
+            // 
+            this.create_student_group_comboBox.FormattingEnabled = true;
+            this.create_student_group_comboBox.Location = new System.Drawing.Point(577, 59);
+            this.create_student_group_comboBox.Name = "create_student_group_comboBox";
+            this.create_student_group_comboBox.Size = new System.Drawing.Size(333, 29);
+            this.create_student_group_comboBox.TabIndex = 3;
+            this.create_student_group_comboBox.Text = "Выберите учебную группу";
+            this.create_student_group_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.create_student_group_comboBox_KeyPress);
+            // 
+            // full_name_textBox3
+            // 
+            this.full_name_textBox3.Location = new System.Drawing.Point(17, 169);
+            this.full_name_textBox3.Name = "full_name_textBox3";
+            this.full_name_textBox3.Size = new System.Drawing.Size(500, 28);
+            this.full_name_textBox3.TabIndex = 2;
+            this.full_name_textBox3.Text = "Отчество";
+            this.full_name_textBox3.Click += new System.EventHandler(this.full_name_textBox3_Click);
+            this.full_name_textBox3.TextChanged += new System.EventHandler(this.full_name_textBox3_TextChanged);
+            this.full_name_textBox3.Leave += new System.EventHandler(this.full_name_textBox3_Leave);
+            // 
+            // full_name_textBox2
+            // 
+            this.full_name_textBox2.Location = new System.Drawing.Point(17, 114);
+            this.full_name_textBox2.Name = "full_name_textBox2";
+            this.full_name_textBox2.Size = new System.Drawing.Size(500, 28);
+            this.full_name_textBox2.TabIndex = 1;
+            this.full_name_textBox2.Text = "Имя";
+            this.full_name_textBox2.Click += new System.EventHandler(this.full_name_textBox2_Click);
+            this.full_name_textBox2.TextChanged += new System.EventHandler(this.full_name_textBox2_TextChanged);
+            this.full_name_textBox2.Leave += new System.EventHandler(this.full_name_textBox2_Leave);
+            // 
+            // full_name_textBox1
+            // 
+            this.full_name_textBox1.Location = new System.Drawing.Point(17, 60);
+            this.full_name_textBox1.Name = "full_name_textBox1";
+            this.full_name_textBox1.Size = new System.Drawing.Size(500, 28);
+            this.full_name_textBox1.TabIndex = 0;
+            this.full_name_textBox1.Text = "Фамилия";
+            this.full_name_textBox1.Click += new System.EventHandler(this.full_name_textBox1_Click);
+            this.full_name_textBox1.TextChanged += new System.EventHandler(this.full_name_textBox1_TextChanged);
+            this.full_name_textBox1.Leave += new System.EventHandler(this.full_name_textBox1_Leave);
+            // 
+            // marks_journal_page
+            // 
+            this.marks_journal_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.marks_journal_page.Controls.Add(this.tabControl4);
+            this.marks_journal_page.Location = new System.Drawing.Point(4, 30);
+            this.marks_journal_page.Name = "marks_journal_page";
+            this.marks_journal_page.Padding = new System.Windows.Forms.Padding(3);
+            this.marks_journal_page.Size = new System.Drawing.Size(1008, 628);
+            this.marks_journal_page.TabIndex = 4;
+            this.marks_journal_page.Text = "Журнал успеваемости";
+            // 
+            // tabControl4
+            // 
+            this.tabControl4.Controls.Add(this.group_journal_page);
+            this.tabControl4.Controls.Add(this.student_journal_page);
+            this.tabControl4.Location = new System.Drawing.Point(-2, 1);
+            this.tabControl4.Name = "tabControl4";
+            this.tabControl4.SelectedIndex = 0;
+            this.tabControl4.Size = new System.Drawing.Size(1008, 625);
+            this.tabControl4.TabIndex = 0;
+            this.tabControl4.TabStop = false;
+            this.tabControl4.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged);
+            // 
+            // group_journal_page
+            // 
+            this.group_journal_page.Controls.Add(this.choose_group_for_marks_comboBox);
+            this.group_journal_page.Controls.Add(this.group_marks_table);
+            this.group_journal_page.Location = new System.Drawing.Point(4, 30);
+            this.group_journal_page.Name = "group_journal_page";
+            this.group_journal_page.Padding = new System.Windows.Forms.Padding(3);
+            this.group_journal_page.Size = new System.Drawing.Size(1000, 591);
+            this.group_journal_page.TabIndex = 0;
+            this.group_journal_page.Text = "Учебная группа";
+            this.group_journal_page.UseVisualStyleBackColor = true;
+            // 
+            // choose_group_for_marks_comboBox
+            // 
+            this.choose_group_for_marks_comboBox.FormattingEnabled = true;
+            this.choose_group_for_marks_comboBox.Location = new System.Drawing.Point(6, 21);
+            this.choose_group_for_marks_comboBox.Name = "choose_group_for_marks_comboBox";
+            this.choose_group_for_marks_comboBox.Size = new System.Drawing.Size(343, 29);
+            this.choose_group_for_marks_comboBox.TabIndex = 1;
+            this.choose_group_for_marks_comboBox.TabStop = false;
+            this.choose_group_for_marks_comboBox.Text = "Выберите учебную группу";
+            this.choose_group_for_marks_comboBox.SelectionChangeCommitted += new System.EventHandler(this.choose_group_for_marks_comboBox_SelectionChangeCommitted);
+            // 
+            // group_marks_table
+            // 
+            this.group_marks_table.AllowUserToAddRows = false;
+            this.group_marks_table.AllowUserToDeleteRows = false;
+            this.group_marks_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.group_marks_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.group_marks_table.Location = new System.Drawing.Point(6, 73);
+            this.group_marks_table.Name = "group_marks_table";
+            this.group_marks_table.ReadOnly = true;
+            this.group_marks_table.RowHeadersWidth = 15;
+            this.group_marks_table.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.group_marks_table.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.group_marks_table.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.group_marks_table.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.group_marks_table.RowTemplate.Height = 24;
+            this.group_marks_table.RowTemplate.ReadOnly = true;
+            this.group_marks_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.group_marks_table.Size = new System.Drawing.Size(988, 510);
+            this.group_marks_table.TabIndex = 0;
+            this.group_marks_table.TabStop = false;
+            // 
+            // student_journal_page
+            // 
+            this.student_journal_page.Controls.Add(this.choose_student_group_for_marks_comboBox);
+            this.student_journal_page.Controls.Add(this.student_marks_table);
+            this.student_journal_page.Controls.Add(this.choose_student_for_marks_comboBox);
+            this.student_journal_page.Location = new System.Drawing.Point(4, 30);
+            this.student_journal_page.Name = "student_journal_page";
+            this.student_journal_page.Padding = new System.Windows.Forms.Padding(3);
+            this.student_journal_page.Size = new System.Drawing.Size(1000, 591);
+            this.student_journal_page.TabIndex = 1;
+            this.student_journal_page.Text = "Студент";
+            this.student_journal_page.UseVisualStyleBackColor = true;
+            this.student_journal_page.Click += new System.EventHandler(this.student_journal_page_Click);
+            // 
+            // choose_student_group_for_marks_comboBox
+            // 
+            this.choose_student_group_for_marks_comboBox.FormattingEnabled = true;
+            this.choose_student_group_for_marks_comboBox.Location = new System.Drawing.Point(6, 21);
+            this.choose_student_group_for_marks_comboBox.Name = "choose_student_group_for_marks_comboBox";
+            this.choose_student_group_for_marks_comboBox.Size = new System.Drawing.Size(343, 29);
+            this.choose_student_group_for_marks_comboBox.TabIndex = 5;
+            this.choose_student_group_for_marks_comboBox.TabStop = false;
+            this.choose_student_group_for_marks_comboBox.Text = "Выберите учебную группу";
+            this.choose_student_group_for_marks_comboBox.SelectionChangeCommitted += new System.EventHandler(this.choose_student_group_for_marks_comboBox_SelectionChangeCommitted);
+            // 
+            // student_marks_table
+            // 
+            this.student_marks_table.AllowUserToAddRows = false;
+            this.student_marks_table.AllowUserToDeleteRows = false;
+            this.student_marks_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.student_marks_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.student_marks_table.Location = new System.Drawing.Point(6, 73);
+            this.student_marks_table.Name = "student_marks_table";
+            this.student_marks_table.ReadOnly = true;
+            this.student_marks_table.RowHeadersWidth = 15;
+            this.student_marks_table.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.student_marks_table.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.student_marks_table.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.student_marks_table.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.student_marks_table.RowTemplate.Height = 24;
+            this.student_marks_table.RowTemplate.ReadOnly = true;
+            this.student_marks_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.student_marks_table.Size = new System.Drawing.Size(988, 510);
+            this.student_marks_table.TabIndex = 4;
+            this.student_marks_table.TabStop = false;
+            // 
+            // choose_student_for_marks_comboBox
+            // 
+            this.choose_student_for_marks_comboBox.FormattingEnabled = true;
+            this.choose_student_for_marks_comboBox.Location = new System.Drawing.Point(401, 21);
+            this.choose_student_for_marks_comboBox.Name = "choose_student_for_marks_comboBox";
+            this.choose_student_for_marks_comboBox.Size = new System.Drawing.Size(343, 29);
+            this.choose_student_for_marks_comboBox.TabIndex = 3;
+            this.choose_student_for_marks_comboBox.TabStop = false;
+            this.choose_student_for_marks_comboBox.Text = "Выберите студента";
+            this.choose_student_for_marks_comboBox.Visible = false;
+            this.choose_student_for_marks_comboBox.SelectedIndexChanged += new System.EventHandler(this.choose_student_for_marks_comboBox_SelectedIndexChanged_1);
+            this.choose_student_for_marks_comboBox.SelectionChangeCommitted += new System.EventHandler(this.choose_student_for_marks_comboBox_SelectionChangeCommitted);
+            // 
+            // tip1
+            // 
+            this.tip1.AutoPopDelay = 5000;
+            this.tip1.InitialDelay = 10;
+            this.tip1.ReshowDelay = 500;
+            this.tip1.ShowAlways = true;
+            this.tip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            this.tip1.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTip1_Draw);
+            // 
+            // tip2
+            // 
+            this.tip2.AutoPopDelay = 5000;
+            this.tip2.InitialDelay = 10;
+            this.tip2.ReshowDelay = 500;
+            this.tip2.ShowAlways = true;
+            this.tip2.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
             // TeacherForm
             // 
@@ -1991,8 +2681,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 663);
             this.Controls.Add(this.tabControl1);
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(847, 570);
             this.Name = "TeacherForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TeacherForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TeacherForm_FormClosed);
             this.Load += new System.EventHandler(this.TeacherForm_Load);
@@ -2005,19 +2697,19 @@
             this.tests_page.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.tests_table_page.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.teacher_one_test_table)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teacher_available_tests_table)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teacher_one_test_table)).EndInit();
             this.tasks_table_page.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.available_teacher_tasks_table)).EndInit();
             this.create_tests_page.ResumeLayout(false);
+            this.create_test_groupBox.ResumeLayout(false);
+            this.create_test_groupBox.PerformLayout();
             this.create_version_questions_groupBox.ResumeLayout(false);
             this.create_version_questions_groupBox.PerformLayout();
             this.select_existing_question_panel.ResumeLayout(false);
             this.select_existing_question_panel.PerformLayout();
             this.create_new_question_panel.ResumeLayout(false);
             this.create_new_question_panel.PerformLayout();
-            this.create_test_groupBox.ResumeLayout(false);
-            this.create_test_groupBox.PerformLayout();
             this.edit_tests_page.ResumeLayout(false);
             this.edit_test_groupBox.ResumeLayout(false);
             this.edit_task_panel.ResumeLayout(false);
@@ -2031,19 +2723,41 @@
             this.new_timer_panel.PerformLayout();
             this.new_comment_panel.ResumeLayout(false);
             this.new_comment_panel.PerformLayout();
-            this.contextMenuStrip2.ResumeLayout(false);
             this.profile_page.ResumeLayout(false);
+            this.change_teacher_login_panel.ResumeLayout(false);
+            this.change_teacher_login_panel.PerformLayout();
             this.change_full_name_panel.ResumeLayout(false);
             this.change_full_name_panel.PerformLayout();
             this.teacher_profile_main_panel.ResumeLayout(false);
             this.teacher_profile_main_panel.PerformLayout();
             this.change_teacher_password_panel.ResumeLayout(false);
             this.change_teacher_password_panel.PerformLayout();
-            this.change_teacher_login_panel.ResumeLayout(false);
-            this.change_teacher_login_panel.PerformLayout();
             this.teacher_identity_check_panel.ResumeLayout(false);
             this.teacher_identity_check_panel.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.students_page.ResumeLayout(false);
+            this.test_access_panel.ResumeLayout(false);
+            this.test_access_panel.PerformLayout();
+            this.change_student_group_panel.ResumeLayout(false);
+            this.change_student_group_panel.PerformLayout();
+            this.change_group_name_panel.ResumeLayout(false);
+            this.change_group_name_panel.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.students_dataGridView)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.create_student_groupBox.ResumeLayout(false);
+            this.create_student_groupBox.PerformLayout();
+            this.marks_journal_page.ResumeLayout(false);
+            this.tabControl4.ResumeLayout(false);
+            this.group_journal_page.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.group_marks_table)).EndInit();
+            this.student_journal_page.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.student_marks_table)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2099,7 +2813,7 @@
         private System.Windows.Forms.TextBox answer_textBox2;
         private System.Windows.Forms.TextBox answer_textBox1;
         private System.Windows.Forms.TextBox question_textBox;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button delete_teacher_profile_button;
         private System.Windows.Forms.Button exit_student_profile_button;
         private System.Windows.Forms.GroupBox edit_test_groupBox;
         private System.Windows.Forms.Button confirm_change_button;
@@ -2125,7 +2839,7 @@
         private System.Windows.Forms.TextBox id_textBox;
         private System.Windows.Forms.ComboBox available_teacher_tests_comboBox;
         private System.Windows.Forms.TabPage students_page;
-        private System.Windows.Forms.TabPage statistics_page;
+        private System.Windows.Forms.TabPage marks_journal_page;
         private System.Windows.Forms.TextBox new_name_textBox;
         private System.Windows.Forms.Panel new_comment_panel;
         private System.Windows.Forms.TextBox new_comment_textBox;
@@ -2199,11 +2913,58 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox new_surname_textBox;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem открытьТестToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem вернутьсяКСпискуТестовToolStripMenuItem;
         private System.Windows.Forms.Button open_test_button;
         private System.Windows.Forms.Button return_to_available_tests_table_button;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ComboBox show_students_comboBox;
+        private System.Windows.Forms.DataGridView students_dataGridView;
+        private System.Windows.Forms.Button delete_student_profile_button;
+        private System.Windows.Forms.Button delete_group_button;
+        private System.Windows.Forms.Button change_group_access_to_test_button;
+        private System.Windows.Forms.Button change_student_access_to_test_button;
+        private System.Windows.Forms.Button change_student_group_button;
+        private System.Windows.Forms.Button add_new_group_button;
+        private System.Windows.Forms.Button add_new_student_button;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.GroupBox create_student_groupBox;
+        private System.Windows.Forms.Button cancel_create_student_button;
+        private System.Windows.Forms.Button create_student_button;
+        private System.Windows.Forms.ComboBox create_student_group_comboBox;
+        private System.Windows.Forms.TextBox full_name_textBox3;
+        private System.Windows.Forms.TextBox full_name_textBox2;
+        private System.Windows.Forms.TextBox full_name_textBox1;
+        private System.Windows.Forms.Button change_group_name_button;
+        private System.Windows.Forms.Panel change_student_group_panel;
+        private System.Windows.Forms.Button cancel_change_student_group_button;
+        private System.Windows.Forms.Button ok_change_student_group_button;
+        private System.Windows.Forms.ComboBox groups_comboBox;
+        private System.Windows.Forms.Panel change_group_name_panel;
+        private System.Windows.Forms.TextBox group_name_textBox;
+        private System.Windows.Forms.Button cancel_change_group_name_button;
+        private System.Windows.Forms.Button ok_change_group_name_button;
+        private System.Windows.Forms.ToolTip tip1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ToolTip tip2;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Panel test_access_panel;
+        private System.Windows.Forms.Button cancel_test_access_button;
+        private System.Windows.Forms.Button ok_test_access_button;
+        private System.Windows.Forms.ComboBox test_access_comboBox;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.RadioButton prohibit_radioButton;
+        private System.Windows.Forms.ToolTip tip3;
+        private System.Windows.Forms.RadioButton allow_radioButton;
+        private System.Windows.Forms.TabControl tabControl4;
+        private System.Windows.Forms.TabPage group_journal_page;
+        private System.Windows.Forms.ComboBox choose_group_for_marks_comboBox;
+        private System.Windows.Forms.TabPage student_journal_page;
+        private System.Windows.Forms.DataGridView group_marks_table;
+        private System.Windows.Forms.DataGridView student_marks_table;
+        private System.Windows.Forms.ComboBox choose_student_for_marks_comboBox;
+        private System.Windows.Forms.ComboBox choose_student_group_for_marks_comboBox;
     }
 }

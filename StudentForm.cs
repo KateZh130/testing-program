@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -26,6 +27,7 @@ namespace testing_program
         List<string> answers_text = new List<string>();
         List<string> questions = new List<string>();
         List<string> profil_info_list = new List<string>();
+        readonly Stopwatch stopWatch = new Stopwatch();
 
         int question_index = 0;
 
@@ -45,16 +47,16 @@ namespace testing_program
             RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3, radioButton4 };
             CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3, checkBox4 };
             if (question_type == 1)
-                {
-                    for (int i = 0; i < radioButtons.Length; ++i)
-                        radioButtons[i].Checked = false;
-                }
-                else
-                {
-                    for (int i = 0; i < checkBoxes.Length; ++i)
-                        checkbox.Clear(checkBoxes[i]);
-                }
-            
+            {
+                for (int i = 0; i < radioButtons.Length; ++i)
+                    radioButtons[i].Checked = false;
+            }
+            else
+            {
+                for (int i = 0; i < checkBoxes.Length; ++i)
+                    checkbox.Clear(checkBoxes[i]);
+            }
+
         }
 
         private void FillStudentProfileMainPanel()
@@ -76,7 +78,7 @@ namespace testing_program
         {
             choose_test_panel.Visible = true;
             data.Reset_student_available_test_table(database, user_id, available_test_table);
-            
+
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
@@ -121,6 +123,7 @@ namespace testing_program
                     questions = database.Get_test_questions(version_id, questions);
                     FillTestingPanelAndGetRightAnswer();
                     test_timer.Start();
+                    stopWatch.Start();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -141,7 +144,7 @@ namespace testing_program
                     right_answers = database.Get_right_answers(version_id, questions[question_index]);
                 }
                 catch { MessageBox.Show("Ошибка получения ответов"); }
-                
+
                 if (question_type == 1) //вопрос с одним правильным ответом
                 {
                     one_answer_panel.Visible = true;
@@ -158,6 +161,7 @@ namespace testing_program
             else
             {
                 test_timer.Stop();
+                stopWatch.Stop();
                 Finish_testing();
             }
         }
@@ -183,11 +187,13 @@ namespace testing_program
         private void Finish_testing()
         {
             int mark = Calculate_mark();
+            double time = Math.Round(Convert.ToDouble(stopWatch.ElapsedMilliseconds / 1000), 2);
             MessageBox.Show("Тест пройден!\nВаша оценка: " + mark + "\n" +
                 "Чтобы получить больше информации зайдите в раздел Результаты", "Результат");
-            database.Add_mark_to_database(mark, test_id, user_id);
+            database.Add_mark_to_database(mark, test_id, user_id, time);
             data.Reset_student_available_test_table(database, user_id, available_test_table);
             questions.Clear();
+            stopWatch.Reset();
             Clear_test_variables();
             choose_test_panel.Visible = true;
         }
@@ -211,14 +217,12 @@ namespace testing_program
                 return 4;
             return 5;
         }
-        //**********************для выбирания теста в таблице препода******************************************
         private void Available_test_table_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             test_id = Convert.ToInt32(available_test_table.SelectedCells[0].Value);
             data.Change_back_color(available_test_table, Color.SkyBlue);
             data.Change_fore_color(available_test_table, Color.Black);
         }
-        //**************************************************************************
 
         private void One_answer_button_Click(object sender, EventArgs e)
         {
@@ -231,9 +235,9 @@ namespace testing_program
         private bool Check_one_answer()
         {
             RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3, radioButton4 };
-            for(int i=0; i < radioButtons.Length; ++i)
+            for (int i = 0; i < radioButtons.Length; ++i)
             {
-                if( radioButtons[i].Text==right_answers[0])
+                if (radioButtons[i].Text == right_answers[0])
                 {
                     return radioButtons[i].Checked;
                 }
@@ -244,12 +248,12 @@ namespace testing_program
         {
             List<string> choosen_answers = new List<string>();
             CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3, checkBox4 };
-            for(int i = 0; i < checkBoxes.Length; ++i)
+            for (int i = 0; i < checkBoxes.Length; ++i)
             {
                 if (checkBoxes[i].Checked == true)
                     choosen_answers.Add(checkBoxes[i].Text);
             }
-           bool result= choosen_answers.OrderBy(m => m).SequenceEqual(right_answers.OrderBy(m => m));
+            bool result = choosen_answers.OrderBy(m => m).SequenceEqual(right_answers.OrderBy(m => m));
             choosen_answers.Clear();
             return result;
         }
@@ -283,7 +287,7 @@ namespace testing_program
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-                    
+
         }
 
         private void Show_list_of_completed_tests_CheckedChanged(object sender, EventArgs e)
@@ -440,23 +444,11 @@ namespace testing_program
                 change_student_password_panel.Visible = true;
             }
         }
-        //******************************************************************************
-        //вспомогательная кнопка
-        //УДАЛИТЬ ПОСЛЕ ТЕСТИРОВАНИЯ
-        private void button1_Click(object sender, EventArgs e)
-        {
-            database.Delete_results_and_mark();
-            data.Hide(one_result_dataGridView);
-            data.Reset_completed_tests_list_table(database, user_id, results_dataGridView);
-            data.Hide(results_dataGridView);
-            data.Reset_one_test_result_table(database, user_id, one_result_dataGridView, passed_tests);
-            data.Reset_student_available_test_table(database, user_id, available_test_table);
-        }
-        //*****************************************************************************************
 
         private void Test_timer_Tick(object sender, EventArgs e)
         {
             test_timer.Stop();
+            stopWatch.Stop();
             bool result;
             if (database.Get_question_type(version_id, questions[question_index]) == 1)
             {

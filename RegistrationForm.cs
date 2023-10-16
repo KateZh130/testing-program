@@ -18,7 +18,7 @@ namespace testing_program
         {
             InitializeComponent();
             this.database = database;
-            database.Fill_registrationForm_collection_select_group(select_group_registration);
+            database.Fill_groups_collection(select_group_registration, false, false);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -28,7 +28,6 @@ namespace testing_program
         bool signInPasswordTextIsChanged = false;
         private void Sign_in_password_TextChanged(object sender, EventArgs e)
         {
-
             signInPasswordTextIsChanged = textboxclass.Check_text_is_changed(sign_in_password, "Введите пароль");
         }
 
@@ -39,7 +38,7 @@ namespace testing_program
         }
 
         private void Sign_in_password_Leave(object sender, EventArgs e)
-        {
+                {
             sign_in_password.UseSystemPasswordChar = !textboxclass.Return_original_text(sign_in_password, "Введите пароль");
         }
 
@@ -223,9 +222,13 @@ namespace testing_program
                 }
                 else
                 {
-                    if (textboxclass.Check_text_is_changed(teacher_name, "Введите ФИО"))
+                    if (!textboxclass.Check_text_is_changed(teacher_name, "Введите ФИО"))
                     {
                         MessageBox.Show("Заполните обязательные поля!");
+                    }
+                    else if (!textboxclass.Check_full_name_correct(teacher_name))
+                    {
+                        MessageBox.Show("Некорректно заполнено поле Введите ФИО");
                     }
                     else if (textboxclass.Check_passwords_are_matching(password_registration.Text, test_password_registration.Text))
                     {
@@ -255,7 +258,7 @@ namespace testing_program
         {
             TextBox[] textBoxes = { sign_in_login, sign_in_password };
             string[] text = { "Введите логин", "Введите пароль" };
-            if(!comboboxclass.Check_is_changed(sign_in_role) || !textboxclass.Check_textboxes_text_are_changed(text, textBoxes))
+            if (!comboboxclass.Check_is_changed(sign_in_role) || !textboxclass.Check_textboxes_text_are_changed(text, textBoxes))
             {
                 MessageBox.Show("Заполните обязательные поля!");
             }
@@ -277,12 +280,17 @@ namespace testing_program
         {
             comboboxclass.Return_original_text(select_full_name_registration, "Выберите свое имя из списка группы");
             comboboxclass.Delete_collection(select_full_name_registration);
-            database.Fill_registrationForm_collection_select_student_name(select_group_registration, select_full_name_registration);
+            database.Fill_student_name_collection(select_group_registration.SelectedItem.ToString(), select_full_name_registration, false);
         }
 
         private void Sign_in_role_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void RegistrationForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

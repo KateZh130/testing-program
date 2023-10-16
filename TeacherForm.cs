@@ -15,21 +15,23 @@ namespace testing_program
         readonly DataGridViewClass data = new DataGridViewClass();
         readonly RadiobuttonClass radiobutton = new RadiobuttonClass();
         readonly DatabaseClass database;
+        DialogResult dialogResult;
 
         private int test_id = 0;
         private int version_id = 0;
         private int version_counter = 0;
         private int question_counter = 1;
         readonly int user_id;
-        int edit_method;
+        int student_id = -1;
+        int group_id = -1;
+        int edit_method=0;
         bool edit_mode = false;
+        bool create_mode = false;
         bool contextmenustrip1_enabled = false;
-
-
+        
         List<string> profil_info_list = new List<string>();
         List<string> questions_text = new List<string>();
-        List<int> versions_id = new List<int>();
-
+        readonly List<int> versions_id = new List<int>();
 
         public TeacherForm(DatabaseClass database, int user_id)
         {
@@ -40,6 +42,7 @@ namespace testing_program
             FillTeacherProfileMainPanel();
             data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table);
             data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
+            
             //contextMenuStrip1.Enabled = false;
         }
 
@@ -62,6 +65,7 @@ namespace testing_program
         }
         private void TeacherForm_Load(object sender, EventArgs e)
         {
+
         }
 
         private void Change_teacher_login_button_Click(object sender, EventArgs e)
@@ -187,11 +191,8 @@ namespace testing_program
 
         private void Add_new_test_to_db_Click(object sender, EventArgs e)
         {
-            //create_version_questions_groupBox
-            //comment_textBox
             if (textbox.Check_text_is_changed(new_test_name_textBox, "Введите название теста") && textbox.Check_text_is_changed(new_timer_textBox, "0"))
             {
-                //проверка что такого теста нет
                 if (database.Check_test_exist(new_test_name_textBox.Text, user_id))
                 {
                     MessageBox.Show("Тест с таким именем уже существует");
@@ -199,11 +200,11 @@ namespace testing_program
                 else
                 {
                     test_id = database.Add_new_test_to_database(new_test_name_textBox, new_timer_textBox, comment_textBox, user_id);
-
                     create_test_groupBox.Visible = false;
                     create_version_questions_groupBox.Visible = true;
                     ++version_counter;
                     version_id = database.Create_new_test_version(test_id, version_counter);
+                    create_mode = true;
                 }
             }
             else
@@ -242,9 +243,13 @@ namespace testing_program
             {
                 if (Check_question_panel_is_filled(textBoxes, text) && Check_right_answers_number(checkBoxes, question_type_comboBox.SelectedIndex))
                 {
-                    Save_test_question(textBoxes, checkBoxes, text);
-                    ++question_counter;
-                    create_new_question_panel.Visible = false;
+                    if(!database.Check_question_exist(question_textBox.Text, question_type_comboBox.SelectedIndex+1, user_id, -1))
+                    {
+                        Save_test_question(textBoxes, checkBoxes, text);
+                        ++question_counter;
+                        radiobutton.Clear_selection(new_method_radioButton);
+                    }
+                    else MessageBox.Show("Такое тестовое задание уже существует. Измените текст/тип вопроса или выберите этот вопрос из уже существующих.");
                 }
             }
             else if (select_existing_method_radioButton.Checked == true)
@@ -253,12 +258,11 @@ namespace testing_program
                 {
                     database.Create_version_question_connection(Convert.ToInt32(id_textBox.Text), version_id);
                     ++question_counter;
-                    select_existing_question_panel.Visible = false;
+                    radiobutton.Clear_selection(select_existing_method_radioButton);
                 }
             }
             else MessageBox.Show("Выберите метод создания тестового задания");
-            radiobutton.Clear_selection(new_method_radioButton);
-            radiobutton.Clear_selection(select_existing_method_radioButton);
+
         }
 
         private void Save_test_question(TextBox[] textBoxes, CheckBox[] checkBoxes, string[] text)
@@ -318,12 +322,15 @@ namespace testing_program
             {
                 if (Check_question_panel_is_filled(textBoxes, text) && Check_right_answers_number(checkBoxes, question_type_comboBox.SelectedIndex))
                 {
-                    Save_test_question(textBoxes, checkBoxes, text);
-                    ++version_counter;
-                    question_counter = 1;
-                    version_id = database.Create_new_test_version(test_id, version_counter);
-                    //Update_new_question_form(textBoxes, text, checkBoxes, question_type_comboBox);
-                    create_new_question_panel.Visible = false;
+                    if (!database.Check_question_exist(question_textBox.Text, question_type_comboBox.SelectedIndex + 1, user_id,-1))
+                    {
+                        Save_test_question(textBoxes, checkBoxes, text);
+                        ++version_counter;
+                        question_counter = 1;
+                        version_id = database.Create_new_test_version(test_id, version_counter);
+                        radiobutton.Clear_selection(new_method_radioButton);
+                    }
+                    else MessageBox.Show("Такое тестовое задание уже существует. Измените текст/тип вопроса или выберите этот вопрос из уже существующих.");
                 }
             }
             else if (select_existing_method_radioButton.Checked == true)
@@ -334,17 +341,30 @@ namespace testing_program
                     ++version_counter;
                     question_counter = 1;
                     version_id = database.Create_new_test_version(test_id, version_counter);
-                    select_existing_question_panel.Visible = false;//Update_Select_existing_question_panel();
+                    radiobutton.Clear_selection(select_existing_method_radioButton);
                 }
             }
             else MessageBox.Show("Выберите метод создания тестового задания");
-            radiobutton.Clear_selection(new_method_radioButton);
-            radiobutton.Clear_selection(select_existing_method_radioButton);
         }
 
         private void TeacherForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (create_mode && test_id != 0)
+            {
+                dialogResult = MessageBox.Show("Идёт создание теста. Вы уверены, что хотите закрыть приложение? Введенные данные не сохранятся.", "Предупреждение", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    database.Delete_test(user_id, test_id);
+                    Application.Exit();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    tabControl1.SelectedIndex = 1;
+                    tabControl2.SelectedIndex = 1;
+                }
+            }
+            else Application.Exit();
+
         }
 
         private void Exit_student_profile_button_Click(object sender, EventArgs e)
@@ -360,40 +380,27 @@ namespace testing_program
             CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3, checkBox4 };
             if (new_method_radioButton.Checked == true && Check_question_panel_is_filled(textBoxes, text) && Check_right_answers_number(checkBoxes, question_type_comboBox.SelectedIndex))
             {
-                Save_test_question(textBoxes, checkBoxes, text);
-                //test_id = 0;//
-                //version_counter = 0;//
-                //question_counter = 1;//
-                //Update_new_question_form(textBoxes, text, checkBoxes, question_type_comboBox);
-                create_new_question_panel.Visible = false;
-                create_version_questions_groupBox.Visible = false;
-                //
-                //contextMenuStrip1.Show(tabControl1, new Point(66, 28));
-                data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table); //
-                data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
+                if (!database.Check_question_exist(question_textBox.Text, question_type_comboBox.SelectedIndex + 1, user_id,-1))
+                {
+                    Save_test_question(textBoxes, checkBoxes, text);
+                    create_new_question_panel.Visible = false;
+                    create_version_questions_groupBox.Visible = false;
+                    create_test_groupBox.Visible = true;
+                    data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table); 
+                    data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
+                }
+                else MessageBox.Show("Такое тестовое задание уже существует. Измените текст/тип вопроса или выберите этот вопрос из уже существующих.");
             }
 
             else if (select_existing_method_radioButton.Checked == true && Check_select_existing_question_panel_filled())
             {
                 database.Create_version_question_connection(Convert.ToInt32(id_textBox.Text), version_id);
-                //test_id = 0;//
-                //version_counter = 0;//
-                //question_counter = 1;//
-                select_existing_question_panel.Visible = false; //Update_Select_existing_question_panel();
+                select_existing_question_panel.Visible = false;
+                create_test_groupBox.Visible = true;
                 create_version_questions_groupBox.Visible = false;
-
-                //contextMenuStrip1.Show(tabControl1, new Point(66, 28));
                 data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table);//
                 data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
             }
-            //create_version_questions_groupBox.Visible = false; !mode
-            //create_new_question_panel.Visible = false;
-            //select_existing_question_panel.Visible = false;
-            //data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table);
-            //test_id = 0;
-            //version_counter = 0;
-            //question_counter = 1;
-
         }
 
         private void Edit_test_MenuItem_Click(object sender, EventArgs e)
@@ -689,7 +696,7 @@ namespace testing_program
                 string test_name = "";
                 if (combobox.Check_is_changed(available_teacher_tests_comboBox))
                 { test_name = available_teacher_tests_comboBox.SelectedItem.ToString(); }
-                DialogResult dialogResult;
+                
                 switch (edit_method)
                 {
                     case 0:
@@ -702,6 +709,8 @@ namespace testing_program
                         version_counter = database.Get_last_version_number(user_id, test_name) + 1;
                         version_id = database.Create_new_test_version(test_id, version_counter);
                         tabControl2.SelectedTab = create_tests_page;
+                                        create_test_groupBox.Visible = false;
+
                         create_version_questions_groupBox.Visible = true;
                         break;
                     case 2:
@@ -712,7 +721,7 @@ namespace testing_program
                             version_id = database.Get_version_id_by_number(user_id, test_id,
                                 Convert.ToInt32(choose_deleted_version_comboBox.SelectedItem));
                             question_counter = database.Get_last_question_number(user_id, test_id, version_id) + 1;
-
+                            create_test_groupBox.Visible = false;
                             add_task_or_delete_version_panel.Visible = false;
                             tabControl2.SelectedTab = create_tests_page;
                             create_version_questions_groupBox.Visible = true;
@@ -757,25 +766,59 @@ namespace testing_program
                         if (combobox.Check_is_changed(choose_task_comboBox))
                         {
                             CheckBox[] checkBoxes = { checkBox9, checkBox10, checkBox11, checkBox12 };
-                            if (Check_right_answers_number(checkBoxes, edit_question_type_comboBox.SelectedIndex))
-                            {
-                                Update_task();
-                                edit_task_panel.Visible = false;
-                                available_teacher_tests_comboBox.Visible = true;
+                            if (!database.Check_question_exist(edit_test_name_textBox.Text, edit_question_type_comboBox.SelectedIndex+1, user_id, 
+                                Convert.ToInt32(edit_question_id_textBox.Text)))
+                            { 
+                                if (Check_right_answers_number(checkBoxes, edit_question_type_comboBox.SelectedIndex))
+                                {
+                                    Update_task();
+                                    edit_task_panel.Visible = false;
+                                    available_teacher_tests_comboBox.Visible = true;
+                                }
                             }
+                            else MessageBox.Show("Такое тестовое задание уже существует. Измените текст/тип вопроса.");
+
                         }
                         else MessageBox.Show("Заполните обязательные поля!");
                         break;
                     case 7:
                         if (combobox.Check_is_changed(delete_mode_choose_version_comboBox) && combobox.Check_is_changed(delete_task_comboBox))
                         {
-                            dialogResult = MessageBox.Show("Вы уверены, что хотите удалить выбранное тестовое задание? ", "Предупреждение",
-                                MessageBoxButtons.YesNo);
+                            bool delete_version = false;
+                            bool delete_test = false;
+                            string message = "Вы уверены, что хотите удалить выбранное тестовое задание?";
+                            if(!database.Check_version_have_another_tasks(delete_task_comboBox.SelectedItem.ToString(), Convert.ToInt32(delete_mode_choose_version_comboBox.SelectedItem), user_id))
+                            {
+                                if(!database.Check_test_have_another_version(available_teacher_tests_comboBox.SelectedItem.ToString(),
+                                    Convert.ToInt32(delete_mode_choose_version_comboBox.SelectedItem), user_id))
+                                {
+                                    message = "Так как в данном тесте только один вариант с единственным тестовым заданием, " +
+                                        "при удалении задания, тест так же будет удалён. Продолжить удаление? ";
+                                    delete_test = true;
+                                }
+                                else
+                                {
+                                    message = "В данном варианте только одно задание." +
+                                    " При удалении тестового задания, вариант так же будет удалён. Продолжить удаление? ";
+                                    delete_version = true;
+                                }
+                                
+                            }
+                                dialogResult = MessageBox.Show(message, "Предупреждение", MessageBoxButtons.YesNo);
                             if (dialogResult == DialogResult.Yes)
                             {
                                 database.Delete_task_from_test_version(user_id,
                                     Convert.ToInt32(delete_mode_choose_version_comboBox.SelectedItem),
                                     test_name, delete_task_comboBox.SelectedItem.ToString());
+                                if (delete_test)
+                                {
+                                    database.Delete_test(user_id, database.Get_test_id(user_id, test_name));
+                                }
+                                else if (delete_version)
+                                {
+                                    database.Delete_version(user_id, Convert.ToInt32(delete_mode_choose_version_comboBox.SelectedItem), test_name, -1);
+                                }
+                                
                                 delete_task_panel.Visible = false;
                             }
                             else if (dialogResult == DialogResult.No)
@@ -787,12 +830,24 @@ namespace testing_program
                     case 8:
                         if (combobox.Check_is_changed(choose_deleted_version_comboBox))
                         {
-                            dialogResult = MessageBox.Show("Вы уверены, что хотите безвозвратно удалить выбранный вариант?", "Предупреждение",
-                                MessageBoxButtons.YesNo);
+                            bool delete_test = false;
+                            string message = "Вы уверены, что хотите безвозвратно удалить выбранный вариант?";
+                            if (!database.Check_test_have_another_version(available_teacher_tests_comboBox.SelectedItem.ToString(),
+                                   Convert.ToInt32(choose_deleted_version_comboBox.SelectedItem), user_id))
+                            {
+                                message = "Так как в данном тесте только один вариант с единственным тестовым заданием, " +
+                                    "при удалении задания, тест так же будет удалён. Продолжить удаление? ";
+                                delete_test = true;
+                            }
+                            dialogResult = MessageBox.Show(message, "Предупреждение", MessageBoxButtons.YesNo);
                             if (dialogResult == DialogResult.Yes)
                             {
                                 database.Delete_version(user_id,
-                                    Convert.ToInt32(choose_deleted_version_comboBox.SelectedItem), test_name);
+                                    Convert.ToInt32(choose_deleted_version_comboBox.SelectedItem), test_name,-1);
+                                if (delete_test)
+                                {
+                                    database.Delete_test(user_id, database.Get_test_id(user_id, test_name));
+                                }
                                 add_task_or_delete_version_panel.Visible = false;
 
                             }
@@ -807,7 +862,7 @@ namespace testing_program
                                 MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            database.Delete_test(user_id, test_name);
+                            database.Delete_test(user_id, database.Get_test_id(user_id, test_name));
                             combobox.Delete_collection(available_teacher_tests_comboBox);
                             database.Fill_teacher_collection_available_tests(user_id, available_teacher_tests_comboBox);
                         }
@@ -835,6 +890,7 @@ namespace testing_program
                     finish_editing_button.Visible = true;
                     if (edit_method == 2)
                     {
+                        finish_editing_button.Location = new Point(684, 543);
                         add_next_question_button.Visible = false;
                     }
                 }
@@ -846,26 +902,19 @@ namespace testing_program
                 test_id = 0;
                 version_counter = 0;
                 question_counter = 1;
-                //new_method_radioButton
-                //select_existing_method_radioButton
                 if (edit_mode)
                 {
                     finish_creating_test_button.Visible = true;
                     create_next_version.Visible = true;
                     finish_editing_button.Visible = false;
+                    finish_editing_button.Location = new Point(348, 543);
                     tabControl2.SelectedIndex = 2;
-                    //tabControl2.SelectedTab = edit_tests_page;
-                    //contextMenuStrip1.Show();// (tabControl2, new Point(120, 28));
                 }
             }
-
         }
         private void Update_task()
         {
-            //изменить имя и тип вопроса
             database.Update_question_name(Convert.ToInt32(edit_question_id_textBox.Text), edit_question_type_comboBox.SelectedIndex + 1, edit_test_name_textBox.Text);
-            //изменить в цикле имена ответов
-            //изменить праивльность ответов
             TextBox[] textBoxes = { textBox1, textBox2, textBox3, textBox4 };
             TextBox[] hide_textBoxes = { edit_answer_id_textBox1, edit_answer_id_textBox2, edit_answer_id_textBox3, edit_answer_id_textBox4 };
             CheckBox[] checkBoxes = { checkBox9, checkBox10, checkBox11, checkBox12 };
@@ -885,12 +934,10 @@ namespace testing_program
             edit_test_name_textBox.Text = question;
             edit_question_type_comboBox.SelectedIndex = database.Get_question_type(version, question) - 1;
             edit_question_id_textBox.Text = database.Get_question_id(version, question).ToString();
-
             TextBox[] textBoxes = { textBox1, textBox2, textBox3, textBox4 };
             TextBox[] hide_textBoxes = { edit_answer_id_textBox1, edit_answer_id_textBox2, edit_answer_id_textBox3, edit_answer_id_textBox4 };
             CheckBox[] checkBoxes = { checkBox9, checkBox10, checkBox11, checkBox12 };
             int counter = 0;
-
             for (int i = 0; i < textBoxes.Length; ++i)
             {
                 textBoxes[i].Text = edit_existing_answers[i];
@@ -907,16 +954,13 @@ namespace testing_program
         {
             contextMenuStrip1.Visible = true;
             edit_test_groupBox.Visible = true;
-            //закрыть все панели
-            //панель создания варианта
-            //панель создания вопроса
             delete_task_panel.Visible = false;
             new_name_panel.Visible = false;
             new_timer_panel.Visible = false;
             new_comment_panel.Visible = false;
             edit_task_panel.Visible = false;
             add_task_or_delete_version_panel.Visible = false;
-            edit_method = 0; //обнулить переменную типа редакции
+            edit_method = 0;
         }
 
         private void add_version_ToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -930,24 +974,17 @@ namespace testing_program
             edit_task_panel.Visible = false;
             delete_task_panel.Visible = false;
             add_task_or_delete_version_panel.Visible = false;
-
-            //открыть панель создания варианта(а лучше открыть вкладку создания и использовать ее,
-            //т к алгоритм тот же)
         }
 
         private void Add_task_ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             contextMenuStrip1.Visible = false;
             edit_method = 2;
-            //add_task_or_delete_version_panel.Visible = true;
             new_name_panel.Visible = false;
             new_timer_panel.Visible = false;
             new_comment_panel.Visible = false;
             edit_task_panel.Visible = false;
             delete_task_panel.Visible = false;
-            //**************не сделано**********************
-            //открыть панель создания вопроса(в идеале открыть вкладку создания и использовать ее,
-            //но нужны другая кнопка завершения)
         }
 
         private void Edit_name_ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -984,12 +1021,10 @@ namespace testing_program
             new_name_panel.Visible = false;
             edit_task_panel.Visible = false;
             delete_task_panel.Visible = false;
-
         }
 
         private void edit_task_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             contextMenuStrip1.Visible = false;
             available_teacher_tests_comboBox.Visible = false;
             edit_method = 6;
@@ -999,7 +1034,6 @@ namespace testing_program
             add_task_or_delete_version_panel.Visible = false;
             new_name_panel.Visible = false;
             delete_task_panel.Visible = false;
-
         }
 
         private void delete_task_ToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1007,20 +1041,17 @@ namespace testing_program
             contextMenuStrip1.Visible = false;
             edit_method = 7;
             delete_task_panel.Visible = true;
-
             edit_task_panel.Visible = false;
             new_comment_panel.Visible = false;
             new_timer_panel.Visible = false;
             add_task_or_delete_version_panel.Visible = false;
             new_name_panel.Visible = false;
-
         }
 
         private void delete_version_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             contextMenuStrip1.Visible = false;
             edit_method = 8;
-            //add_task_or_delete_version_panel.Visible = true;
             delete_task_panel.Visible = false;
             edit_task_panel.Visible = false;
             new_comment_panel.Visible = false;
@@ -1039,30 +1070,7 @@ namespace testing_program
             new_timer_panel.Visible = false;
             new_name_panel.Visible = false;
         }
-        //************добавить очистку новых панелей*************************************************************************************
-        /* private void Clear_edit_panels()
-         {
-             ComboBox[] comboBoxes = { choose_deleted_version_comboBox, choose_task_comboBox, available_teacher_tests_comboBox };
-             string[] comboboxes_text = { "Выберите вариант", "Выберите задание", "Выберите тест для редактирования" };
-             TextBox[] textboxes = { edit_timer_textBox, new_name_textBox, new_comment_textBox };
-             string[] textboxes_text = { "", "Введите новое название", "Введите комментарий к тесту" };
-             for (int i = 0; i < comboBoxes.Length; ++i)
-             {
-                 //combobox.Clear_selection(comboBoxes[i]);
-                 combobox.Return_original_text(comboBoxes[i], comboboxes_text[i]);
-                 if (i != 3)
-                 {
-                     combobox.Delete_collection(comboBoxes[i]);
-                 }
-             }
-             textbox.Clear_textboxes(textboxes);
-             for (int i = 0; i < textboxes.Length; ++i)
-             {
-                 textbox.Return_original_text(textboxes[i], textboxes_text[i]);
-             }
-         }*/
-        //********************************************************************************
-
+       
         private void edit_timer_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
@@ -1116,23 +1124,15 @@ namespace testing_program
             {
                 if (Check_question_panel_is_filled(textBoxes, text) && Check_right_answers_number(checkBoxes, question_type_comboBox.SelectedIndex))
                 {
-                    Save_test_question(textBoxes, checkBoxes, text);
-                    //test_id = 0;
-                    //version_counter = 0;
-                    //question_counter = 1;
-                    create_new_question_panel.Visible = false;
-                    //Update_new_question_form(textBoxes, text, checkBoxes, question_type_comboBox);
-                    create_version_questions_groupBox.Visible = false;
-                    //finish_creating_test_button.Visible = true;
-                    //create_next_version.Visible = true;
-                    //finish_editing_button.Visible = false;
-                    //
-                    //tabControl2.SelectedTab = edit_tests_page;
-                    edit_mode = false;
-
-                    data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table); //???????
-                    data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
-
+                    if(!database.Check_question_exist(question_textBox.Text, question_type_comboBox.SelectedIndex + 1, user_id, -1))
+                    {
+                        Save_test_question(textBoxes, checkBoxes, text);
+                        create_new_question_panel.Visible = false;
+                        create_version_questions_groupBox.Visible = false;
+                        edit_mode = false;
+                        data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table);
+                        data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
+                    }
                 }
             }
             else if (select_existing_method_radioButton.Checked == true)
@@ -1140,43 +1140,27 @@ namespace testing_program
                 if (Check_select_existing_question_panel_filled())
                 {
                     database.Create_version_question_connection(Convert.ToInt32(id_textBox.Text), version_id);
-                    //test_id = 0;
-                    //version_counter = 0;
-                    //question_counter = 1;
                     select_existing_question_panel.Visible = false;
                     create_version_questions_groupBox.Visible = false;
                     edit_mode = false;
-
-                    //  //Update_Select_existing_question_panel();
-
-                    // finish_creating_test_button.Visible = true;
-                    //create_next_version.Visible = true;
-                    //finish_editing_button.Visible = false;
-
-                    //tabControl2.SelectedTab = edit_tests_page;
-                    data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table);//????                 }
+                    data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table);
                     data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
-
                 }
             }
-
         }
 
         private void available_teacher_tests_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
-            if (edit_method == 2 || edit_method == 8)//возможно не нужно
+            if (edit_method == 2 || edit_method == 8)
             {
-                //combobox.Delete_collection(choose_deleted_version_comboBox);
                 add_task_or_delete_version_panel.Visible = true;
                 database.Fill_version_number_comboBox(choose_deleted_version_comboBox, user_id,
-                    available_teacher_tests_comboBox.SelectedItem.ToString());
+                available_teacher_tests_comboBox.SelectedItem.ToString());
             }
             if (edit_method == 7)
             {
-                //combobox.Delete_collection(delete_mode_choose_version_comboBox);
                 database.Fill_version_number_comboBox(delete_mode_choose_version_comboBox, user_id,
-                   available_teacher_tests_comboBox.SelectedItem.ToString());
+                available_teacher_tests_comboBox.SelectedItem.ToString());
             }
         }
 
@@ -1209,7 +1193,6 @@ namespace testing_program
                 combobox.Delete_collection(choose_deleted_version_comboBox);
                 combobox.Return_original_text(choose_deleted_version_comboBox, "Выберите вариант");
             }
-
         }
 
         private void new_name_panel_VisibleChanged(object sender, EventArgs e)
@@ -1249,7 +1232,6 @@ namespace testing_program
                     database.Get_answers_id(version, question),
                     database.Get_right_answers(version, question));
             }
-
         }
 
         private void edit_task_panel_VisibleChanged(object sender, EventArgs e)
@@ -1314,20 +1296,37 @@ namespace testing_program
         {
 
         }
-        //TabControl tabcon ;
-        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        
+        private void TabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl2.SelectedIndex == 2)
             {
                 edit_test_groupBox.Visible = true;
-                //TabControl tabcon = (TabControl)sender;
-                //contextMenuStrip1.Show(tabcon, new Point(140, 28));
             }
             else contextmenustrip1_enabled = false;
-            /* if (tabControl2.SelectedIndex == 1)
-             {
-                 create_test_groupBox.Visible = true;
-             }*/
+            if(tabControl2.SelectedIndex != 1 && (create_mode || edit_mode && edit_method==1) && test_id!=0)
+            {
+                dialogResult = MessageBox.Show("Идёт создание теста. Вы уверены, что хотите прервать создание? Введенные данные не сохранятся.", "Предупреждение", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (edit_mode)
+                    {
+                        database.Delete_version(user_id, version_id,"", test_id);
+                    }    
+                    else database.Delete_test(user_id, test_id);
+                    test_id = 0;
+                    version_id = 0;
+                    version_counter = 0;
+                    question_counter = 1;
+                    create_mode = false;
+                    edit_mode = false;
+                    edit_method = 0;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    tabControl2.SelectedIndex = 1;
+                }
+            }
         }
 
         private void edit_test_groupBox_VisibleChanged(object sender, EventArgs e)
@@ -1335,7 +1334,6 @@ namespace testing_program
             if (available_teacher_tests_comboBox.Visible == true)
             {
                 contextmenustrip1_enabled = true;
-                //TabControl tabcon = (TabControl)sender;
                 GroupBox groupBox = (GroupBox)sender;
                 contextMenuStrip1.Show(groupBox, new Point(135, 0));
                 combobox.Delete_collection(available_teacher_tests_comboBox);
@@ -1345,18 +1343,11 @@ namespace testing_program
             else
             {
                 contextmenustrip1_enabled = false;
-
             }
         }
 
         private void tabControl2_MouseDown(object sender, MouseEventArgs e)
         {
-            /* if (e.Button == MouseButtons.Right && tabControl2.SelectedIndex != 2)
-             {
-                 contextMenuStrip1.Hide();
-             }
-             else if (e.Button == MouseButtons.Left && tabControl2.SelectedIndex == 2)
-                 contextMenuStrip1.Show(tabcon, new Point(140, 28));*/
         }
 
         private void tests_page_MouseDown(object sender, MouseEventArgs e)
@@ -1366,13 +1357,10 @@ namespace testing_program
 
         private void tabControl2_Click_1(object sender, EventArgs e)
         {
-            //tabcon = (TabControl)sender;
             if (tabControl2.SelectedIndex == 2)
             {
                 edit_test_groupBox.Visible = true;
-                //contextMenuStrip1.Show(tabcon, new Point(140, 28));
             }
-            //else contextMenuStrip1.Hide();
             if (tabControl2.SelectedIndex == 1 && !edit_mode)
             {
                 create_test_groupBox.Visible = true;
@@ -1543,12 +1531,11 @@ namespace testing_program
 
         private void return_to_available_tests_table_button_Click(object sender, EventArgs e)
         {
-
-            teacher_available_tests_table.Visible = true;
+            data.Show(teacher_available_tests_table);
             teacher_available_tests_table.ClearSelection();
             teacher_one_test_table.ClearSelection();
-            teacher_one_test_table.Rows.Clear();
-            teacher_one_test_table.Visible = false;
+            data.Clear_table(teacher_one_test_table);
+            data.Hide(teacher_one_test_table);
             open_version_in_test_comboBox.Visible = false;
             open_test_button.Visible = true;
             return_to_available_tests_table_button.Visible = false;
@@ -1585,6 +1572,561 @@ namespace testing_program
             { new_surname_textBox, new_teacher_name_textBox, new_patronymic_textBox });
             change_full_name_panel.Visible = false;
             teacher_profile_main_panel.Visible = true;
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void change_student_group_button_Click(object sender, EventArgs e)
+        {
+            if (student_id != -1)
+            {
+                change_student_group_panel.Visible = true;
+                splitContainer1.Visible = false;
+
+            }
+        }
+
+        private void show_students_comboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void show_students_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            data.Reset_students_list_table(database, user_id, show_students_comboBox.SelectedItem.ToString(), students_dataGridView);
+        }
+
+        private void students_dataGridView_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void students_dataGridView_Resize(object sender, EventArgs e)
+        {
+
+        }
+
+        private void students_dataGridView_ClientSizeChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void students_dataGridView_ColumnHeadersHeightChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void allow_student_access_to_test_button_Click(object sender, EventArgs e)
+        {
+            if (student_id != -1)
+            {
+                test_access_panel.Visible = true;
+                splitContainer1.Visible = false;
+            }
+        }
+
+        private void change_group_name_button_Click(object sender, EventArgs e)
+        {
+            if (group_id != -1)
+            {
+                change_group_name_panel.Visible = true;
+                splitContainer1.Visible = false;
+            }
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        private void allow_group_access_to_test_button_Click(object sender, EventArgs e)
+        {
+            if (group_id != -1)
+            {
+                test_access_panel.Visible = true;
+                splitContainer1.Visible = false;
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            change_group_name_panel.Visible = true;
+            splitContainer1.Visible = false;
+        }
+
+        private void students_page_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void students_dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            student_id = -1;
+            group_id = -1;
+            Button[] student = { change_student_group_button, change_student_access_to_test_button, delete_student_profile_button };
+            Button[] group = { change_group_name_button, change_group_access_to_test_button, delete_group_button };
+            string name = data.Get_column_name(students_dataGridView, students_dataGridView.SelectedCells[0]);
+            if (name == "group")
+            {
+                tip1.Active = true;
+                tip2.Active = false;
+                for (int i = 0; i < 3; ++i)
+                {
+                    student[i].Enabled = false;
+                    group[i].Enabled = true;
+                }
+                group_id = database.Get_group_by_name(students_dataGridView.SelectedCells[0].Value.ToString());
+            }
+            else if (name == "student")
+            {
+                tip1.Active = false;
+                tip2.Active = true;
+                for (int i = 0; i < 3; ++i)
+                {
+                    student[i].Enabled = true;
+                    group[i].Enabled = false;
+                }
+                student_id = data.Get_null_column_hiden_id(students_dataGridView, students_dataGridView.SelectedCells[0]);
+            }
+        }
+
+        private void toolTip1_Draw(object sender, DrawToolTipEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel1_Resize(object sender, EventArgs e)
+        {
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void add_new_student_button_Click(object sender, EventArgs e)
+        {
+            create_student_groupBox.Visible = true;
+            splitContainer1.Visible = false;
+        }
+
+        private void create_student_groupBox_VisibleChanged(object sender, EventArgs e)
+        {
+            if (create_student_groupBox.Visible)
+            {
+                database.Fill_groups_collection(create_student_group_comboBox, false,false);
+            }
+            else
+            {
+                combobox.Delete_collection(create_student_group_comboBox);
+                combobox.Return_original_text(create_student_group_comboBox, "Выберите учебную группу");
+                textbox.Fill_textboxes(new TextBox[] { full_name_textBox1, full_name_textBox2, full_name_textBox3 },
+                    new string[] { "Фамилия", "Имя", "Отчество" });
+            }
+        }
+
+        private void splitContainer1_VisibleChanged(object sender, EventArgs e)
+        {
+            Button[] student = { change_student_group_button, change_student_access_to_test_button, delete_student_profile_button };
+            Button[] group = { change_group_name_button, change_group_access_to_test_button, delete_group_button };
+            if (splitContainer1.Visible)
+            {
+                splitContainer1.SplitterDistance = 504;
+                database.Fill_groups_collection(show_students_comboBox, true, false);
+                tip1.Active = true;
+                tip2.Active = true;
+                tip1.SetToolTip(panel3, "Выберите студента из списка");
+                tip2.SetToolTip(panel4, "Выберите группу из списка");
+
+                for (int i = 0; i < 3; ++i)
+                {
+                    student[i].Enabled = false;
+                    group[i].Enabled = false;
+                }
+            }
+            else
+            {
+                combobox.Delete_collection(show_students_comboBox);
+                combobox.Return_original_text(show_students_comboBox, "Отобразить...");
+                students_dataGridView.ClearSelection();
+                data.Clear_table(students_dataGridView);
+            }
+        }
+
+        private void calcel_create_student_button_VisibleChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cancel_create_student_button_Click(object sender, EventArgs e)
+        {
+            create_student_groupBox.Visible = false;
+            splitContainer1.Visible = true;
+        }
+
+        bool full_name_textBox1_is_changed = false;
+        private void full_name_textBox1_Click(object sender, EventArgs e)
+        {
+            full_name_textBox1_is_changed = textbox.Check_is_cleared(full_name_textBox1, "Фамилия", full_name_textBox1_is_changed);
+
+        }
+
+        private void full_name_textBox1_TextChanged(object sender, EventArgs e)
+        {
+            full_name_textBox1_is_changed = textbox.Check_text_is_changed(full_name_textBox1, "Фамилия");
+
+        }
+
+        private void full_name_textBox1_Leave(object sender, EventArgs e)
+        {
+            textbox.Return_original_text(full_name_textBox1, "Фамилия");
+
+        }
+        bool full_name_textBox2_is_changed = false;
+
+        private void full_name_textBox2_Click(object sender, EventArgs e)
+        {
+            full_name_textBox2_is_changed = textbox.Check_is_cleared(full_name_textBox2, "Имя", full_name_textBox2_is_changed);
+
+        }
+
+        private void full_name_textBox2_TextChanged(object sender, EventArgs e)
+        {
+            full_name_textBox2_is_changed = textbox.Check_text_is_changed(full_name_textBox2, "Имя");
+
+        }
+
+        private void full_name_textBox2_Leave(object sender, EventArgs e)
+        {
+            textbox.Return_original_text(full_name_textBox2, "Имя");
+
+        }
+        bool full_name_textBox3_is_changed = false;
+
+        private void full_name_textBox3_Click(object sender, EventArgs e)
+        {
+            full_name_textBox3_is_changed = textbox.Check_is_cleared(full_name_textBox3, "Отчество", full_name_textBox3_is_changed);
+
+        }
+
+        private void full_name_textBox3_TextChanged(object sender, EventArgs e)
+        {
+            full_name_textBox3_is_changed = textbox.Check_text_is_changed(full_name_textBox3, "Отчество");
+
+        }
+
+        private void full_name_textBox3_Leave(object sender, EventArgs e)
+        {
+            textbox.Return_original_text(full_name_textBox3, "Отчество");
+
+        }
+
+        private void create_student_group_comboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void create_student_button_Click(object sender, EventArgs e)
+        {
+            if (textbox.Check_textboxes_text_are_changed(new string[] { "Фамилия", "Имя", "Отчество" },
+                new TextBox[] { full_name_textBox1, full_name_textBox2, full_name_textBox3 })
+                && combobox.Check_is_changed(create_student_group_comboBox))
+            {
+                if(!database.Check_student_exist(full_name_textBox1+" "+ full_name_textBox2+" "+ full_name_textBox3,
+                    create_student_group_comboBox.SelectedItem.ToString()))
+                {
+                    database.Create_student(full_name_textBox1 + " " + full_name_textBox2 + " " + full_name_textBox3,
+                    create_student_group_comboBox.SelectedItem.ToString());
+                    MessageBox.Show("Профиль успешно создан!");
+                    create_student_groupBox.Visible = false;
+                }
+                else MessageBox.Show("Аккаунт этого студента уже существует");
+            }
+            else MessageBox.Show("Заполните обязательные поля!");
+        }
+
+        private void change_student_group_panel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (change_student_group_panel.Visible)
+            {
+                database.Fill_groups_collection(groups_comboBox, false,false);
+            }
+            else
+            {
+                combobox.Clear_selection(groups_comboBox);
+                combobox.Delete_collection(groups_comboBox);
+            }
+        }
+
+        private void cancel_change_student_group_button_Click(object sender, EventArgs e)
+        {
+            change_student_group_panel.Visible = false;
+            splitContainer1.Visible = true;
+        }
+
+        private void ok_change_student_group_button_button_Click(object sender, EventArgs e)
+        {
+            if (combobox.Check_is_changed(groups_comboBox))
+            {
+                database.Update_student_group(groups_comboBox.SelectedItem.ToString(), student_id);
+                MessageBox.Show("Учебная группа изменена");
+                change_student_group_panel.Visible = false;
+                splitContainer1.Visible = true;
+            }
+            else MessageBox.Show("Заполните обязательные поля!");
+        }
+
+        private void change_group_name_panel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!change_group_name_panel.Visible)
+            {
+                group_name_textBox.Clear();
+                textbox.Return_original_text(group_name_textBox, "Введите название группы");
+            }
+        }
+
+        private void cancel_change_group_name_button_Click(object sender, EventArgs e)
+        {
+            change_group_name_panel.Visible = false;
+            splitContainer1.Visible = true;
+        }
+
+        private void ok_change_group_name_button_Click(object sender, EventArgs e)
+        {
+            if(textbox.Check_text_is_changed(group_name_textBox, "Введите название группы") /*&& проверка на существование такой группы*/ )
+            {
+                if (!database.Check_group_exist(group_name_textBox.Text))
+                {
+                    if (group_id != -1)
+                    {
+                        database.Update_group_name(group_id, group_name_textBox.Text);
+                        MessageBox.Show("Название учебной группы изменено");
+                    }
+                    else
+                    {
+                        database.Create_group(group_name_textBox.Text);
+                        MessageBox.Show("Учебная группа создана");
+                    }
+
+                    change_group_name_panel.Visible = false;
+                    splitContainer1.Visible = true;
+                }
+                else MessageBox.Show("Учебная группа с таким названием уже существует");
+            }
+            else MessageBox.Show("Заполните обязательные поля!");
+        }
+
+        private void test_access_panel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (create_student_groupBox.Visible)
+            {
+                database.Fill_teacher_collection_available_tests(user_id, test_access_comboBox);
+            }
+            else
+            {
+                combobox.Clear_selection(test_access_comboBox);
+                combobox.Delete_collection(test_access_comboBox);
+            }
+        }
+
+        private void cancel_test_access_button_Click(object sender, EventArgs e)
+        {
+            test_access_panel.Visible = false;
+            splitContainer1.Visible = true;
+        }
+
+        private void ok_test_access_button_Click(object sender, EventArgs e)
+        {
+            if (combobox.Check_is_changed(test_access_comboBox) && (allow_radioButton.Checked || prohibit_radioButton.Checked))
+            {
+                bool allow= false;
+                if (allow_radioButton.Checked)
+                    allow = true;
+                if (group_id != -1)
+                {
+                    List<int> students = new List<int>();
+                    database.Get_students_id(group_id, students);
+                    foreach (int student in students)
+                        database.Allow_or_prohibit_student_access_to_test(student, test_access_comboBox.SelectedItem.ToString(), allow);
+                    database.Add_teacher_group_connection(user_id, group_id, false);
+                }
+                else if(student_id!=-1)
+                {
+                    database.Allow_or_prohibit_student_access_to_test(student_id, test_access_comboBox.SelectedItem.ToString(), allow); 
+                    database.Add_teacher_group_connection(user_id, student_id, true);
+                }
+                change_group_name_panel.Visible = false;
+                splitContainer1.Visible = true;
+            }
+            else MessageBox.Show("Заполните обязательные поля!");
+        }
+
+        private void delete_student_profile_button_Click(object sender, EventArgs e)
+        {
+            if (student_id != -1)
+            {
+                dialogResult = MessageBox.Show("Данное действие необратимо, вы уверены, что хотите удалить этот аккаунт? " +
+                    "У студента больше не будет возможности пользоваться своим профилем.", "Предупреждение", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    database.Delete_user(student_id,"student");
+                    splitContainer1.Visible = false;
+                    MessageBox.Show("Аккаунт удалён");
+                   splitContainer1.Visible = true;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                }
+            }
+        }
+        private void delete_group_button_Click(object sender, EventArgs e)
+        {
+            if (group_id != -1)
+            {
+                dialogResult = MessageBox.Show("Данное действие необратимо, вы уверены, что хотите удалить эту учебную группу? " +
+                    "Аккаунты всех студентов группы будут удалены.", "Предупреждение", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    List<int> students = new List<int>();
+                    database.Get_students_id(group_id, students);
+                    foreach (int student in students)
+                    {
+                        database.Delete_user(student_id,"student");
+                    }
+                    splitContainer1.Visible = false;
+                    MessageBox.Show("Учебная группа удалена");
+                    splitContainer1.Visible = true;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                }
+            }
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox13_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void allow_radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void choose_group_for_marks_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            data.Clear_rows(group_marks_table);
+            data.Reset_group_marks_table(database, choose_group_for_marks_comboBox.SelectedItem.ToString(), group_marks_table);
+        }
+
+        private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 3)
+            {
+                database.Fill_groups_collection(choose_group_for_marks_comboBox, false, true);
+                database.Fill_groups_collection(choose_student_group_for_marks_comboBox, false, true);
+            }
+            if (tabControl1.SelectedIndex != 1 && (create_mode || edit_mode && edit_method==1) && test_id != 0)
+            {
+                dialogResult = MessageBox.Show("Идёт создание теста. Вы уверены, что хотите прервать создание? Введенные данные не сохранятся.", "Предупреждение", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (edit_mode)
+                    {
+                        database.Delete_version(user_id, version_id, "", test_id);
+                    }
+                    else database.Delete_test(user_id, test_id);
+                    test_id = 0;
+                    version_id = 0;
+                    version_counter = 0;
+                    question_counter = 1;
+                    create_mode = false;
+                    edit_mode = false;
+                    edit_method = 0;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    tabControl1.SelectedIndex = 1;
+                    tabControl2.SelectedIndex = 1;
+                }
+            }
+        }
+
+        private void choose_group_for_marks_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void choose_student_for_marks_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void student_journal_page_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void choose_student_group_for_marks_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            choose_student_for_marks_comboBox.Visible = true;
+            database.Fill_student_name_collection(choose_student_group_for_marks_comboBox.SelectedItem.ToString(),
+                choose_student_for_marks_comboBox, true);
+        }
+
+        private void choose_student_for_marks_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            data.Clear_rows(student_marks_table);
+            data.Reset_student_marks_table(database, choose_student_group_for_marks_comboBox.SelectedItem.ToString(),
+               choose_student_for_marks_comboBox.SelectedItem.ToString(), student_marks_table);
+        }
+
+        private void choose_student_for_marks_comboBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void test_access_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delete_teacher_profile_button_Click(object sender, EventArgs e)
+        {
+            dialogResult = MessageBox.Show("Вы уверены, что ходите безвозвратно удалить аккаунт? ", "Предупреждение", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                database.Delete_tasks_from_db(user_id);
+                database.Delete_user(user_id, "teacher");
+                Application.OpenForms[0].Show();
+                this.Hide();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+            }
         }
     }
 }

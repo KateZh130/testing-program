@@ -77,6 +77,13 @@ namespace testing_program
                 arr[i].Clear();
             }
         }
+        public bool Check_full_name_correct(TextBox textbox)
+        {
+            string[] name = textbox.Text.Split(' ');
+            if (name.Length != 3)
+                return false;
+            return true;
+        }
 
 
     }
