@@ -32,10 +32,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.profile_page = new System.Windows.Forms.TabPage();
             this.student_profile_main_panel = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.change_name_button = new System.Windows.Forms.Button();
             this.exit_student_profile_button = new System.Windows.Forms.Button();
             this.change_student_password_button = new System.Windows.Forms.Button();
             this.change_student_login_button = new System.Windows.Forms.Button();
@@ -47,14 +55,9 @@
             this.password_student_profile_label = new System.Windows.Forms.Label();
             this.group_student_profile = new System.Windows.Forms.TextBox();
             this.login_student_profile_label = new System.Windows.Forms.Label();
-            this.student_identity_check_panel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cancel_student_change_password_button = new System.Windows.Forms.Button();
-            this.student_old_password_textBox = new System.Windows.Forms.TextBox();
-            this.continue_student_change_password_button = new System.Windows.Forms.Button();
             this.change_full_name_panel = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.change_full_name_button = new System.Windows.Forms.Button();
+            this.cancel_change_name_button = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.new_student_name_textBox = new System.Windows.Forms.TextBox();
@@ -73,7 +76,16 @@
             this.cancel_change_student_password_button = new System.Windows.Forms.Button();
             this.student_new_password_textBox = new System.Windows.Forms.TextBox();
             this.student_test_new_password_textBox = new System.Windows.Forms.TextBox();
+            this.student_identity_check_panel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cancel_student_change_password_button = new System.Windows.Forms.Button();
+            this.student_old_password_textBox = new System.Windows.Forms.TextBox();
+            this.continue_student_change_password_button = new System.Windows.Forms.Button();
             this.test_page = new System.Windows.Forms.TabPage();
+            this.choose_test_panel = new System.Windows.Forms.Panel();
+            this.available_test_table = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.start_test_button = new System.Windows.Forms.Button();
             this.one_answer_panel = new System.Windows.Forms.Panel();
             this.one_answer_button = new System.Windows.Forms.Button();
             this.question_text_label2 = new System.Windows.Forms.Label();
@@ -92,35 +104,31 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.choose_test_panel = new System.Windows.Forms.Panel();
-            this.available_test_table = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.start_test_button = new System.Windows.Forms.Button();
             this.result_page = new System.Windows.Forms.TabPage();
-            this.one_result_dataGridView = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.results_panel = new System.Windows.Forms.Panel();
             this.passed_tests = new System.Windows.Forms.ComboBox();
             this.show_one_test_result = new System.Windows.Forms.RadioButton();
             this.show_list_of_completed_tests = new System.Windows.Forms.RadioButton();
+            this.one_result_dataGridView = new System.Windows.Forms.DataGridView();
             this.results_dataGridView = new System.Windows.Forms.DataGridView();
             this.test_timer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.profile_page.SuspendLayout();
             this.student_profile_main_panel.SuspendLayout();
-            this.student_identity_check_panel.SuspendLayout();
             this.change_full_name_panel.SuspendLayout();
             this.change_student_login_panel.SuspendLayout();
             this.change_student_password_panel.SuspendLayout();
+            this.student_identity_check_panel.SuspendLayout();
             this.test_page.SuspendLayout();
+            this.choose_test_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.available_test_table)).BeginInit();
             this.one_answer_panel.SuspendLayout();
             this.panel5.SuspendLayout();
             this.many_answer_panel.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.choose_test_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.available_test_table)).BeginInit();
             this.result_page.SuspendLayout();
+            this.results_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.one_result_dataGridView)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results_dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,30 +149,32 @@
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
             this.tabControl1.TabStop = false;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
             // profile_page
             // 
-            this.profile_page.BackColor = System.Drawing.Color.MintCream;
+            this.profile_page.BackColor = System.Drawing.Color.Lavender;
             this.profile_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.profile_page.Controls.Add(this.student_profile_main_panel);
-            this.profile_page.Controls.Add(this.student_identity_check_panel);
             this.profile_page.Controls.Add(this.change_full_name_panel);
             this.profile_page.Controls.Add(this.change_student_login_panel);
             this.profile_page.Controls.Add(this.change_student_password_panel);
+            this.profile_page.Controls.Add(this.student_identity_check_panel);
             this.profile_page.Location = new System.Drawing.Point(4, 30);
             this.profile_page.Name = "profile_page";
             this.profile_page.Size = new System.Drawing.Size(829, 496);
             this.profile_page.TabIndex = 2;
             this.profile_page.Text = "Профиль";
-            this.profile_page.Click += new System.EventHandler(this.profile_page_Click);
+            this.profile_page.Leave += new System.EventHandler(this.Profile_page_Leave);
             // 
             // student_profile_main_panel
             // 
             this.student_profile_main_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.student_profile_main_panel.BackColor = System.Drawing.Color.Lavender;
             this.student_profile_main_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.student_profile_main_panel.Controls.Add(this.button4);
+            this.student_profile_main_panel.Controls.Add(this.change_name_button);
             this.student_profile_main_panel.Controls.Add(this.exit_student_profile_button);
             this.student_profile_main_panel.Controls.Add(this.change_student_password_button);
             this.student_profile_main_panel.Controls.Add(this.change_student_login_button);
@@ -180,27 +190,30 @@
             this.student_profile_main_panel.Name = "student_profile_main_panel";
             this.student_profile_main_panel.Size = new System.Drawing.Size(805, 476);
             this.student_profile_main_panel.TabIndex = 8;
-            this.student_profile_main_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.student_profile_main_panel_Paint);
+            this.student_profile_main_panel.Visible = false;
+            this.student_profile_main_panel.VisibleChanged += new System.EventHandler(this.Student_profile_main_panel_VisibleChanged);
             // 
-            // button4
+            // change_name_button
             // 
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.MintCream;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(528, 94);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(201, 39);
-            this.button4.TabIndex = 11;
-            this.button4.TabStop = false;
-            this.button4.Text = "Изменить ФИО";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.change_name_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.change_name_button.FlatAppearance.BorderSize = 2;
+            this.change_name_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.change_name_button.Location = new System.Drawing.Point(528, 94);
+            this.change_name_button.Name = "change_name_button";
+            this.change_name_button.Size = new System.Drawing.Size(201, 39);
+            this.change_name_button.TabIndex = 11;
+            this.change_name_button.TabStop = false;
+            this.change_name_button.Text = "Изменить ФИО";
+            this.change_name_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.change_name_button.UseVisualStyleBackColor = true;
+            this.change_name_button.Click += new System.EventHandler(this.Change_name_button_Click);
             // 
             // exit_student_profile_button
             // 
             this.exit_student_profile_button.AutoSize = true;
-            this.exit_student_profile_button.BackColor = System.Drawing.Color.MintCream;
-            this.exit_student_profile_button.FlatAppearance.BorderColor = System.Drawing.Color.MintCream;
+            this.exit_student_profile_button.BackColor = System.Drawing.Color.Lavender;
+            this.exit_student_profile_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.exit_student_profile_button.FlatAppearance.BorderSize = 2;
             this.exit_student_profile_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exit_student_profile_button.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.exit_student_profile_button.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -212,11 +225,12 @@
             this.exit_student_profile_button.Text = "Выйти из профиля";
             this.exit_student_profile_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.exit_student_profile_button.UseVisualStyleBackColor = false;
-            this.exit_student_profile_button.Click += new System.EventHandler(this.exit_student_profile_button_Click);
+            this.exit_student_profile_button.Click += new System.EventHandler(this.Exit_student_profile_button_Click);
             // 
             // change_student_password_button
             // 
-            this.change_student_password_button.FlatAppearance.BorderColor = System.Drawing.Color.MintCream;
+            this.change_student_password_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.change_student_password_button.FlatAppearance.BorderSize = 2;
             this.change_student_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.change_student_password_button.Location = new System.Drawing.Point(528, 353);
             this.change_student_password_button.Name = "change_student_password_button";
@@ -230,7 +244,8 @@
             // 
             // change_student_login_button
             // 
-            this.change_student_login_button.FlatAppearance.BorderColor = System.Drawing.Color.MintCream;
+            this.change_student_login_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.change_student_login_button.FlatAppearance.BorderSize = 2;
             this.change_student_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.change_student_login_button.Location = new System.Drawing.Point(528, 265);
             this.change_student_login_button.Name = "change_student_login_button";
@@ -250,13 +265,13 @@
             this.group_student_profile_label.Size = new System.Drawing.Size(64, 21);
             this.group_student_profile_label.TabIndex = 1;
             this.group_student_profile_label.Text = "Группа:";
-            this.group_student_profile_label.Click += new System.EventHandler(this.group_student_profile_label_Click);
             // 
             // password_student_profile
             // 
             this.password_student_profile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.password_student_profile.BackColor = System.Drawing.Color.Lavender;
             this.password_student_profile.Location = new System.Drawing.Point(224, 319);
             this.password_student_profile.Name = "password_student_profile";
             this.password_student_profile.ReadOnly = true;
@@ -277,6 +292,7 @@
             // 
             // login_student_profile
             // 
+            this.login_student_profile.BackColor = System.Drawing.Color.Lavender;
             this.login_student_profile.Location = new System.Drawing.Point(224, 231);
             this.login_student_profile.Name = "login_student_profile";
             this.login_student_profile.ReadOnly = true;
@@ -287,6 +303,7 @@
             // 
             // full_name_student_profile
             // 
+            this.full_name_student_profile.BackColor = System.Drawing.Color.Lavender;
             this.full_name_student_profile.Location = new System.Drawing.Point(224, 32);
             this.full_name_student_profile.Multiline = true;
             this.full_name_student_profile.Name = "full_name_student_profile";
@@ -307,6 +324,7 @@
             // 
             // group_student_profile
             // 
+            this.group_student_profile.BackColor = System.Drawing.Color.Lavender;
             this.group_student_profile.Location = new System.Drawing.Point(224, 154);
             this.group_student_profile.Name = "group_student_profile";
             this.group_student_profile.ReadOnly = true;
@@ -324,65 +342,10 @@
             this.login_student_profile_label.TabIndex = 4;
             this.login_student_profile_label.Text = "Логин:";
             // 
-            // student_identity_check_panel
-            // 
-            this.student_identity_check_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.student_identity_check_panel.Controls.Add(this.label1);
-            this.student_identity_check_panel.Controls.Add(this.cancel_student_change_password_button);
-            this.student_identity_check_panel.Controls.Add(this.student_old_password_textBox);
-            this.student_identity_check_panel.Controls.Add(this.continue_student_change_password_button);
-            this.student_identity_check_panel.Location = new System.Drawing.Point(207, 76);
-            this.student_identity_check_panel.Name = "student_identity_check_panel";
-            this.student_identity_check_panel.Size = new System.Drawing.Size(357, 173);
-            this.student_identity_check_panel.TabIndex = 11;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Введите старый пароль:";
-            // 
-            // cancel_student_change_password_button
-            // 
-            this.cancel_student_change_password_button.BackColor = System.Drawing.Color.MintCream;
-            this.cancel_student_change_password_button.FlatAppearance.BorderColor = System.Drawing.Color.MintCream;
-            this.cancel_student_change_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancel_student_change_password_button.Location = new System.Drawing.Point(86, 116);
-            this.cancel_student_change_password_button.Name = "cancel_student_change_password_button";
-            this.cancel_student_change_password_button.Size = new System.Drawing.Size(90, 36);
-            this.cancel_student_change_password_button.TabIndex = 1;
-            this.cancel_student_change_password_button.Text = "Отмена";
-            this.cancel_student_change_password_button.UseVisualStyleBackColor = false;
-            this.cancel_student_change_password_button.Click += new System.EventHandler(this.Cancel_student_change_password_button_Click);
-            // 
-            // student_old_password_textBox
-            // 
-            this.student_old_password_textBox.Location = new System.Drawing.Point(23, 63);
-            this.student_old_password_textBox.Name = "student_old_password_textBox";
-            this.student_old_password_textBox.Size = new System.Drawing.Size(311, 28);
-            this.student_old_password_textBox.TabIndex = 0;
-            this.student_old_password_textBox.TextChanged += new System.EventHandler(this.Student_old_password_textBox_TextChanged);
-            // 
-            // continue_student_change_password_button
-            // 
-            this.continue_student_change_password_button.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.continue_student_change_password_button.FlatAppearance.BorderColor = System.Drawing.Color.DarkSeaGreen;
-            this.continue_student_change_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.continue_student_change_password_button.Location = new System.Drawing.Point(182, 116);
-            this.continue_student_change_password_button.Name = "continue_student_change_password_button";
-            this.continue_student_change_password_button.Size = new System.Drawing.Size(152, 36);
-            this.continue_student_change_password_button.TabIndex = 2;
-            this.continue_student_change_password_button.Text = "Продолжить";
-            this.continue_student_change_password_button.UseVisualStyleBackColor = false;
-            this.continue_student_change_password_button.Click += new System.EventHandler(this.Continue_student_change_password_button_Click);
-            // 
             // change_full_name_panel
             // 
-            this.change_full_name_panel.Controls.Add(this.button2);
-            this.change_full_name_panel.Controls.Add(this.button3);
+            this.change_full_name_panel.Controls.Add(this.change_full_name_button);
+            this.change_full_name_panel.Controls.Add(this.cancel_change_name_button);
             this.change_full_name_panel.Controls.Add(this.label16);
             this.change_full_name_panel.Controls.Add(this.label17);
             this.change_full_name_panel.Controls.Add(this.new_student_name_textBox);
@@ -394,26 +357,35 @@
             this.change_full_name_panel.Size = new System.Drawing.Size(805, 320);
             this.change_full_name_panel.TabIndex = 12;
             this.change_full_name_panel.Visible = false;
+            this.change_full_name_panel.VisibleChanged += new System.EventHandler(this.Change_full_name_panel_VisibleChanged);
             // 
-            // button2
+            // change_full_name_button
             // 
-            this.button2.Location = new System.Drawing.Point(569, 248);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(184, 42);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Изменить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.change_full_name_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.change_full_name_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.change_full_name_button.FlatAppearance.BorderSize = 2;
+            this.change_full_name_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.change_full_name_button.Location = new System.Drawing.Point(551, 248);
+            this.change_full_name_button.Name = "change_full_name_button";
+            this.change_full_name_button.Size = new System.Drawing.Size(202, 42);
+            this.change_full_name_button.TabIndex = 4;
+            this.change_full_name_button.Text = "Изменить";
+            this.change_full_name_button.UseVisualStyleBackColor = false;
+            this.change_full_name_button.Click += new System.EventHandler(this.Change_full_name_button_Click);
             // 
-            // button3
+            // cancel_change_name_button
             // 
-            this.button3.Location = new System.Drawing.Point(465, 248);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 42);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Отмена";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.cancel_change_name_button.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_name_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_name_button.FlatAppearance.BorderSize = 2;
+            this.cancel_change_name_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel_change_name_button.Location = new System.Drawing.Point(439, 248);
+            this.cancel_change_name_button.Name = "cancel_change_name_button";
+            this.cancel_change_name_button.Size = new System.Drawing.Size(106, 42);
+            this.cancel_change_name_button.TabIndex = 3;
+            this.cancel_change_name_button.Text = "Отмена";
+            this.cancel_change_name_button.UseVisualStyleBackColor = false;
+            this.cancel_change_name_button.Click += new System.EventHandler(this.Cancel_change_name_button_Click);
             // 
             // label16
             // 
@@ -450,7 +422,6 @@
             this.new_patronymic_textBox.Name = "new_patronymic_textBox";
             this.new_patronymic_textBox.Size = new System.Drawing.Size(505, 28);
             this.new_patronymic_textBox.TabIndex = 2;
-            this.new_patronymic_textBox.TextChanged += new System.EventHandler(this.new_patronymic_textBox_TextChanged);
             // 
             // label18
             // 
@@ -481,26 +452,35 @@
             this.change_student_login_panel.Name = "change_student_login_panel";
             this.change_student_login_panel.Size = new System.Drawing.Size(805, 194);
             this.change_student_login_panel.TabIndex = 1;
-            this.change_student_login_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.change_student_login_panel.Visible = false;
+            this.change_student_login_panel.VisibleChanged += new System.EventHandler(this.Change_student_login_panel_VisibleChanged);
             // 
             // cancel_change_student_login_button
             // 
-            this.cancel_change_student_login_button.Location = new System.Drawing.Point(474, 122);
+            this.cancel_change_student_login_button.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_student_login_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_student_login_button.FlatAppearance.BorderSize = 2;
+            this.cancel_change_student_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel_change_student_login_button.Location = new System.Drawing.Point(446, 122);
             this.cancel_change_student_login_button.Name = "cancel_change_student_login_button";
-            this.cancel_change_student_login_button.Size = new System.Drawing.Size(99, 42);
+            this.cancel_change_student_login_button.Size = new System.Drawing.Size(111, 42);
             this.cancel_change_student_login_button.TabIndex = 1;
             this.cancel_change_student_login_button.Text = "Отмена";
-            this.cancel_change_student_login_button.UseVisualStyleBackColor = true;
+            this.cancel_change_student_login_button.UseVisualStyleBackColor = false;
             this.cancel_change_student_login_button.Click += new System.EventHandler(this.Cancel_change_student_login_button_Click);
             // 
             // new_student_login_button
             // 
-            this.new_student_login_button.Location = new System.Drawing.Point(579, 122);
+            this.new_student_login_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.new_student_login_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.new_student_login_button.FlatAppearance.BorderSize = 2;
+            this.new_student_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.new_student_login_button.Location = new System.Drawing.Point(563, 122);
             this.new_student_login_button.Name = "new_student_login_button";
-            this.new_student_login_button.Size = new System.Drawing.Size(184, 42);
+            this.new_student_login_button.Size = new System.Drawing.Size(200, 42);
             this.new_student_login_button.TabIndex = 2;
             this.new_student_login_button.Text = "Изменить логин";
-            this.new_student_login_button.UseVisualStyleBackColor = true;
+            this.new_student_login_button.UseVisualStyleBackColor = false;
             this.new_student_login_button.Click += new System.EventHandler(this.New_student_login_button_Click);
             // 
             // new_student_login_textbox
@@ -509,7 +489,6 @@
             this.new_student_login_textbox.Name = "new_student_login_textbox";
             this.new_student_login_textbox.Size = new System.Drawing.Size(460, 28);
             this.new_student_login_textbox.TabIndex = 0;
-            this.new_student_login_textbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // change_student_login_label
             // 
@@ -519,7 +498,6 @@
             this.change_student_login_label.Size = new System.Drawing.Size(169, 21);
             this.change_student_login_label.TabIndex = 0;
             this.change_student_login_label.Text = "Введите новый логин:";
-            this.change_student_login_label.Click += new System.EventHandler(this.change_student_login_label_Click);
             // 
             // change_student_password_panel
             // 
@@ -534,6 +512,8 @@
             this.change_student_password_panel.Name = "change_student_password_panel";
             this.change_student_password_panel.Size = new System.Drawing.Size(805, 250);
             this.change_student_password_panel.TabIndex = 2;
+            this.change_student_password_panel.Visible = false;
+            this.change_student_password_panel.VisibleChanged += new System.EventHandler(this.Change_student_password_panel_VisibleChanged);
             // 
             // label3
             // 
@@ -543,16 +523,19 @@
             this.label3.Size = new System.Drawing.Size(179, 21);
             this.label3.TabIndex = 4;
             this.label3.Text = "Введите новый пароль:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // new_student_password_button
             // 
-            this.new_student_password_button.Location = new System.Drawing.Point(579, 198);
+            this.new_student_password_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.new_student_password_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.new_student_password_button.FlatAppearance.BorderSize = 2;
+            this.new_student_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.new_student_password_button.Location = new System.Drawing.Point(563, 198);
             this.new_student_password_button.Name = "new_student_password_button";
-            this.new_student_password_button.Size = new System.Drawing.Size(184, 42);
+            this.new_student_password_button.Size = new System.Drawing.Size(200, 42);
             this.new_student_password_button.TabIndex = 3;
             this.new_student_password_button.Text = "Изменить пароль";
-            this.new_student_password_button.UseVisualStyleBackColor = true;
+            this.new_student_password_button.UseVisualStyleBackColor = false;
             this.new_student_password_button.Click += new System.EventHandler(this.New_student_password_button_Click);
             // 
             // label4
@@ -563,16 +546,19 @@
             this.label4.Size = new System.Drawing.Size(253, 21);
             this.label4.TabIndex = 6;
             this.label4.Text = "Повторно введите новый пароль:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // cancel_change_student_password_button
             // 
-            this.cancel_change_student_password_button.Location = new System.Drawing.Point(475, 198);
+            this.cancel_change_student_password_button.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_student_password_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_student_password_button.FlatAppearance.BorderSize = 2;
+            this.cancel_change_student_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel_change_student_password_button.Location = new System.Drawing.Point(446, 199);
             this.cancel_change_student_password_button.Name = "cancel_change_student_password_button";
-            this.cancel_change_student_password_button.Size = new System.Drawing.Size(89, 42);
+            this.cancel_change_student_password_button.Size = new System.Drawing.Size(111, 42);
             this.cancel_change_student_password_button.TabIndex = 2;
             this.cancel_change_student_password_button.Text = "Отмена";
-            this.cancel_change_student_password_button.UseVisualStyleBackColor = true;
+            this.cancel_change_student_password_button.UseVisualStyleBackColor = false;
             this.cancel_change_student_password_button.Click += new System.EventHandler(this.Cancel_change_student_password_button_Click);
             // 
             // student_new_password_textBox
@@ -581,7 +567,6 @@
             this.student_new_password_textBox.Name = "student_new_password_textBox";
             this.student_new_password_textBox.Size = new System.Drawing.Size(460, 28);
             this.student_new_password_textBox.TabIndex = 0;
-            this.student_new_password_textBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // student_test_new_password_textBox
             // 
@@ -589,6 +574,64 @@
             this.student_test_new_password_textBox.Name = "student_test_new_password_textBox";
             this.student_test_new_password_textBox.Size = new System.Drawing.Size(460, 28);
             this.student_test_new_password_textBox.TabIndex = 1;
+            // 
+            // student_identity_check_panel
+            // 
+            this.student_identity_check_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.student_identity_check_panel.Controls.Add(this.label1);
+            this.student_identity_check_panel.Controls.Add(this.cancel_student_change_password_button);
+            this.student_identity_check_panel.Controls.Add(this.student_old_password_textBox);
+            this.student_identity_check_panel.Controls.Add(this.continue_student_change_password_button);
+            this.student_identity_check_panel.Location = new System.Drawing.Point(207, 76);
+            this.student_identity_check_panel.Name = "student_identity_check_panel";
+            this.student_identity_check_panel.Size = new System.Drawing.Size(357, 173);
+            this.student_identity_check_panel.TabIndex = 11;
+            this.student_identity_check_panel.Visible = false;
+            this.student_identity_check_panel.VisibleChanged += new System.EventHandler(this.Student_identity_check_panel_VisibleChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(184, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Введите старый пароль:";
+            // 
+            // cancel_student_change_password_button
+            // 
+            this.cancel_student_change_password_button.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_student_change_password_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_student_change_password_button.FlatAppearance.BorderSize = 2;
+            this.cancel_student_change_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel_student_change_password_button.Location = new System.Drawing.Point(86, 116);
+            this.cancel_student_change_password_button.Name = "cancel_student_change_password_button";
+            this.cancel_student_change_password_button.Size = new System.Drawing.Size(90, 36);
+            this.cancel_student_change_password_button.TabIndex = 1;
+            this.cancel_student_change_password_button.Text = "Отмена";
+            this.cancel_student_change_password_button.UseVisualStyleBackColor = false;
+            this.cancel_student_change_password_button.Click += new System.EventHandler(this.Cancel_student_change_password_button_Click);
+            // 
+            // student_old_password_textBox
+            // 
+            this.student_old_password_textBox.Location = new System.Drawing.Point(23, 63);
+            this.student_old_password_textBox.Name = "student_old_password_textBox";
+            this.student_old_password_textBox.Size = new System.Drawing.Size(311, 28);
+            this.student_old_password_textBox.TabIndex = 0;
+            // 
+            // continue_student_change_password_button
+            // 
+            this.continue_student_change_password_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.continue_student_change_password_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.continue_student_change_password_button.FlatAppearance.BorderSize = 2;
+            this.continue_student_change_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.continue_student_change_password_button.Location = new System.Drawing.Point(182, 116);
+            this.continue_student_change_password_button.Name = "continue_student_change_password_button";
+            this.continue_student_change_password_button.Size = new System.Drawing.Size(152, 36);
+            this.continue_student_change_password_button.TabIndex = 2;
+            this.continue_student_change_password_button.Text = "Продолжить";
+            this.continue_student_change_password_button.UseVisualStyleBackColor = false;
+            this.continue_student_change_password_button.Click += new System.EventHandler(this.Continue_student_change_password_button_Click);
             // 
             // test_page
             // 
@@ -603,6 +646,119 @@
             this.test_page.Size = new System.Drawing.Size(829, 496);
             this.test_page.TabIndex = 0;
             this.test_page.Text = "Тестирование";
+            this.test_page.Leave += new System.EventHandler(this.Test_page_Leave);
+            // 
+            // choose_test_panel
+            // 
+            this.choose_test_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.choose_test_panel.Controls.Add(this.available_test_table);
+            this.choose_test_panel.Controls.Add(this.label2);
+            this.choose_test_panel.Controls.Add(this.start_test_button);
+            this.choose_test_panel.Location = new System.Drawing.Point(0, 0);
+            this.choose_test_panel.Name = "choose_test_panel";
+            this.choose_test_panel.Size = new System.Drawing.Size(824, 491);
+            this.choose_test_panel.TabIndex = 17;
+            this.choose_test_panel.Visible = false;
+            this.choose_test_panel.VisibleChanged += new System.EventHandler(this.Choose_test_panel_VisibleChanged);
+            // 
+            // available_test_table
+            // 
+            this.available_test_table.AllowUserToAddRows = false;
+            this.available_test_table.AllowUserToDeleteRows = false;
+            this.available_test_table.AllowUserToResizeColumns = false;
+            this.available_test_table.AllowUserToResizeRows = false;
+            this.available_test_table.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.available_test_table.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.available_test_table.BackgroundColor = System.Drawing.Color.SlateGray;
+            this.available_test_table.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.available_test_table.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.available_test_table.ColumnHeadersHeight = 40;
+            this.available_test_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.available_test_table.DefaultCellStyle = dataGridViewCellStyle2;
+            this.available_test_table.Location = new System.Drawing.Point(5, 117);
+            this.available_test_table.MultiSelect = false;
+            this.available_test_table.Name = "available_test_table";
+            this.available_test_table.ReadOnly = true;
+            this.available_test_table.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.available_test_table.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.available_test_table.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.available_test_table.RowHeadersVisible = false;
+            this.available_test_table.RowHeadersWidth = 15;
+            this.available_test_table.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.available_test_table.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.available_test_table.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.AliceBlue;
+            this.available_test_table.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.available_test_table.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            this.available_test_table.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.available_test_table.RowTemplate.Height = 55;
+            this.available_test_table.RowTemplate.ReadOnly = true;
+            this.available_test_table.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.available_test_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.available_test_table.Size = new System.Drawing.Size(814, 301);
+            this.available_test_table.TabIndex = 2;
+            this.available_test_table.TabStop = false;
+            this.available_test_table.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Available_test_table_CellClick);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.BackColor = System.Drawing.Color.Lavender;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(824, 57);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Чтобы начать тестирование, выберите необходимый тест из списка и нажмите \"Начать " +
+    "тестирование\"";
+            // 
+            // start_test_button
+            // 
+            this.start_test_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.start_test_button.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.start_test_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.start_test_button.FlatAppearance.BorderSize = 2;
+            this.start_test_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.start_test_button.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.start_test_button.Location = new System.Drawing.Point(543, 424);
+            this.start_test_button.Name = "start_test_button";
+            this.start_test_button.Size = new System.Drawing.Size(276, 55);
+            this.start_test_button.TabIndex = 1;
+            this.start_test_button.TabStop = false;
+            this.start_test_button.Text = "Начать тестирование";
+            this.start_test_button.UseVisualStyleBackColor = false;
+            this.start_test_button.Click += new System.EventHandler(this.Start_test_button_Click);
             // 
             // one_answer_panel
             // 
@@ -616,19 +772,23 @@
             this.one_answer_panel.Controls.Add(this.question_number_label2);
             this.one_answer_panel.Location = new System.Drawing.Point(0, 0);
             this.one_answer_panel.Name = "one_answer_panel";
-            this.one_answer_panel.Size = new System.Drawing.Size(831, 500);
+            this.one_answer_panel.Size = new System.Drawing.Size(824, 491);
             this.one_answer_panel.TabIndex = 27;
             this.one_answer_panel.Visible = false;
+            this.one_answer_panel.VisibleChanged += new System.EventHandler(this.One_answer_panel_VisibleChanged);
             // 
             // one_answer_button
             // 
             this.one_answer_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.one_answer_button.BackColor = System.Drawing.Color.CadetBlue;
+            this.one_answer_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.one_answer_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.one_answer_button.FlatAppearance.BorderSize = 2;
+            this.one_answer_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.one_answer_button.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.one_answer_button.ForeColor = System.Drawing.Color.White;
-            this.one_answer_button.Location = new System.Drawing.Point(565, 415);
+            this.one_answer_button.Location = new System.Drawing.Point(543, 406);
             this.one_answer_button.Name = "one_answer_button";
-            this.one_answer_button.Size = new System.Drawing.Size(242, 53);
+            this.one_answer_button.Size = new System.Drawing.Size(257, 53);
             this.one_answer_button.TabIndex = 13;
             this.one_answer_button.TabStop = false;
             this.one_answer_button.Text = " one_answer_button";
@@ -643,7 +803,7 @@
             this.question_text_label2.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.question_text_label2.Location = new System.Drawing.Point(26, 55);
             this.question_text_label2.Name = "question_text_label2";
-            this.question_text_label2.Size = new System.Drawing.Size(781, 67);
+            this.question_text_label2.Size = new System.Drawing.Size(774, 58);
             this.question_text_label2.TabIndex = 10;
             this.question_text_label2.Text = "question_text_label2";
             // 
@@ -659,7 +819,7 @@
             this.panel5.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.panel5.Location = new System.Drawing.Point(0, 146);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(807, 240);
+            this.panel5.Size = new System.Drawing.Size(800, 231);
             this.panel5.TabIndex = 11;
             // 
             // radioButton4
@@ -706,12 +866,12 @@
             // 
             this.question_number_label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.question_number_label2.BackColor = System.Drawing.Color.CadetBlue;
+            this.question_number_label2.BackColor = System.Drawing.Color.SteelBlue;
             this.question_number_label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.question_number_label2.ForeColor = System.Drawing.Color.White;
             this.question_number_label2.Location = new System.Drawing.Point(1, 0);
             this.question_number_label2.Name = "question_number_label2";
-            this.question_number_label2.Size = new System.Drawing.Size(831, 49);
+            this.question_number_label2.Size = new System.Drawing.Size(824, 49);
             this.question_number_label2.TabIndex = 9;
             this.question_number_label2.Text = "question_number_label2";
             this.question_number_label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -728,20 +888,24 @@
             this.many_answer_panel.Controls.Add(this.panel3);
             this.many_answer_panel.Location = new System.Drawing.Point(0, 0);
             this.many_answer_panel.Name = "many_answer_panel";
-            this.many_answer_panel.Size = new System.Drawing.Size(832, 500);
+            this.many_answer_panel.Size = new System.Drawing.Size(824, 491);
             this.many_answer_panel.TabIndex = 28;
             this.many_answer_panel.Visible = false;
+            this.many_answer_panel.VisibleChanged += new System.EventHandler(this.Many_answer_panel_VisibleChanged);
             // 
             // many_answer_button
             // 
             this.many_answer_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.many_answer_button.BackColor = System.Drawing.Color.CadetBlue;
+            this.many_answer_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.many_answer_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.many_answer_button.FlatAppearance.BorderSize = 2;
+            this.many_answer_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.many_answer_button.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.many_answer_button.ForeColor = System.Drawing.Color.White;
-            this.many_answer_button.Location = new System.Drawing.Point(492, 408);
+            this.many_answer_button.Location = new System.Drawing.Point(543, 406);
             this.many_answer_button.Name = "many_answer_button";
-            this.many_answer_button.Size = new System.Drawing.Size(323, 53);
+            this.many_answer_button.Size = new System.Drawing.Size(257, 53);
             this.many_answer_button.TabIndex = 17;
             this.many_answer_button.TabStop = false;
             this.many_answer_button.Text = "many_answer_button";
@@ -753,9 +917,9 @@
             this.question_text_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.question_text_label.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.question_text_label.Location = new System.Drawing.Point(26, 67);
+            this.question_text_label.Location = new System.Drawing.Point(26, 58);
             this.question_text_label.Name = "question_text_label";
-            this.question_text_label.Size = new System.Drawing.Size(789, 76);
+            this.question_text_label.Size = new System.Drawing.Size(781, 76);
             this.question_text_label.TabIndex = 16;
             this.question_text_label.Text = "question_text_label";
             // 
@@ -763,12 +927,12 @@
             // 
             this.question_number_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.question_number_label.BackColor = System.Drawing.Color.CadetBlue;
+            this.question_number_label.BackColor = System.Drawing.Color.SteelBlue;
             this.question_number_label.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.question_number_label.ForeColor = System.Drawing.Color.White;
             this.question_number_label.Location = new System.Drawing.Point(1, 0);
             this.question_number_label.Name = "question_number_label";
-            this.question_number_label.Size = new System.Drawing.Size(831, 49);
+            this.question_number_label.Size = new System.Drawing.Size(823, 49);
             this.question_number_label.TabIndex = 8;
             this.question_number_label.Text = "question_number_label";
             this.question_number_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -783,9 +947,9 @@
             this.panel3.Controls.Add(this.checkBox2);
             this.panel3.Controls.Add(this.checkBox1);
             this.panel3.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.panel3.Location = new System.Drawing.Point(3, 146);
+            this.panel3.Location = new System.Drawing.Point(3, 137);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(815, 240);
+            this.panel3.Size = new System.Drawing.Size(797, 240);
             this.panel3.TabIndex = 15;
             // 
             // checkBox4
@@ -832,159 +996,46 @@
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // choose_test_panel
-            // 
-            this.choose_test_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.choose_test_panel.Controls.Add(this.available_test_table);
-            this.choose_test_panel.Controls.Add(this.label2);
-            this.choose_test_panel.Controls.Add(this.start_test_button);
-            this.choose_test_panel.Location = new System.Drawing.Point(0, 0);
-            this.choose_test_panel.Name = "choose_test_panel";
-            this.choose_test_panel.Size = new System.Drawing.Size(836, 499);
-            this.choose_test_panel.TabIndex = 17;
-            // 
-            // available_test_table
-            // 
-            this.available_test_table.AllowUserToAddRows = false;
-            this.available_test_table.AllowUserToDeleteRows = false;
-            this.available_test_table.AllowUserToResizeColumns = false;
-            this.available_test_table.AllowUserToResizeRows = false;
-            this.available_test_table.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.available_test_table.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.available_test_table.BackgroundColor = System.Drawing.Color.SlateGray;
-            this.available_test_table.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.available_test_table.ColumnHeadersHeight = 40;
-            this.available_test_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.available_test_table.DefaultCellStyle = dataGridViewCellStyle1;
-            this.available_test_table.Location = new System.Drawing.Point(5, 125);
-            this.available_test_table.MultiSelect = false;
-            this.available_test_table.Name = "available_test_table";
-            this.available_test_table.ReadOnly = true;
-            this.available_test_table.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.available_test_table.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.available_test_table.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.available_test_table.RowHeadersVisible = false;
-            this.available_test_table.RowHeadersWidth = 15;
-            this.available_test_table.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.available_test_table.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.available_test_table.RowTemplate.Height = 55;
-            this.available_test_table.RowTemplate.ReadOnly = true;
-            this.available_test_table.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.available_test_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.available_test_table.Size = new System.Drawing.Size(827, 301);
-            this.available_test_table.TabIndex = 2;
-            this.available_test_table.TabStop = false;
-            this.available_test_table.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Available_test_table_CellClick);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.BackColor = System.Drawing.Color.LightBlue;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(826, 57);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Чтобы начать тестирование, выберите необходимый тест из списка и нажмите \"Начать " +
-    "тестирование\"";
-            // 
-            // start_test_button
-            // 
-            this.start_test_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.start_test_button.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.start_test_button.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.start_test_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.start_test_button.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.start_test_button.Location = new System.Drawing.Point(565, 431);
-            this.start_test_button.Name = "start_test_button";
-            this.start_test_button.Size = new System.Drawing.Size(247, 56);
-            this.start_test_button.TabIndex = 1;
-            this.start_test_button.TabStop = false;
-            this.start_test_button.Text = "Начать тестирование";
-            this.start_test_button.UseVisualStyleBackColor = false;
-            this.start_test_button.Click += new System.EventHandler(this.Start_test_button_Click);
-            // 
             // result_page
             // 
-            this.result_page.BackColor = System.Drawing.Color.MintCream;
+            this.result_page.BackColor = System.Drawing.Color.Lavender;
             this.result_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.result_page.Controls.Add(this.one_result_dataGridView);
-            this.result_page.Controls.Add(this.panel1);
-            this.result_page.Controls.Add(this.results_dataGridView);
+            this.result_page.Controls.Add(this.results_panel);
             this.result_page.Location = new System.Drawing.Point(4, 30);
             this.result_page.Name = "result_page";
             this.result_page.Padding = new System.Windows.Forms.Padding(3);
             this.result_page.Size = new System.Drawing.Size(829, 496);
             this.result_page.TabIndex = 1;
             this.result_page.Text = "Результаты";
-            this.result_page.Leave += new System.EventHandler(this.result_page_Leave);
+            this.result_page.Leave += new System.EventHandler(this.Result_page_Leave);
             // 
-            // one_result_dataGridView
+            // results_panel
             // 
-            this.one_result_dataGridView.AllowUserToAddRows = false;
-            this.one_result_dataGridView.AllowUserToDeleteRows = false;
-            this.one_result_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.one_result_dataGridView.BackgroundColor = System.Drawing.Color.MintCream;
-            this.one_result_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.one_result_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.one_result_dataGridView.Location = new System.Drawing.Point(-1, 90);
-            this.one_result_dataGridView.Name = "one_result_dataGridView";
-            this.one_result_dataGridView.ReadOnly = true;
-            this.one_result_dataGridView.RowHeadersWidth = 51;
-            this.one_result_dataGridView.RowTemplate.Height = 24;
-            this.one_result_dataGridView.Size = new System.Drawing.Size(827, 401);
-            this.one_result_dataGridView.TabIndex = 2;
-            this.one_result_dataGridView.TabStop = false;
-            this.one_result_dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.one_result_dataGridView_CellContentClick);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.passed_tests);
-            this.panel1.Controls.Add(this.show_one_test_result);
-            this.panel1.Controls.Add(this.show_list_of_completed_tests);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(826, 90);
-            this.panel1.TabIndex = 1;
+            this.results_panel.BackColor = System.Drawing.Color.Lavender;
+            this.results_panel.Controls.Add(this.passed_tests);
+            this.results_panel.Controls.Add(this.show_one_test_result);
+            this.results_panel.Controls.Add(this.show_list_of_completed_tests);
+            this.results_panel.Controls.Add(this.one_result_dataGridView);
+            this.results_panel.Controls.Add(this.results_dataGridView);
+            this.results_panel.Location = new System.Drawing.Point(0, 0);
+            this.results_panel.Name = "results_panel";
+            this.results_panel.Size = new System.Drawing.Size(819, 491);
+            this.results_panel.TabIndex = 1;
+            this.results_panel.Visible = false;
+            this.results_panel.VisibleChanged += new System.EventHandler(this.Results_panel_VisibleChanged);
             // 
             // passed_tests
             // 
+            this.passed_tests.BackColor = System.Drawing.Color.White;
             this.passed_tests.FormattingEnabled = true;
-            this.passed_tests.Location = new System.Drawing.Point(418, 18);
+            this.passed_tests.Location = new System.Drawing.Point(433, 18);
             this.passed_tests.Name = "passed_tests";
             this.passed_tests.Size = new System.Drawing.Size(383, 29);
             this.passed_tests.TabIndex = 2;
             this.passed_tests.TabStop = false;
             this.passed_tests.Text = "Выберите тест";
             this.passed_tests.Visible = false;
-            this.passed_tests.SelectedIndexChanged += new System.EventHandler(this.Passed_tests_SelectedIndexChanged);
+            this.passed_tests.SelectionChangeCommitted += new System.EventHandler(this.Passed_tests_SelectionChangeCommitted);
             this.passed_tests.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Choose_test_result_KeyPress);
             // 
             // show_one_test_result
@@ -1008,7 +1059,51 @@
             this.show_list_of_completed_tests.Text = "Показать список пройденных тестов с оценками";
             this.show_list_of_completed_tests.UseVisualStyleBackColor = true;
             this.show_list_of_completed_tests.CheckedChanged += new System.EventHandler(this.Show_list_of_completed_tests_CheckedChanged);
-            this.show_list_of_completed_tests.Click += new System.EventHandler(this.Show_list_of_completed_tests_Click);
+            // 
+            // one_result_dataGridView
+            // 
+            this.one_result_dataGridView.AllowUserToAddRows = false;
+            this.one_result_dataGridView.AllowUserToDeleteRows = false;
+            this.one_result_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.one_result_dataGridView.BackgroundColor = System.Drawing.Color.SlateGray;
+            this.one_result_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.one_result_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.one_result_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.one_result_dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.one_result_dataGridView.Location = new System.Drawing.Point(3, 80);
+            this.one_result_dataGridView.MultiSelect = false;
+            this.one_result_dataGridView.Name = "one_result_dataGridView";
+            this.one_result_dataGridView.ReadOnly = true;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.one_result_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.one_result_dataGridView.RowHeadersWidth = 51;
+            this.one_result_dataGridView.RowTemplate.Height = 24;
+            this.one_result_dataGridView.Size = new System.Drawing.Size(808, 406);
+            this.one_result_dataGridView.TabIndex = 2;
+            this.one_result_dataGridView.TabStop = false;
+            this.one_result_dataGridView.Visible = false;
             // 
             // results_dataGridView
             // 
@@ -1017,16 +1112,43 @@
             this.results_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.results_dataGridView.BackgroundColor = System.Drawing.Color.MintCream;
+            this.results_dataGridView.BackgroundColor = System.Drawing.Color.SlateGray;
             this.results_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.results_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.results_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.results_dataGridView.Location = new System.Drawing.Point(0, 90);
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.results_dataGridView.DefaultCellStyle = dataGridViewCellStyle9;
+            this.results_dataGridView.Location = new System.Drawing.Point(3, 80);
+            this.results_dataGridView.MultiSelect = false;
             this.results_dataGridView.Name = "results_dataGridView";
             this.results_dataGridView.ReadOnly = true;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.results_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.results_dataGridView.RowHeadersWidth = 51;
             this.results_dataGridView.RowTemplate.Height = 24;
-            this.results_dataGridView.Size = new System.Drawing.Size(827, 401);
+            this.results_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.results_dataGridView.Size = new System.Drawing.Size(808, 406);
             this.results_dataGridView.TabIndex = 0;
+            this.results_dataGridView.Visible = false;
             // 
             // test_timer
             // 
@@ -1039,38 +1161,38 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 523);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(847, 570);
             this.Name = "StudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StudentForm_FormClosed);
-            this.Load += new System.EventHandler(this.StudentForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.profile_page.ResumeLayout(false);
             this.student_profile_main_panel.ResumeLayout(false);
             this.student_profile_main_panel.PerformLayout();
-            this.student_identity_check_panel.ResumeLayout(false);
-            this.student_identity_check_panel.PerformLayout();
             this.change_full_name_panel.ResumeLayout(false);
             this.change_full_name_panel.PerformLayout();
             this.change_student_login_panel.ResumeLayout(false);
             this.change_student_login_panel.PerformLayout();
             this.change_student_password_panel.ResumeLayout(false);
             this.change_student_password_panel.PerformLayout();
+            this.student_identity_check_panel.ResumeLayout(false);
+            this.student_identity_check_panel.PerformLayout();
             this.test_page.ResumeLayout(false);
+            this.choose_test_panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.available_test_table)).EndInit();
             this.one_answer_panel.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.many_answer_panel.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.choose_test_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.available_test_table)).EndInit();
             this.result_page.ResumeLayout(false);
+            this.results_panel.ResumeLayout(false);
+            this.results_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.one_result_dataGridView)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results_dataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -1103,7 +1225,7 @@
         private System.Windows.Forms.Button one_answer_button;
         private System.Windows.Forms.Button many_answer_button;
         private System.Windows.Forms.DataGridView results_dataGridView;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel results_panel;
         private System.Windows.Forms.ComboBox passed_tests;
         private System.Windows.Forms.RadioButton show_one_test_result;
         private System.Windows.Forms.RadioButton show_list_of_completed_tests;
@@ -1140,10 +1262,10 @@
         private System.Windows.Forms.Button exit_student_profile_button;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button change_name_button;
         private System.Windows.Forms.Panel change_full_name_panel;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button change_full_name_button;
+        private System.Windows.Forms.Button cancel_change_name_button;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox new_student_name_textBox;

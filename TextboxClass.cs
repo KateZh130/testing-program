@@ -4,8 +4,6 @@ namespace testing_program
 {
     class TextboxClass
     {
-
-
         public bool Check_text_is_changed(TextBox textbox, string text)
         {
             if (textbox.Text != "" && textbox.Text != text)
@@ -32,6 +30,7 @@ namespace testing_program
             }
             return false;
         }
+
         public void Fill_textboxes(TextBox[] arr, string[] text)
         {
             for (int i = 0; i < arr.Length; ++i)
@@ -42,7 +41,6 @@ namespace testing_program
 
         public bool Check_textboxes_text_are_changed(string[] sArr, TextBox[] tArr)
         {
-
             for (int i = 0; i < tArr.Length; ++i)
             {
                 if (tArr[i].Text == "" || tArr[i].Text == sArr[i])
@@ -62,6 +60,7 @@ namespace testing_program
             }
             return true;
         }
+
         public void Change_visible(TextBox[] arr, bool value)
         {
             for (int i = 0; i < arr.Length; ++i)
@@ -69,22 +68,24 @@ namespace testing_program
                 arr[i].Visible = value;
             }
         }
+
         public void Clear_textboxes(TextBox[] arr)
         {
-
             for (int i = 0; i < arr.Length; ++i)
             {
                 arr[i].Clear();
             }
         }
+
         public bool Check_full_name_correct(TextBox textbox)
         {
             string[] name = textbox.Text.Split(' ');
             if (name.Length != 3)
+            {
+                MessageBox.Show("Некорректно заполнено поле Введите ФИО");
                 return false;
+            }
             return true;
         }
-
-
     }
 }
