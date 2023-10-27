@@ -240,9 +240,19 @@ namespace testing_program
                 open_version_in_test_comboBox.Visible = true;
                 open_test_button.Visible = false;
                 return_to_available_tests_table_button.Visible = true;
-                database.Fill_version_number_comboBox(open_version_in_test_comboBox, user_id, teacher_available_tests_table.SelectedCells[1].Value.ToString());
             }
             else MessageBox.Show("Выберите тест из списка");
+        }
+
+        private void open_version_in_test_comboBox_VisibleChanged(object sender, EventArgs e)
+        {
+            if (open_version_in_test_comboBox.Visible)
+                database.Fill_version_number_comboBox(open_version_in_test_comboBox, user_id, teacher_available_tests_table.SelectedCells[1].Value.ToString());
+            else
+            {
+                combobox.Return_original_text(open_version_in_test_comboBox, "Выберите вариант");
+                combobox.Delete_collection(open_version_in_test_comboBox);
+            }
         }
         //***************вкладка создания теста*******************
         //****************Добавление в бд основной информации по тесту при создании*********************

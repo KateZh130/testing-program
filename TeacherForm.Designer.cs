@@ -153,6 +153,11 @@
             this.delete_mode_choose_version_comboBox = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.profile_page = new System.Windows.Forms.TabPage();
+            this.change_teacher_login_panel = new System.Windows.Forms.Panel();
+            this.cancel_change_teacher_login_button = new System.Windows.Forms.Button();
+            this.new_teacher_login_button = new System.Windows.Forms.Button();
+            this.new_teacher_login_textbox = new System.Windows.Forms.TextBox();
+            this.change_teacher_login_label = new System.Windows.Forms.Label();
             this.change_full_name_panel = new System.Windows.Forms.Panel();
             this.continue_change_teacher_name_button = new System.Windows.Forms.Button();
             this.cancel_change_teacher_name_button = new System.Windows.Forms.Button();
@@ -190,11 +195,6 @@
             this.cancel_teacher_change_password_button = new System.Windows.Forms.Button();
             this.teacher_old_password_textBox = new System.Windows.Forms.TextBox();
             this.continue_teacher_change_password_button = new System.Windows.Forms.Button();
-            this.change_teacher_login_panel = new System.Windows.Forms.Panel();
-            this.cancel_change_teacher_login_button = new System.Windows.Forms.Button();
-            this.new_teacher_login_button = new System.Windows.Forms.Button();
-            this.new_teacher_login_textbox = new System.Windows.Forms.TextBox();
-            this.change_teacher_login_label = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.students_page = new System.Windows.Forms.TabPage();
             this.test_access_panel = new System.Windows.Forms.Panel();
@@ -274,11 +274,11 @@
             this.new_comment_panel.SuspendLayout();
             this.delete_task_panel.SuspendLayout();
             this.profile_page.SuspendLayout();
+            this.change_teacher_login_panel.SuspendLayout();
             this.change_full_name_panel.SuspendLayout();
             this.teacher_profile_main_panel.SuspendLayout();
             this.change_teacher_password_panel.SuspendLayout();
             this.teacher_identity_check_panel.SuspendLayout();
-            this.change_teacher_login_panel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.students_page.SuspendLayout();
             this.test_access_panel.SuspendLayout();
@@ -524,6 +524,7 @@
             this.open_version_in_test_comboBox.Text = "Выберите вариант";
             this.open_version_in_test_comboBox.Visible = false;
             this.open_version_in_test_comboBox.SelectionChangeCommitted += new System.EventHandler(this.Open_version_in_test_comboBox_SelectionChangeCommitted);
+            this.open_version_in_test_comboBox.VisibleChanged += new System.EventHandler(this.open_version_in_test_comboBox_VisibleChanged);
             this.open_version_in_test_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Open_version_in_test_comboBox_KeyPress);
             // 
             // teacher_available_tests_table
@@ -1670,6 +1671,72 @@
             this.profile_page.TabIndex = 0;
             this.profile_page.Text = "Профиль";
             // 
+            // change_teacher_login_panel
+            // 
+            this.change_teacher_login_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.change_teacher_login_panel.BackColor = System.Drawing.Color.Lavender;
+            this.change_teacher_login_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.change_teacher_login_panel.Controls.Add(this.cancel_change_teacher_login_button);
+            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_button);
+            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_textbox);
+            this.change_teacher_login_panel.Controls.Add(this.change_teacher_login_label);
+            this.change_teacher_login_panel.Location = new System.Drawing.Point(6, 23);
+            this.change_teacher_login_panel.Name = "change_teacher_login_panel";
+            this.change_teacher_login_panel.Size = new System.Drawing.Size(989, 174);
+            this.change_teacher_login_panel.TabIndex = 10;
+            this.change_teacher_login_panel.Visible = false;
+            this.change_teacher_login_panel.VisibleChanged += new System.EventHandler(this.Change_teacher_login_panel_VisibleChanged);
+            // 
+            // cancel_change_teacher_login_button
+            // 
+            this.cancel_change_teacher_login_button.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_teacher_login_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_teacher_login_button.FlatAppearance.BorderSize = 2;
+            this.cancel_change_teacher_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel_change_teacher_login_button.Location = new System.Drawing.Point(624, 112);
+            this.cancel_change_teacher_login_button.Name = "cancel_change_teacher_login_button";
+            this.cancel_change_teacher_login_button.Size = new System.Drawing.Size(110, 42);
+            this.cancel_change_teacher_login_button.TabIndex = 1;
+            this.cancel_change_teacher_login_button.Text = "Отмена";
+            this.cancel_change_teacher_login_button.UseVisualStyleBackColor = false;
+            this.cancel_change_teacher_login_button.Click += new System.EventHandler(this.Cancel_change_teacher_login_button_Click);
+            // 
+            // new_teacher_login_button
+            // 
+            this.new_teacher_login_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.new_teacher_login_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.new_teacher_login_button.FlatAppearance.BorderSize = 2;
+            this.new_teacher_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.new_teacher_login_button.Location = new System.Drawing.Point(740, 112);
+            this.new_teacher_login_button.Name = "new_teacher_login_button";
+            this.new_teacher_login_button.Size = new System.Drawing.Size(207, 42);
+            this.new_teacher_login_button.TabIndex = 2;
+            this.new_teacher_login_button.Text = "Изменить логин";
+            this.new_teacher_login_button.UseVisualStyleBackColor = false;
+            this.new_teacher_login_button.Click += new System.EventHandler(this.New_teacher_login_button_Click);
+            // 
+            // new_teacher_login_textbox
+            // 
+            this.new_teacher_login_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.new_teacher_login_textbox.Location = new System.Drawing.Point(303, 40);
+            this.new_teacher_login_textbox.Name = "new_teacher_login_textbox";
+            this.new_teacher_login_textbox.Size = new System.Drawing.Size(644, 28);
+            this.new_teacher_login_textbox.TabIndex = 0;
+            this.new_teacher_login_textbox.TabStop = false;
+            // 
+            // change_teacher_login_label
+            // 
+            this.change_teacher_login_label.AutoSize = true;
+            this.change_teacher_login_label.Location = new System.Drawing.Point(53, 43);
+            this.change_teacher_login_label.Name = "change_teacher_login_label";
+            this.change_teacher_login_label.Size = new System.Drawing.Size(169, 21);
+            this.change_teacher_login_label.TabIndex = 0;
+            this.change_teacher_login_label.Text = "Введите новый логин:";
+            // 
             // change_full_name_panel
             // 
             this.change_full_name_panel.BackColor = System.Drawing.Color.Lavender;
@@ -2138,72 +2205,6 @@
             this.continue_teacher_change_password_button.Text = "Продолжить";
             this.continue_teacher_change_password_button.UseVisualStyleBackColor = false;
             this.continue_teacher_change_password_button.Click += new System.EventHandler(this.Continue_teacher_change_password_button_Click);
-            // 
-            // change_teacher_login_panel
-            // 
-            this.change_teacher_login_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.change_teacher_login_panel.BackColor = System.Drawing.Color.Lavender;
-            this.change_teacher_login_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.change_teacher_login_panel.Controls.Add(this.cancel_change_teacher_login_button);
-            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_button);
-            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_textbox);
-            this.change_teacher_login_panel.Controls.Add(this.change_teacher_login_label);
-            this.change_teacher_login_panel.Location = new System.Drawing.Point(6, 23);
-            this.change_teacher_login_panel.Name = "change_teacher_login_panel";
-            this.change_teacher_login_panel.Size = new System.Drawing.Size(989, 174);
-            this.change_teacher_login_panel.TabIndex = 10;
-            this.change_teacher_login_panel.Visible = false;
-            this.change_teacher_login_panel.VisibleChanged += new System.EventHandler(this.Change_teacher_login_panel_VisibleChanged);
-            // 
-            // cancel_change_teacher_login_button
-            // 
-            this.cancel_change_teacher_login_button.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.cancel_change_teacher_login_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.cancel_change_teacher_login_button.FlatAppearance.BorderSize = 2;
-            this.cancel_change_teacher_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancel_change_teacher_login_button.Location = new System.Drawing.Point(624, 112);
-            this.cancel_change_teacher_login_button.Name = "cancel_change_teacher_login_button";
-            this.cancel_change_teacher_login_button.Size = new System.Drawing.Size(110, 42);
-            this.cancel_change_teacher_login_button.TabIndex = 1;
-            this.cancel_change_teacher_login_button.Text = "Отмена";
-            this.cancel_change_teacher_login_button.UseVisualStyleBackColor = false;
-            this.cancel_change_teacher_login_button.Click += new System.EventHandler(this.Cancel_change_teacher_login_button_Click);
-            // 
-            // new_teacher_login_button
-            // 
-            this.new_teacher_login_button.BackColor = System.Drawing.Color.SteelBlue;
-            this.new_teacher_login_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.new_teacher_login_button.FlatAppearance.BorderSize = 2;
-            this.new_teacher_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.new_teacher_login_button.Location = new System.Drawing.Point(740, 112);
-            this.new_teacher_login_button.Name = "new_teacher_login_button";
-            this.new_teacher_login_button.Size = new System.Drawing.Size(207, 42);
-            this.new_teacher_login_button.TabIndex = 2;
-            this.new_teacher_login_button.Text = "Изменить логин";
-            this.new_teacher_login_button.UseVisualStyleBackColor = false;
-            this.new_teacher_login_button.Click += new System.EventHandler(this.New_teacher_login_button_Click);
-            // 
-            // new_teacher_login_textbox
-            // 
-            this.new_teacher_login_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.new_teacher_login_textbox.Location = new System.Drawing.Point(303, 40);
-            this.new_teacher_login_textbox.Name = "new_teacher_login_textbox";
-            this.new_teacher_login_textbox.Size = new System.Drawing.Size(644, 28);
-            this.new_teacher_login_textbox.TabIndex = 0;
-            this.new_teacher_login_textbox.TabStop = false;
-            // 
-            // change_teacher_login_label
-            // 
-            this.change_teacher_login_label.AutoSize = true;
-            this.change_teacher_login_label.Location = new System.Drawing.Point(53, 43);
-            this.change_teacher_login_label.Name = "change_teacher_login_label";
-            this.change_teacher_login_label.Size = new System.Drawing.Size(169, 21);
-            this.change_teacher_login_label.TabIndex = 0;
-            this.change_teacher_login_label.Text = "Введите новый логин:";
             // 
             // tabControl1
             // 
@@ -3029,6 +3030,8 @@
             this.new_comment_panel.PerformLayout();
             this.delete_task_panel.ResumeLayout(false);
             this.profile_page.ResumeLayout(false);
+            this.change_teacher_login_panel.ResumeLayout(false);
+            this.change_teacher_login_panel.PerformLayout();
             this.change_full_name_panel.ResumeLayout(false);
             this.change_full_name_panel.PerformLayout();
             this.teacher_profile_main_panel.ResumeLayout(false);
@@ -3037,8 +3040,6 @@
             this.change_teacher_password_panel.PerformLayout();
             this.teacher_identity_check_panel.ResumeLayout(false);
             this.teacher_identity_check_panel.PerformLayout();
-            this.change_teacher_login_panel.ResumeLayout(false);
-            this.change_teacher_login_panel.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.students_page.ResumeLayout(false);
             this.test_access_panel.ResumeLayout(false);
