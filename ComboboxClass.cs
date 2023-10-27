@@ -29,17 +29,13 @@ namespace testing_program
         public void Change_visible(ComboBox[] arr, bool value)
         {
             for (int i = 0; i < arr.Length; ++i)
-            {
                 arr[i].Visible = value;
-            }
         }
 
         public bool Check_is_changed(ComboBox combobox)
         {
             if (combobox.SelectedIndex == -1)
-            {
                 return false;
-            }
             return true;
         }
 
@@ -48,9 +44,7 @@ namespace testing_program
             for (int i = 0; i < arr.Length; ++i)
             {
                 if (arr[i].SelectedIndex == -1)
-                {
                     return false;
-                }
             }
             return true;
         }

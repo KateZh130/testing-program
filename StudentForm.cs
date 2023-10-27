@@ -28,7 +28,7 @@ namespace testing_program
         int timer;
         int version_id = 0;
         int question_index = 0;
-        int question_type=0;
+        int question_type = 0;
 
         public StudentForm(DatabaseClass database, int user_id)
         {
@@ -190,7 +190,7 @@ namespace testing_program
         {
             test_timer.Stop();
             stopWatch.Stop();
-            if (question_type==1)
+            if (question_type == 1)
             {
                 Save_and_count_scores(Check_one_answer_task());
                 one_answer_panel.Visible = false;
@@ -203,7 +203,7 @@ namespace testing_program
             Finish_testing();
         }
         //****************отмена изменения данных профиля******************
-        
+
         private void Cancel_change_name_button_Click(object sender, EventArgs e)
         {
             change_full_name_panel.Visible = false;
@@ -402,17 +402,17 @@ namespace testing_program
                 if (question_index + 1 == number_of_questions)
                     button_text = "Закончить попытку";
                 question_number_label2.Text = "Вопрос " + (question_index + 1);
-                    question_text_label2.Text = questions[question_index];
-                    one_answer_button.Text = button_text;
+                question_text_label2.Text = questions[question_index];
+                one_answer_button.Text = button_text;
             }
             else
             {
                 RadioButton[] radioButtons = { radioButton1, radioButton2, radioButton3, radioButton4 };
                 for (int i = 0; i < radioButtons.Length; ++i)
-                        radioButtons[i].Checked = false;
+                    radioButtons[i].Checked = false;
                 right_answers.Clear();
                 answers_text.Clear();
-            } 
+            }
         }
 
         private void Many_answer_panel_VisibleChanged(object sender, EventArgs e)
@@ -424,18 +424,18 @@ namespace testing_program
                 if (question_index + 1 == number_of_questions)
                     button_text = "Закончить попытку";
                 question_number_label.Text = "Вопрос " + (question_index + 1);
-                    question_text_label.Text = questions[question_index];
-                    many_answer_button.Text = button_text;
+                question_text_label.Text = questions[question_index];
+                many_answer_button.Text = button_text;
             }
             else
             {
                 CheckBox[] checkBoxes = { checkBox1, checkBox2, checkBox3, checkBox4 };
                 for (int i = 0; i < checkBoxes.Length; ++i)
-                        checkbox.Clear(checkBoxes[i]);
+                    checkbox.Clear(checkBoxes[i]);
                 right_answers.Clear();
                 answers_text.Clear();
             }
-            
+
         }
         //*************заполнение таблиц и взаимодействия с ними***************************
         private void Passed_tests_SelectionChangeCommitted(object sender, EventArgs e)
@@ -503,7 +503,7 @@ namespace testing_program
             e.Handled = true;
         }
     }
-        
+
 }
 
 

@@ -13,17 +13,13 @@ namespace testing_program
         public void Fill_text(CheckBox[] checkBoxes, List<string> text)
         {
             for (int i = 0; i < checkBoxes.Length; ++i)
-            {
                 checkBoxes[i].Text = text[i];
-            }
         }
 
         public void Clear_checkboxes(CheckBox[] checkBoxes)
         {
             for (int i = 0; i < checkBoxes.Length; ++i)
-            {
                 checkBoxes[i].Checked = false;
-            }
         }
     }
 }

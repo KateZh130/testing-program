@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace testing_program
@@ -125,7 +124,7 @@ namespace testing_program
             {
                 case "Список групп с доступом к тестам":
                     adapter = database.Get_students_access(user_id, category);
-                    text[0]= "Название теста";
+                    text[0] = "Название теста";
                     name[0] = "test";
                     break;
                 case "Список студентов с персональным доступом к тестам":
@@ -152,18 +151,16 @@ namespace testing_program
             DataTable dataTable = set.Tables[0];
             table.DataSource = dataTable;
             table.Columns[0].Visible = false;
-            if(one_group && category != "Список всех студентов")
+            if (one_group && category != "Список всех студентов")
                 table.Columns[2].Visible = false;
             Change_column_name(table, 0, name0);
             for (int i = 1; i < table.Columns.Count; ++i)
             {
                 if (i == 3)
-                { 
+                {
                     Change_column_header_text(table, i, "Доступ к тесту");
                     for (int j = 0; j < table.RowCount; ++j)
-                    {
-                        table.Rows[j].Cells[3].Value = !(table.Rows[j].Cells[3].Value.ToString()=="closed group" || table.Rows[j].Cells[3].Value.ToString() == "closed personal") ? "Да" : "Нет";
-                    }     
+                        table.Rows[j].Cells[3].Value = !(table.Rows[j].Cells[3].Value.ToString() == "closed group" || table.Rows[j].Cells[3].Value.ToString() == "closed personal") ? "Да" : "Нет";
                 }
                 else
                 {
@@ -171,7 +168,6 @@ namespace testing_program
                     Change_column_name(table, i, name[i - 1]);
                 }
             }
-            
             table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 
@@ -259,7 +255,7 @@ namespace testing_program
         public void Reset_student_marks_table(DatabaseClass database, string group, string student, DataGridView table, int user_id)
         {
             Show(table);
-            
+
             List<string[]> marks = new List<string[]>(); //marks
             database.Get_student_marks(user_id, group, student, marks);
             if (marks.Count > 0)
@@ -280,14 +276,14 @@ namespace testing_program
                 Change_column_header_text(table, 0, "Тест");
                 Change_column_header_text(table, 1, "Оценка");
             }
-            table.DefaultCellStyle.WrapMode = DataGridViewTriState.True; 
+            table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 
         public void Reset_group_marks_table(DatabaseClass database, string group, DataGridView table, int user_id)
         {
-            Show(table); 
+            Show(table);
             List<string> tests = new List<string>();
-            List<int> id = database.Get_tests(user_id, group, tests, -1,false);//headers
+            List<int> id = database.Get_tests(user_id, group, tests, -1, false);//headers
             if (id.Count > 0)
             {
                 List<string> average_mark = new List<string>(); //1st row
@@ -305,13 +301,9 @@ namespace testing_program
                 result.AddRange(marks.ToArray());
                 table.ColumnCount = id.Count + 1;
                 foreach (string[] s in result)
-                {
                     table.Rows.Add(s);
-                }
                 for (int i = 0; i < table.ColumnCount - 1; ++i)
-                {
                     Change_column_header_text(table, i + 1, tests[i]);
-                }
                 table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
         }

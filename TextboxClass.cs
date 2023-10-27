@@ -34,9 +34,7 @@ namespace testing_program
         public void Fill_textboxes(TextBox[] arr, string[] text)
         {
             for (int i = 0; i < arr.Length; ++i)
-            {
                 arr[i].Text = text[i];
-            }
         }
 
         public bool Check_textboxes_text_are_changed(string[] sArr, TextBox[] tArr)
@@ -44,9 +42,7 @@ namespace testing_program
             for (int i = 0; i < tArr.Length; ++i)
             {
                 if (tArr[i].Text == "" || tArr[i].Text == sArr[i])
-                {
                     return false;
-                }
             }
             return true;
         }
@@ -64,17 +60,13 @@ namespace testing_program
         public void Change_visible(TextBox[] arr, bool value)
         {
             for (int i = 0; i < arr.Length; ++i)
-            {
                 arr[i].Visible = value;
-            }
         }
 
         public void Clear_textboxes(TextBox[] arr)
         {
             for (int i = 0; i < arr.Length; ++i)
-            {
                 arr[i].Clear();
-            }
         }
 
         public bool Check_full_name_correct(TextBox textbox)
