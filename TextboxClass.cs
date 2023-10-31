@@ -140,10 +140,10 @@ namespace testing_program
         {
             foreach(TextBox box in textBoxes)
             {
-                if (box.Text.Contains("'") || box.Text.Contains(@"\") || box.Text.Contains(@""""))
+                if (box.Text.Contains("'") || box.Text.Contains(@"\") || box.Text.Contains(@"""") || box.Text.Contains(";"))
                 {
                     if (message)
-                        MessageBox.Show(@"Некорректно заполнено поле. Запрещено использовать символы '\""", "Ошибка");
+                        MessageBox.Show(@"Некорректно заполнено поле. Запрещено использовать символы '\"";", "Ошибка");
                     return false;
                 }
             }

@@ -102,7 +102,7 @@ namespace testing_program
             adapter.Fill(set);
             DataTable dataTable = set.Tables[0];
             table.DataSource = dataTable;
-            Change_column_header_text(table, 0, new string[] { "Название теста", "Оценка", "Время прохождения" });
+            Change_column_header_text(table, 0, new string[] { "Название теста", "Оценка", "Время прохождения в минутах" });
             Change_column_width(table, 0, new int[] { 350, 70, 140 });
         }
 
@@ -179,6 +179,7 @@ namespace testing_program
             table.DataSource = dataTable;
             Change_column_header_text(table, 0, new string[] { "Вопрос", "Правильность выполнения" });
             Change_column_width(table, 0, new int[] { 460, 100 });
+            table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 
         public void Reset_teacher_test_table(DatabaseClass database, int user_id, DataGridView table)
@@ -191,7 +192,7 @@ namespace testing_program
             adapter.Fill(set);
             DataTable dataTable = set.Tables[0];
             table.DataSource = dataTable;
-            Change_column_header_text(table, 1, new string[] { "Название теста", "Ограничение по времени", "Количество вариантов" });
+            Change_column_header_text(table, 1, new string[] { "Название теста", "Ограничение по времени в минутах", "Количество вариантов" });
             Change_column_width(table, 1, new int[] { 460, 100, 100 });
             table.Columns[0].Visible = false;
         }

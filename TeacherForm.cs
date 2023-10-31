@@ -386,7 +386,7 @@ namespace testing_program
         {
             TextBox[] textBoxes = { existing_question_type_textBox, existing_answer_textBox1, existing_answer_textBox2, existing_answer_textBox3, existing_answer_textBox4 };
             CheckBox[] checkBoxes = { checkBox5, checkBox6, checkBox7, checkBox8 };
-            if (combobox.Check_selected_index_changed(select_existing_question_comboBox) ||
+            if (!combobox.Check_selected_index_changed(select_existing_question_comboBox) ||
                 !textbox.Check_text_changed(textBoxes))
             {
                 MessageBox.Show("Заполните обязательные поля!");
@@ -985,10 +985,10 @@ namespace testing_program
                 database.Get_teacher_available_tests(user_id, available_teacher_tests_comboBox);
             }
             else contextmenustrip1_enabled = false;
-        }
-        //****************вкладка студенты и группы*********************
-        //*************заполнение таблиц и взаимодействия с ними***************************
-        private void Choose_group_for_marks_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+            }
+            //****************вкладка студенты и группы*********************
+            //*************заполнение таблиц и взаимодействия с ними***************************
+            private void Choose_group_for_marks_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             data.Clear_rows(group_marks_table);
             data.Reset_group_marks_table(database, choose_group_for_marks_comboBox.SelectedItem.ToString(), group_marks_table, user_id);
@@ -1924,6 +1924,17 @@ namespace testing_program
         {
             if (e.KeyChar == 13)
                 e.Handled = true;
+        }
+
+        private void available_teacher_tests_comboBox_VisibleChanged(object sender, EventArgs e)
+        {
+            if (available_teacher_tests_comboBox.Visible)
+                label14.Visible = true;
+            else
+            {
+                label14.Visible = false;
+                combobox.Return_original_text(available_teacher_tests_comboBox, "Выберите тест");
+            }
         }
     }
 }

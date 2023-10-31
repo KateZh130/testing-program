@@ -21,6 +21,7 @@ namespace testing_program
         List<string> right_answers = new List<string>();
         List<string> answers_text = new List<string>();
         List<string> questions = new List<string>();
+        List<bool> student_answers = new List<bool>();
         readonly int user_id;
         int test_id = 0;
         int number_of_questions;
@@ -127,6 +128,18 @@ namespace testing_program
             MessageBox.Show("Тест пройден!\nВаша оценка: " + mark + "\n" +
                 "Чтобы получить больше информации зайдите в раздел Результаты", "Результат");
             database.Add_mark_to_database(mark, student_test_id, time);
+            for(int i = 0; i < student_answers.Count; ++i)
+            {
+                database.Save_student_answer(user_id, version_id, questions[i], student_answers[i], student_test_id);
+            }
+            if(student_answers.Count!= questions.Count)
+            {
+                for(int i = student_answers.Count; i < questions.Count; ++i)
+                {
+                    database.Save_student_answer(user_id, version_id, questions[i], false, student_test_id);
+                }
+            }
+            student_answers.Clear();
             questions.Clear();
             stopWatch.Reset();
             test_id = 0;
@@ -182,7 +195,9 @@ namespace testing_program
         {
             if (answer)
                 ++scores;
-            database.Save_student_answer(user_id, version_id, questions[question_index], answer, student_test_id);
+            student_answers.Insert(question_index,answer);
+
+            //database.Save_student_answer(user_id, version_id, questions[question_index], answer, student_test_id);
         }
 
         //**************ограничение по времени*************************
