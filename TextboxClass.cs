@@ -4,13 +4,12 @@ namespace testing_program
 {
     class TextboxClass
     {
-        public bool Check_text_is_changed(TextBox textbox, string text)
+        public void Change_location(TextBox[] arr, int value1, int[] value2)
         {
-            if (textbox.Text != "" && textbox.Text != text)
-                return true;
-            return false;
-        }
+            for (int i = 0; i < arr.Length; ++i)
 
+                arr[i].Location = new System.Drawing.Point(value1, value2[i]);
+        }
         public bool Check_is_cleared(TextBox textbox, string text, bool is_changed)
         {
             if (is_changed == false || textbox.Text == text)
@@ -30,18 +29,42 @@ namespace testing_program
             }
             return false;
         }
-
-        public void Fill_textboxes(TextBox[] arr, string[] text)
+        
+        public void Fill(TextBox[] arr, string[] text)
         {
             for (int i = 0; i < arr.Length; ++i)
                 arr[i].Text = text[i];
         }
-
-        public bool Check_textboxes_text_are_changed(string[] sArr, TextBox[] tArr)
+        public void Fill(TextBox textBox, string text)
+        {
+            textBox.Text = text;
+        }
+        public bool Check_text_changed(TextBox textbox, string text)
+        {
+            if (textbox.Text != "" && textbox.Text != text)
+                return true;
+            return false;
+        }
+        public bool Check_text_changed(TextBox textbox)
+        {
+            if (textbox.Text != "")
+                return true;
+            return false;
+        }
+        public bool Check_text_changed(TextBox[] tArr, string[] sArr)
         {
             for (int i = 0; i < tArr.Length; ++i)
             {
                 if (tArr[i].Text == "" || tArr[i].Text == sArr[i])
+                    return false;
+            }
+            return true;
+        }
+        public bool Check_text_changed(TextBox[] tArr)
+        {
+            for (int i = 0; i < tArr.Length; ++i)
+            {
+                if (tArr[i].Text == "")
                     return false;
             }
             return true;
@@ -63,19 +86,66 @@ namespace testing_program
                 arr[i].Visible = value;
         }
 
-        public void Clear_textboxes(TextBox[] arr)
+        public void Change_visible(TextBox textBox, bool value)
+        {
+            textBox.Visible = value;
+        }
+
+        public void Clear(TextBox[] arr)
         {
             for (int i = 0; i < arr.Length; ++i)
                 arr[i].Clear();
         }
 
-        public bool Check_full_name_correct(TextBox textbox)
+        public void Clear(TextBox textBox)
         {
-            string[] name = textbox.Text.Split(' ');
-            if (name.Length != 3)
+            textBox.Clear();
+        }
+
+        public bool Check_invalid_characters_with_space(TextBox textbox)
+        {
+            if (textbox.Text.Contains(" ") || !Check_invalid_characters(textbox, false))
             {
-                MessageBox.Show("Некорректно заполнено поле Введите ФИО");
+                MessageBox.Show(@"Некорректно заполнено поле. Запрещено использовать пробел и символы '\""", "Ошибка");
                 return false;
+            }
+            return true;
+        }
+
+        public bool Check_invalid_characters_with_space(TextBox[] textboxes)
+        {
+            foreach (TextBox textbox in textboxes)
+            {
+                if (textbox.Text.Contains(" ") || !Check_invalid_characters(textbox, false))
+                {
+                    MessageBox.Show(@"Некорректно заполнено поле. Запрещено использовать пробел и символы '\""", "Ошибка");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool Check_invalid_characters(TextBox textBox, bool message)
+        {
+            if (textBox.Text.Contains("'") ||  textBox.Text.Contains(@"\") || textBox.Text.Contains(@""""))
+            {
+                if(message)
+                    MessageBox.Show(@"Некорректно заполнено поле. Запрещено использовать символы '\""", "Ошибка");
+                return false;
+            }
+            return true;
+        }
+
+        public bool Check_invalid_characters(TextBox[] textBoxes, bool message)
+        {
+            foreach(TextBox box in textBoxes)
+            {
+                if (box.Text.Contains("'") || box.Text.Contains(@"\") || box.Text.Contains(@""""))
+                {
+                    if (message)
+                        MessageBox.Show(@"Некорректно заполнено поле. Запрещено использовать символы '\""", "Ошибка");
+                    return false;
+                }
             }
             return true;
         }

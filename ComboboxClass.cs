@@ -14,6 +14,13 @@ namespace testing_program
         {
             combobox.Items.Clear();
         }
+        public void Delete_collection(ComboBox[] arr)
+        {
+            for (int i = 0; i < arr.Length; ++i)
+            {
+                arr[i].Items.Clear();
+            }
+        }
 
         public void Add_item(ComboBox combobox, string item)
         {
@@ -26,20 +33,33 @@ namespace testing_program
             combobox.Text = text;
         }
 
+        public void Return_original_text(ComboBox[] arr, string[] text)
+        {
+            for (int i = 0; i < arr.Length; ++i)
+            {
+                Clear_selection(arr[i]);
+                arr[i].Text = text[i];
+            }    
+        }
+
         public void Change_visible(ComboBox[] arr, bool value)
         {
             for (int i = 0; i < arr.Length; ++i)
                 arr[i].Visible = value;
         }
+        public void Change_visible(ComboBox comboBox, bool value)
+        {
+            comboBox.Visible = value;
+        }
 
-        public bool Check_is_changed(ComboBox combobox)
+        public bool Check_selected_index_changed(ComboBox combobox)
         {
             if (combobox.SelectedIndex == -1)
                 return false;
             return true;
         }
 
-        public bool Check_selected_indexes_are_changed(ComboBox[] arr)
+        public bool Check_selected_index_changed(ComboBox[] arr)
         {
             for (int i = 0; i < arr.Length; ++i)
             {

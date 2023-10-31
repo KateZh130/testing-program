@@ -73,12 +73,19 @@
             this.tasks_table_page = new System.Windows.Forms.TabPage();
             this.available_teacher_tasks_table = new System.Windows.Forms.DataGridView();
             this.create_tests_page = new System.Windows.Forms.TabPage();
+            this.create_test_groupBox = new System.Windows.Forms.GroupBox();
+            this.comment_textBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.add_new_test_to_db = new System.Windows.Forms.Button();
+            this.new_timer_textBox = new System.Windows.Forms.TextBox();
+            this.new_test_name_textBox = new System.Windows.Forms.TextBox();
             this.create_version_questions_groupBox = new System.Windows.Forms.GroupBox();
             this.select_existing_method_radioButton = new System.Windows.Forms.RadioButton();
             this.new_method_radioButton = new System.Windows.Forms.RadioButton();
             this.add_next_question_button = new System.Windows.Forms.Button();
             this.finish_creating_test_button = new System.Windows.Forms.Button();
             this.finish_editing_button = new System.Windows.Forms.Button();
+            this.create_next_version = new System.Windows.Forms.Button();
             this.create_new_question_panel = new System.Windows.Forms.Panel();
             this.question_textBox = new System.Windows.Forms.TextBox();
             this.question_type_comboBox = new System.Windows.Forms.ComboBox();
@@ -105,18 +112,17 @@
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.select_existing_question_comboBox = new System.Windows.Forms.ComboBox();
-            this.create_next_version = new System.Windows.Forms.Button();
-            this.create_test_groupBox = new System.Windows.Forms.GroupBox();
-            this.comment_textBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.add_new_test_to_db = new System.Windows.Forms.Button();
-            this.new_timer_textBox = new System.Windows.Forms.TextBox();
-            this.new_test_name_textBox = new System.Windows.Forms.TextBox();
             this.edit_tests_page = new System.Windows.Forms.TabPage();
             this.edit_test_groupBox = new System.Windows.Forms.GroupBox();
             this.cancel_edit_button = new System.Windows.Forms.Button();
             this.confirm_change_button = new System.Windows.Forms.Button();
             this.available_teacher_tests_comboBox = new System.Windows.Forms.ComboBox();
+            this.new_comment_panel = new System.Windows.Forms.Panel();
+            this.new_comment_textBox = new System.Windows.Forms.TextBox();
+            this.delete_task_panel = new System.Windows.Forms.Panel();
+            this.delete_task_comboBox = new System.Windows.Forms.ComboBox();
+            this.delete_mode_choose_version_comboBox = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.edit_task_panel = new System.Windows.Forms.Panel();
             this.choose_task_comboBox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -146,33 +152,9 @@
             this.new_timer_panel = new System.Windows.Forms.Panel();
             this.edit_timer_textBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.new_comment_panel = new System.Windows.Forms.Panel();
-            this.new_comment_textBox = new System.Windows.Forms.TextBox();
-            this.delete_task_panel = new System.Windows.Forms.Panel();
-            this.delete_task_comboBox = new System.Windows.Forms.ComboBox();
-            this.delete_mode_choose_version_comboBox = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.profile_page = new System.Windows.Forms.TabPage();
-            this.change_teacher_login_panel = new System.Windows.Forms.Panel();
-            this.cancel_change_teacher_login_button = new System.Windows.Forms.Button();
-            this.new_teacher_login_button = new System.Windows.Forms.Button();
-            this.new_teacher_login_textbox = new System.Windows.Forms.TextBox();
-            this.change_teacher_login_label = new System.Windows.Forms.Label();
-            this.change_full_name_panel = new System.Windows.Forms.Panel();
-            this.continue_change_teacher_name_button = new System.Windows.Forms.Button();
-            this.cancel_change_teacher_name_button = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.new_teacher_name_textBox = new System.Windows.Forms.TextBox();
-            this.new_patronymic_textBox = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.new_surname_textBox = new System.Windows.Forms.TextBox();
             this.teacher_profile_main_panel = new System.Windows.Forms.Panel();
             this.change_teacher_name_button = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.name_teacher_profile_textBox = new System.Windows.Forms.TextBox();
-            this.patronimic_teacher_profile_textBox = new System.Windows.Forms.TextBox();
             this.delete_teacher_profile_button = new System.Windows.Forms.Button();
             this.exit_student_profile_button = new System.Windows.Forms.Button();
             this.change_teacher_password_button = new System.Windows.Forms.Button();
@@ -180,7 +162,7 @@
             this.password_teacher_profile = new System.Windows.Forms.TextBox();
             this.full_name_teacher_profile_label = new System.Windows.Forms.Label();
             this.login_teacher_profile = new System.Windows.Forms.TextBox();
-            this.surname_teacher_profile_textBox = new System.Windows.Forms.TextBox();
+            this.teacher_name_profile_textBox = new System.Windows.Forms.TextBox();
             this.password_teacher_profile_label = new System.Windows.Forms.Label();
             this.login_teacher_profile_label = new System.Windows.Forms.Label();
             this.change_teacher_password_panel = new System.Windows.Forms.Panel();
@@ -190,6 +172,20 @@
             this.cancel_change_teacher_password_button = new System.Windows.Forms.Button();
             this.teacher_new_password_textBox = new System.Windows.Forms.TextBox();
             this.teacher_test_new_password_textBox = new System.Windows.Forms.TextBox();
+            this.change_full_name_panel = new System.Windows.Forms.Panel();
+            this.continue_change_teacher_name_button = new System.Windows.Forms.Button();
+            this.cancel_change_teacher_name_button = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.new_teacher_name_textBox = new System.Windows.Forms.TextBox();
+            this.new_patronymic_textBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.new_surname_textBox = new System.Windows.Forms.TextBox();
+            this.change_teacher_login_panel = new System.Windows.Forms.Panel();
+            this.cancel_change_teacher_login_button = new System.Windows.Forms.Button();
+            this.new_teacher_login_button = new System.Windows.Forms.Button();
+            this.new_teacher_login_textbox = new System.Windows.Forms.TextBox();
+            this.change_teacher_login_label = new System.Windows.Forms.Label();
             this.teacher_identity_check_panel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cancel_teacher_change_password_button = new System.Windows.Forms.Button();
@@ -260,24 +256,24 @@
             this.tasks_table_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.available_teacher_tasks_table)).BeginInit();
             this.create_tests_page.SuspendLayout();
+            this.create_test_groupBox.SuspendLayout();
             this.create_version_questions_groupBox.SuspendLayout();
             this.create_new_question_panel.SuspendLayout();
             this.select_existing_question_panel.SuspendLayout();
-            this.create_test_groupBox.SuspendLayout();
             this.edit_tests_page.SuspendLayout();
             this.edit_test_groupBox.SuspendLayout();
+            this.new_comment_panel.SuspendLayout();
+            this.delete_task_panel.SuspendLayout();
             this.edit_task_panel.SuspendLayout();
             this.edit_task_panel2.SuspendLayout();
             this.add_task_or_delete_version_panel.SuspendLayout();
             this.new_name_panel.SuspendLayout();
             this.new_timer_panel.SuspendLayout();
-            this.new_comment_panel.SuspendLayout();
-            this.delete_task_panel.SuspendLayout();
             this.profile_page.SuspendLayout();
-            this.change_teacher_login_panel.SuspendLayout();
-            this.change_full_name_panel.SuspendLayout();
             this.teacher_profile_main_panel.SuspendLayout();
             this.change_teacher_password_panel.SuspendLayout();
+            this.change_full_name_panel.SuspendLayout();
+            this.change_teacher_login_panel.SuspendLayout();
             this.teacher_identity_check_panel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.students_page.SuspendLayout();
@@ -524,7 +520,7 @@
             this.open_version_in_test_comboBox.Text = "Выберите вариант";
             this.open_version_in_test_comboBox.Visible = false;
             this.open_version_in_test_comboBox.SelectionChangeCommitted += new System.EventHandler(this.Open_version_in_test_comboBox_SelectionChangeCommitted);
-            this.open_version_in_test_comboBox.VisibleChanged += new System.EventHandler(this.open_version_in_test_comboBox_VisibleChanged);
+            this.open_version_in_test_comboBox.VisibleChanged += new System.EventHandler(this.Open_version_in_test_comboBox_VisibleChanged);
             this.open_version_in_test_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Open_version_in_test_comboBox_KeyPress);
             // 
             // teacher_available_tests_table
@@ -580,6 +576,7 @@
             this.teacher_one_test_table.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.teacher_one_test_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.teacher_one_test_table.BackgroundColor = System.Drawing.Color.SlateGray;
             this.teacher_one_test_table.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -638,6 +635,7 @@
             this.available_teacher_tasks_table.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.available_teacher_tasks_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.available_teacher_tasks_table.BackgroundColor = System.Drawing.Color.SlateGray;
             this.available_teacher_tasks_table.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -672,20 +670,97 @@
             this.available_teacher_tasks_table.RowHeadersWidth = 10;
             this.available_teacher_tasks_table.RowTemplate.Height = 55;
             this.available_teacher_tasks_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.available_teacher_tasks_table.Size = new System.Drawing.Size(989, 723);
+            this.available_teacher_tasks_table.Size = new System.Drawing.Size(989, 543);
             this.available_teacher_tasks_table.TabIndex = 1;
             // 
             // create_tests_page
             // 
             this.create_tests_page.BackColor = System.Drawing.Color.Lavender;
-            this.create_tests_page.Controls.Add(this.create_version_questions_groupBox);
             this.create_tests_page.Controls.Add(this.create_test_groupBox);
+            this.create_tests_page.Controls.Add(this.create_version_questions_groupBox);
             this.create_tests_page.Location = new System.Drawing.Point(4, 30);
             this.create_tests_page.Name = "create_tests_page";
             this.create_tests_page.Padding = new System.Windows.Forms.Padding(3);
             this.create_tests_page.Size = new System.Drawing.Size(1004, 598);
             this.create_tests_page.TabIndex = 0;
             this.create_tests_page.Text = "Создать тест";
+            // 
+            // create_test_groupBox
+            // 
+            this.create_test_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.create_test_groupBox.BackColor = System.Drawing.Color.Lavender;
+            this.create_test_groupBox.Controls.Add(this.comment_textBox);
+            this.create_test_groupBox.Controls.Add(this.label2);
+            this.create_test_groupBox.Controls.Add(this.add_new_test_to_db);
+            this.create_test_groupBox.Controls.Add(this.new_timer_textBox);
+            this.create_test_groupBox.Controls.Add(this.new_test_name_textBox);
+            this.create_test_groupBox.Location = new System.Drawing.Point(0, 40);
+            this.create_test_groupBox.Name = "create_test_groupBox";
+            this.create_test_groupBox.Size = new System.Drawing.Size(782, 411);
+            this.create_test_groupBox.TabIndex = 3;
+            this.create_test_groupBox.TabStop = false;
+            this.create_test_groupBox.Text = "Создание теста";
+            this.create_test_groupBox.Visible = false;
+            this.create_test_groupBox.VisibleChanged += new System.EventHandler(this.Create_test_groupBox_VisibleChanged);
+            // 
+            // comment_textBox
+            // 
+            this.comment_textBox.Location = new System.Drawing.Point(6, 227);
+            this.comment_textBox.Multiline = true;
+            this.comment_textBox.Name = "comment_textBox";
+            this.comment_textBox.Size = new System.Drawing.Size(763, 96);
+            this.comment_textBox.TabIndex = 2;
+            this.comment_textBox.Text = "Комментарий к тесту (необязательно)";
+            this.comment_textBox.Click += new System.EventHandler(this.Comment_textBox_Click);
+            this.comment_textBox.TextChanged += new System.EventHandler(this.Comment_textBox_TextChanged);
+            this.comment_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Comment_textBox_KeyPress);
+            this.comment_textBox.Leave += new System.EventHandler(this.New_test_name_textBox_Leave);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(334, 21);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Введите ограничение по времени в минутах:";
+            // 
+            // add_new_test_to_db
+            // 
+            this.add_new_test_to_db.BackColor = System.Drawing.Color.SteelBlue;
+            this.add_new_test_to_db.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.add_new_test_to_db.FlatAppearance.BorderSize = 2;
+            this.add_new_test_to_db.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add_new_test_to_db.Location = new System.Drawing.Point(470, 350);
+            this.add_new_test_to_db.Name = "add_new_test_to_db";
+            this.add_new_test_to_db.Size = new System.Drawing.Size(299, 46);
+            this.add_new_test_to_db.TabIndex = 3;
+            this.add_new_test_to_db.Text = "Создать тест";
+            this.add_new_test_to_db.UseVisualStyleBackColor = false;
+            this.add_new_test_to_db.Click += new System.EventHandler(this.Add_new_test_to_db_Click);
+            // 
+            // new_timer_textBox
+            // 
+            this.new_timer_textBox.Location = new System.Drawing.Point(6, 160);
+            this.new_timer_textBox.Name = "new_timer_textBox";
+            this.new_timer_textBox.Size = new System.Drawing.Size(125, 28);
+            this.new_timer_textBox.TabIndex = 1;
+            this.new_timer_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_timer_textBox_KeyPress);
+            // 
+            // new_test_name_textBox
+            // 
+            this.new_test_name_textBox.Location = new System.Drawing.Point(6, 38);
+            this.new_test_name_textBox.Multiline = true;
+            this.new_test_name_textBox.Name = "new_test_name_textBox";
+            this.new_test_name_textBox.Size = new System.Drawing.Size(763, 54);
+            this.new_test_name_textBox.TabIndex = 0;
+            this.new_test_name_textBox.Text = "Введите название теста";
+            this.new_test_name_textBox.Click += new System.EventHandler(this.New_test_name_textBox_Click);
+            this.new_test_name_textBox.TextChanged += new System.EventHandler(this.New_test_name_textBox_TextChanged);
+            this.new_test_name_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_test_name_textBox_KeyPress);
+            this.new_test_name_textBox.Leave += new System.EventHandler(this.New_test_name_textBox_Leave);
             // 
             // create_version_questions_groupBox
             // 
@@ -698,9 +773,9 @@
             this.create_version_questions_groupBox.Controls.Add(this.add_next_question_button);
             this.create_version_questions_groupBox.Controls.Add(this.finish_creating_test_button);
             this.create_version_questions_groupBox.Controls.Add(this.finish_editing_button);
+            this.create_version_questions_groupBox.Controls.Add(this.create_next_version);
             this.create_version_questions_groupBox.Controls.Add(this.create_new_question_panel);
             this.create_version_questions_groupBox.Controls.Add(this.select_existing_question_panel);
-            this.create_version_questions_groupBox.Controls.Add(this.create_next_version);
             this.create_version_questions_groupBox.Location = new System.Drawing.Point(0, 0);
             this.create_version_questions_groupBox.Name = "create_version_questions_groupBox";
             this.create_version_questions_groupBox.Size = new System.Drawing.Size(1007, 605);
@@ -783,6 +858,23 @@
             this.finish_editing_button.Visible = false;
             this.finish_editing_button.Click += new System.EventHandler(this.Finish_editing_button_Click);
             // 
+            // create_next_version
+            // 
+            this.create_next_version.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.create_next_version.BackColor = System.Drawing.Color.SteelBlue;
+            this.create_next_version.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.create_next_version.FlatAppearance.BorderSize = 2;
+            this.create_next_version.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.create_next_version.Location = new System.Drawing.Point(348, 543);
+            this.create_next_version.Name = "create_next_version";
+            this.create_next_version.Size = new System.Drawing.Size(310, 56);
+            this.create_next_version.TabIndex = 2;
+            this.create_next_version.TabStop = false;
+            this.create_next_version.Text = "Следующий вариант";
+            this.create_next_version.UseVisualStyleBackColor = false;
+            this.create_next_version.Click += new System.EventHandler(this.Create_next_version_Click);
+            // 
             // create_new_question_panel
             // 
             this.create_new_question_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -815,6 +907,7 @@
             this.question_textBox.Text = "Введите текст вопроса";
             this.question_textBox.Click += new System.EventHandler(this.Question_textBox_Click);
             this.question_textBox.TextChanged += new System.EventHandler(this.Question_textBox_TextChanged);
+            this.question_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Question_textBox_KeyPress);
             this.question_textBox.Leave += new System.EventHandler(this.Question_textBox_Leave);
             // 
             // question_type_comboBox
@@ -840,6 +933,7 @@
             this.answer_textBox1.Text = "Введите ответ №1";
             this.answer_textBox1.Click += new System.EventHandler(this.Answer_textBox1_Click);
             this.answer_textBox1.TextChanged += new System.EventHandler(this.Answer_textBox1_TextChanged);
+            this.answer_textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox1_KeyPress);
             this.answer_textBox1.Leave += new System.EventHandler(this.Answer_textBox1_Leave);
             // 
             // checkBox4
@@ -862,6 +956,7 @@
             this.answer_textBox2.Text = "Введите ответ №2";
             this.answer_textBox2.Click += new System.EventHandler(this.Answer_textBox2_Click);
             this.answer_textBox2.TextChanged += new System.EventHandler(this.Answer_textBox2_TextChanged);
+            this.answer_textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox2_KeyPress);
             this.answer_textBox2.Leave += new System.EventHandler(this.Answer_textBox2_Leave);
             // 
             // answer_textBox3
@@ -874,6 +969,7 @@
             this.answer_textBox3.Text = "Введите ответ №3";
             this.answer_textBox3.Click += new System.EventHandler(this.Answer_textBox3_Click);
             this.answer_textBox3.TextChanged += new System.EventHandler(this.Answer_textBox3_TextChanged);
+            this.answer_textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox3_KeyPress);
             this.answer_textBox3.Leave += new System.EventHandler(this.Answer_textBox3_Leave);
             // 
             // answer_textBox4
@@ -886,6 +982,7 @@
             this.answer_textBox4.Text = "Введите ответ №4";
             this.answer_textBox4.Click += new System.EventHandler(this.Answer_textBox4_Click);
             this.answer_textBox4.TextChanged += new System.EventHandler(this.Answer_textBox4_TextChanged);
+            this.answer_textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox4_KeyPress);
             this.answer_textBox4.Leave += new System.EventHandler(this.Answer_textBox4_Leave);
             // 
             // checkBox1
@@ -1096,95 +1193,6 @@
             this.select_existing_question_comboBox.SelectionChangeCommitted += new System.EventHandler(this.Select_existing_question_comboBox_SelectionChangeCommitted);
             this.select_existing_question_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Select_existing_question_comboBox_KeyPress);
             // 
-            // create_next_version
-            // 
-            this.create_next_version.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.create_next_version.BackColor = System.Drawing.Color.SteelBlue;
-            this.create_next_version.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.create_next_version.FlatAppearance.BorderSize = 2;
-            this.create_next_version.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.create_next_version.Location = new System.Drawing.Point(348, 543);
-            this.create_next_version.Name = "create_next_version";
-            this.create_next_version.Size = new System.Drawing.Size(310, 56);
-            this.create_next_version.TabIndex = 2;
-            this.create_next_version.TabStop = false;
-            this.create_next_version.Text = "Следующий вариант";
-            this.create_next_version.UseVisualStyleBackColor = false;
-            this.create_next_version.Click += new System.EventHandler(this.Create_next_version_Click);
-            // 
-            // create_test_groupBox
-            // 
-            this.create_test_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.create_test_groupBox.BackColor = System.Drawing.Color.Lavender;
-            this.create_test_groupBox.Controls.Add(this.comment_textBox);
-            this.create_test_groupBox.Controls.Add(this.label2);
-            this.create_test_groupBox.Controls.Add(this.add_new_test_to_db);
-            this.create_test_groupBox.Controls.Add(this.new_timer_textBox);
-            this.create_test_groupBox.Controls.Add(this.new_test_name_textBox);
-            this.create_test_groupBox.Location = new System.Drawing.Point(0, 40);
-            this.create_test_groupBox.Name = "create_test_groupBox";
-            this.create_test_groupBox.Size = new System.Drawing.Size(782, 411);
-            this.create_test_groupBox.TabIndex = 3;
-            this.create_test_groupBox.TabStop = false;
-            this.create_test_groupBox.Text = "Создание теста";
-            this.create_test_groupBox.Visible = false;
-            this.create_test_groupBox.VisibleChanged += new System.EventHandler(this.Create_test_groupBox_VisibleChanged);
-            // 
-            // comment_textBox
-            // 
-            this.comment_textBox.Location = new System.Drawing.Point(6, 227);
-            this.comment_textBox.Multiline = true;
-            this.comment_textBox.Name = "comment_textBox";
-            this.comment_textBox.Size = new System.Drawing.Size(763, 96);
-            this.comment_textBox.TabIndex = 2;
-            this.comment_textBox.Text = "Комментарий к тесту (необязательно)";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 130);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(334, 21);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Введите ограничение по времени в минутах:";
-            // 
-            // add_new_test_to_db
-            // 
-            this.add_new_test_to_db.BackColor = System.Drawing.Color.SteelBlue;
-            this.add_new_test_to_db.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.add_new_test_to_db.FlatAppearance.BorderSize = 2;
-            this.add_new_test_to_db.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.add_new_test_to_db.Location = new System.Drawing.Point(470, 350);
-            this.add_new_test_to_db.Name = "add_new_test_to_db";
-            this.add_new_test_to_db.Size = new System.Drawing.Size(299, 46);
-            this.add_new_test_to_db.TabIndex = 3;
-            this.add_new_test_to_db.Text = "Создать тест";
-            this.add_new_test_to_db.UseVisualStyleBackColor = false;
-            this.add_new_test_to_db.Click += new System.EventHandler(this.Add_new_test_to_db_Click);
-            // 
-            // new_timer_textBox
-            // 
-            this.new_timer_textBox.Location = new System.Drawing.Point(6, 160);
-            this.new_timer_textBox.Name = "new_timer_textBox";
-            this.new_timer_textBox.Size = new System.Drawing.Size(125, 28);
-            this.new_timer_textBox.TabIndex = 1;
-            this.new_timer_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_timer_textBox_KeyPress);
-            // 
-            // new_test_name_textBox
-            // 
-            this.new_test_name_textBox.Location = new System.Drawing.Point(6, 38);
-            this.new_test_name_textBox.Multiline = true;
-            this.new_test_name_textBox.Name = "new_test_name_textBox";
-            this.new_test_name_textBox.Size = new System.Drawing.Size(763, 54);
-            this.new_test_name_textBox.TabIndex = 0;
-            this.new_test_name_textBox.Text = "Введите название теста";
-            this.new_test_name_textBox.Click += new System.EventHandler(this.New_test_name_textBox_Click);
-            this.new_test_name_textBox.TextChanged += new System.EventHandler(this.New_test_name_textBox_TextChanged);
-            this.new_test_name_textBox.Leave += new System.EventHandler(this.New_test_name_textBox_Leave);
-            // 
             // edit_tests_page
             // 
             this.edit_tests_page.BackColor = System.Drawing.Color.AliceBlue;
@@ -1206,12 +1214,12 @@
             this.edit_test_groupBox.Controls.Add(this.cancel_edit_button);
             this.edit_test_groupBox.Controls.Add(this.confirm_change_button);
             this.edit_test_groupBox.Controls.Add(this.available_teacher_tests_comboBox);
+            this.edit_test_groupBox.Controls.Add(this.new_comment_panel);
+            this.edit_test_groupBox.Controls.Add(this.delete_task_panel);
             this.edit_test_groupBox.Controls.Add(this.edit_task_panel);
             this.edit_test_groupBox.Controls.Add(this.add_task_or_delete_version_panel);
             this.edit_test_groupBox.Controls.Add(this.new_name_panel);
             this.edit_test_groupBox.Controls.Add(this.new_timer_panel);
-            this.edit_test_groupBox.Controls.Add(this.new_comment_panel);
-            this.edit_test_groupBox.Controls.Add(this.delete_task_panel);
             this.edit_test_groupBox.Location = new System.Drawing.Point(1, 0);
             this.edit_test_groupBox.Name = "edit_test_groupBox";
             this.edit_test_groupBox.Size = new System.Drawing.Size(1000, 599);
@@ -1264,6 +1272,82 @@
             this.available_teacher_tests_comboBox.Text = "Выберите тест";
             this.available_teacher_tests_comboBox.SelectionChangeCommitted += new System.EventHandler(this.Available_teacher_tests_comboBox_SelectionChangeCommitted);
             this.available_teacher_tests_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Available_teacher_tests_comboBox_KeyPress);
+            // 
+            // new_comment_panel
+            // 
+            this.new_comment_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.new_comment_panel.BackColor = System.Drawing.Color.Lavender;
+            this.new_comment_panel.Controls.Add(this.new_comment_textBox);
+            this.new_comment_panel.Location = new System.Drawing.Point(9, 84);
+            this.new_comment_panel.Name = "new_comment_panel";
+            this.new_comment_panel.Size = new System.Drawing.Size(984, 444);
+            this.new_comment_panel.TabIndex = 10;
+            this.new_comment_panel.Visible = false;
+            this.new_comment_panel.VisibleChanged += new System.EventHandler(this.New_comment_panel_VisibleChanged);
+            // 
+            // new_comment_textBox
+            // 
+            this.new_comment_textBox.Location = new System.Drawing.Point(5, 37);
+            this.new_comment_textBox.Multiline = true;
+            this.new_comment_textBox.Name = "new_comment_textBox";
+            this.new_comment_textBox.Size = new System.Drawing.Size(853, 117);
+            this.new_comment_textBox.TabIndex = 6;
+            this.new_comment_textBox.TabStop = false;
+            this.new_comment_textBox.Text = "Введите комментарий";
+            this.new_comment_textBox.Click += new System.EventHandler(this.New_comment_textBox_Click);
+            this.new_comment_textBox.TextChanged += new System.EventHandler(this.New_comment_textBox_TextChanged);
+            this.new_comment_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_comment_textBox_KeyPress);
+            this.new_comment_textBox.Leave += new System.EventHandler(this.New_comment_textBox_Leave);
+            // 
+            // delete_task_panel
+            // 
+            this.delete_task_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.delete_task_panel.BackColor = System.Drawing.Color.Lavender;
+            this.delete_task_panel.Controls.Add(this.delete_task_comboBox);
+            this.delete_task_panel.Controls.Add(this.delete_mode_choose_version_comboBox);
+            this.delete_task_panel.Controls.Add(this.label13);
+            this.delete_task_panel.Location = new System.Drawing.Point(0, 63);
+            this.delete_task_panel.Name = "delete_task_panel";
+            this.delete_task_panel.Size = new System.Drawing.Size(996, 465);
+            this.delete_task_panel.TabIndex = 15;
+            this.delete_task_panel.Visible = false;
+            this.delete_task_panel.VisibleChanged += new System.EventHandler(this.Delete_task_panel_VisibleChanged);
+            // 
+            // delete_task_comboBox
+            // 
+            this.delete_task_comboBox.FormattingEnabled = true;
+            this.delete_task_comboBox.Location = new System.Drawing.Point(13, 200);
+            this.delete_task_comboBox.Name = "delete_task_comboBox";
+            this.delete_task_comboBox.Size = new System.Drawing.Size(759, 29);
+            this.delete_task_comboBox.TabIndex = 2;
+            this.delete_task_comboBox.TabStop = false;
+            this.delete_task_comboBox.Text = "Выберите вопрос";
+            // 
+            // delete_mode_choose_version_comboBox
+            // 
+            this.delete_mode_choose_version_comboBox.FormattingEnabled = true;
+            this.delete_mode_choose_version_comboBox.Location = new System.Drawing.Point(13, 129);
+            this.delete_mode_choose_version_comboBox.Name = "delete_mode_choose_version_comboBox";
+            this.delete_mode_choose_version_comboBox.Size = new System.Drawing.Size(759, 29);
+            this.delete_mode_choose_version_comboBox.TabIndex = 1;
+            this.delete_mode_choose_version_comboBox.TabStop = false;
+            this.delete_mode_choose_version_comboBox.Text = "Выберите вариант";
+            this.delete_mode_choose_version_comboBox.SelectionChangeCommitted += new System.EventHandler(this.Delete_mode_choose_version_comboBox_SelectionChangeCommitted);
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label13.Location = new System.Drawing.Point(10, 46);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(967, 60);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Тестовое задание удаляется только из выбранного вами варианта конкретного теста. " +
+    "Даже после того, как вы удалите его, оно останется в общем списке тестовых задан" +
+    "ий.";
             // 
             // edit_task_panel
             // 
@@ -1393,6 +1477,7 @@
             this.edit_test_name_textBox.Name = "edit_test_name_textBox";
             this.edit_test_name_textBox.Size = new System.Drawing.Size(858, 57);
             this.edit_test_name_textBox.TabIndex = 0;
+            this.edit_test_name_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Edit_test_name_textBox_KeyPress);
             // 
             // label10
             // 
@@ -1539,12 +1624,13 @@
             this.new_name_textBox.Location = new System.Drawing.Point(8, 38);
             this.new_name_textBox.Multiline = true;
             this.new_name_textBox.Name = "new_name_textBox";
-            this.new_name_textBox.Size = new System.Drawing.Size(853, 75);
+            this.new_name_textBox.Size = new System.Drawing.Size(920, 75);
             this.new_name_textBox.TabIndex = 0;
             this.new_name_textBox.TabStop = false;
             this.new_name_textBox.Text = "Введите новое название";
             this.new_name_textBox.Click += new System.EventHandler(this.New_name_textBox_Click);
             this.new_name_textBox.TextChanged += new System.EventHandler(this.New_name_textBox_TextChanged);
+            this.new_name_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_name_textBox_KeyPress);
             this.new_name_textBox.Leave += new System.EventHandler(this.New_name_textBox_Leave);
             // 
             // new_timer_panel
@@ -1580,89 +1666,14 @@
             this.label8.TabIndex = 4;
             this.label8.Text = "Введите ограничение по времени в минутах:";
             // 
-            // new_comment_panel
-            // 
-            this.new_comment_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.new_comment_panel.BackColor = System.Drawing.Color.Lavender;
-            this.new_comment_panel.Controls.Add(this.new_comment_textBox);
-            this.new_comment_panel.Location = new System.Drawing.Point(9, 84);
-            this.new_comment_panel.Name = "new_comment_panel";
-            this.new_comment_panel.Size = new System.Drawing.Size(984, 444);
-            this.new_comment_panel.TabIndex = 10;
-            this.new_comment_panel.Visible = false;
-            this.new_comment_panel.VisibleChanged += new System.EventHandler(this.New_comment_panel_VisibleChanged);
-            // 
-            // new_comment_textBox
-            // 
-            this.new_comment_textBox.Location = new System.Drawing.Point(5, 37);
-            this.new_comment_textBox.Multiline = true;
-            this.new_comment_textBox.Name = "new_comment_textBox";
-            this.new_comment_textBox.Size = new System.Drawing.Size(853, 117);
-            this.new_comment_textBox.TabIndex = 6;
-            this.new_comment_textBox.TabStop = false;
-            this.new_comment_textBox.Text = "Введите комментарий";
-            this.new_comment_textBox.Click += new System.EventHandler(this.New_comment_textBox_Click);
-            this.new_comment_textBox.TextChanged += new System.EventHandler(this.New_comment_textBox_TextChanged);
-            this.new_comment_textBox.Leave += new System.EventHandler(this.New_comment_textBox_Leave);
-            // 
-            // delete_task_panel
-            // 
-            this.delete_task_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.delete_task_panel.BackColor = System.Drawing.Color.Lavender;
-            this.delete_task_panel.Controls.Add(this.delete_task_comboBox);
-            this.delete_task_panel.Controls.Add(this.delete_mode_choose_version_comboBox);
-            this.delete_task_panel.Controls.Add(this.label13);
-            this.delete_task_panel.Location = new System.Drawing.Point(0, 63);
-            this.delete_task_panel.Name = "delete_task_panel";
-            this.delete_task_panel.Size = new System.Drawing.Size(996, 465);
-            this.delete_task_panel.TabIndex = 15;
-            this.delete_task_panel.Visible = false;
-            this.delete_task_panel.VisibleChanged += new System.EventHandler(this.Delete_task_panel_VisibleChanged);
-            // 
-            // delete_task_comboBox
-            // 
-            this.delete_task_comboBox.FormattingEnabled = true;
-            this.delete_task_comboBox.Location = new System.Drawing.Point(13, 200);
-            this.delete_task_comboBox.Name = "delete_task_comboBox";
-            this.delete_task_comboBox.Size = new System.Drawing.Size(759, 29);
-            this.delete_task_comboBox.TabIndex = 2;
-            this.delete_task_comboBox.TabStop = false;
-            this.delete_task_comboBox.Text = "Выберите вопрос";
-            // 
-            // delete_mode_choose_version_comboBox
-            // 
-            this.delete_mode_choose_version_comboBox.FormattingEnabled = true;
-            this.delete_mode_choose_version_comboBox.Location = new System.Drawing.Point(13, 129);
-            this.delete_mode_choose_version_comboBox.Name = "delete_mode_choose_version_comboBox";
-            this.delete_mode_choose_version_comboBox.Size = new System.Drawing.Size(759, 29);
-            this.delete_mode_choose_version_comboBox.TabIndex = 1;
-            this.delete_mode_choose_version_comboBox.TabStop = false;
-            this.delete_mode_choose_version_comboBox.Text = "Выберите вариант";
-            this.delete_mode_choose_version_comboBox.SelectionChangeCommitted += new System.EventHandler(this.Delete_mode_choose_version_comboBox_SelectionChangeCommitted);
-            // 
-            // label13
-            // 
-            this.label13.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(10, 46);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(967, 60);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Тестовое задание удаляется только из выбранного вами варианта конкретного теста. " +
-    "Даже после того, как вы удалите его, оно останется в общем списке тестовых задан" +
-    "ий.";
-            // 
             // profile_page
             // 
             this.profile_page.BackColor = System.Drawing.Color.Lavender;
             this.profile_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.profile_page.Controls.Add(this.change_teacher_login_panel);
-            this.profile_page.Controls.Add(this.change_full_name_panel);
             this.profile_page.Controls.Add(this.teacher_profile_main_panel);
             this.profile_page.Controls.Add(this.change_teacher_password_panel);
+            this.profile_page.Controls.Add(this.change_full_name_panel);
+            this.profile_page.Controls.Add(this.change_teacher_login_panel);
             this.profile_page.Controls.Add(this.teacher_identity_check_panel);
             this.profile_page.Location = new System.Drawing.Point(4, 30);
             this.profile_page.Name = "profile_page";
@@ -1671,71 +1682,266 @@
             this.profile_page.TabIndex = 0;
             this.profile_page.Text = "Профиль";
             // 
-            // change_teacher_login_panel
+            // teacher_profile_main_panel
             // 
-            this.change_teacher_login_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.teacher_profile_main_panel.BackColor = System.Drawing.Color.Lavender;
+            this.teacher_profile_main_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.teacher_profile_main_panel.Controls.Add(this.change_teacher_name_button);
+            this.teacher_profile_main_panel.Controls.Add(this.delete_teacher_profile_button);
+            this.teacher_profile_main_panel.Controls.Add(this.exit_student_profile_button);
+            this.teacher_profile_main_panel.Controls.Add(this.change_teacher_password_button);
+            this.teacher_profile_main_panel.Controls.Add(this.change_teacher_login_button);
+            this.teacher_profile_main_panel.Controls.Add(this.password_teacher_profile);
+            this.teacher_profile_main_panel.Controls.Add(this.full_name_teacher_profile_label);
+            this.teacher_profile_main_panel.Controls.Add(this.login_teacher_profile);
+            this.teacher_profile_main_panel.Controls.Add(this.teacher_name_profile_textBox);
+            this.teacher_profile_main_panel.Controls.Add(this.password_teacher_profile_label);
+            this.teacher_profile_main_panel.Controls.Add(this.login_teacher_profile_label);
+            this.teacher_profile_main_panel.Location = new System.Drawing.Point(6, 6);
+            this.teacher_profile_main_panel.Name = "teacher_profile_main_panel";
+            this.teacher_profile_main_panel.Size = new System.Drawing.Size(990, 621);
+            this.teacher_profile_main_panel.TabIndex = 9;
+            // 
+            // change_teacher_name_button
+            // 
+            this.change_teacher_name_button.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.change_teacher_name_button.AutoSize = true;
+            this.change_teacher_name_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.change_teacher_name_button.FlatAppearance.BorderSize = 2;
+            this.change_teacher_name_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.change_teacher_name_button.Location = new System.Drawing.Point(694, 177);
+            this.change_teacher_name_button.Name = "change_teacher_name_button";
+            this.change_teacher_name_button.Size = new System.Drawing.Size(201, 48);
+            this.change_teacher_name_button.TabIndex = 17;
+            this.change_teacher_name_button.TabStop = false;
+            this.change_teacher_name_button.Text = "Изменить Ф.И.О.";
+            this.change_teacher_name_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.change_teacher_name_button.UseVisualStyleBackColor = true;
+            this.change_teacher_name_button.Click += new System.EventHandler(this.Change_teacher_name_button_Click);
+            // 
+            // delete_teacher_profile_button
+            // 
+            this.delete_teacher_profile_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.delete_teacher_profile_button.AutoSize = true;
+            this.delete_teacher_profile_button.BackColor = System.Drawing.Color.Lavender;
+            this.delete_teacher_profile_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.delete_teacher_profile_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delete_teacher_profile_button.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.delete_teacher_profile_button.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.delete_teacher_profile_button.Location = new System.Drawing.Point(671, 573);
+            this.delete_teacher_profile_button.Name = "delete_teacher_profile_button";
+            this.delete_teacher_profile_button.Size = new System.Drawing.Size(158, 39);
+            this.delete_teacher_profile_button.TabIndex = 12;
+            this.delete_teacher_profile_button.TabStop = false;
+            this.delete_teacher_profile_button.Text = "Удалить профиль";
+            this.delete_teacher_profile_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.delete_teacher_profile_button.UseVisualStyleBackColor = false;
+            this.delete_teacher_profile_button.Click += new System.EventHandler(this.Delete_teacher_profile_button_Click);
+            // 
+            // exit_student_profile_button
+            // 
+            this.exit_student_profile_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.exit_student_profile_button.AutoSize = true;
+            this.exit_student_profile_button.BackColor = System.Drawing.Color.Lavender;
+            this.exit_student_profile_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.exit_student_profile_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exit_student_profile_button.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exit_student_profile_button.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.exit_student_profile_button.Location = new System.Drawing.Point(108, 573);
+            this.exit_student_profile_button.Name = "exit_student_profile_button";
+            this.exit_student_profile_button.Size = new System.Drawing.Size(158, 39);
+            this.exit_student_profile_button.TabIndex = 11;
+            this.exit_student_profile_button.TabStop = false;
+            this.exit_student_profile_button.Text = "Выйти из профиля";
+            this.exit_student_profile_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.exit_student_profile_button.UseVisualStyleBackColor = false;
+            this.exit_student_profile_button.Click += new System.EventHandler(this.Exit_student_profile_button_Click);
+            // 
+            // change_teacher_password_button
+            // 
+            this.change_teacher_password_button.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.change_teacher_password_button.AutoSize = true;
+            this.change_teacher_password_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.change_teacher_password_button.FlatAppearance.BorderSize = 2;
+            this.change_teacher_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.change_teacher_password_button.Location = new System.Drawing.Point(727, 459);
+            this.change_teacher_password_button.Name = "change_teacher_password_button";
+            this.change_teacher_password_button.Size = new System.Drawing.Size(167, 46);
+            this.change_teacher_password_button.TabIndex = 9;
+            this.change_teacher_password_button.TabStop = false;
+            this.change_teacher_password_button.Text = "Изменить пароль";
+            this.change_teacher_password_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.change_teacher_password_button.UseVisualStyleBackColor = true;
+            this.change_teacher_password_button.Click += new System.EventHandler(this.Change_teacher_password_button_Click);
+            // 
+            // change_teacher_login_button
+            // 
+            this.change_teacher_login_button.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.change_teacher_login_button.AutoSize = true;
+            this.change_teacher_login_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.change_teacher_login_button.FlatAppearance.BorderSize = 2;
+            this.change_teacher_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.change_teacher_login_button.Location = new System.Drawing.Point(694, 314);
+            this.change_teacher_login_button.Name = "change_teacher_login_button";
+            this.change_teacher_login_button.Size = new System.Drawing.Size(201, 48);
+            this.change_teacher_login_button.TabIndex = 8;
+            this.change_teacher_login_button.TabStop = false;
+            this.change_teacher_login_button.Text = "Изменить логин";
+            this.change_teacher_login_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.change_teacher_login_button.UseVisualStyleBackColor = true;
+            this.change_teacher_login_button.Click += new System.EventHandler(this.Change_teacher_login_button_Click);
+            // 
+            // password_teacher_profile
+            // 
+            this.password_teacher_profile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.password_teacher_profile.BackColor = System.Drawing.Color.Lavender;
+            this.password_teacher_profile.Location = new System.Drawing.Point(246, 425);
+            this.password_teacher_profile.Name = "password_teacher_profile";
+            this.password_teacher_profile.ReadOnly = true;
+            this.password_teacher_profile.Size = new System.Drawing.Size(648, 28);
+            this.password_teacher_profile.TabIndex = 7;
+            this.password_teacher_profile.TabStop = false;
+            this.password_teacher_profile.UseSystemPasswordChar = true;
+            // 
+            // full_name_teacher_profile_label
+            // 
+            this.full_name_teacher_profile_label.AutoSize = true;
+            this.full_name_teacher_profile_label.Location = new System.Drawing.Point(113, 127);
+            this.full_name_teacher_profile_label.Name = "full_name_teacher_profile_label";
+            this.full_name_teacher_profile_label.Size = new System.Drawing.Size(60, 21);
+            this.full_name_teacher_profile_label.TabIndex = 0;
+            this.full_name_teacher_profile_label.Text = "Ф.И.О.:";
+            // 
+            // login_teacher_profile
+            // 
+            this.login_teacher_profile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.login_teacher_profile.BackColor = System.Drawing.Color.Lavender;
+            this.login_teacher_profile.Location = new System.Drawing.Point(247, 280);
+            this.login_teacher_profile.Name = "login_teacher_profile";
+            this.login_teacher_profile.ReadOnly = true;
+            this.login_teacher_profile.Size = new System.Drawing.Size(648, 28);
+            this.login_teacher_profile.TabIndex = 6;
+            this.login_teacher_profile.TabStop = false;
+            // 
+            // teacher_name_profile_textBox
+            // 
+            this.teacher_name_profile_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.teacher_name_profile_textBox.BackColor = System.Drawing.Color.Lavender;
+            this.teacher_name_profile_textBox.Location = new System.Drawing.Point(246, 106);
+            this.teacher_name_profile_textBox.Multiline = true;
+            this.teacher_name_profile_textBox.Name = "teacher_name_profile_textBox";
+            this.teacher_name_profile_textBox.ReadOnly = true;
+            this.teacher_name_profile_textBox.Size = new System.Drawing.Size(648, 65);
+            this.teacher_name_profile_textBox.TabIndex = 2;
+            this.teacher_name_profile_textBox.TabStop = false;
+            // 
+            // password_teacher_profile_label
+            // 
+            this.password_teacher_profile_label.AutoSize = true;
+            this.password_teacher_profile_label.Location = new System.Drawing.Point(104, 428);
+            this.password_teacher_profile_label.Name = "password_teacher_profile_label";
+            this.password_teacher_profile_label.Size = new System.Drawing.Size(69, 21);
+            this.password_teacher_profile_label.TabIndex = 5;
+            this.password_teacher_profile_label.Text = "Пароль:";
+            // 
+            // login_teacher_profile_label
+            // 
+            this.login_teacher_profile_label.AutoSize = true;
+            this.login_teacher_profile_label.Location = new System.Drawing.Point(116, 283);
+            this.login_teacher_profile_label.Name = "login_teacher_profile_label";
+            this.login_teacher_profile_label.Size = new System.Drawing.Size(58, 21);
+            this.login_teacher_profile_label.TabIndex = 4;
+            this.login_teacher_profile_label.Text = "Логин:";
+            // 
+            // change_teacher_password_panel
+            // 
+            this.change_teacher_password_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.change_teacher_login_panel.BackColor = System.Drawing.Color.Lavender;
-            this.change_teacher_login_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.change_teacher_login_panel.Controls.Add(this.cancel_change_teacher_login_button);
-            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_button);
-            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_textbox);
-            this.change_teacher_login_panel.Controls.Add(this.change_teacher_login_label);
-            this.change_teacher_login_panel.Location = new System.Drawing.Point(6, 23);
-            this.change_teacher_login_panel.Name = "change_teacher_login_panel";
-            this.change_teacher_login_panel.Size = new System.Drawing.Size(989, 174);
-            this.change_teacher_login_panel.TabIndex = 10;
-            this.change_teacher_login_panel.Visible = false;
-            this.change_teacher_login_panel.VisibleChanged += new System.EventHandler(this.Change_teacher_login_panel_VisibleChanged);
+            this.change_teacher_password_panel.BackColor = System.Drawing.Color.Lavender;
+            this.change_teacher_password_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.change_teacher_password_panel.Controls.Add(this.label3);
+            this.change_teacher_password_panel.Controls.Add(this.new_teacher_password_button);
+            this.change_teacher_password_panel.Controls.Add(this.label4);
+            this.change_teacher_password_panel.Controls.Add(this.cancel_change_teacher_password_button);
+            this.change_teacher_password_panel.Controls.Add(this.teacher_new_password_textBox);
+            this.change_teacher_password_panel.Controls.Add(this.teacher_test_new_password_textBox);
+            this.change_teacher_password_panel.Location = new System.Drawing.Point(6, 23);
+            this.change_teacher_password_panel.Name = "change_teacher_password_panel";
+            this.change_teacher_password_panel.Size = new System.Drawing.Size(990, 264);
+            this.change_teacher_password_panel.TabIndex = 10;
+            this.change_teacher_password_panel.Visible = false;
             // 
-            // cancel_change_teacher_login_button
+            // label3
             // 
-            this.cancel_change_teacher_login_button.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.cancel_change_teacher_login_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.cancel_change_teacher_login_button.FlatAppearance.BorderSize = 2;
-            this.cancel_change_teacher_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancel_change_teacher_login_button.Location = new System.Drawing.Point(624, 112);
-            this.cancel_change_teacher_login_button.Name = "cancel_change_teacher_login_button";
-            this.cancel_change_teacher_login_button.Size = new System.Drawing.Size(110, 42);
-            this.cancel_change_teacher_login_button.TabIndex = 1;
-            this.cancel_change_teacher_login_button.Text = "Отмена";
-            this.cancel_change_teacher_login_button.UseVisualStyleBackColor = false;
-            this.cancel_change_teacher_login_button.Click += new System.EventHandler(this.Cancel_change_teacher_login_button_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(179, 21);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Введите новый пароль:";
             // 
-            // new_teacher_login_button
+            // new_teacher_password_button
             // 
-            this.new_teacher_login_button.BackColor = System.Drawing.Color.SteelBlue;
-            this.new_teacher_login_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.new_teacher_login_button.FlatAppearance.BorderSize = 2;
-            this.new_teacher_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.new_teacher_login_button.Location = new System.Drawing.Point(740, 112);
-            this.new_teacher_login_button.Name = "new_teacher_login_button";
-            this.new_teacher_login_button.Size = new System.Drawing.Size(207, 42);
-            this.new_teacher_login_button.TabIndex = 2;
-            this.new_teacher_login_button.Text = "Изменить логин";
-            this.new_teacher_login_button.UseVisualStyleBackColor = false;
-            this.new_teacher_login_button.Click += new System.EventHandler(this.New_teacher_login_button_Click);
+            this.new_teacher_password_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.new_teacher_password_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.new_teacher_password_button.FlatAppearance.BorderSize = 2;
+            this.new_teacher_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.new_teacher_password_button.Location = new System.Drawing.Point(740, 201);
+            this.new_teacher_password_button.Name = "new_teacher_password_button";
+            this.new_teacher_password_button.Size = new System.Drawing.Size(207, 42);
+            this.new_teacher_password_button.TabIndex = 3;
+            this.new_teacher_password_button.Text = "Изменить пароль";
+            this.new_teacher_password_button.UseVisualStyleBackColor = false;
+            this.new_teacher_password_button.Click += new System.EventHandler(this.New_teacher_password_button_Click);
             // 
-            // new_teacher_login_textbox
+            // label4
             // 
-            this.new_teacher_login_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 141);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(253, 21);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Повторно введите новый пароль:";
+            // 
+            // cancel_change_teacher_password_button
+            // 
+            this.cancel_change_teacher_password_button.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_teacher_password_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_teacher_password_button.FlatAppearance.BorderSize = 2;
+            this.cancel_change_teacher_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel_change_teacher_password_button.Location = new System.Drawing.Point(624, 201);
+            this.cancel_change_teacher_password_button.Name = "cancel_change_teacher_password_button";
+            this.cancel_change_teacher_password_button.Size = new System.Drawing.Size(110, 42);
+            this.cancel_change_teacher_password_button.TabIndex = 2;
+            this.cancel_change_teacher_password_button.Text = "Отмена";
+            this.cancel_change_teacher_password_button.UseVisualStyleBackColor = false;
+            this.cancel_change_teacher_password_button.Click += new System.EventHandler(this.Cancel_change_teacher_password_button_Click);
+            // 
+            // teacher_new_password_textBox
+            // 
+            this.teacher_new_password_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.new_teacher_login_textbox.Location = new System.Drawing.Point(303, 40);
-            this.new_teacher_login_textbox.Name = "new_teacher_login_textbox";
-            this.new_teacher_login_textbox.Size = new System.Drawing.Size(644, 28);
-            this.new_teacher_login_textbox.TabIndex = 0;
-            this.new_teacher_login_textbox.TabStop = false;
+            this.teacher_new_password_textBox.Location = new System.Drawing.Point(303, 55);
+            this.teacher_new_password_textBox.Name = "teacher_new_password_textBox";
+            this.teacher_new_password_textBox.Size = new System.Drawing.Size(645, 28);
+            this.teacher_new_password_textBox.TabIndex = 0;
             // 
-            // change_teacher_login_label
+            // teacher_test_new_password_textBox
             // 
-            this.change_teacher_login_label.AutoSize = true;
-            this.change_teacher_login_label.Location = new System.Drawing.Point(53, 43);
-            this.change_teacher_login_label.Name = "change_teacher_login_label";
-            this.change_teacher_login_label.Size = new System.Drawing.Size(169, 21);
-            this.change_teacher_login_label.TabIndex = 0;
-            this.change_teacher_login_label.Text = "Введите новый логин:";
+            this.teacher_test_new_password_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.teacher_test_new_password_textBox.Location = new System.Drawing.Point(303, 134);
+            this.teacher_test_new_password_textBox.Name = "teacher_test_new_password_textBox";
+            this.teacher_test_new_password_textBox.Size = new System.Drawing.Size(645, 28);
+            this.teacher_test_new_password_textBox.TabIndex = 1;
             // 
             // change_full_name_panel
             // 
@@ -1836,311 +2042,71 @@
             this.new_surname_textBox.Size = new System.Drawing.Size(648, 28);
             this.new_surname_textBox.TabIndex = 0;
             // 
-            // teacher_profile_main_panel
+            // change_teacher_login_panel
             // 
-            this.teacher_profile_main_panel.BackColor = System.Drawing.Color.Lavender;
-            this.teacher_profile_main_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.teacher_profile_main_panel.Controls.Add(this.change_teacher_name_button);
-            this.teacher_profile_main_panel.Controls.Add(this.label15);
-            this.teacher_profile_main_panel.Controls.Add(this.label14);
-            this.teacher_profile_main_panel.Controls.Add(this.name_teacher_profile_textBox);
-            this.teacher_profile_main_panel.Controls.Add(this.patronimic_teacher_profile_textBox);
-            this.teacher_profile_main_panel.Controls.Add(this.delete_teacher_profile_button);
-            this.teacher_profile_main_panel.Controls.Add(this.exit_student_profile_button);
-            this.teacher_profile_main_panel.Controls.Add(this.change_teacher_password_button);
-            this.teacher_profile_main_panel.Controls.Add(this.change_teacher_login_button);
-            this.teacher_profile_main_panel.Controls.Add(this.password_teacher_profile);
-            this.teacher_profile_main_panel.Controls.Add(this.full_name_teacher_profile_label);
-            this.teacher_profile_main_panel.Controls.Add(this.login_teacher_profile);
-            this.teacher_profile_main_panel.Controls.Add(this.surname_teacher_profile_textBox);
-            this.teacher_profile_main_panel.Controls.Add(this.password_teacher_profile_label);
-            this.teacher_profile_main_panel.Controls.Add(this.login_teacher_profile_label);
-            this.teacher_profile_main_panel.Location = new System.Drawing.Point(6, 6);
-            this.teacher_profile_main_panel.Name = "teacher_profile_main_panel";
-            this.teacher_profile_main_panel.Size = new System.Drawing.Size(990, 621);
-            this.teacher_profile_main_panel.TabIndex = 9;
-            // 
-            // change_teacher_name_button
-            // 
-            this.change_teacher_name_button.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.change_teacher_name_button.AutoSize = true;
-            this.change_teacher_name_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.change_teacher_name_button.FlatAppearance.BorderSize = 2;
-            this.change_teacher_name_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.change_teacher_name_button.Location = new System.Drawing.Point(693, 249);
-            this.change_teacher_name_button.Name = "change_teacher_name_button";
-            this.change_teacher_name_button.Size = new System.Drawing.Size(201, 48);
-            this.change_teacher_name_button.TabIndex = 17;
-            this.change_teacher_name_button.TabStop = false;
-            this.change_teacher_name_button.Text = "Изменить ФИО";
-            this.change_teacher_name_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.change_teacher_name_button.UseVisualStyleBackColor = true;
-            this.change_teacher_name_button.Click += new System.EventHandler(this.Change_teacher_name_button_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(127, 150);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(46, 21);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "Имя:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(93, 218);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(80, 21);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "Отчество:";
-            // 
-            // name_teacher_profile_textBox
-            // 
-            this.name_teacher_profile_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.name_teacher_profile_textBox.BackColor = System.Drawing.Color.Lavender;
-            this.name_teacher_profile_textBox.Location = new System.Drawing.Point(246, 147);
-            this.name_teacher_profile_textBox.Name = "name_teacher_profile_textBox";
-            this.name_teacher_profile_textBox.ReadOnly = true;
-            this.name_teacher_profile_textBox.Size = new System.Drawing.Size(648, 28);
-            this.name_teacher_profile_textBox.TabIndex = 14;
-            this.name_teacher_profile_textBox.TabStop = false;
-            // 
-            // patronimic_teacher_profile_textBox
-            // 
-            this.patronimic_teacher_profile_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.patronimic_teacher_profile_textBox.BackColor = System.Drawing.Color.Lavender;
-            this.patronimic_teacher_profile_textBox.Location = new System.Drawing.Point(246, 215);
-            this.patronimic_teacher_profile_textBox.Name = "patronimic_teacher_profile_textBox";
-            this.patronimic_teacher_profile_textBox.ReadOnly = true;
-            this.patronimic_teacher_profile_textBox.Size = new System.Drawing.Size(648, 28);
-            this.patronimic_teacher_profile_textBox.TabIndex = 13;
-            this.patronimic_teacher_profile_textBox.TabStop = false;
-            // 
-            // delete_teacher_profile_button
-            // 
-            this.delete_teacher_profile_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.delete_teacher_profile_button.AutoSize = true;
-            this.delete_teacher_profile_button.BackColor = System.Drawing.Color.Lavender;
-            this.delete_teacher_profile_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.delete_teacher_profile_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delete_teacher_profile_button.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.delete_teacher_profile_button.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.delete_teacher_profile_button.Location = new System.Drawing.Point(671, 573);
-            this.delete_teacher_profile_button.Name = "delete_teacher_profile_button";
-            this.delete_teacher_profile_button.Size = new System.Drawing.Size(158, 39);
-            this.delete_teacher_profile_button.TabIndex = 12;
-            this.delete_teacher_profile_button.TabStop = false;
-            this.delete_teacher_profile_button.Text = "Удалить профиль";
-            this.delete_teacher_profile_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.delete_teacher_profile_button.UseVisualStyleBackColor = false;
-            this.delete_teacher_profile_button.Click += new System.EventHandler(this.Delete_teacher_profile_button_Click);
-            // 
-            // exit_student_profile_button
-            // 
-            this.exit_student_profile_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.exit_student_profile_button.AutoSize = true;
-            this.exit_student_profile_button.BackColor = System.Drawing.Color.Lavender;
-            this.exit_student_profile_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.exit_student_profile_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exit_student_profile_button.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exit_student_profile_button.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.exit_student_profile_button.Location = new System.Drawing.Point(108, 573);
-            this.exit_student_profile_button.Name = "exit_student_profile_button";
-            this.exit_student_profile_button.Size = new System.Drawing.Size(158, 39);
-            this.exit_student_profile_button.TabIndex = 11;
-            this.exit_student_profile_button.TabStop = false;
-            this.exit_student_profile_button.Text = "Выйти из профиля";
-            this.exit_student_profile_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.exit_student_profile_button.UseVisualStyleBackColor = false;
-            this.exit_student_profile_button.Click += new System.EventHandler(this.Exit_student_profile_button_Click);
-            // 
-            // change_teacher_password_button
-            // 
-            this.change_teacher_password_button.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.change_teacher_password_button.AutoSize = true;
-            this.change_teacher_password_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.change_teacher_password_button.FlatAppearance.BorderSize = 2;
-            this.change_teacher_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.change_teacher_password_button.Location = new System.Drawing.Point(727, 459);
-            this.change_teacher_password_button.Name = "change_teacher_password_button";
-            this.change_teacher_password_button.Size = new System.Drawing.Size(167, 46);
-            this.change_teacher_password_button.TabIndex = 9;
-            this.change_teacher_password_button.TabStop = false;
-            this.change_teacher_password_button.Text = "Изменить пароль";
-            this.change_teacher_password_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.change_teacher_password_button.UseVisualStyleBackColor = true;
-            this.change_teacher_password_button.Click += new System.EventHandler(this.Change_teacher_password_button_Click);
-            // 
-            // change_teacher_login_button
-            // 
-            this.change_teacher_login_button.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.change_teacher_login_button.AutoSize = true;
-            this.change_teacher_login_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.change_teacher_login_button.FlatAppearance.BorderSize = 2;
-            this.change_teacher_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.change_teacher_login_button.Location = new System.Drawing.Point(693, 351);
-            this.change_teacher_login_button.Name = "change_teacher_login_button";
-            this.change_teacher_login_button.Size = new System.Drawing.Size(201, 48);
-            this.change_teacher_login_button.TabIndex = 8;
-            this.change_teacher_login_button.TabStop = false;
-            this.change_teacher_login_button.Text = "Изменить логин";
-            this.change_teacher_login_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.change_teacher_login_button.UseVisualStyleBackColor = true;
-            this.change_teacher_login_button.Click += new System.EventHandler(this.Change_teacher_login_button_Click);
-            // 
-            // password_teacher_profile
-            // 
-            this.password_teacher_profile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.password_teacher_profile.BackColor = System.Drawing.Color.Lavender;
-            this.password_teacher_profile.Location = new System.Drawing.Point(246, 425);
-            this.password_teacher_profile.Name = "password_teacher_profile";
-            this.password_teacher_profile.ReadOnly = true;
-            this.password_teacher_profile.Size = new System.Drawing.Size(648, 28);
-            this.password_teacher_profile.TabIndex = 7;
-            this.password_teacher_profile.TabStop = false;
-            this.password_teacher_profile.UseSystemPasswordChar = true;
-            // 
-            // full_name_teacher_profile_label
-            // 
-            this.full_name_teacher_profile_label.AutoSize = true;
-            this.full_name_teacher_profile_label.Location = new System.Drawing.Point(91, 83);
-            this.full_name_teacher_profile_label.Name = "full_name_teacher_profile_label";
-            this.full_name_teacher_profile_label.Size = new System.Drawing.Size(82, 21);
-            this.full_name_teacher_profile_label.TabIndex = 0;
-            this.full_name_teacher_profile_label.Text = "Фамилия:";
-            // 
-            // login_teacher_profile
-            // 
-            this.login_teacher_profile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.login_teacher_profile.BackColor = System.Drawing.Color.Lavender;
-            this.login_teacher_profile.Location = new System.Drawing.Point(246, 317);
-            this.login_teacher_profile.Name = "login_teacher_profile";
-            this.login_teacher_profile.ReadOnly = true;
-            this.login_teacher_profile.Size = new System.Drawing.Size(648, 28);
-            this.login_teacher_profile.TabIndex = 6;
-            this.login_teacher_profile.TabStop = false;
-            // 
-            // surname_teacher_profile_textBox
-            // 
-            this.surname_teacher_profile_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.surname_teacher_profile_textBox.BackColor = System.Drawing.Color.Lavender;
-            this.surname_teacher_profile_textBox.Location = new System.Drawing.Point(246, 79);
-            this.surname_teacher_profile_textBox.Name = "surname_teacher_profile_textBox";
-            this.surname_teacher_profile_textBox.ReadOnly = true;
-            this.surname_teacher_profile_textBox.Size = new System.Drawing.Size(648, 28);
-            this.surname_teacher_profile_textBox.TabIndex = 2;
-            this.surname_teacher_profile_textBox.TabStop = false;
-            // 
-            // password_teacher_profile_label
-            // 
-            this.password_teacher_profile_label.AutoSize = true;
-            this.password_teacher_profile_label.Location = new System.Drawing.Point(104, 428);
-            this.password_teacher_profile_label.Name = "password_teacher_profile_label";
-            this.password_teacher_profile_label.Size = new System.Drawing.Size(69, 21);
-            this.password_teacher_profile_label.TabIndex = 5;
-            this.password_teacher_profile_label.Text = "Пароль:";
-            // 
-            // login_teacher_profile_label
-            // 
-            this.login_teacher_profile_label.AutoSize = true;
-            this.login_teacher_profile_label.Location = new System.Drawing.Point(115, 320);
-            this.login_teacher_profile_label.Name = "login_teacher_profile_label";
-            this.login_teacher_profile_label.Size = new System.Drawing.Size(58, 21);
-            this.login_teacher_profile_label.TabIndex = 4;
-            this.login_teacher_profile_label.Text = "Логин:";
-            // 
-            // change_teacher_password_panel
-            // 
-            this.change_teacher_password_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.change_teacher_login_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.change_teacher_password_panel.BackColor = System.Drawing.Color.Lavender;
-            this.change_teacher_password_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.change_teacher_password_panel.Controls.Add(this.label3);
-            this.change_teacher_password_panel.Controls.Add(this.new_teacher_password_button);
-            this.change_teacher_password_panel.Controls.Add(this.label4);
-            this.change_teacher_password_panel.Controls.Add(this.cancel_change_teacher_password_button);
-            this.change_teacher_password_panel.Controls.Add(this.teacher_new_password_textBox);
-            this.change_teacher_password_panel.Controls.Add(this.teacher_test_new_password_textBox);
-            this.change_teacher_password_panel.Location = new System.Drawing.Point(6, 23);
-            this.change_teacher_password_panel.Name = "change_teacher_password_panel";
-            this.change_teacher_password_panel.Size = new System.Drawing.Size(990, 264);
-            this.change_teacher_password_panel.TabIndex = 10;
-            this.change_teacher_password_panel.Visible = false;
+            this.change_teacher_login_panel.BackColor = System.Drawing.Color.Lavender;
+            this.change_teacher_login_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.change_teacher_login_panel.Controls.Add(this.cancel_change_teacher_login_button);
+            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_button);
+            this.change_teacher_login_panel.Controls.Add(this.new_teacher_login_textbox);
+            this.change_teacher_login_panel.Controls.Add(this.change_teacher_login_label);
+            this.change_teacher_login_panel.Location = new System.Drawing.Point(6, 23);
+            this.change_teacher_login_panel.Name = "change_teacher_login_panel";
+            this.change_teacher_login_panel.Size = new System.Drawing.Size(989, 174);
+            this.change_teacher_login_panel.TabIndex = 10;
+            this.change_teacher_login_panel.Visible = false;
+            this.change_teacher_login_panel.VisibleChanged += new System.EventHandler(this.Change_teacher_login_panel_VisibleChanged);
             // 
-            // label3
+            // cancel_change_teacher_login_button
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 21);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Введите новый пароль:";
+            this.cancel_change_teacher_login_button.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_teacher_login_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_teacher_login_button.FlatAppearance.BorderSize = 2;
+            this.cancel_change_teacher_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel_change_teacher_login_button.Location = new System.Drawing.Point(624, 112);
+            this.cancel_change_teacher_login_button.Name = "cancel_change_teacher_login_button";
+            this.cancel_change_teacher_login_button.Size = new System.Drawing.Size(110, 42);
+            this.cancel_change_teacher_login_button.TabIndex = 1;
+            this.cancel_change_teacher_login_button.Text = "Отмена";
+            this.cancel_change_teacher_login_button.UseVisualStyleBackColor = false;
+            this.cancel_change_teacher_login_button.Click += new System.EventHandler(this.Cancel_change_teacher_login_button_Click);
             // 
-            // new_teacher_password_button
+            // new_teacher_login_button
             // 
-            this.new_teacher_password_button.BackColor = System.Drawing.Color.SteelBlue;
-            this.new_teacher_password_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.new_teacher_password_button.FlatAppearance.BorderSize = 2;
-            this.new_teacher_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.new_teacher_password_button.Location = new System.Drawing.Point(740, 201);
-            this.new_teacher_password_button.Name = "new_teacher_password_button";
-            this.new_teacher_password_button.Size = new System.Drawing.Size(207, 42);
-            this.new_teacher_password_button.TabIndex = 3;
-            this.new_teacher_password_button.Text = "Изменить пароль";
-            this.new_teacher_password_button.UseVisualStyleBackColor = false;
-            this.new_teacher_password_button.Click += new System.EventHandler(this.New_teacher_password_button_Click);
+            this.new_teacher_login_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.new_teacher_login_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.new_teacher_login_button.FlatAppearance.BorderSize = 2;
+            this.new_teacher_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.new_teacher_login_button.Location = new System.Drawing.Point(740, 112);
+            this.new_teacher_login_button.Name = "new_teacher_login_button";
+            this.new_teacher_login_button.Size = new System.Drawing.Size(207, 42);
+            this.new_teacher_login_button.TabIndex = 2;
+            this.new_teacher_login_button.Text = "Изменить логин";
+            this.new_teacher_login_button.UseVisualStyleBackColor = false;
+            this.new_teacher_login_button.Click += new System.EventHandler(this.New_teacher_login_button_Click);
             // 
-            // label4
+            // new_teacher_login_textbox
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 141);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(253, 21);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Повторно введите новый пароль:";
-            // 
-            // cancel_change_teacher_password_button
-            // 
-            this.cancel_change_teacher_password_button.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.cancel_change_teacher_password_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.cancel_change_teacher_password_button.FlatAppearance.BorderSize = 2;
-            this.cancel_change_teacher_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancel_change_teacher_password_button.Location = new System.Drawing.Point(624, 201);
-            this.cancel_change_teacher_password_button.Name = "cancel_change_teacher_password_button";
-            this.cancel_change_teacher_password_button.Size = new System.Drawing.Size(110, 42);
-            this.cancel_change_teacher_password_button.TabIndex = 2;
-            this.cancel_change_teacher_password_button.Text = "Отмена";
-            this.cancel_change_teacher_password_button.UseVisualStyleBackColor = false;
-            this.cancel_change_teacher_password_button.Click += new System.EventHandler(this.Cancel_change_teacher_password_button_Click);
-            // 
-            // teacher_new_password_textBox
-            // 
-            this.teacher_new_password_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.new_teacher_login_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.teacher_new_password_textBox.Location = new System.Drawing.Point(303, 55);
-            this.teacher_new_password_textBox.Name = "teacher_new_password_textBox";
-            this.teacher_new_password_textBox.Size = new System.Drawing.Size(645, 28);
-            this.teacher_new_password_textBox.TabIndex = 0;
+            this.new_teacher_login_textbox.Location = new System.Drawing.Point(303, 40);
+            this.new_teacher_login_textbox.Name = "new_teacher_login_textbox";
+            this.new_teacher_login_textbox.Size = new System.Drawing.Size(644, 28);
+            this.new_teacher_login_textbox.TabIndex = 0;
+            this.new_teacher_login_textbox.TabStop = false;
             // 
-            // teacher_test_new_password_textBox
+            // change_teacher_login_label
             // 
-            this.teacher_test_new_password_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.teacher_test_new_password_textBox.Location = new System.Drawing.Point(303, 134);
-            this.teacher_test_new_password_textBox.Name = "teacher_test_new_password_textBox";
-            this.teacher_test_new_password_textBox.Size = new System.Drawing.Size(645, 28);
-            this.teacher_test_new_password_textBox.TabIndex = 1;
+            this.change_teacher_login_label.AutoSize = true;
+            this.change_teacher_login_label.Location = new System.Drawing.Point(53, 43);
+            this.change_teacher_login_label.Name = "change_teacher_login_label";
+            this.change_teacher_login_label.Size = new System.Drawing.Size(169, 21);
+            this.change_teacher_login_label.TabIndex = 0;
+            this.change_teacher_login_label.Text = "Введите новый логин:";
             // 
             // teacher_identity_check_panel
             // 
@@ -2229,11 +2195,11 @@
             // 
             this.students_page.BackColor = System.Drawing.Color.Lavender;
             this.students_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.students_page.Controls.Add(this.test_access_panel);
             this.students_page.Controls.Add(this.change_student_group_panel);
+            this.students_page.Controls.Add(this.change_group_name_panel);
             this.students_page.Controls.Add(this.splitContainer1);
             this.students_page.Controls.Add(this.create_student_groupBox);
-            this.students_page.Controls.Add(this.change_group_name_panel);
+            this.students_page.Controls.Add(this.test_access_panel);
             this.students_page.Location = new System.Drawing.Point(4, 30);
             this.students_page.Name = "students_page";
             this.students_page.Padding = new System.Windows.Forms.Padding(3);
@@ -3008,16 +2974,19 @@
             this.tasks_table_page.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.available_teacher_tasks_table)).EndInit();
             this.create_tests_page.ResumeLayout(false);
+            this.create_test_groupBox.ResumeLayout(false);
+            this.create_test_groupBox.PerformLayout();
             this.create_version_questions_groupBox.ResumeLayout(false);
             this.create_version_questions_groupBox.PerformLayout();
             this.create_new_question_panel.ResumeLayout(false);
             this.create_new_question_panel.PerformLayout();
             this.select_existing_question_panel.ResumeLayout(false);
             this.select_existing_question_panel.PerformLayout();
-            this.create_test_groupBox.ResumeLayout(false);
-            this.create_test_groupBox.PerformLayout();
             this.edit_tests_page.ResumeLayout(false);
             this.edit_test_groupBox.ResumeLayout(false);
+            this.new_comment_panel.ResumeLayout(false);
+            this.new_comment_panel.PerformLayout();
+            this.delete_task_panel.ResumeLayout(false);
             this.edit_task_panel.ResumeLayout(false);
             this.edit_task_panel2.ResumeLayout(false);
             this.edit_task_panel2.PerformLayout();
@@ -3026,18 +2995,15 @@
             this.new_name_panel.PerformLayout();
             this.new_timer_panel.ResumeLayout(false);
             this.new_timer_panel.PerformLayout();
-            this.new_comment_panel.ResumeLayout(false);
-            this.new_comment_panel.PerformLayout();
-            this.delete_task_panel.ResumeLayout(false);
             this.profile_page.ResumeLayout(false);
-            this.change_teacher_login_panel.ResumeLayout(false);
-            this.change_teacher_login_panel.PerformLayout();
-            this.change_full_name_panel.ResumeLayout(false);
-            this.change_full_name_panel.PerformLayout();
             this.teacher_profile_main_panel.ResumeLayout(false);
             this.teacher_profile_main_panel.PerformLayout();
             this.change_teacher_password_panel.ResumeLayout(false);
             this.change_teacher_password_panel.PerformLayout();
+            this.change_full_name_panel.ResumeLayout(false);
+            this.change_full_name_panel.PerformLayout();
+            this.change_teacher_login_panel.ResumeLayout(false);
+            this.change_teacher_login_panel.PerformLayout();
             this.teacher_identity_check_panel.ResumeLayout(false);
             this.teacher_identity_check_panel.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -3079,7 +3045,7 @@
         private System.Windows.Forms.TextBox password_teacher_profile;
         private System.Windows.Forms.Label full_name_teacher_profile_label;
         private System.Windows.Forms.TextBox login_teacher_profile;
-        private System.Windows.Forms.TextBox surname_teacher_profile_textBox;
+        private System.Windows.Forms.TextBox teacher_name_profile_textBox;
         private System.Windows.Forms.Label password_teacher_profile_label;
         private System.Windows.Forms.Label login_teacher_profile_label;
         private System.Windows.Forms.Panel change_teacher_login_panel;
@@ -3165,10 +3131,6 @@
         private System.Windows.Forms.TabPage tasks_table_page;
         private System.Windows.Forms.DataGridView available_teacher_tasks_table;
         private System.Windows.Forms.DataGridView teacher_one_test_table;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox name_teacher_profile_textBox;
-        private System.Windows.Forms.TextBox patronimic_teacher_profile_textBox;
         private System.Windows.Forms.ComboBox open_version_in_test_comboBox;
         private System.Windows.Forms.Panel change_full_name_panel;
         private System.Windows.Forms.Button continue_change_teacher_name_button;

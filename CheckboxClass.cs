@@ -16,10 +16,14 @@ namespace testing_program
                 checkBoxes[i].Text = text[i];
         }
 
-        public void Clear_checkboxes(CheckBox[] checkBoxes)
+        public void Clear(CheckBox[] checkBoxes)
         {
             for (int i = 0; i < checkBoxes.Length; ++i)
                 checkBoxes[i].Checked = false;
+        }
+        public void Change_location(CheckBox checkbox, int value1, int value2)
+        {
+            checkbox.Location = new System.Drawing.Point(value1, value2);
         }
     }
 }

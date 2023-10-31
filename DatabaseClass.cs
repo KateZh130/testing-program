@@ -28,20 +28,18 @@ namespace testing_program
             }
         }
 
-        public void Add_mark_to_database(int mark, int test_id, int user_id, double time)
+        public void Add_mark_to_database(int mark, int student_test_id, decimal time)
         {
-            NpgsqlCommand add_mark = new NpgsqlCommand("UPDATE student_test " +
-               "SET mark = " + mark + ", time=" + time + " " +
-               "WHERE test_id = " + test_id + " " +
-               "AND student_id = " + user_id + ";", connection);
+            NpgsqlCommand add_mark = new NpgsqlCommand("UPDATE student_test SET mark = " + mark + ", " +
+                "time=" + time.ToString().Replace(",", ".") + " WHERE student_test_id=" + student_test_id + ";", connection);
             add_mark.ExecuteNonQuery();
         }
 
-        public int Add_new_test_to_database(TextBox name, TextBox timer, TextBox comment, int user_id)
+        public int Add_new_test_to_database(string name, string timer, string comment, int user_id)
         {
             NpgsqlCommand new_test = new NpgsqlCommand("INSERT INTO " +
                "test (test_name,timer, teacher_id, comment) " +
-               "VALUES ('" + name.Text + "'," + timer.Text + "," + user_id + ",'" + comment.Text + "') " +
+               "VALUES ('" + name + "'," + timer + "," + user_id + ",'" + comment + "') " +
                "RETURNING test_id", connection);
             return Convert.ToInt32(new_test.ExecuteScalar());
         }
@@ -93,11 +91,11 @@ namespace testing_program
             return Convert.ToInt32(add_version_test_to_database.ExecuteScalar());
         }
 
-        public int Create_question_text(ComboBox type, string text)
+        public int Create_question_text(int type, string text)
         {
             NpgsqlCommand add_question_to_database = new NpgsqlCommand("INSERT INTO " +
            "questions (question_text, question_type) " +
-           "VALUES ('" + text + "'," + (type.SelectedIndex + 1) + ") " +
+           "VALUES ('" + text + "'," + type + ") " +
            "RETURNING question_id", connection);
             return Convert.ToInt32(add_question_to_database.ExecuteScalar());
         }
@@ -130,32 +128,32 @@ namespace testing_program
             return Convert.ToInt32(add_answer_to_database.ExecuteScalar());
         }
 
-        public bool Check_test_exist(string name, int user_id)
+        public bool Check_test_exist(string test_name, int user_id)
         {
             NpgsqlCommand exist = new NpgsqlCommand("select exists " +
-                "(select test_id from test where test_name='" + name + "' and teacher_id=" + user_id + ");", connection);
+                "(select test_id from test where test_name='" + test_name + "' and teacher_id=" + user_id + ");", connection);
             bool result = (bool)exist.ExecuteScalar();
             if (result)
                 MessageBox.Show("Тест с таким именем уже существует");
             return result;
         }
 
-        public bool Check_student_exist(string name, string group)
+        public bool Check_student_exist(string student_name, string group_name)
         {
             NpgsqlCommand exist = new NpgsqlCommand("select exists (select student_id from student " +
                 "join groups on groups.group_id = student.group_id " +
-                "where full_name = '" + name + "' and group_name = '" + group + "'); ", connection);
+                "where full_name = '" + student_name + "' and group_name = '" + group_name + "'); ", connection);
             return (bool)exist.ExecuteScalar();
         }
 
-        public bool Check_group_exist(string group)
+        public bool Check_group_exist(string group_name)
         {
             NpgsqlCommand exist = new NpgsqlCommand("select exists (select group_id from groups " +
-                "where group_name = '" + group + "'); ", connection);
+                "where group_name = '" + group_name + "'); ", connection);
             return (bool)exist.ExecuteScalar();
         }
 
-        public bool Check_question_exist(string question, int type, int user_id, int question_id)
+        public bool Check_question_exist(string question_text, int question_type, int teacher_id, int question_id=-1)
         {
             string extra = "";
             if (question_id != -1)
@@ -164,46 +162,46 @@ namespace testing_program
                 "join version_question vq on vq.question_id = q.question_id " +
                 "join version v on v.version_id = vq.version_id " +
                 "join test t on t.test_id = v.test_id " +
-                "where teacher_id = " + user_id + " and question_text = '" + question + "' " +
-                "and question_type = " + type + extra + " ); ", connection);
+                "where teacher_id = " + teacher_id + " and question_text = '" + question_text + "' " +
+                "and question_type = " + question_type + extra + " ); ", connection);
             bool result = (bool)exist.ExecuteScalar();
             if (result)
                 MessageBox.Show("Такое тестовое задание уже существует. Измените текст/тип вопроса или выберите этот вопрос из уже существующих.");
             return result;
         }
 
-        public bool Check_question_in_version(string question, int version_id)
+        public bool Check_question_exist(string question_text, int version_id)
         {
             NpgsqlCommand exist = new NpgsqlCommand("select exists(SELECT version_question_id FROM version_question " +
                 "JOIN questions ON questions.question_id = version_question.question_id " +
                 "JOIN version ON version.version_id = version_question.version_id " +
                 "WHERE version.version_id = " + version_id + " " +
-                "AND question_text = '" + question + "') ", connection);
+                "AND question_text = '" + question_text + "') ", connection);
             bool result = (bool)exist.ExecuteScalar();
             if (result)
                 MessageBox.Show("Это тестовое задание уже есть в данном варианте.");
             return result;
         }
 
-        public bool Check_version_have_another_tasks(string question, int version, int user_id)
+        public bool Check_version_have_another_tasks(string question_text, int version_number, int teacher_id)
         {
             NpgsqlCommand exist = new NpgsqlCommand("select exists (select q.question_id from questions q " +
                 "join version_question vq on vq.question_id = q.question_id " +
                 "join version v on v.version_id = vq.version_id " +
                 "join test t on t.test_id = v.test_id " +
-                "where teacher_id = " + user_id + " and question_text != '" + question + "' " +
-                "and version_number = " + version + ");", connection);
+                "where teacher_id = " + teacher_id + " and question_text != '" + question_text + "' " +
+                "and version_number = " + version_number + ");", connection);
             return (bool)exist.ExecuteScalar();
         }
 
-        public bool Check_test_have_another_version(string test, int version, int user_id)
+        public bool Check_test_have_another_version(string test_name, int version_number, int teacher_id)
         {
             NpgsqlCommand exist = new NpgsqlCommand("select exists (select v.version_id from version v " +
                 "join version_question vq on v.version_id = vq.version_id " +
                 "join questions q on vq.question_id = q.question_id " +
                 "join test t on t.test_id = v.test_id " +
-                "where teacher_id = " + user_id + " and test_name = '" + test + "' " +
-                "and version_number != " + version + "); ; ", connection);
+                "where teacher_id = " + teacher_id + " and test_name = '" + test_name + "' " +
+                "and version_number != " + version_number + "); ; ", connection);
             return (bool)exist.ExecuteScalar();
         }
 
@@ -219,15 +217,15 @@ namespace testing_program
             return result;
         }
 
-        public bool Check_access_connection_exist(int id, string test)
+        public bool Check_access_connection_exist(int student_id, string test)
         {
             string sql_string = "select exists(select access_status from student_test st join test t on t.test_id = st.test_id " +
-                "where student_id = " + id + " and test_name = '" + test + "');";
+                "where student_id = " + student_id + " and test_name = '" + test + "');";
             NpgsqlCommand access = new NpgsqlCommand(sql_string, connection);
             return (bool)access.ExecuteScalar();
         }
 
-        public bool Check_access_without_mark(int student_id, string test, string access_status)
+        public bool Check_access_connection_exist(int student_id, string test, string access_status)//со статусом и без оценки 
         {
             string sql_string = "select exists(select mark from student_test st join test t on t.test_id = st.test_id " +
                 "where student_id = " + student_id + " and test_name = '" + test + "' and access_status = '" + access_status + "' " +
@@ -235,82 +233,32 @@ namespace testing_program
             NpgsqlCommand access = new NpgsqlCommand(sql_string, connection);
             return (bool)access.ExecuteScalar();
         }
-
-        public int Close_old_student_test_access(int id, string test)
-        {
-            string sql_string = "update student_test set access_status = 'closed personal' where student_id = " + id + " " +
-                     "and test_id = (select test_id from test where test_name = '" + test + "');";
-            NpgsqlCommand access = new NpgsqlCommand(sql_string, connection);
-            return Convert.ToInt32(access.ExecuteNonQuery());
-        }
-
-        public void Fill_groups_collection(ComboBox comboBox, bool groups_and_students_page, bool marks_page)
-        {
-            string extra = "";
-            string sql_string = "SELECT group_name FROM groups";
-            if (marks_page)
-                sql_string += " g join student s on g.group_id=s.group_id " +
-                    "join student_test st on s.student_id = st.student_id group by group_name;";
-            NpgsqlCommand group_names = new NpgsqlCommand(sql_string, connection);
-            NpgsqlDataReader reader_group_names = group_names.ExecuteReader();
-            combobox.Delete_collection(comboBox);
-            if (groups_and_students_page)
-            {
-                combobox.Add_item(comboBox, "Список всех студентов");
-                combobox.Add_item(comboBox, "Список всех групп");
-                combobox.Add_item(comboBox, "Список групп с доступом к тестам");
-                combobox.Add_item(comboBox, "Список студентов с персональным доступом к тестам");
-                extra = "Список группы ";
-            }
-            if (reader_group_names.HasRows)
-            {
-                while (reader_group_names.Read())
-                    combobox.Add_item(comboBox, extra + reader_group_names.GetString(0));
-            }
-            reader_group_names.Close();
-        }
-
-        public void Fill_student_name_collection(string group, ComboBox name_combobox, bool marks_page)
+        
+        public void Fill_student_name_collection(string group_name, ComboBox comboBox, bool marks_page=false)
         {
             string sql_string = "SELECT full_name " +
                 "FROM student JOIN groups ON groups.group_id = student.group_id " +
-                "WHERE group_name = '" + group + "' AND login is null AND password is null group by full_name;";
+                "WHERE group_name = '" + group_name + "' AND login is null AND password is null group by full_name;";
             if (marks_page)
                 sql_string = "SELECT full_name FROM student JOIN groups ON groups.group_id = student.group_id " +
                 "JOIN student_test ON student_test.student_id=student.student_id " +
-                "WHERE group_name = '" + group + "' group by full_name;";
+                "WHERE group_name = '" + group_name + "' group by full_name;";
             NpgsqlCommand student_names = new NpgsqlCommand(sql_string, connection);
             NpgsqlDataReader reader_student_names = student_names.ExecuteReader();
             if (reader_student_names.HasRows)
             {
-                combobox.Delete_collection(name_combobox);
+                combobox.Delete_collection(comboBox);
                 while (reader_student_names.Read())
-                    combobox.Add_item(name_combobox, reader_student_names.GetString(0));
+                    combobox.Add_item(comboBox, reader_student_names.GetString(0));
             }
             reader_student_names.Close();
         }
-
-        public void Fill_studentForm_collection_passed_tests(int user_id, ComboBox comboBox)
-        {
-            NpgsqlCommand choose_test_result_combobox = new NpgsqlCommand("SELECT test_name FROM test " +
-                "JOIN student_test ON student_test.test_id = test.test_id " +
-                "WHERE student_id = " + user_id + " " +
-                "AND mark is not null and access_status!='closed personal' and access_status!='closed group'; ", connection);
-            NpgsqlDataReader reader_choose_test_result_combobox = choose_test_result_combobox.ExecuteReader();
-            if (reader_choose_test_result_combobox.HasRows)
-            {
-                combobox.Delete_collection(comboBox);
-                while (reader_choose_test_result_combobox.Read())
-                    combobox.Add_item(comboBox, reader_choose_test_result_combobox.GetString(0));
-            }
-            reader_choose_test_result_combobox.Close();
-        }
-
-        public void Fill_version_number_comboBox(ComboBox comboBox, int user_id, string test)
+        
+        public void Fill_version_number_comboBox(ComboBox comboBox, int teacher_id, string test_name)
         {
             NpgsqlCommand delete_mode_version_comboBox = new NpgsqlCommand("select version_number from version " +
                 "join test on test.test_id = version.test_id " +
-                "where teacher_id = " + user_id + " and test_name = '" + test + "'; ", connection);
+                "where teacher_id = " + teacher_id + " and test_name = '" + test_name + "'; ", connection);
             NpgsqlDataReader reader_delete_mode_version_comboBox = delete_mode_version_comboBox.ExecuteReader();
             if (reader_delete_mode_version_comboBox.HasRows)
             {
@@ -321,15 +269,15 @@ namespace testing_program
             reader_delete_mode_version_comboBox.Close();
         }
 
-        public void Fill_delete_task_comboBox(ComboBox comboBox, int user_id, string test, int version)
+        public void Get_teacher_available_tasks(ComboBox comboBox, int teacher_id, string test_name, int version_number)
         {
             NpgsqlCommand delete_task_comboBox = new NpgsqlCommand("select question_text from questions " +
                 "join version_question on version_question.question_id = questions.question_id " +
                 "join version on version.version_id = version_question.version_id " +
                 "join test on test.test_id = version.test_id " +
-                "where teacher_id = " + user_id + " " +
-                "and test_name = '" + test + "' " +
-                "and version_number = " + version + " ", connection);
+                "where teacher_id = " + teacher_id + " " +
+                "and test_name = '" + test_name + "' " +
+                "and version_number = " + version_number + " ", connection);
             NpgsqlDataReader reader_delete_task_comboBox = delete_task_comboBox.ExecuteReader();
             if (reader_delete_task_comboBox.HasRows)
             {
@@ -340,28 +288,13 @@ namespace testing_program
             reader_delete_task_comboBox.Close();
         }
 
-        public void Fill_teacher_collection_available_tests(int user_id, ComboBox comboBox)
-        {
-            NpgsqlCommand teacher_available_tests = new NpgsqlCommand("SELECT " +
-                     "test_name FROM test " +
-                     "WHERE teacher_id = " + user_id + " " +
-                     "GROUP BY test.test_id; ", connection);
-            NpgsqlDataReader reader_teacher_available_tests = teacher_available_tests.ExecuteReader();
-            if (reader_teacher_available_tests.HasRows)
-            {
-                while (reader_teacher_available_tests.Read())
-                    comboBox.Items.Add(reader_teacher_available_tests.GetString(0));
-            }
-            reader_teacher_available_tests.Close();
-        }
-
-        public void Fill_teacher_collection_available_tasks(int user_id, ComboBox comboBox)
+        public void Get_teacher_available_tasks(int teacher_id, ComboBox comboBox)
         {
             NpgsqlCommand teacher_available_tasks = new NpgsqlCommand("select question_text from questions " +
                 "join version_question on version_question.question_id = questions.question_id " +
                 "join version on version_question.version_id = version.version_id " +
                 "join test on version.test_id = test.test_id " +
-                "WHERE test.teacher_id = " + user_id + " " +
+                "WHERE test.teacher_id = " + teacher_id + " " +
                 "group by question_text ", connection);
             NpgsqlDataReader reader_teacher_available_tasks = teacher_available_tasks.ExecuteReader();
             if (reader_teacher_available_tasks.HasRows)
@@ -372,88 +305,95 @@ namespace testing_program
             }
             reader_teacher_available_tasks.Close();
         }
-
-        public int Save_registrationForm_new_teacher(TextBox name, TextBox login, TextBox password)
+        
+        public int Save_registrationForm_new_user(string teacher_name, string login, string password)
         {
             NpgsqlCommand new_teacher = new NpgsqlCommand("INSERT INTO " +
                 "teacher (full_name, login, password) " +
-                "VALUES ('" + name.Text + "', '"
-                + login.Text + "', '"
-                + password.Text + "') RETURNING teacher_id;", connection);
+                "VALUES ('" + teacher_name + "', '"
+                + login + "', '"
+                + password + "') RETURNING teacher_id;", connection);
             return Convert.ToInt32(new_teacher.ExecuteScalar());
         }
 
-        public int Save_registrationForm_new_student(TextBox login, TextBox password, ComboBox name, ComboBox group)
+        public int Save_registrationForm_new_user(string login, string password, string student_name, string group_name)
         {
             NpgsqlCommand new_student = new NpgsqlCommand("UPDATE student " +
-                "SET login = '" + login.Text + "', " +
-                "password = '" + password.Text + "' " +
+                "SET login = '" + login + "', " +
+                "password = '" + password + "' " +
                 "WHERE student_id = (select student_id from student " +
-                "where full_name = '" + name.SelectedItem.ToString() + "') " +
+                "where full_name = '" + student_name + "') " +
                 "AND group_id = (select group_id from groups " +
-                "where group_name = '" + group.SelectedItem.ToString() + "')" +
+                "where group_name = '" + group_name + "')" +
                 " RETURNING student_id;", connection);
             return Convert.ToInt32(new_student.ExecuteScalar());
         }
 
-        public void Save_student_answer(int user_id, int version_id, string question, bool answer)
+        public void Save_student_answer(int user_id, int version_id, string question, bool answer, int student_test_id)
         {
-            NpgsqlCommand student_answer = new NpgsqlCommand("INSERT " +
-                "INTO results(student_id, version_question_id, answer) VALUES('" + user_id + "', " +
+            NpgsqlCommand student_answer = new NpgsqlCommand("INSERT INTO " +
+                "results(student_id, version_question_id, answer,student_test_id) VALUES("+ user_id + ", " +
                 "(SELECT version_question_id FROM version_question " +
                 "JOIN questions ON questions.question_id = version_question.question_id " +
                 "JOIN version ON version.version_id = version_question.version_id " +
-                "WHERE version.version_id = " + version_id + " " +
-                "AND question_text = '" + question + "')," +
-                " '" + answer + "'); ", connection);
+                "WHERE version.version_id = "+ version_id + " AND " +
+                "question_text = '"+ question + "'), '"+ answer + "', "+ student_test_id + "); ", connection);
             student_answer.ExecuteNonQuery();
         }
 
-        public int Get_sign_in_user_id(TextBox login, TextBox password, int user_code)
+        public int Get_sign_in_user_id(string login, string password, int user_code)
         {
             string table = "teacher";
             if (user_code == 1)
                 table = "student";
             NpgsqlCommand get_user_id = new NpgsqlCommand("SELECT " + table + "_id FROM " + table + " " +
-                "WHERE login = '" + login.Text + "' " +
-                "AND password = '" + password.Text + "';", connection);
+                "WHERE login = '" + login + "' " +
+                "AND password = '" + password + "';", connection);
             return Convert.ToInt32(get_user_id.ExecuteScalar());
         }
+        
+        public int Get_student_test_id(string test, int user_id, bool with_mark=false)
+        {
+            string extra ="";
+            if(with_mark)
+                extra = "not";
+            NpgsqlCommand student_test_id = new NpgsqlCommand("select student_test_id from student_test " +
+                "JOIN test ON test.test_id = student_test.test_id " +
+                "where student_id = "+user_id+" and test_name = '"+test+"' " +
+                "and mark is "+extra+" null and access_status != 'closed group' and access_status != 'closed personal'", connection);
+            return Convert.ToInt32(student_test_id.ExecuteScalar());
+        }
 
-        public string Get_studentForm_profil_info(int user_id)
+        public void Get_studentForm_profil_info(int user_id, List<string> profil_info_list)
         {
             NpgsqlCommand student_profile_info = new NpgsqlCommand("SELECT " +
                "student.full_name, groups.group_name, student.login, student.password FROM student " +
                "JOIN groups ON groups.group_id = student.group_id " +
                "WHERE student.student_id = " + user_id + "; ", connection);
             NpgsqlDataReader reader = student_profile_info.ExecuteReader();
-            string profile_info = "";
             while (reader.Read())
             {
-                for (int s = 0; s < 4; ++s)
-                    profile_info += reader.GetValue(s).ToString() + " ";
+                for (int s = 0; s < reader.FieldCount; ++s)
+                    profil_info_list.Add(reader.GetValue(s).ToString());
             }
             reader.Close();
-            return profile_info;
         }
 
-        public string Get_teacherForm_profile_info(int user_id)
+        public void Get_teacherForm_profile_info(int user_id, List<string> profil_info_list)
         {
             NpgsqlCommand teacher_profile_info = new NpgsqlCommand("SELECT " +
                "full_name, login, password FROM teacher " +
                "WHERE teacher_id = " + user_id + "; ", connection);
             NpgsqlDataReader reader = teacher_profile_info.ExecuteReader();
-            string profile_info = "";
             while (reader.Read())
             {
-                for (int s = 0; s < 3; ++s)
-                    profile_info += reader.GetValue(s).ToString() + " ";
+                for (int s = 0; s < reader.FieldCount; ++s)
+                    profil_info_list.Add(reader.GetValue(s).ToString());
             }
             reader.Close();
-            return profile_info;
         }
-
-        public string Get_name(int user_id, string role)
+        
+        public string Get_user_name(int user_id, string role)
         {
             NpgsqlCommand user_name = new NpgsqlCommand("SELECT full_name FROM " + role + " " +
                 "WHERE " + role + "_id = " + user_id + ";", connection);
@@ -518,7 +458,7 @@ namespace testing_program
                 "order by version_number DESC limit 1; ", connection);
             return Convert.ToInt32(number.ExecuteScalar());
         }
-
+        /**************************************почему каунт**************************************/
         public int Get_last_question_number(int user_id, int test, int version) //можно и с названием теста
         {
             NpgsqlCommand number = new NpgsqlCommand("select count(questions.question_id) from questions " +
@@ -596,8 +536,8 @@ namespace testing_program
             }
             reader_get_marks.Close();
         }
-
-        public List<int> Get_tests(int user_id, string group, List<string> tests, int student_id, bool need_group_access)
+        
+        public List<int> Get_all_tests(int teacher_id, string group_name, List<string> tests, int student_id=-1, bool need_group_access=false)
         {
             string sql_string = "SELECT test_name FROM test " +
                 "join student_test on test.test_id = student_test.test_id " +
@@ -607,11 +547,12 @@ namespace testing_program
                 "join student_test st on t.test_id = st.test_id " +
                 "join student s on s.student_id = st.student_id " +
                 "join groups g on g.group_id = s.group_id " +
-                "where group_name = '" + group + "' and teacher_id=" + user_id + " group by  t.test_id";
+                "where group_name = '" + group_name + "' and teacher_id=" + teacher_id + " group by  t.test_id";
             else if (need_group_access)//все общедоступные тесты группы
                 sql_string = "SELECT test_name FROM test join student_test on student_test.test_id = test.test_id " +
                     "join student on student.student_id = student_test.student_id " +
-                    "join groups on groups.group_id = student.group_id WHERE group_name = '" + group + "' and access_status = 'group'; ";
+                    "join groups on groups.group_id = student.group_id WHERE group_name = '" + group_name + "' " +
+                    "and access_status = 'group' group by test_name; ";
             NpgsqlCommand get_tests = new NpgsqlCommand(sql_string, connection);
             NpgsqlDataReader reader_get_tests = get_tests.ExecuteReader();
             List<int> id = new List<int>();
@@ -674,6 +615,30 @@ namespace testing_program
             reader_get_average_mark.Close();
         }
 
+        public void Get_question_answers(int question_id, List<string> answers)
+        {
+            NpgsqlCommand answer = new NpgsqlCommand("select array_to_string(array_agg(answers_text), '; ', '') from answers a " +
+                "inner join question_answer qa on qa.answer_id = a.answer_id where question_id = " + question_id + "; ", connection);
+            answers.Add(answer.ExecuteScalar().ToString());
+        }
+
+        public void Get_question_right_answers(int question_id, List<string> answers)
+        {
+            string answer = "";
+            for (int i = 0; i < 4; ++i)
+            {
+                NpgsqlCommand right_answer = new NpgsqlCommand("select COALESCE ((select answers_text from answers " +
+                    "join question_answer on question_answer.answer_id = answers.answer_id " +
+                    "where question_id = " + question_id + " and right_answer = 1 " +
+                    "group by answers_text limit 1 offset " + i + "),''); ", connection);
+                string s = right_answer.ExecuteScalar().ToString();
+                answer += s;
+                if (s != "")
+                    answer += "; ";
+            }
+            answers.Add(answer);
+        }
+
         public List<int> Get_test_versions(int test_id)
         {
             NpgsqlCommand test_versions = new NpgsqlCommand("SELECT version_id " +
@@ -713,7 +678,7 @@ namespace testing_program
             reader.Close();
             return questions;
         }
-
+        //****************************************************
         public List<int> Get_students_id(int id, List<int> students, bool is_student_id)
         {
             string sql_string = "SELECT student_id FROM student WHERE group_id = " + id + ";";
@@ -728,7 +693,7 @@ namespace testing_program
             reader.Close();
             return students;
         }
-
+        //***************************************************
         public List<string> Get_answers_text(int version_id, string question)
         {
             List<string> answers = new List<string>();
@@ -745,6 +710,22 @@ namespace testing_program
                 answers.Add(reader.GetValue(0).ToString());
             reader.Close();
             return answers;
+        }
+        public List<int> Get_answers_id(int version_id, string question)
+        {
+            List<int> answers_id = new List<int>();
+            NpgsqlCommand get_answers_id = new NpgsqlCommand("SELECT answers.answer_id FROM answers " +
+                "JOIN question_answer ON question_answer.answer_id = answers.answer_id " +
+                "JOIN version_question ON version_question.question_id = question_answer.question_id " +
+                "JOIN questions ON questions.question_id = question_answer.question_id " +
+                "WHERE questions.question_text = '" + question + "' " +
+                "AND version_question.version_id = " + version_id + " " +
+                "GROUP BY answers.answer_id; ", connection);
+            NpgsqlDataReader reader_get_answers_id = get_answers_id.ExecuteReader();
+            while (reader_get_answers_id.Read())
+                answers_id.Add((int)reader_get_answers_id.GetValue(0));
+            reader_get_answers_id.Close();
+            return answers_id;
         }
 
         public List<string> Get_right_answers(int version_id, string question)
@@ -765,22 +746,6 @@ namespace testing_program
             return answers;
         }
 
-        public List<int> Get_answers_id(int version_id, string question)
-        {
-            List<int> answers_id = new List<int>();
-            NpgsqlCommand get_answers_id = new NpgsqlCommand("SELECT answers.answer_id FROM answers " +
-                "JOIN question_answer ON question_answer.answer_id = answers.answer_id " +
-                "JOIN version_question ON version_question.question_id = question_answer.question_id " +
-                "JOIN questions ON questions.question_id = question_answer.question_id " +
-                "WHERE questions.question_text = '" + question + "' " +
-                "AND version_question.version_id = " + version_id + " " +
-                "GROUP BY answers.answer_id; ", connection);
-            NpgsqlDataReader reader_get_answers_id = get_answers_id.ExecuteReader();
-            while (reader_get_answers_id.Read())
-                answers_id.Add((int)reader_get_answers_id.GetValue(0));
-            reader_get_answers_id.Close();
-            return answers_id;
-        }
         public List<int> Get_questions_id(int user_id)
         {
             List<int> id = new List<int>();
@@ -795,7 +760,7 @@ namespace testing_program
             reader_get_answers_id.Close();
             return id;
         }
-
+//*****************************************************************
         public List<int> Get_answers_id(int user_id)
         {
             List<int> id = new List<int>();
@@ -812,6 +777,41 @@ namespace testing_program
             return id;
         }
 
+        public List<int> Get_teacher_tasks(int user_id, List<string> questions)
+        {
+            List<int> id = new List<int>();
+            NpgsqlCommand tasks = new NpgsqlCommand("select distinct on (vq.question_id) " +
+                "vq.question_id,q.question_text from version_question vq inner join version v on v.version_id = vq.version_id " +
+                "inner join questions q on vq.question_id = q.question_id inner join test t on t.test_id = v.test_id " +
+                "where teacher_id = " + user_id + " group by vq.version_question_id, q.question_text; ", connection);
+            NpgsqlDataReader reader_tasks = tasks.ExecuteReader();
+            while (reader_tasks.Read())
+            {
+                id.Add(reader_tasks.GetInt32(0));
+                questions.Add(reader_tasks.GetString(1));
+            }
+            reader_tasks.Close();
+            return id;
+        }
+        public List<int> Get_teacher_tasks(int user_id, List<string> questions, int version_id)
+        {
+            List<int> id = new List<int>();
+            NpgsqlCommand tasks = new NpgsqlCommand("select distinct on (vq.question_id) " +
+                "vq.question_id, q.question_text from version_question vq inner join version v on v.version_id = vq.version_id " +
+                "inner join questions q on vq.question_id = q.question_id inner join test t on t.test_id = v.test_id " +
+                "where teacher_id = "+user_id+" and v.version_id = "+version_id+" " +
+                "group by vq.version_question_id, q.question_text;  ", connection);
+            NpgsqlDataReader reader_tasks = tasks.ExecuteReader();
+            while (reader_tasks.Read())
+            {
+                id.Add(reader_tasks.GetInt32(0));
+                questions.Add(reader_tasks.GetString(1));
+            }
+            reader_tasks.Close();
+            return id;
+        }
+
+
         public string Get_student_test_access_status(int student_id, string test)
         {
             NpgsqlCommand student_test_id_and_access_status = new NpgsqlCommand("select COALESCE((select access_status from student_test st " +
@@ -822,7 +822,7 @@ namespace testing_program
                 "order by student_test_id desc limit 1))", connection);
             return student_test_id_and_access_status.ExecuteScalar().ToString();
         }
-
+        
         public NpgsqlDataAdapter Get_student_available_tests(int user_id)
         {
             NpgsqlCommand student_available_tests = new NpgsqlCommand("SELECT test.test_id, test_name, comment " +
@@ -833,8 +833,32 @@ namespace testing_program
             student_available_tests.ExecuteNonQuery();
             return new NpgsqlDataAdapter(student_available_tests);
         }
-
-        public NpgsqlDataAdapter Get_completed_tests(int user_id)
+        public NpgsqlDataAdapter Get_teacher_available_tests(int user_id)
+        {
+            NpgsqlCommand teacher_available_tests = new NpgsqlCommand("SELECT " +
+                "test.test_id, test_name, timer, count(version_id) FROM test " +
+                "join version on version.test_id = test.test_id " +
+                "WHERE teacher_id = " + user_id + " " +
+                "GROUP BY test.test_id; ", connection);
+            teacher_available_tests.ExecuteNonQuery();
+            return new NpgsqlDataAdapter(teacher_available_tests);
+        }
+        public void Get_teacher_available_tests(int user_id, ComboBox comboBox)
+        {
+            NpgsqlCommand teacher_available_tests = new NpgsqlCommand("SELECT " +
+                     "test_name FROM test " +
+                     "WHERE teacher_id = " + user_id + " " +
+                     "GROUP BY test.test_id; ", connection);
+            NpgsqlDataReader reader_teacher_available_tests = teacher_available_tests.ExecuteReader();
+            if (reader_teacher_available_tests.HasRows)
+            {
+                while (reader_teacher_available_tests.Read())
+                    comboBox.Items.Add(reader_teacher_available_tests.GetString(0));
+            }
+            reader_teacher_available_tests.Close();
+        }
+        
+        public NpgsqlDataAdapter Get_student_completed_tests(int user_id)
         {
             NpgsqlCommand completed_tests = new NpgsqlCommand("SELECT test_name, mark, time FROM test, student_test " +
                 "WHERE student_test.test_id = test.test_id AND student_id=" + user_id + " " +
@@ -842,12 +866,51 @@ namespace testing_program
             completed_tests.ExecuteNonQuery();
             return new NpgsqlDataAdapter(completed_tests);
         }
-
+        public void Get_student_completed_tests(int user_id, ComboBox comboBox)
+        {
+            NpgsqlCommand choose_test_result_combobox = new NpgsqlCommand("SELECT test_name FROM test " +
+                "JOIN student_test ON student_test.test_id = test.test_id " +
+                "WHERE student_id = " + user_id + " " +
+                "AND mark is not null and access_status!='closed personal' and access_status!='closed group'; ", connection);
+            NpgsqlDataReader reader_choose_test_result_combobox = choose_test_result_combobox.ExecuteReader();
+            if (reader_choose_test_result_combobox.HasRows)
+            {
+                combobox.Delete_collection(comboBox);
+                while (reader_choose_test_result_combobox.Read())
+                    combobox.Add_item(comboBox, reader_choose_test_result_combobox.GetString(0));
+            }
+            reader_choose_test_result_combobox.Close();
+        }
         public NpgsqlDataAdapter Get_groups()
         {
             NpgsqlCommand groups = new NpgsqlCommand("SELECT group_id, group_name FROM groups;", connection);
             groups.ExecuteNonQuery();
             return new NpgsqlDataAdapter(groups);
+        }
+        public void Get_groups(ComboBox comboBox, bool groups_and_students_page = false, bool marks_page = false)
+        {
+            string extra = "";
+            string sql_string = "SELECT group_name FROM groups";
+            if (marks_page)
+                sql_string += " g join student s on g.group_id=s.group_id " +
+                    "join student_test st on s.student_id = st.student_id group by group_name;";
+            NpgsqlCommand group_names = new NpgsqlCommand(sql_string, connection);
+            NpgsqlDataReader reader_group_names = group_names.ExecuteReader();
+            combobox.Delete_collection(comboBox);
+            if (groups_and_students_page)
+            {
+                combobox.Add_item(comboBox, "Список всех студентов");
+                combobox.Add_item(comboBox, "Список всех групп");
+                combobox.Add_item(comboBox, "Список групп с доступом к тестам");
+                combobox.Add_item(comboBox, "Список студентов с персональным доступом к тестам");
+                extra = "Список группы ";
+            }
+            if (reader_group_names.HasRows)
+            {
+                while (reader_group_names.Read())
+                    combobox.Add_item(comboBox, extra + reader_group_names.GetString(0));
+            }
+            reader_group_names.Close();
         }
 
         public NpgsqlDataAdapter Get_students(string category)
@@ -881,7 +944,7 @@ namespace testing_program
             access.ExecuteNonQuery();
             return new NpgsqlDataAdapter(access);
         }
-
+        
         public NpgsqlDataAdapter Get_teacher_one_test(int version_id)
         {
             NpgsqlCommand one_test = new NpgsqlCommand("select vq.question_id, question_text, " +
@@ -898,58 +961,21 @@ namespace testing_program
             one_test.ExecuteNonQuery();
             return new NpgsqlDataAdapter(one_test);
         }
-
-        public NpgsqlDataAdapter Get_teacher_tasks(int user_id)
-        {
-            NpgsqlCommand teacher_tasks = new NpgsqlCommand("select distinct on (vq.question_id) " +
-                "vq.question_id, question_text, array_to_string(array_agg(answers_text), '; ', ''), " +
-                "(select answers_text from answers " +
-                "join question_answer on question_answer.answer_id = answers.answer_id " +
-                "join version_question on version_question.question_id = question_answer.question_id " +
-                "join version on version.version_id = version_question.version_id " +
-                "join test on test.test_id = version.test_id where right_answer = 1  and " +
-                "vq.question_id = question_answer.question_id " +
-                "group by version_question.question_id, answers_text limit 1) from version_question vq " +
-                "inner join questions q on vq.question_id = q.question_id " +
-                "inner join question_answer qa on qa.question_id = q.question_id " +
-                "inner join answers a on a.answer_id = qa.answer_id " +
-                "inner join version v on v.version_id = vq.version_id " +
-                "inner join test t on t.test_id = v.test_id " +
-                "where teacher_id = " + user_id + " group by vq.version_question_id,question_text; ", connection);
-            teacher_tasks.ExecuteNonQuery();
-            return new NpgsqlDataAdapter(teacher_tasks);
-        }
-
-        public NpgsqlDataAdapter Get_test_analysis(int user_id, ComboBox test_name)
+        
+        public NpgsqlDataAdapter Get_test_analysis(int student_test_id)
         {
             NpgsqlCommand test_analysis = new NpgsqlCommand("SELECT question_text, results.answer FROM questions " +
                 "JOIN version_question ON version_question.question_id = questions.question_id " +
                 "JOIN results ON version_question.version_question_id = results.version_question_id " +
-                "JOIN version ON version.version_id = version_question.version_id " +
-                "JOIN test ON test.test_id = version.test_id " +
-                "JOIN student_test ON student_test.test_id = test.test_id " +
-                "WHERE student_test.student_id = " + user_id + " " +
-                "AND test.test_name = '" + test_name.Text + "' and access_status!='closed personal' and access_status!='closed group'" +
-                "GROUP BY question_text, results.answer;", connection);
+                "where student_test_id = "+student_test_id+"; ", connection);
             test_analysis.ExecuteNonQuery();
             return new NpgsqlDataAdapter(test_analysis);
         }
 
-        public NpgsqlDataAdapter Get_teacher_available_tests(int user_id)
+        public void Update_user_login_or_password(string text, int user_id, string item, string role)
         {
-            NpgsqlCommand teacher_available_tests = new NpgsqlCommand("SELECT " +
-                "test.test_id, test_name, timer, count(version_id) FROM test " +
-                "join version on version.test_id = test.test_id " +
-                "WHERE teacher_id = " + user_id + " " +
-                "GROUP BY test.test_id; ", connection);
-            teacher_available_tests.ExecuteNonQuery();
-            return new NpgsqlDataAdapter(teacher_available_tests);
-        }
-
-        public void Update_user_login_or_password(TextBox input, int user_id, string item, string table)
-        {
-            NpgsqlCommand new_user_login_or_password = new NpgsqlCommand("UPDATE " + table + " " +
-                    "SET " + item + " = '" + input.Text + "' WHERE " + table + "_id = " + user_id + "; ", connection);
+            NpgsqlCommand new_user_login_or_password = new NpgsqlCommand("UPDATE " + role + " " +
+                    "SET " + item + " = '" + text + "' WHERE " + role + "_id = " + user_id + "; ", connection);
             new_user_login_or_password.ExecuteNonQuery();
         }
 
@@ -988,10 +1014,10 @@ namespace testing_program
             answer_name.ExecuteNonQuery();
         }
 
-        public void Update_user_full_name(TextBox[] full_name, int user_id, string role)
+        public void Update_user_full_name(string full_name, int user_id, string role)
         {
             NpgsqlCommand student_name = new NpgsqlCommand("update " + role + " " +
-                "set full_name='" + full_name[0].Text + "'||' '||'" + full_name[1].Text + "'||' '||'" + full_name[2].Text + "' " +
+                "set full_name='" + full_name + "' " +
                 "where " + role + "_id=" + user_id + "; ", connection);
             student_name.ExecuteNonQuery();
         }
@@ -1018,13 +1044,20 @@ namespace testing_program
             group_name.ExecuteNonQuery();
         }
 
-        public int Update_student__test_access_status(int id, string test, string new_status, string old_status, bool without_mark)
+        public int Update_student_test_access_status(int student_id, string test, string new_status, string old_status, bool without_mark)
         {
             string extra = " and mark is null";
             if (!without_mark)
                 extra = " and mark is not null";
-            string sql_string = "update student_test set access_status = '" + new_status + "' where student_id = " + id + " " +
+            string sql_string = "update student_test set access_status = '" + new_status + "' where student_id = " + student_id + " " +
                      "and test_id = (select test_id from test where test_name = '" + test + "') and access_status='" + old_status + "' " + extra + ";";
+            NpgsqlCommand access = new NpgsqlCommand(sql_string, connection);
+            return Convert.ToInt32(access.ExecuteNonQuery());
+        }
+        public int Update_student_test_access_status(int student_id, string test)
+        {
+            string sql_string = "update student_test set access_status = 'closed personal' where student_id = " + student_id + " " +
+                     "and test_id = (select test_id from test where test_name = '" + test + "');";
             NpgsqlCommand access = new NpgsqlCommand(sql_string, connection);
             return Convert.ToInt32(access.ExecuteNonQuery());
         }
@@ -1041,6 +1074,12 @@ namespace testing_program
                 "and version_number=" + version + " " +
                 "and question_text = '" + question + "'; ", connection);
             delete_task.ExecuteNonQuery();
+        }
+        public int Delete_student_test_access_status(int student_id)
+        {
+            string sql_string = "delete from student_test where student_id="+student_id+";";
+            NpgsqlCommand access = new NpgsqlCommand(sql_string, connection);
+            return Convert.ToInt32(access.ExecuteNonQuery());
         }
 
         private void Delete_questions_from_db(List<int> ids)
@@ -1070,7 +1109,7 @@ namespace testing_program
             Delete_answers_from_db(a_ids);
         }
 
-        public void Delete_version(int user_id, int version, string test, int test_id)
+        public void Delete_version(int user_id, int version, string test="", int test_id=-1)
         {
             string sql_string = "delete from version using test " +
                  "where version.test_id = test.test_id " +
@@ -1100,9 +1139,9 @@ namespace testing_program
             delete_group.ExecuteNonQuery();
         }
 
-        public void Delete_user(int id, string role)
+        public void Delete_user(int user_id, string role)
         {
-            NpgsqlCommand delete_user = new NpgsqlCommand("DELETE FROM " + role + " WHERE " + role + "_id = " + id + "; ", connection);
+            NpgsqlCommand delete_user = new NpgsqlCommand("DELETE FROM " + role + " WHERE " + role + "_id = " + user_id + "; ", connection);
             delete_user.ExecuteNonQuery();
         }
     }

@@ -29,14 +29,14 @@ namespace testing_program
                 table.Rows.Clear();
         }
 
-        public void Clear_selection(DataGridView table)//?
-        {
-            table.ClearSelection();
-        }
-
         public void Change_column_header_text(DataGridView table, int index, string text)
         {
             table.Columns[index].HeaderText = text;
+        }
+        public void Change_column_header_text(DataGridView table, int skip_index_count, string[] text)
+        {
+            for (int i = 0; i < text.Length; ++i)
+                table.Columns[i + skip_index_count].HeaderText = text[i];
         }
 
         public string Get_column_name(DataGridView table, DataGridViewCell cell)
@@ -52,6 +52,12 @@ namespace testing_program
         public void Change_column_width(DataGridView table, int index, int value)
         {
             table.Columns[index].Width = value;
+        }
+
+        public void Change_column_width(DataGridView table, int skip_index_count, int[] value)
+        {
+            for (int i = 0; i < value.Length; ++i)
+                table.Columns[i + skip_index_count].Width = value[i];
         }
 
         public void Change_column_name(DataGridView table, int index, string value)
@@ -78,13 +84,8 @@ namespace testing_program
             adapter.Fill(set);
             DataTable dataTable = set.Tables[0];
             table.DataSource = dataTable;
-            string[] text = { "Название теста", "Комментарий" };
-            int[] value = { 300, 305 };
-            for (int i = 0; i < text.Length; ++i)
-            {
-                Change_column_header_text(table, i + 1, text[i]);
-                Change_column_width(table, i + 1, value[i]);
-            }
+            Change_column_header_text(table, 1, new string[] { "Название теста", "Комментарий" });
+            Change_column_width(table, 1, new int[] { 300, 305 });
             table.Columns[0].Visible = false;
             Change_back_color(table, Color.White);
             Change_fore_color(table, Color.Black);
@@ -96,18 +97,13 @@ namespace testing_program
             Clear_table(table);
             DataSet set = new DataSet();
             Show(table);
-            NpgsqlDataAdapter adapter = database.Get_completed_tests(user_id);
+            NpgsqlDataAdapter adapter = database.Get_student_completed_tests(user_id);
             set.Reset();
             adapter.Fill(set);
             DataTable dataTable = set.Tables[0];
             table.DataSource = dataTable;
-            string[] text = { "Название теста", "Оценка", "Время прохождения" };
-            int[] value = { 350, 70, 140 };
-            for (int i = 0; i < text.Length; ++i)
-            {
-                Change_column_header_text(table, i, text[i]);
-                Change_column_width(table, i, value[i]);
-            }
+            Change_column_header_text(table, 0, new string[] { "Название теста", "Оценка", "Время прохождения" });
+            Change_column_width(table, 0, new int[] { 350, 70, 140 });
         }
 
         public void Reset_students_list_table(DatabaseClass database, int user_id, string category, DataGridView table)
@@ -171,23 +167,18 @@ namespace testing_program
             table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 
-        public void Reset_one_test_result_table(DatabaseClass database, int user_id, DataGridView table, ComboBox test_name)
+        public void Reset_one_test_result_table(DatabaseClass database, DataGridView table, int student_test_id)
         {
             Clear_table(table);
             DataSet set = new DataSet();
             Show(table);
-            NpgsqlDataAdapter adapter = database.Get_test_analysis(user_id, test_name);
+            NpgsqlDataAdapter adapter = database.Get_test_analysis(student_test_id);
             set.Reset();
             adapter.Fill(set);
             DataTable dataTable = set.Tables[0];
             table.DataSource = dataTable;
-            string[] text = { "Вопрос", "Правильность выполнения" };
-            int[] value = { 460, 100 };
-            for (int i = 0; i < text.Length; ++i)
-            {
-                Change_column_header_text(table, i, text[i]);
-                Change_column_width(table, i, value[i]);
-            }
+            Change_column_header_text(table, 0, new string[] { "Вопрос", "Правильность выполнения" });
+            Change_column_width(table, 0, new int[] { 460, 100 });
         }
 
         public void Reset_teacher_test_table(DatabaseClass database, int user_id, DataGridView table)
@@ -200,62 +191,15 @@ namespace testing_program
             adapter.Fill(set);
             DataTable dataTable = set.Tables[0];
             table.DataSource = dataTable;
-            string[] text = { "Название теста", "Ограничение по времени", "Количество вариантов" };
-            int[] value = { 460, 100, 100 };
-            for (int i = 0; i < text.Length; ++i)
-            {
-                Change_column_header_text(table, i + 1, text[i]);
-                Change_column_width(table, i + 1, value[i]);
-            }
-            table.Columns[0].Visible = false;
-        }
-
-        public void Reset_teacher_one_test_table(DatabaseClass database, int version_id, DataGridView table)
-        {
-            Clear_table(table);
-            DataSet set = new DataSet();
-            Show(table);
-            NpgsqlDataAdapter adapter = database.Get_teacher_one_test(version_id);
-            set.Reset();
-            adapter.Fill(set);
-            DataTable dataTable = set.Tables[0];
-            table.DataSource = dataTable;
-            string[] text = { "Вопрос", "Ответы", "Правильный ответ" };
-            int[] value = { 300, 280, 139 };
-            for (int i = 0; i < text.Length; ++i)
-            {
-                Change_column_header_text(table, i + 1, text[i]);
-                Change_column_width(table, i + 1, value[i]);
-            }
-            table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            table.Columns[0].Visible = false;
-        }
-
-        public void Reset_teacher_task_table(DatabaseClass database, int user_id, DataGridView table)
-        {
-            Clear_table(table);
-            DataSet set = new DataSet();
-            Show(table);
-            NpgsqlDataAdapter adapter = database.Get_teacher_tasks(user_id);
-            set.Reset();
-            adapter.Fill(set);
-            DataTable dataTable = set.Tables[0];
-            table.DataSource = dataTable;
-            string[] text = { "Вопрос", "Ответы", "Правильный ответ" };
-            int[] value = { 300, 280, 139 };
-            for (int i = 0; i < text.Length; ++i)
-            {
-                Change_column_header_text(table, i + 1, text[i]);
-                Change_column_width(table, i + 1, value[i]);
-            }
-            table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            Change_column_header_text(table, 1, new string[] { "Название теста", "Ограничение по времени", "Количество вариантов" });
+            Change_column_width(table, 1, new int[] { 460, 100, 100 });
             table.Columns[0].Visible = false;
         }
 
         public void Reset_student_marks_table(DatabaseClass database, string group, string student, DataGridView table, int user_id)
         {
+            Clear_rows(table);
             Show(table);
-
             List<string[]> marks = new List<string[]>(); //marks
             database.Get_student_marks(user_id, group, student, marks);
             if (marks.Count > 0)
@@ -281,9 +225,10 @@ namespace testing_program
 
         public void Reset_group_marks_table(DatabaseClass database, string group, DataGridView table, int user_id)
         {
+            Clear_rows(table);
             Show(table);
             List<string> tests = new List<string>();
-            List<int> id = database.Get_tests(user_id, group, tests, -1, false);//headers
+            List<int> id = database.Get_all_tests(user_id, group, tests);//headers
             if (id.Count > 0)
             {
                 List<string> average_mark = new List<string>(); //1st row
@@ -302,10 +247,72 @@ namespace testing_program
                 table.ColumnCount = id.Count + 1;
                 foreach (string[] s in result)
                     table.Rows.Add(s);
-                for (int i = 0; i < table.ColumnCount - 1; ++i)
-                    Change_column_header_text(table, i + 1, tests[i]);
+                Change_column_header_text(table, 1, tests.ToArray());
                 table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
+        }
+
+        public void Reset_teacher_task_table(DatabaseClass database, int user_id, DataGridView table)
+        {
+            Clear_rows(table);
+            Show(table);
+            List<string> questions = new List<string>();
+            List<int> id = database.Get_teacher_tasks(user_id, questions);//1st column
+            if (id.Count > 0)
+            {
+                List<string> answers = new List<string>(); //2st column
+                List<string> right_answers = new List<string>(); //3st column
+                List<string[]> result = new List<string[]>();
+                for (int i = 0; i < id.Count; ++i)
+                {
+                    database.Get_question_answers(id[i], answers);
+                    database.Get_question_right_answers(id[i], right_answers);
+                    result.Add(new string[] { questions[i], answers[i], right_answers[i] });
+                }
+                table.ColumnCount = 3;
+                foreach (string[] s in result)
+                    table.Rows.Add(s);
+                Change_column_header_text(table, 0, new string[] { "Вопрос", "Варианты ответов", "Правильный ответ" });
+                table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+        }
+
+        public void Reset_teacher_one_test_table(DatabaseClass database, int user_id, int version_id, DataGridView table)
+        {
+            Clear_rows(table);
+            Show(table);
+            List<string> questions = new List<string>();
+            List<int> id = database.Get_teacher_tasks(user_id, questions, version_id);//1st column
+            if (id.Count > 0)
+            {
+                List<string> answers = new List<string>(); //2st column
+                List<string> right_answers = new List<string>(); //3st column
+                List<string[]> result = new List<string[]>();
+                for (int i = 0; i < id.Count; ++i)
+                {
+                    database.Get_question_answers(id[i], answers);
+                    database.Get_question_right_answers(id[i], right_answers);
+                    result.Add(new string[] { questions[i], answers[i], right_answers[i] });
+                }
+                table.ColumnCount = 3;
+                foreach (string[] s in result)
+                    table.Rows.Add(s);
+                Change_column_header_text(table, 0, new string[] { "Вопрос", "Варианты ответов", "Правильный ответ" });
+                table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+            /*//достать вопросы их имеющегося запроса подстроив его под вариант, достать ответы
+            Clear_table(table);
+            DataSet set = new DataSet();
+            Show(table);
+            NpgsqlDataAdapter adapter = database.Get_teacher_one_test(version_id);
+            set.Reset();
+            adapter.Fill(set);
+            DataTable dataTable = set.Tables[0];
+            table.DataSource = dataTable;
+            Change_column_header_text(table, 1, new string[] { "Вопрос", "Ответы", "Правильный ответ" });
+            Change_column_width(table, 1, new int[] { 300, 280, 139 });
+            table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            table.Columns[0].Visible = false;*/
         }
     }
 }

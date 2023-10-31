@@ -16,11 +16,11 @@ namespace testing_program
         readonly DataGridViewClass data = new DataGridViewClass();
         readonly TextboxClass textbox = new TextboxClass();
         readonly RadiobuttonClass radiobutton = new RadiobuttonClass();
+        readonly GroupboxPanelClass panel = new GroupboxPanelClass();
         readonly Stopwatch stopWatch = new Stopwatch();
         List<string> right_answers = new List<string>();
         List<string> answers_text = new List<string>();
         List<string> questions = new List<string>();
-        List<string> profil_info_list = new List<string>();
         readonly int user_id;
         int test_id = 0;
         int number_of_questions;
@@ -29,6 +29,7 @@ namespace testing_program
         int version_id = 0;
         int question_index = 0;
         int question_type = 0;
+        int student_test_id = 0;
 
         public StudentForm(DatabaseClass database, int user_id)
         {
@@ -57,15 +58,17 @@ namespace testing_program
             }
             else
             {
+                string test_name = available_test_table.SelectedCells[1].Value.ToString();
                 timer = database.Get_test_timer(test_id);
                 test_timer.Interval = timer * 60000;
                 DialogResult dialogResult = MessageBox.Show("Ограничение по времени: " +
-                    "" + timer + " мин.\n" + available_test_table.SelectedCells[1].Value.ToString() +
+                    "" + timer + " мин.\n" + test_name +
                     " можно пройти только 1 раз. Вы уверены, что хотите начать прямо сейчас? ",
                     "Начать попытку", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    choose_test_panel.Visible = false;
+                    panel.Change_visible(choose_test_panel, false);
+                    student_test_id = database.Get_student_test_id(test_name, user_id);
                     Get_test_version();
                     number_of_questions = database.Get_number_of_questions(version_id);
                     questions = database.Get_test_questions(version_id, questions);
@@ -92,13 +95,9 @@ namespace testing_program
                 answers_text = database.Get_answers_text(version_id, questions[question_index]);
                 right_answers = database.Get_right_answers(version_id, questions[question_index]);
                 if (question_type == 1) //вопрос с одним правильным ответом
-                {
-                    one_answer_panel.Visible = true;
-                }
+                    panel.Change_visible(one_answer_panel, true);
                 else if (question_type == 2)  //вопрос с несколькими правильными ответами
-                {
-                    many_answer_panel.Visible = true;
-                }
+                    panel.Change_visible(many_answer_panel, true);
             }
             else
             {
@@ -124,23 +123,24 @@ namespace testing_program
         private void Finish_testing()
         {
             int mark = Calculate_mark();
-            double time = Math.Round(Convert.ToDouble(stopWatch.ElapsedMilliseconds / 60000), 2);
+            decimal time = (decimal)stopWatch.ElapsedMilliseconds / (decimal)60000;
             MessageBox.Show("Тест пройден!\nВаша оценка: " + mark + "\n" +
                 "Чтобы получить больше информации зайдите в раздел Результаты", "Результат");
-            database.Add_mark_to_database(mark, test_id, user_id, time);
+            database.Add_mark_to_database(mark, student_test_id, time);
             questions.Clear();
             stopWatch.Reset();
             test_id = 0;
             version_id = 0;
             scores = 0;
-            question_index = 0; ;
-            choose_test_panel.Visible = true;
+            question_index = 0;
+            student_test_id = 0;
+            panel.Change_visible(choose_test_panel, true);
         }
         //**********проверка и сохранение ответов, переход на следующий вопрос************
         private void One_answer_button_Click(object sender, EventArgs e)
         {
             Save_and_count_scores(Check_one_answer_task());
-            one_answer_panel.Visible = false;
+            panel.Change_visible(one_answer_panel, false);
             ++question_index;
             Get_answers_and_open_task_panel();
         }
@@ -173,7 +173,7 @@ namespace testing_program
         private void Many_answers_button_Click(object sender, EventArgs e)
         {
             Save_and_count_scores(Check_many_answers_task());
-            many_answer_panel.Visible = false;
+            panel.Change_visible(many_answer_panel, false);
             ++question_index;
             Get_answers_and_open_task_panel();
         }
@@ -182,7 +182,7 @@ namespace testing_program
         {
             if (answer)
                 ++scores;
-            database.Save_student_answer(user_id, version_id, questions[question_index], answer);
+            database.Save_student_answer(user_id, version_id, questions[question_index], answer, student_test_id);
         }
 
         //**************ограничение по времени*************************
@@ -193,12 +193,12 @@ namespace testing_program
             if (question_type == 1)
             {
                 Save_and_count_scores(Check_one_answer_task());
-                one_answer_panel.Visible = false;
+                panel.Change_visible(one_answer_panel, false);
             }
             else if (question_type == 2)
             {
                 Save_and_count_scores(Check_many_answers_task());
-                many_answer_panel.Visible = false;
+                panel.Change_visible(many_answer_panel, false);
             }
             Finish_testing();
         }
@@ -206,71 +206,63 @@ namespace testing_program
 
         private void Cancel_change_name_button_Click(object sender, EventArgs e)
         {
-            change_full_name_panel.Visible = false;
-            student_profile_main_panel.Visible = true;
+            panel.Change_visible(new Panel[] { change_full_name_panel, student_profile_main_panel }, new bool[] { false, true });
         }
 
         private void Cancel_student_change_password_button_Click(object sender, EventArgs e)
         {
-            student_identity_check_panel.Visible = false;
-            student_profile_main_panel.Visible = true;
+            panel.Change_visible(new Panel[] { student_identity_check_panel, student_profile_main_panel }, new bool[] { false, true });
         }
 
         private void Cancel_change_student_login_button_Click(object sender, EventArgs e)
         {
-            change_student_login_panel.Visible = false;
-            student_profile_main_panel.Visible = true;
+            panel.Change_visible(new Panel[] { change_student_login_panel, student_profile_main_panel }, new bool[] { false, true });
         }
 
         private void Cancel_change_student_password_button_Click(object sender, EventArgs e)
         {
-            change_student_password_panel.Visible = false;
-            student_profile_main_panel.Visible = true;
+            panel.Change_visible(new Panel[] { change_student_password_panel, student_profile_main_panel }, new bool[] { false, true });
         }
         //************открытие панелей изменения данных профиля***************
         private void Change_student_login_button_Click(object sender, EventArgs e)
         {
-            change_student_login_panel.Visible = true;
-            student_profile_main_panel.Visible = false;
+            panel.Change_visible(new Panel[] { change_student_login_panel, student_profile_main_panel }, new bool[] { true, false });
         }
 
         private void Change_student_password_button_Click(object sender, EventArgs e)
         {
-            student_identity_check_panel.Visible = true;
-            student_profile_main_panel.Visible = false;
+            panel.Change_visible(new Panel[] { student_identity_check_panel, student_profile_main_panel }, new bool[] { true, false });
         }
 
         private void Change_name_button_Click(object sender, EventArgs e)
         {
-            change_full_name_panel.Visible = true;
-            student_profile_main_panel.Visible = false;
+            panel.Change_visible(new Panel[] { change_full_name_panel, student_profile_main_panel }, new bool[] { true, false });
         }
         //**************изменение данных профиля****************
         private void Change_full_name_button_Click(object sender, EventArgs e)
         {
             TextBox[] textBoxes = { new_surname_textBox, new_student_name_textBox, new_patronymic_textBox };
-            if (textbox.Check_textboxes_text_are_changed(new string[] { "", "", "" }, textBoxes))
+            if (textbox.Check_text_changed(textBoxes))
             {
-                database.Update_user_full_name(textBoxes, user_id, "student");
-                change_full_name_panel.Visible = false;
-                student_profile_main_panel.Visible = true;
+                if (textbox.Check_invalid_characters(textBoxes, true))
+                {
+                    database.Update_user_full_name(new_surname_textBox.Text + " " + new_student_name_textBox.Text + " " + new_patronymic_textBox.Text, user_id, "student");
+                    panel.Change_visible(new Panel[] { change_full_name_panel, student_profile_main_panel }, new bool[] { false, true });
+                }
             }
-            else
-            {
-                MessageBox.Show("Заполните обязательные поля!");
-            }
+            else MessageBox.Show("Заполните обязательные поля!");
         }
 
         private void New_student_password_button_Click(object sender, EventArgs e)
         {
-            if (textbox.Check_textboxes_text_are_changed(new string[] { "", "" },
-                new TextBox[] { student_test_new_password_textBox, student_new_password_textBox }))
+            TextBox[] textBoxes = { student_test_new_password_textBox, student_new_password_textBox };
+            if (textbox.Check_text_changed(textBoxes))
             {
-                if (textbox.Check_passwords_are_matching(student_test_new_password_textBox.Text, student_new_password_textBox.Text))
+                if (textbox.Check_passwords_are_matching(student_test_new_password_textBox.Text, student_new_password_textBox.Text) &&
+                    textbox.Check_invalid_characters_with_space(textBoxes))
                 {
-                    database.Update_user_login_or_password(student_test_new_password_textBox, user_id, "password", "student");
-                    change_student_password_panel.Visible = false;
-                    student_profile_main_panel.Visible = true;
+                    database.Update_user_login_or_password(student_test_new_password_textBox.Text, user_id, "password", "student");
+                    panel.Change_visible(new Panel[] { change_student_password_panel, student_profile_main_panel }, new bool[] { false, true });
                     MessageBox.Show("Пароль успешно изменен.");
                 }
             }
@@ -279,12 +271,12 @@ namespace testing_program
 
         private void Continue_student_change_password_button_Click(object sender, EventArgs e)
         {
-            if (textbox.Check_text_is_changed(student_old_password_textBox, ""))
+            if (textbox.Check_text_changed(student_old_password_textBox))
             {
-                if (textbox.Check_passwords_are_matching(student_old_password_textBox.Text, profil_info_list[5]))
+                if (textbox.Check_passwords_are_matching(student_old_password_textBox.Text, password_student_profile.Text) &&
+                    textbox.Check_invalid_characters_with_space(student_old_password_textBox))
                 {
-                    student_identity_check_panel.Visible = false;
-                    change_student_password_panel.Visible = true;
+                    panel.Change_visible(new Panel[] { student_identity_check_panel, change_student_password_panel }, new bool[] { false, true });
                 }
             }
             else MessageBox.Show("Заполните обязательные поля!");
@@ -292,28 +284,27 @@ namespace testing_program
 
         private void New_student_login_button_Click(object sender, EventArgs e)
         {
-            if (textbox.Check_text_is_changed(new_student_login_textbox, ""))
+            if (textbox.Check_text_changed(new_student_login_textbox))
             {
-                database.Update_user_login_or_password(new_student_login_textbox, user_id, "login", "student");
-                change_student_login_panel.Visible = false;
-                student_profile_main_panel.Visible = true;
-                MessageBox.Show("Логин успешно изменен.");
+                if (textbox.Check_invalid_characters_with_space(new_student_login_textbox))
+                {
+                    database.Update_user_login_or_password(new_student_login_textbox.Text, user_id, "login", "student");
+                    panel.Change_visible(new Panel[] { change_student_login_panel, student_profile_main_panel }, new bool[] { false, true });
+                    MessageBox.Show("Логин успешно изменен.");
+                }
             }
-            else
-            {
-                MessageBox.Show("Заполните обязательные поля!");
-            }
+            else MessageBox.Show("Заполните обязательные поля!");
         }
         //***************заполнение панели профиля*************
         private void Student_profile_main_panel_VisibleChanged(object sender, EventArgs e)
         {
             if (student_profile_main_panel.Visible)
             {
-                profil_info_list = database.Get_studentForm_profil_info(user_id)?.Split(' ').ToList();
-                textbox.Fill_textboxes(new TextBox[] { full_name_student_profile, group_student_profile, login_student_profile, password_student_profile },
-                    new string[] { profil_info_list[0] + " " + profil_info_list[1] + " " + profil_info_list[2],
-                        profil_info_list[3], profil_info_list[4], profil_info_list[5] });
-                Text = database.Get_name(user_id, "student");
+                List<string> profil_info_list = new List<string>();
+                database.Get_studentForm_profil_info(user_id, profil_info_list);
+                textbox.Fill(new TextBox[] { full_name_student_profile, group_student_profile, login_student_profile, password_student_profile },
+                    new string[] { profil_info_list[0], profil_info_list[1], profil_info_list[2], profil_info_list[3] });
+                Text = database.Get_user_name(user_id, "student");
             }
         }
         //********заполнение/очищение ComboBox с решёнными тестами**********
@@ -321,46 +312,39 @@ namespace testing_program
         {
             if (results_panel.Visible)
             {
-                database.Fill_studentForm_collection_passed_tests(user_id, passed_tests);
+                database.Get_student_completed_tests(user_id, passed_tests);
             }
             else
             {
                 combobox.Return_original_text(passed_tests, "Выберите тест");
                 combobox.Delete_collection(passed_tests);
-                radiobutton.Clear_selection(show_list_of_completed_tests);
-                radiobutton.Clear_selection(show_one_test_result);
+                radiobutton.Clear_selection(new RadioButton[] { show_list_of_completed_tests, show_one_test_result });
             }
         }
         //****************управление вкладками*******************
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedIndex == 0)
-            {
-                student_profile_main_panel.Visible = true;
-            }
+                panel.Change_visible(student_profile_main_panel, true);
             else if (tabControl1.SelectedIndex == 1)
-            {
-                choose_test_panel.Visible = true;
-            }
+                panel.Change_visible(choose_test_panel, true);
             else
-            {
-                results_panel.Visible = true;
-            }
+                panel.Change_visible(results_panel, true);
         }
 
         private void Test_page_Leave(object sender, EventArgs e)
         {
-            choose_test_panel.Visible = false;
+            panel.Change_visible(choose_test_panel, false);
         }
 
         private void Profile_page_Leave(object sender, EventArgs e)
         {
-            student_profile_main_panel.Visible = false;
+            panel.Change_visible(student_profile_main_panel, false);
         }
 
         private void Result_page_Leave(object sender, EventArgs e)
         {
-            results_panel.Visible = false;
+            panel.Change_visible(results_panel, false);
         }
         //***********заполнение/очищение панелей изменения данных профиля***********
         private void Change_student_login_panel_VisibleChanged(object sender, EventArgs e)
@@ -375,7 +359,7 @@ namespace testing_program
         {
             if (!change_student_password_panel.Visible)
             {
-                textbox.Clear_textboxes(new TextBox[] { student_test_new_password_textBox, student_new_password_textBox });
+                textbox.Clear(new TextBox[] { student_test_new_password_textBox, student_new_password_textBox });
             }
         }
 
@@ -390,7 +374,7 @@ namespace testing_program
         private void Change_full_name_panel_VisibleChanged(object sender, EventArgs e)
         {
             if (!change_full_name_panel.Visible)
-                textbox.Clear_textboxes(new TextBox[] { new_surname_textBox, new_student_name_textBox, new_patronymic_textBox });
+                textbox.Clear(new TextBox[] { new_surname_textBox, new_student_name_textBox, new_patronymic_textBox });
         }
         //***********заполнение/очищение панелей с вопросами***********
         private void One_answer_panel_VisibleChanged(object sender, EventArgs e)
@@ -440,7 +424,8 @@ namespace testing_program
         //*************заполнение таблиц и взаимодействия с ними***************************
         private void Passed_tests_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            data.Reset_one_test_result_table(database, user_id, one_result_dataGridView, passed_tests);
+            student_test_id = database.Get_student_test_id(passed_tests.SelectedItem.ToString(), user_id, true);
+            data.Reset_one_test_result_table(database, one_result_dataGridView, student_test_id);
         }
 
         private void Choose_test_panel_VisibleChanged(object sender, EventArgs e)
@@ -461,18 +446,19 @@ namespace testing_program
         private void Show_one_test_result_CheckedChanged(object sender, EventArgs e)
         {
             if (show_one_test_result.Checked)
-                passed_tests.Visible = true;
+                combobox.Change_visible(passed_tests, true);
             else
             {
-                combobox.Clear_selection(passed_tests);
                 combobox.Return_original_text(passed_tests, "Выберите тест");
-                passed_tests.Visible = false;
+                combobox.Change_visible(passed_tests, false);
                 data.Hide(one_result_dataGridView);
             }
         }
 
         private void Available_test_table_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
             test_id = Convert.ToInt32(available_test_table.SelectedCells[0].Value);
             data.Change_back_color(available_test_table, Color.LightSteelBlue);
             data.Change_fore_color(available_test_table, Color.Black);

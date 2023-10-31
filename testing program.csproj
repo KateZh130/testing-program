@@ -101,6 +101,7 @@
     <Compile Include="ComboboxClass.cs" />
     <Compile Include="DatabaseClass.cs" />
     <Compile Include="DataGridViewClass.cs" />
+    <Compile Include="GroupboxPanelClass.cs" />
     <Compile Include="RadiobuttonClass.cs" />
     <Compile Include="TextboxClass.cs" />
     <Compile Include="RegistrationForm.cs">

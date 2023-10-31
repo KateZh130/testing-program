@@ -42,19 +42,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.profile_page = new System.Windows.Forms.TabPage();
-            this.student_profile_main_panel = new System.Windows.Forms.Panel();
-            this.change_name_button = new System.Windows.Forms.Button();
-            this.exit_student_profile_button = new System.Windows.Forms.Button();
-            this.change_student_password_button = new System.Windows.Forms.Button();
-            this.change_student_login_button = new System.Windows.Forms.Button();
-            this.group_student_profile_label = new System.Windows.Forms.Label();
-            this.password_student_profile = new System.Windows.Forms.TextBox();
-            this.full_name_student_profile_label = new System.Windows.Forms.Label();
-            this.login_student_profile = new System.Windows.Forms.TextBox();
-            this.full_name_student_profile = new System.Windows.Forms.TextBox();
-            this.password_student_profile_label = new System.Windows.Forms.Label();
-            this.group_student_profile = new System.Windows.Forms.TextBox();
-            this.login_student_profile_label = new System.Windows.Forms.Label();
             this.change_full_name_panel = new System.Windows.Forms.Panel();
             this.change_full_name_button = new System.Windows.Forms.Button();
             this.cancel_change_name_button = new System.Windows.Forms.Button();
@@ -81,7 +68,29 @@
             this.cancel_student_change_password_button = new System.Windows.Forms.Button();
             this.student_old_password_textBox = new System.Windows.Forms.TextBox();
             this.continue_student_change_password_button = new System.Windows.Forms.Button();
+            this.student_profile_main_panel = new System.Windows.Forms.Panel();
+            this.change_name_button = new System.Windows.Forms.Button();
+            this.exit_student_profile_button = new System.Windows.Forms.Button();
+            this.change_student_password_button = new System.Windows.Forms.Button();
+            this.change_student_login_button = new System.Windows.Forms.Button();
+            this.group_student_profile_label = new System.Windows.Forms.Label();
+            this.password_student_profile = new System.Windows.Forms.TextBox();
+            this.full_name_student_profile_label = new System.Windows.Forms.Label();
+            this.login_student_profile = new System.Windows.Forms.TextBox();
+            this.full_name_student_profile = new System.Windows.Forms.TextBox();
+            this.password_student_profile_label = new System.Windows.Forms.Label();
+            this.group_student_profile = new System.Windows.Forms.TextBox();
+            this.login_student_profile_label = new System.Windows.Forms.Label();
             this.test_page = new System.Windows.Forms.TabPage();
+            this.many_answer_panel = new System.Windows.Forms.Panel();
+            this.many_answer_button = new System.Windows.Forms.Button();
+            this.question_text_label = new System.Windows.Forms.Label();
+            this.question_number_label = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.choose_test_panel = new System.Windows.Forms.Panel();
             this.available_test_table = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -95,15 +104,6 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.question_number_label2 = new System.Windows.Forms.Label();
-            this.many_answer_panel = new System.Windows.Forms.Panel();
-            this.many_answer_button = new System.Windows.Forms.Button();
-            this.question_text_label = new System.Windows.Forms.Label();
-            this.question_number_label = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.result_page = new System.Windows.Forms.TabPage();
             this.results_panel = new System.Windows.Forms.Panel();
             this.passed_tests = new System.Windows.Forms.ComboBox();
@@ -114,18 +114,18 @@
             this.test_timer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.profile_page.SuspendLayout();
-            this.student_profile_main_panel.SuspendLayout();
             this.change_full_name_panel.SuspendLayout();
             this.change_student_login_panel.SuspendLayout();
             this.change_student_password_panel.SuspendLayout();
             this.student_identity_check_panel.SuspendLayout();
+            this.student_profile_main_panel.SuspendLayout();
             this.test_page.SuspendLayout();
+            this.many_answer_panel.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.choose_test_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.available_test_table)).BeginInit();
             this.one_answer_panel.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.many_answer_panel.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.result_page.SuspendLayout();
             this.results_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.one_result_dataGridView)).BeginInit();
@@ -155,192 +155,17 @@
             // 
             this.profile_page.BackColor = System.Drawing.Color.Lavender;
             this.profile_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.profile_page.Controls.Add(this.student_profile_main_panel);
-            this.profile_page.Controls.Add(this.change_full_name_panel);
             this.profile_page.Controls.Add(this.change_student_login_panel);
             this.profile_page.Controls.Add(this.change_student_password_panel);
             this.profile_page.Controls.Add(this.student_identity_check_panel);
+            this.profile_page.Controls.Add(this.student_profile_main_panel);
+            this.profile_page.Controls.Add(this.change_full_name_panel);
             this.profile_page.Location = new System.Drawing.Point(4, 30);
             this.profile_page.Name = "profile_page";
             this.profile_page.Size = new System.Drawing.Size(829, 496);
             this.profile_page.TabIndex = 2;
             this.profile_page.Text = "Профиль";
             this.profile_page.Leave += new System.EventHandler(this.Profile_page_Leave);
-            // 
-            // student_profile_main_panel
-            // 
-            this.student_profile_main_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.student_profile_main_panel.BackColor = System.Drawing.Color.Lavender;
-            this.student_profile_main_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.student_profile_main_panel.Controls.Add(this.change_name_button);
-            this.student_profile_main_panel.Controls.Add(this.exit_student_profile_button);
-            this.student_profile_main_panel.Controls.Add(this.change_student_password_button);
-            this.student_profile_main_panel.Controls.Add(this.change_student_login_button);
-            this.student_profile_main_panel.Controls.Add(this.group_student_profile_label);
-            this.student_profile_main_panel.Controls.Add(this.password_student_profile);
-            this.student_profile_main_panel.Controls.Add(this.full_name_student_profile_label);
-            this.student_profile_main_panel.Controls.Add(this.login_student_profile);
-            this.student_profile_main_panel.Controls.Add(this.full_name_student_profile);
-            this.student_profile_main_panel.Controls.Add(this.password_student_profile_label);
-            this.student_profile_main_panel.Controls.Add(this.group_student_profile);
-            this.student_profile_main_panel.Controls.Add(this.login_student_profile_label);
-            this.student_profile_main_panel.Location = new System.Drawing.Point(6, 3);
-            this.student_profile_main_panel.Name = "student_profile_main_panel";
-            this.student_profile_main_panel.Size = new System.Drawing.Size(805, 476);
-            this.student_profile_main_panel.TabIndex = 8;
-            this.student_profile_main_panel.Visible = false;
-            this.student_profile_main_panel.VisibleChanged += new System.EventHandler(this.Student_profile_main_panel_VisibleChanged);
-            // 
-            // change_name_button
-            // 
-            this.change_name_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.change_name_button.FlatAppearance.BorderSize = 2;
-            this.change_name_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.change_name_button.Location = new System.Drawing.Point(528, 94);
-            this.change_name_button.Name = "change_name_button";
-            this.change_name_button.Size = new System.Drawing.Size(201, 39);
-            this.change_name_button.TabIndex = 11;
-            this.change_name_button.TabStop = false;
-            this.change_name_button.Text = "Изменить ФИО";
-            this.change_name_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.change_name_button.UseVisualStyleBackColor = true;
-            this.change_name_button.Click += new System.EventHandler(this.Change_name_button_Click);
-            // 
-            // exit_student_profile_button
-            // 
-            this.exit_student_profile_button.AutoSize = true;
-            this.exit_student_profile_button.BackColor = System.Drawing.Color.Lavender;
-            this.exit_student_profile_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.exit_student_profile_button.FlatAppearance.BorderSize = 2;
-            this.exit_student_profile_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exit_student_profile_button.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exit_student_profile_button.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.exit_student_profile_button.Location = new System.Drawing.Point(303, 422);
-            this.exit_student_profile_button.Name = "exit_student_profile_button";
-            this.exit_student_profile_button.Size = new System.Drawing.Size(158, 39);
-            this.exit_student_profile_button.TabIndex = 10;
-            this.exit_student_profile_button.TabStop = false;
-            this.exit_student_profile_button.Text = "Выйти из профиля";
-            this.exit_student_profile_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.exit_student_profile_button.UseVisualStyleBackColor = false;
-            this.exit_student_profile_button.Click += new System.EventHandler(this.Exit_student_profile_button_Click);
-            // 
-            // change_student_password_button
-            // 
-            this.change_student_password_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.change_student_password_button.FlatAppearance.BorderSize = 2;
-            this.change_student_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.change_student_password_button.Location = new System.Drawing.Point(528, 353);
-            this.change_student_password_button.Name = "change_student_password_button";
-            this.change_student_password_button.Size = new System.Drawing.Size(201, 39);
-            this.change_student_password_button.TabIndex = 9;
-            this.change_student_password_button.TabStop = false;
-            this.change_student_password_button.Text = "Изменить пароль";
-            this.change_student_password_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.change_student_password_button.UseVisualStyleBackColor = true;
-            this.change_student_password_button.Click += new System.EventHandler(this.Change_student_password_button_Click);
-            // 
-            // change_student_login_button
-            // 
-            this.change_student_login_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.change_student_login_button.FlatAppearance.BorderSize = 2;
-            this.change_student_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.change_student_login_button.Location = new System.Drawing.Point(528, 265);
-            this.change_student_login_button.Name = "change_student_login_button";
-            this.change_student_login_button.Size = new System.Drawing.Size(201, 39);
-            this.change_student_login_button.TabIndex = 8;
-            this.change_student_login_button.TabStop = false;
-            this.change_student_login_button.Text = "Изменить логин";
-            this.change_student_login_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.change_student_login_button.UseVisualStyleBackColor = true;
-            this.change_student_login_button.Click += new System.EventHandler(this.Change_student_login_button_Click);
-            // 
-            // group_student_profile_label
-            // 
-            this.group_student_profile_label.AutoSize = true;
-            this.group_student_profile_label.Location = new System.Drawing.Point(57, 161);
-            this.group_student_profile_label.Name = "group_student_profile_label";
-            this.group_student_profile_label.Size = new System.Drawing.Size(64, 21);
-            this.group_student_profile_label.TabIndex = 1;
-            this.group_student_profile_label.Text = "Группа:";
-            // 
-            // password_student_profile
-            // 
-            this.password_student_profile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.password_student_profile.BackColor = System.Drawing.Color.Lavender;
-            this.password_student_profile.Location = new System.Drawing.Point(224, 319);
-            this.password_student_profile.Name = "password_student_profile";
-            this.password_student_profile.ReadOnly = true;
-            this.password_student_profile.Size = new System.Drawing.Size(505, 28);
-            this.password_student_profile.TabIndex = 7;
-            this.password_student_profile.TabStop = false;
-            this.password_student_profile.UseSystemPasswordChar = true;
-            this.password_student_profile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Password_student_profile_KeyPress);
-            // 
-            // full_name_student_profile_label
-            // 
-            this.full_name_student_profile_label.AutoSize = true;
-            this.full_name_student_profile_label.Location = new System.Drawing.Point(57, 46);
-            this.full_name_student_profile_label.Name = "full_name_student_profile_label";
-            this.full_name_student_profile_label.Size = new System.Drawing.Size(60, 21);
-            this.full_name_student_profile_label.TabIndex = 0;
-            this.full_name_student_profile_label.Text = "Ф.И.О.:";
-            // 
-            // login_student_profile
-            // 
-            this.login_student_profile.BackColor = System.Drawing.Color.Lavender;
-            this.login_student_profile.Location = new System.Drawing.Point(224, 231);
-            this.login_student_profile.Name = "login_student_profile";
-            this.login_student_profile.ReadOnly = true;
-            this.login_student_profile.Size = new System.Drawing.Size(505, 28);
-            this.login_student_profile.TabIndex = 6;
-            this.login_student_profile.TabStop = false;
-            this.login_student_profile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Login_student_profile_KeyPress);
-            // 
-            // full_name_student_profile
-            // 
-            this.full_name_student_profile.BackColor = System.Drawing.Color.Lavender;
-            this.full_name_student_profile.Location = new System.Drawing.Point(224, 32);
-            this.full_name_student_profile.Multiline = true;
-            this.full_name_student_profile.Name = "full_name_student_profile";
-            this.full_name_student_profile.ReadOnly = true;
-            this.full_name_student_profile.Size = new System.Drawing.Size(505, 61);
-            this.full_name_student_profile.TabIndex = 2;
-            this.full_name_student_profile.TabStop = false;
-            this.full_name_student_profile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Full_name_student_profile_KeyPress);
-            // 
-            // password_student_profile_label
-            // 
-            this.password_student_profile_label.AutoSize = true;
-            this.password_student_profile_label.Location = new System.Drawing.Point(57, 326);
-            this.password_student_profile_label.Name = "password_student_profile_label";
-            this.password_student_profile_label.Size = new System.Drawing.Size(69, 21);
-            this.password_student_profile_label.TabIndex = 5;
-            this.password_student_profile_label.Text = "Пароль:";
-            // 
-            // group_student_profile
-            // 
-            this.group_student_profile.BackColor = System.Drawing.Color.Lavender;
-            this.group_student_profile.Location = new System.Drawing.Point(224, 154);
-            this.group_student_profile.Name = "group_student_profile";
-            this.group_student_profile.ReadOnly = true;
-            this.group_student_profile.Size = new System.Drawing.Size(505, 28);
-            this.group_student_profile.TabIndex = 3;
-            this.group_student_profile.TabStop = false;
-            this.group_student_profile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Group_student_profile_KeyPress);
-            // 
-            // login_student_profile_label
-            // 
-            this.login_student_profile_label.AutoSize = true;
-            this.login_student_profile_label.Location = new System.Drawing.Point(57, 238);
-            this.login_student_profile_label.Name = "login_student_profile_label";
-            this.login_student_profile_label.Size = new System.Drawing.Size(58, 21);
-            this.login_student_profile_label.TabIndex = 4;
-            this.login_student_profile_label.Text = "Логин:";
             // 
             // change_full_name_panel
             // 
@@ -633,13 +458,188 @@
             this.continue_student_change_password_button.UseVisualStyleBackColor = false;
             this.continue_student_change_password_button.Click += new System.EventHandler(this.Continue_student_change_password_button_Click);
             // 
+            // student_profile_main_panel
+            // 
+            this.student_profile_main_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.student_profile_main_panel.BackColor = System.Drawing.Color.Lavender;
+            this.student_profile_main_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.student_profile_main_panel.Controls.Add(this.change_name_button);
+            this.student_profile_main_panel.Controls.Add(this.exit_student_profile_button);
+            this.student_profile_main_panel.Controls.Add(this.change_student_password_button);
+            this.student_profile_main_panel.Controls.Add(this.change_student_login_button);
+            this.student_profile_main_panel.Controls.Add(this.group_student_profile_label);
+            this.student_profile_main_panel.Controls.Add(this.password_student_profile);
+            this.student_profile_main_panel.Controls.Add(this.full_name_student_profile_label);
+            this.student_profile_main_panel.Controls.Add(this.login_student_profile);
+            this.student_profile_main_panel.Controls.Add(this.full_name_student_profile);
+            this.student_profile_main_panel.Controls.Add(this.password_student_profile_label);
+            this.student_profile_main_panel.Controls.Add(this.group_student_profile);
+            this.student_profile_main_panel.Controls.Add(this.login_student_profile_label);
+            this.student_profile_main_panel.Location = new System.Drawing.Point(6, 3);
+            this.student_profile_main_panel.Name = "student_profile_main_panel";
+            this.student_profile_main_panel.Size = new System.Drawing.Size(805, 476);
+            this.student_profile_main_panel.TabIndex = 8;
+            this.student_profile_main_panel.Visible = false;
+            this.student_profile_main_panel.VisibleChanged += new System.EventHandler(this.Student_profile_main_panel_VisibleChanged);
+            // 
+            // change_name_button
+            // 
+            this.change_name_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.change_name_button.FlatAppearance.BorderSize = 2;
+            this.change_name_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.change_name_button.Location = new System.Drawing.Point(528, 94);
+            this.change_name_button.Name = "change_name_button";
+            this.change_name_button.Size = new System.Drawing.Size(201, 39);
+            this.change_name_button.TabIndex = 11;
+            this.change_name_button.TabStop = false;
+            this.change_name_button.Text = "Изменить Ф.И.О.";
+            this.change_name_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.change_name_button.UseVisualStyleBackColor = true;
+            this.change_name_button.Click += new System.EventHandler(this.Change_name_button_Click);
+            // 
+            // exit_student_profile_button
+            // 
+            this.exit_student_profile_button.AutoSize = true;
+            this.exit_student_profile_button.BackColor = System.Drawing.Color.Lavender;
+            this.exit_student_profile_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.exit_student_profile_button.FlatAppearance.BorderSize = 2;
+            this.exit_student_profile_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exit_student_profile_button.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exit_student_profile_button.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.exit_student_profile_button.Location = new System.Drawing.Point(303, 422);
+            this.exit_student_profile_button.Name = "exit_student_profile_button";
+            this.exit_student_profile_button.Size = new System.Drawing.Size(158, 39);
+            this.exit_student_profile_button.TabIndex = 10;
+            this.exit_student_profile_button.TabStop = false;
+            this.exit_student_profile_button.Text = "Выйти из профиля";
+            this.exit_student_profile_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.exit_student_profile_button.UseVisualStyleBackColor = false;
+            this.exit_student_profile_button.Click += new System.EventHandler(this.Exit_student_profile_button_Click);
+            // 
+            // change_student_password_button
+            // 
+            this.change_student_password_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.change_student_password_button.FlatAppearance.BorderSize = 2;
+            this.change_student_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.change_student_password_button.Location = new System.Drawing.Point(528, 353);
+            this.change_student_password_button.Name = "change_student_password_button";
+            this.change_student_password_button.Size = new System.Drawing.Size(201, 39);
+            this.change_student_password_button.TabIndex = 9;
+            this.change_student_password_button.TabStop = false;
+            this.change_student_password_button.Text = "Изменить пароль";
+            this.change_student_password_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.change_student_password_button.UseVisualStyleBackColor = true;
+            this.change_student_password_button.Click += new System.EventHandler(this.Change_student_password_button_Click);
+            // 
+            // change_student_login_button
+            // 
+            this.change_student_login_button.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.change_student_login_button.FlatAppearance.BorderSize = 2;
+            this.change_student_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.change_student_login_button.Location = new System.Drawing.Point(528, 265);
+            this.change_student_login_button.Name = "change_student_login_button";
+            this.change_student_login_button.Size = new System.Drawing.Size(201, 39);
+            this.change_student_login_button.TabIndex = 8;
+            this.change_student_login_button.TabStop = false;
+            this.change_student_login_button.Text = "Изменить логин";
+            this.change_student_login_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.change_student_login_button.UseVisualStyleBackColor = true;
+            this.change_student_login_button.Click += new System.EventHandler(this.Change_student_login_button_Click);
+            // 
+            // group_student_profile_label
+            // 
+            this.group_student_profile_label.AutoSize = true;
+            this.group_student_profile_label.Location = new System.Drawing.Point(57, 161);
+            this.group_student_profile_label.Name = "group_student_profile_label";
+            this.group_student_profile_label.Size = new System.Drawing.Size(64, 21);
+            this.group_student_profile_label.TabIndex = 1;
+            this.group_student_profile_label.Text = "Группа:";
+            // 
+            // password_student_profile
+            // 
+            this.password_student_profile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.password_student_profile.BackColor = System.Drawing.Color.Lavender;
+            this.password_student_profile.Location = new System.Drawing.Point(224, 319);
+            this.password_student_profile.Name = "password_student_profile";
+            this.password_student_profile.ReadOnly = true;
+            this.password_student_profile.Size = new System.Drawing.Size(505, 28);
+            this.password_student_profile.TabIndex = 7;
+            this.password_student_profile.TabStop = false;
+            this.password_student_profile.UseSystemPasswordChar = true;
+            this.password_student_profile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Password_student_profile_KeyPress);
+            // 
+            // full_name_student_profile_label
+            // 
+            this.full_name_student_profile_label.AutoSize = true;
+            this.full_name_student_profile_label.Location = new System.Drawing.Point(57, 46);
+            this.full_name_student_profile_label.Name = "full_name_student_profile_label";
+            this.full_name_student_profile_label.Size = new System.Drawing.Size(60, 21);
+            this.full_name_student_profile_label.TabIndex = 0;
+            this.full_name_student_profile_label.Text = "Ф.И.О.:";
+            // 
+            // login_student_profile
+            // 
+            this.login_student_profile.BackColor = System.Drawing.Color.Lavender;
+            this.login_student_profile.Location = new System.Drawing.Point(224, 231);
+            this.login_student_profile.Name = "login_student_profile";
+            this.login_student_profile.ReadOnly = true;
+            this.login_student_profile.Size = new System.Drawing.Size(505, 28);
+            this.login_student_profile.TabIndex = 6;
+            this.login_student_profile.TabStop = false;
+            this.login_student_profile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Login_student_profile_KeyPress);
+            // 
+            // full_name_student_profile
+            // 
+            this.full_name_student_profile.BackColor = System.Drawing.Color.Lavender;
+            this.full_name_student_profile.Location = new System.Drawing.Point(224, 32);
+            this.full_name_student_profile.Multiline = true;
+            this.full_name_student_profile.Name = "full_name_student_profile";
+            this.full_name_student_profile.ReadOnly = true;
+            this.full_name_student_profile.Size = new System.Drawing.Size(505, 61);
+            this.full_name_student_profile.TabIndex = 2;
+            this.full_name_student_profile.TabStop = false;
+            this.full_name_student_profile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Full_name_student_profile_KeyPress);
+            // 
+            // password_student_profile_label
+            // 
+            this.password_student_profile_label.AutoSize = true;
+            this.password_student_profile_label.Location = new System.Drawing.Point(57, 326);
+            this.password_student_profile_label.Name = "password_student_profile_label";
+            this.password_student_profile_label.Size = new System.Drawing.Size(69, 21);
+            this.password_student_profile_label.TabIndex = 5;
+            this.password_student_profile_label.Text = "Пароль:";
+            // 
+            // group_student_profile
+            // 
+            this.group_student_profile.BackColor = System.Drawing.Color.Lavender;
+            this.group_student_profile.Location = new System.Drawing.Point(224, 154);
+            this.group_student_profile.Name = "group_student_profile";
+            this.group_student_profile.ReadOnly = true;
+            this.group_student_profile.Size = new System.Drawing.Size(505, 28);
+            this.group_student_profile.TabIndex = 3;
+            this.group_student_profile.TabStop = false;
+            this.group_student_profile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Group_student_profile_KeyPress);
+            // 
+            // login_student_profile_label
+            // 
+            this.login_student_profile_label.AutoSize = true;
+            this.login_student_profile_label.Location = new System.Drawing.Point(57, 238);
+            this.login_student_profile_label.Name = "login_student_profile_label";
+            this.login_student_profile_label.Size = new System.Drawing.Size(58, 21);
+            this.login_student_profile_label.TabIndex = 4;
+            this.login_student_profile_label.Text = "Логин:";
+            // 
             // test_page
             // 
             this.test_page.BackColor = System.Drawing.Color.SlateGray;
             this.test_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.test_page.Controls.Add(this.one_answer_panel);
             this.test_page.Controls.Add(this.many_answer_panel);
             this.test_page.Controls.Add(this.choose_test_panel);
+            this.test_page.Controls.Add(this.one_answer_panel);
             this.test_page.Location = new System.Drawing.Point(4, 30);
             this.test_page.Name = "test_page";
             this.test_page.Padding = new System.Windows.Forms.Padding(3);
@@ -647,6 +647,126 @@
             this.test_page.TabIndex = 0;
             this.test_page.Text = "Тестирование";
             this.test_page.Leave += new System.EventHandler(this.Test_page_Leave);
+            // 
+            // many_answer_panel
+            // 
+            this.many_answer_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.many_answer_panel.BackColor = System.Drawing.Color.Lavender;
+            this.many_answer_panel.Controls.Add(this.many_answer_button);
+            this.many_answer_panel.Controls.Add(this.question_text_label);
+            this.many_answer_panel.Controls.Add(this.question_number_label);
+            this.many_answer_panel.Controls.Add(this.panel3);
+            this.many_answer_panel.Location = new System.Drawing.Point(0, 0);
+            this.many_answer_panel.Name = "many_answer_panel";
+            this.many_answer_panel.Size = new System.Drawing.Size(824, 491);
+            this.many_answer_panel.TabIndex = 28;
+            this.many_answer_panel.Visible = false;
+            this.many_answer_panel.VisibleChanged += new System.EventHandler(this.Many_answer_panel_VisibleChanged);
+            // 
+            // many_answer_button
+            // 
+            this.many_answer_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.many_answer_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.many_answer_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.many_answer_button.FlatAppearance.BorderSize = 2;
+            this.many_answer_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.many_answer_button.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.many_answer_button.ForeColor = System.Drawing.Color.White;
+            this.many_answer_button.Location = new System.Drawing.Point(543, 406);
+            this.many_answer_button.Name = "many_answer_button";
+            this.many_answer_button.Size = new System.Drawing.Size(257, 53);
+            this.many_answer_button.TabIndex = 17;
+            this.many_answer_button.TabStop = false;
+            this.many_answer_button.Text = "many_answer_button";
+            this.many_answer_button.UseVisualStyleBackColor = false;
+            this.many_answer_button.Click += new System.EventHandler(this.Many_answers_button_Click);
+            // 
+            // question_text_label
+            // 
+            this.question_text_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.question_text_label.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.question_text_label.Location = new System.Drawing.Point(0, 58);
+            this.question_text_label.Name = "question_text_label";
+            this.question_text_label.Size = new System.Drawing.Size(824, 127);
+            this.question_text_label.TabIndex = 16;
+            this.question_text_label.Text = "question_text_label";
+            // 
+            // question_number_label
+            // 
+            this.question_number_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.question_number_label.BackColor = System.Drawing.Color.SteelBlue;
+            this.question_number_label.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.question_number_label.ForeColor = System.Drawing.Color.White;
+            this.question_number_label.Location = new System.Drawing.Point(1, 0);
+            this.question_number_label.Name = "question_number_label";
+            this.question_number_label.Size = new System.Drawing.Size(823, 49);
+            this.question_number_label.TabIndex = 8;
+            this.question_number_label.Text = "question_number_label";
+            this.question_number_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.Lavender;
+            this.panel3.Controls.Add(this.checkBox4);
+            this.panel3.Controls.Add(this.checkBox3);
+            this.panel3.Controls.Add(this.checkBox2);
+            this.panel3.Controls.Add(this.checkBox1);
+            this.panel3.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.panel3.Location = new System.Drawing.Point(3, 163);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(824, 237);
+            this.panel3.TabIndex = 15;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(30, 191);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(114, 27);
+            this.checkBox4.TabIndex = 9;
+            this.checkBox4.TabStop = false;
+            this.checkBox4.Text = "checkBox4";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(30, 136);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(114, 27);
+            this.checkBox3.TabIndex = 8;
+            this.checkBox3.TabStop = false;
+            this.checkBox3.Text = "checkBox3";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(30, 81);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(114, 27);
+            this.checkBox2.TabIndex = 7;
+            this.checkBox2.TabStop = false;
+            this.checkBox2.Text = "checkBox2";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(30, 26);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(114, 27);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.TabStop = false;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // choose_test_panel
             // 
@@ -801,9 +921,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.question_text_label2.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.question_text_label2.Location = new System.Drawing.Point(26, 55);
+            this.question_text_label2.Location = new System.Drawing.Point(6, 55);
             this.question_text_label2.Name = "question_text_label2";
-            this.question_text_label2.Size = new System.Drawing.Size(774, 58);
+            this.question_text_label2.Size = new System.Drawing.Size(813, 130);
             this.question_text_label2.TabIndex = 10;
             this.question_text_label2.Text = "question_text_label2";
             // 
@@ -817,9 +937,9 @@
             this.panel5.Controls.Add(this.radioButton2);
             this.panel5.Controls.Add(this.radioButton1);
             this.panel5.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.panel5.Location = new System.Drawing.Point(0, 146);
+            this.panel5.Location = new System.Drawing.Point(0, 163);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(800, 231);
+            this.panel5.Size = new System.Drawing.Size(824, 237);
             this.panel5.TabIndex = 11;
             // 
             // radioButton4
@@ -875,126 +995,6 @@
             this.question_number_label2.TabIndex = 9;
             this.question_number_label2.Text = "question_number_label2";
             this.question_number_label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // many_answer_panel
-            // 
-            this.many_answer_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.many_answer_panel.BackColor = System.Drawing.Color.Lavender;
-            this.many_answer_panel.Controls.Add(this.many_answer_button);
-            this.many_answer_panel.Controls.Add(this.question_text_label);
-            this.many_answer_panel.Controls.Add(this.question_number_label);
-            this.many_answer_panel.Controls.Add(this.panel3);
-            this.many_answer_panel.Location = new System.Drawing.Point(0, 0);
-            this.many_answer_panel.Name = "many_answer_panel";
-            this.many_answer_panel.Size = new System.Drawing.Size(824, 491);
-            this.many_answer_panel.TabIndex = 28;
-            this.many_answer_panel.Visible = false;
-            this.many_answer_panel.VisibleChanged += new System.EventHandler(this.Many_answer_panel_VisibleChanged);
-            // 
-            // many_answer_button
-            // 
-            this.many_answer_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.many_answer_button.BackColor = System.Drawing.Color.SteelBlue;
-            this.many_answer_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.many_answer_button.FlatAppearance.BorderSize = 2;
-            this.many_answer_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.many_answer_button.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.many_answer_button.ForeColor = System.Drawing.Color.White;
-            this.many_answer_button.Location = new System.Drawing.Point(543, 406);
-            this.many_answer_button.Name = "many_answer_button";
-            this.many_answer_button.Size = new System.Drawing.Size(257, 53);
-            this.many_answer_button.TabIndex = 17;
-            this.many_answer_button.TabStop = false;
-            this.many_answer_button.Text = "many_answer_button";
-            this.many_answer_button.UseVisualStyleBackColor = false;
-            this.many_answer_button.Click += new System.EventHandler(this.Many_answers_button_Click);
-            // 
-            // question_text_label
-            // 
-            this.question_text_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.question_text_label.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.question_text_label.Location = new System.Drawing.Point(26, 58);
-            this.question_text_label.Name = "question_text_label";
-            this.question_text_label.Size = new System.Drawing.Size(781, 76);
-            this.question_text_label.TabIndex = 16;
-            this.question_text_label.Text = "question_text_label";
-            // 
-            // question_number_label
-            // 
-            this.question_number_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.question_number_label.BackColor = System.Drawing.Color.SteelBlue;
-            this.question_number_label.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.question_number_label.ForeColor = System.Drawing.Color.White;
-            this.question_number_label.Location = new System.Drawing.Point(1, 0);
-            this.question_number_label.Name = "question_number_label";
-            this.question_number_label.Size = new System.Drawing.Size(823, 49);
-            this.question_number_label.TabIndex = 8;
-            this.question_number_label.Text = "question_number_label";
-            this.question_number_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.Lavender;
-            this.panel3.Controls.Add(this.checkBox4);
-            this.panel3.Controls.Add(this.checkBox3);
-            this.panel3.Controls.Add(this.checkBox2);
-            this.panel3.Controls.Add(this.checkBox1);
-            this.panel3.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.panel3.Location = new System.Drawing.Point(3, 137);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(797, 240);
-            this.panel3.TabIndex = 15;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(30, 191);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(114, 27);
-            this.checkBox4.TabIndex = 9;
-            this.checkBox4.TabStop = false;
-            this.checkBox4.Text = "checkBox4";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(30, 136);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(114, 27);
-            this.checkBox3.TabIndex = 8;
-            this.checkBox3.TabStop = false;
-            this.checkBox3.Text = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(30, 81);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(114, 27);
-            this.checkBox2.TabIndex = 7;
-            this.checkBox2.TabStop = false;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(30, 26);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(114, 27);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.TabStop = false;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // result_page
             // 
@@ -1170,8 +1170,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StudentForm_FormClosed);
             this.tabControl1.ResumeLayout(false);
             this.profile_page.ResumeLayout(false);
-            this.student_profile_main_panel.ResumeLayout(false);
-            this.student_profile_main_panel.PerformLayout();
             this.change_full_name_panel.ResumeLayout(false);
             this.change_full_name_panel.PerformLayout();
             this.change_student_login_panel.ResumeLayout(false);
@@ -1180,15 +1178,17 @@
             this.change_student_password_panel.PerformLayout();
             this.student_identity_check_panel.ResumeLayout(false);
             this.student_identity_check_panel.PerformLayout();
+            this.student_profile_main_panel.ResumeLayout(false);
+            this.student_profile_main_panel.PerformLayout();
             this.test_page.ResumeLayout(false);
+            this.many_answer_panel.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.choose_test_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.available_test_table)).EndInit();
             this.one_answer_panel.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.many_answer_panel.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.result_page.ResumeLayout(false);
             this.results_panel.ResumeLayout(false);
             this.results_panel.PerformLayout();
@@ -1266,11 +1266,11 @@
         private System.Windows.Forms.Panel change_full_name_panel;
         private System.Windows.Forms.Button change_full_name_button;
         private System.Windows.Forms.Button cancel_change_name_button;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox new_surname_textBox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox new_student_name_textBox;
         private System.Windows.Forms.TextBox new_patronymic_textBox;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox new_surname_textBox;
     }
 }
