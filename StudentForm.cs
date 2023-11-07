@@ -30,7 +30,7 @@ namespace testing_program
         int version_id = 0;
         int question_index = 0;
         int question_type = 0;
-        int student_test_id = 0;
+        int attempt_id = 0;
 
         public StudentForm(DatabaseClass database, int user_id)
         {
@@ -69,7 +69,7 @@ namespace testing_program
                 if (dialogResult == DialogResult.Yes)
                 {
                     panel.Change_visible(choose_test_panel, false);
-                    student_test_id = database.Get_student_test_id(test_name, user_id);
+                    attempt_id = database.Get_attempt_id(test_name, user_id);
                     Get_test_version();
                     number_of_questions = database.Get_number_of_questions(version_id);
                     questions = database.Get_test_questions(version_id, questions);
@@ -127,16 +127,16 @@ namespace testing_program
             decimal time = (decimal)stopWatch.ElapsedMilliseconds / (decimal)60000;
             MessageBox.Show("Тест пройден!\nВаша оценка: " + mark + "\n" +
                 "Чтобы получить больше информации зайдите в раздел Результаты", "Результат");
-            database.Add_mark_to_database(mark, student_test_id, time);
+            database.Add_mark_to_database(mark, attempt_id, time);
             for(int i = 0; i < student_answers.Count; ++i)
             {
-                database.Save_student_answer(user_id, version_id, questions[i], student_answers[i], student_test_id);
+                database.Save_student_answer(version_id, questions[i], student_answers[i], attempt_id);
             }
             if(student_answers.Count!= questions.Count)
             {
                 for(int i = student_answers.Count; i < questions.Count; ++i)
                 {
-                    database.Save_student_answer(user_id, version_id, questions[i], false, student_test_id);
+                    database.Save_student_answer(version_id, questions[i], false, attempt_id);
                 }
             }
             student_answers.Clear();
@@ -146,7 +146,7 @@ namespace testing_program
             version_id = 0;
             scores = 0;
             question_index = 0;
-            student_test_id = 0;
+            attempt_id = 0;
             panel.Change_visible(choose_test_panel, true);
         }
         //**********проверка и сохранение ответов, переход на следующий вопрос************
@@ -196,8 +196,6 @@ namespace testing_program
             if (answer)
                 ++scores;
             student_answers.Insert(question_index,answer);
-
-            //database.Save_student_answer(user_id, version_id, questions[question_index], answer, student_test_id);
         }
 
         //**************ограничение по времени*************************
@@ -270,13 +268,13 @@ namespace testing_program
 
         private void New_student_password_button_Click(object sender, EventArgs e)
         {
-            TextBox[] textBoxes = { student_test_new_password_textBox, student_new_password_textBox };
+            TextBox[] textBoxes = { student_confirm_new_password_textBox, student_new_password_textBox };
             if (textbox.Check_text_changed(textBoxes))
             {
-                if (textbox.Check_passwords_are_matching(student_test_new_password_textBox.Text, student_new_password_textBox.Text) &&
+                if (textbox.Check_passwords_are_matching(student_confirm_new_password_textBox.Text, student_new_password_textBox.Text) &&
                     textbox.Check_invalid_characters_with_space(textBoxes))
                 {
-                    database.Update_user_login_or_password(student_test_new_password_textBox.Text, user_id, "password", "student");
+                    database.Update_user_login_or_password(student_confirm_new_password_textBox.Text, user_id, "password", "student");
                     panel.Change_visible(new Panel[] { change_student_password_panel, student_profile_main_panel }, new bool[] { false, true });
                     MessageBox.Show("Пароль успешно изменен.");
                 }
@@ -374,7 +372,7 @@ namespace testing_program
         {
             if (!change_student_password_panel.Visible)
             {
-                textbox.Clear(new TextBox[] { student_test_new_password_textBox, student_new_password_textBox });
+                textbox.Clear(new TextBox[] { student_confirm_new_password_textBox, student_new_password_textBox });
             }
         }
 
@@ -439,8 +437,8 @@ namespace testing_program
         //*************заполнение таблиц и взаимодействия с ними***************************
         private void Passed_tests_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            student_test_id = database.Get_student_test_id(passed_tests.SelectedItem.ToString(), user_id, true);
-            data.Reset_one_test_result_table(database, one_result_dataGridView, student_test_id);
+            attempt_id = database.Get_attempt_id(passed_tests.SelectedItem.ToString(), user_id, true);
+            data.Reset_one_test_result_table(database, one_result_dataGridView, attempt_id);
         }
 
         private void Choose_test_panel_VisibleChanged(object sender, EventArgs e)

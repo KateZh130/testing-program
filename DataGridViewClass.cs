@@ -167,12 +167,12 @@ namespace testing_program
             table.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 
-        public void Reset_one_test_result_table(DatabaseClass database, DataGridView table, int student_test_id)
+        public void Reset_one_test_result_table(DatabaseClass database, DataGridView table, int attempt_id)
         {
             Clear_table(table);
             DataSet set = new DataSet();
             Show(table);
-            NpgsqlDataAdapter adapter = database.Get_test_analysis(student_test_id);
+            NpgsqlDataAdapter adapter = database.Get_test_analysis(attempt_id);
             set.Reset();
             adapter.Fill(set);
             DataTable dataTable = set.Tables[0];
@@ -266,7 +266,7 @@ namespace testing_program
                 List<string[]> result = new List<string[]>();
                 for (int i = 0; i < id.Count; ++i)
                 {
-                    database.Get_question_answers(id[i], answers);
+                    database.Get_task(id[i], answers);
                     database.Get_question_right_answers(id[i], right_answers);
                     result.Add(new string[] { questions[i], answers[i], right_answers[i] });
                 }
@@ -291,7 +291,7 @@ namespace testing_program
                 List<string[]> result = new List<string[]>();
                 for (int i = 0; i < id.Count; ++i)
                 {
-                    database.Get_question_answers(id[i], answers);
+                    database.Get_task(id[i], answers);
                     database.Get_question_right_answers(id[i], right_answers);
                     result.Add(new string[] { questions[i], answers[i], right_answers[i] });
                 }

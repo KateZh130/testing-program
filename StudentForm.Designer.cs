@@ -53,7 +53,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cancel_change_student_password_button = new System.Windows.Forms.Button();
             this.student_new_password_textBox = new System.Windows.Forms.TextBox();
-            this.student_test_new_password_textBox = new System.Windows.Forms.TextBox();
+            this.student_confirm_new_password_textBox = new System.Windows.Forms.TextBox();
             this.student_identity_check_panel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cancel_student_change_password_button = new System.Windows.Forms.Button();
@@ -155,11 +155,11 @@
             // 
             this.profile_page.BackColor = System.Drawing.Color.Lavender;
             this.profile_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.profile_page.Controls.Add(this.change_student_login_panel);
             this.profile_page.Controls.Add(this.change_student_password_panel);
             this.profile_page.Controls.Add(this.student_identity_check_panel);
             this.profile_page.Controls.Add(this.student_profile_main_panel);
             this.profile_page.Controls.Add(this.change_full_name_panel);
+            this.profile_page.Controls.Add(this.change_student_login_panel);
             this.profile_page.Location = new System.Drawing.Point(4, 30);
             this.profile_page.Name = "profile_page";
             this.profile_page.Size = new System.Drawing.Size(829, 496);
@@ -233,7 +233,7 @@
             this.change_student_password_panel.Controls.Add(this.label4);
             this.change_student_password_panel.Controls.Add(this.cancel_change_student_password_button);
             this.change_student_password_panel.Controls.Add(this.student_new_password_textBox);
-            this.change_student_password_panel.Controls.Add(this.student_test_new_password_textBox);
+            this.change_student_password_panel.Controls.Add(this.student_confirm_new_password_textBox);
             this.change_student_password_panel.Location = new System.Drawing.Point(6, 23);
             this.change_student_password_panel.Name = "change_student_password_panel";
             this.change_student_password_panel.Size = new System.Drawing.Size(805, 250);
@@ -294,12 +294,12 @@
             this.student_new_password_textBox.Size = new System.Drawing.Size(460, 28);
             this.student_new_password_textBox.TabIndex = 0;
             // 
-            // student_test_new_password_textBox
+            // student_confirm_new_password_textBox
             // 
-            this.student_test_new_password_textBox.Location = new System.Drawing.Point(303, 134);
-            this.student_test_new_password_textBox.Name = "student_test_new_password_textBox";
-            this.student_test_new_password_textBox.Size = new System.Drawing.Size(460, 28);
-            this.student_test_new_password_textBox.TabIndex = 1;
+            this.student_confirm_new_password_textBox.Location = new System.Drawing.Point(303, 134);
+            this.student_confirm_new_password_textBox.Name = "student_confirm_new_password_textBox";
+            this.student_confirm_new_password_textBox.Size = new System.Drawing.Size(460, 28);
+            this.student_confirm_new_password_textBox.TabIndex = 1;
             // 
             // student_identity_check_panel
             // 
@@ -1253,7 +1253,7 @@
         private System.Windows.Forms.Button new_student_password_button;
         private System.Windows.Forms.TextBox student_old_password_textBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox student_test_new_password_textBox;
+        private System.Windows.Forms.TextBox student_confirm_new_password_textBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button cancel_student_change_password_button;
         private System.Windows.Forms.Button continue_student_change_password_button;

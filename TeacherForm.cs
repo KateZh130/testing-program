@@ -354,7 +354,7 @@ namespace testing_program
             for (int i = 1; i < textBoxes.Length; ++i)
             {
                 answer_id = database.Create_answer_text(textBoxes[i].Text);
-                database.Create_question_answer_connection(question_id, answer_id, checkBoxes[i - 1].Checked);
+                database.Create_task(question_id, answer_id, checkBoxes[i - 1].Checked);
             }
         }
         //*******проверка заполнения панелей и на соответствие количества правильных ответов типу вопроса****************
@@ -1277,11 +1277,11 @@ namespace testing_program
         //****************изменение доступа для нового/переведенного студента**************
         private void Allow_new_student_group_tests(int id, string group)
         {
-            database.Delete_student_test_access_status(id);
+            database.Delete_access_status(id);
             List<string> new_tests = new List<string>();
             database.Get_all_tests(user_id, group, new_tests, id, true);
             foreach (string test in new_tests)
-                database.Add_student_test_access_status(id, test, "group");
+                database.Add_access_status(id, test, "group");
         }
         //************определение типа изменения доступа**************
         private string Determine_group_type_of_access_status_change(int id, string test, ref string exist_status, ref bool connection_without_mark, bool allow)
@@ -1289,7 +1289,7 @@ namespace testing_program
             bool connection = database.Check_access_connection_exist(id, test);
             if (connection)
             {
-                exist_status = database.Get_student_test_access_status(id, test);
+                exist_status = database.Get_access_status(id, test);
                 connection_without_mark = database.Check_access_connection_exist(id, test, exist_status);
             }
             else if (allow) return "insert group";
@@ -1320,7 +1320,7 @@ namespace testing_program
             bool connection = database.Check_access_connection_exist(id, test);
             if (connection)
             {
-                exist_status = database.Get_student_test_access_status(id, test);
+                exist_status = database.Get_access_status(id, test);
                 connection_without_mark = database.Check_access_connection_exist(id, test, exist_status);
             }
             else if (allow) return "insert";
@@ -1371,26 +1371,26 @@ namespace testing_program
                 switch (type)
                 {
                     case "insert group":
-                        database.Add_student_test_access_status(student, test, "group");
+                        database.Add_access_status(student, test, "group");
                         break;
                     case "no connection":
                         ++no_group_connection;
                         break;
                     case "update group":
-                        database.Update_student_test_access_status(student, test, "group", exist_status, without_mark);
+                        database.Update_access_status(student, test, "group", exist_status, without_mark);
                         break;
                     case "have group access":
                         ++have_group_access;
                         break;
                     case "update closed":
-                        database.Update_student_test_access_status(student, test, "closed " + exist_status, exist_status, without_mark);
+                        database.Update_access_status(student, test, "closed " + exist_status, exist_status, without_mark);
                         break;
                     case "already closed":
                         ++already_closed;
                         break;
                     case "update closed + insert group":
-                        database.Update_student_test_access_status(student, test, "closed " + exist_status, exist_status, without_mark);
-                        database.Add_student_test_access_status(student, test, "group");
+                        database.Update_access_status(student, test, "closed " + exist_status, exist_status, without_mark);
+                        database.Add_access_status(student, test, "group");
                         break;
                 }
             }
@@ -1412,24 +1412,24 @@ namespace testing_program
             switch (type)
             {
                 case "insert":
-                    database.Add_student_test_access_status(student_id, test, "personal");
+                    database.Add_access_status(student_id, test, "personal");
                     break;
                 case "update":
-                    database.Update_student_test_access_status(student_id, test, "personal", exist_status, without_mark);
+                    database.Update_access_status(student_id, test, "personal", exist_status, without_mark);
                     break;
                 case "update closed + update personal":
-                    database.Update_student_test_access_status(student_id, test, "closed personal", exist_status, without_mark);
+                    database.Update_access_status(student_id, test, "closed personal", exist_status, without_mark);
                     database.Get_students_id(student_id, students, true);
                     students.Remove(student_id);
                     foreach (int student in students)
-                        database.Update_student_test_access_status(student, test, "personal", exist_status, without_mark);
+                        database.Update_access_status(student, test, "personal", exist_status, without_mark);
                     break;
                 case "update closed":
-                    database.Update_student_test_access_status(student_id, test, "closed personal", exist_status, without_mark);
+                    database.Update_access_status(student_id, test, "closed personal", exist_status, without_mark);
                     break;
                 case "update closed + insert extra":
-                    database.Update_student_test_access_status(student_id, test, "closed personal", exist_status, false);
-                    database.Add_student_test_access_status(student_id, test, exist_status);
+                    database.Update_access_status(student_id, test, "closed personal", exist_status, false);
+                    database.Add_access_status(student_id, test, exist_status);
                     break;
                 default:
                     return type;
