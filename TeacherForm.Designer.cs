@@ -73,6 +73,12 @@
             this.tasks_table_page = new System.Windows.Forms.TabPage();
             this.available_teacher_tasks_table = new System.Windows.Forms.DataGridView();
             this.create_tests_page = new System.Windows.Forms.TabPage();
+            this.create_test_groupBox = new System.Windows.Forms.GroupBox();
+            this.comment_textBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.add_new_test_to_db = new System.Windows.Forms.Button();
+            this.new_timer_textBox = new System.Windows.Forms.TextBox();
+            this.new_test_name_textBox = new System.Windows.Forms.TextBox();
             this.create_version_questions_groupBox = new System.Windows.Forms.GroupBox();
             this.select_existing_method_radioButton = new System.Windows.Forms.RadioButton();
             this.new_method_radioButton = new System.Windows.Forms.RadioButton();
@@ -80,6 +86,17 @@
             this.finish_creating_test_button = new System.Windows.Forms.Button();
             this.finish_editing_button = new System.Windows.Forms.Button();
             this.create_next_version = new System.Windows.Forms.Button();
+            this.create_new_question_panel = new System.Windows.Forms.Panel();
+            this.question_textBox = new System.Windows.Forms.TextBox();
+            this.question_type_comboBox = new System.Windows.Forms.ComboBox();
+            this.answer_textBox1 = new System.Windows.Forms.TextBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.answer_textBox2 = new System.Windows.Forms.TextBox();
+            this.answer_textBox3 = new System.Windows.Forms.TextBox();
+            this.answer_textBox4 = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.select_existing_question_panel = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.id_textBox = new System.Windows.Forms.TextBox();
@@ -95,37 +112,25 @@
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.select_existing_question_comboBox = new System.Windows.Forms.ComboBox();
-            this.create_new_question_panel = new System.Windows.Forms.Panel();
-            this.question_textBox = new System.Windows.Forms.TextBox();
-            this.question_type_comboBox = new System.Windows.Forms.ComboBox();
-            this.answer_textBox1 = new System.Windows.Forms.TextBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.answer_textBox2 = new System.Windows.Forms.TextBox();
-            this.answer_textBox3 = new System.Windows.Forms.TextBox();
-            this.answer_textBox4 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.create_test_groupBox = new System.Windows.Forms.GroupBox();
-            this.comment_textBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.add_new_test_to_db = new System.Windows.Forms.Button();
-            this.new_timer_textBox = new System.Windows.Forms.TextBox();
-            this.new_test_name_textBox = new System.Windows.Forms.TextBox();
             this.edit_tests_page = new System.Windows.Forms.TabPage();
             this.edit_test_groupBox = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.cancel_edit_button = new System.Windows.Forms.Button();
             this.confirm_change_button = new System.Windows.Forms.Button();
-            this.available_teacher_tests_comboBox = new System.Windows.Forms.ComboBox();
             this.new_comment_panel = new System.Windows.Forms.Panel();
             this.new_comment_textBox = new System.Windows.Forms.TextBox();
             this.delete_task_panel = new System.Windows.Forms.Panel();
             this.delete_task_comboBox = new System.Windows.Forms.ComboBox();
             this.delete_mode_choose_version_comboBox = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.edit_task_panel = new System.Windows.Forms.Panel();
-            this.choose_task_comboBox = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.add_task_or_delete_version_panel = new System.Windows.Forms.Panel();
+            this.choose_deleted_version_comboBox = new System.Windows.Forms.ComboBox();
+            this.new_name_panel = new System.Windows.Forms.Panel();
+            this.new_name_textBox = new System.Windows.Forms.TextBox();
+            this.new_timer_panel = new System.Windows.Forms.Panel();
+            this.edit_timer_textBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.available_teacher_tests_comboBox = new System.Windows.Forms.ComboBox();
             this.edit_task_panel2 = new System.Windows.Forms.Panel();
             this.edit_answer_id_textBox4 = new System.Windows.Forms.TextBox();
             this.edit_answer_id_textBox3 = new System.Windows.Forms.TextBox();
@@ -145,13 +150,9 @@
             this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.add_task_or_delete_version_panel = new System.Windows.Forms.Panel();
-            this.choose_deleted_version_comboBox = new System.Windows.Forms.ComboBox();
-            this.new_name_panel = new System.Windows.Forms.Panel();
-            this.new_name_textBox = new System.Windows.Forms.TextBox();
-            this.new_timer_panel = new System.Windows.Forms.Panel();
-            this.edit_timer_textBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.edit_task_panel = new System.Windows.Forms.Panel();
+            this.choose_task_comboBox = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.profile_page = new System.Windows.Forms.TabPage();
             this.teacher_profile_main_panel = new System.Windows.Forms.Panel();
             this.change_teacher_name_button = new System.Windows.Forms.Button();
@@ -193,6 +194,14 @@
             this.continue_teacher_change_password_button = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.students_page = new System.Windows.Forms.TabPage();
+            this.test_access_panel = new System.Windows.Forms.Panel();
+            this.prohibit_radioButton = new System.Windows.Forms.RadioButton();
+            this.allow_radioButton = new System.Windows.Forms.RadioButton();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cancel_test_access_button = new System.Windows.Forms.Button();
+            this.ok_test_access_button = new System.Windows.Forms.Button();
+            this.test_access_comboBox = new System.Windows.Forms.ComboBox();
             this.change_student_group_panel = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
             this.cancel_change_student_group_button = new System.Windows.Forms.Button();
@@ -225,14 +234,6 @@
             this.full_name_textBox3 = new System.Windows.Forms.TextBox();
             this.full_name_textBox2 = new System.Windows.Forms.TextBox();
             this.full_name_textBox1 = new System.Windows.Forms.TextBox();
-            this.test_access_panel = new System.Windows.Forms.Panel();
-            this.prohibit_radioButton = new System.Windows.Forms.RadioButton();
-            this.allow_radioButton = new System.Windows.Forms.RadioButton();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.cancel_test_access_button = new System.Windows.Forms.Button();
-            this.ok_test_access_button = new System.Windows.Forms.Button();
-            this.test_access_comboBox = new System.Windows.Forms.ComboBox();
             this.marks_journal_page = new System.Windows.Forms.TabPage();
             this.tabControl4 = new System.Windows.Forms.TabControl();
             this.group_journal_page = new System.Windows.Forms.TabPage();
@@ -245,7 +246,6 @@
             this.tip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tip2 = new System.Windows.Forms.ToolTip(this.components);
             this.tip3 = new System.Windows.Forms.ToolTip(this.components);
-            this.label14 = new System.Windows.Forms.Label();
             this.test_constructor.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -257,19 +257,19 @@
             this.tasks_table_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.available_teacher_tasks_table)).BeginInit();
             this.create_tests_page.SuspendLayout();
-            this.create_version_questions_groupBox.SuspendLayout();
-            this.select_existing_question_panel.SuspendLayout();
-            this.create_new_question_panel.SuspendLayout();
             this.create_test_groupBox.SuspendLayout();
+            this.create_version_questions_groupBox.SuspendLayout();
+            this.create_new_question_panel.SuspendLayout();
+            this.select_existing_question_panel.SuspendLayout();
             this.edit_tests_page.SuspendLayout();
             this.edit_test_groupBox.SuspendLayout();
             this.new_comment_panel.SuspendLayout();
             this.delete_task_panel.SuspendLayout();
-            this.edit_task_panel.SuspendLayout();
-            this.edit_task_panel2.SuspendLayout();
             this.add_task_or_delete_version_panel.SuspendLayout();
             this.new_name_panel.SuspendLayout();
             this.new_timer_panel.SuspendLayout();
+            this.edit_task_panel2.SuspendLayout();
+            this.edit_task_panel.SuspendLayout();
             this.profile_page.SuspendLayout();
             this.teacher_profile_main_panel.SuspendLayout();
             this.change_teacher_password_panel.SuspendLayout();
@@ -278,6 +278,7 @@
             this.teacher_identity_check_panel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.students_page.SuspendLayout();
+            this.test_access_panel.SuspendLayout();
             this.change_student_group_panel.SuspendLayout();
             this.change_group_name_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -288,7 +289,6 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.create_student_groupBox.SuspendLayout();
-            this.test_access_panel.SuspendLayout();
             this.marks_journal_page.SuspendLayout();
             this.tabControl4.SuspendLayout();
             this.group_journal_page.SuspendLayout();
@@ -332,14 +332,14 @@
             // add_version_ToolStripMenuItem1
             // 
             this.add_version_ToolStripMenuItem1.Name = "add_version_ToolStripMenuItem1";
-            this.add_version_ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.add_version_ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.add_version_ToolStripMenuItem1.Text = "Вариант";
             this.add_version_ToolStripMenuItem1.Click += new System.EventHandler(this.Add_version_ToolStripMenuItem1_Click);
             // 
             // add_task_ToolStripMenuItem2
             // 
             this.add_task_ToolStripMenuItem2.Name = "add_task_ToolStripMenuItem2";
-            this.add_task_ToolStripMenuItem2.Size = new System.Drawing.Size(216, 26);
+            this.add_task_ToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
             this.add_task_ToolStripMenuItem2.Text = "Тестовое задание";
             this.add_task_ToolStripMenuItem2.Click += new System.EventHandler(this.Add_task_ToolStripMenuItem2_Click);
             // 
@@ -395,21 +395,21 @@
             // delete_task_ToolStripMenuItem1
             // 
             this.delete_task_ToolStripMenuItem1.Name = "delete_task_ToolStripMenuItem1";
-            this.delete_task_ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.delete_task_ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.delete_task_ToolStripMenuItem1.Text = "Тестовое задание";
             this.delete_task_ToolStripMenuItem1.Click += new System.EventHandler(this.Delete_task_ToolStripMenuItem1_Click);
             // 
             // delete_version_ToolStripMenuItem
             // 
             this.delete_version_ToolStripMenuItem.Name = "delete_version_ToolStripMenuItem";
-            this.delete_version_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.delete_version_ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.delete_version_ToolStripMenuItem.Text = "Вариант";
             this.delete_version_ToolStripMenuItem.Click += new System.EventHandler(this.Delete_version_ToolStripMenuItem_Click);
             // 
             // delete_test_ToolStripMenuItem
             // 
             this.delete_test_ToolStripMenuItem.Name = "delete_test_ToolStripMenuItem";
-            this.delete_test_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.delete_test_ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.delete_test_ToolStripMenuItem.Text = "Тест";
             this.delete_test_ToolStripMenuItem.Click += new System.EventHandler(this.Delete_test_ToolStripMenuItem_Click);
             // 
@@ -677,14 +677,91 @@
             // create_tests_page
             // 
             this.create_tests_page.BackColor = System.Drawing.Color.Lavender;
-            this.create_tests_page.Controls.Add(this.create_version_questions_groupBox);
             this.create_tests_page.Controls.Add(this.create_test_groupBox);
+            this.create_tests_page.Controls.Add(this.create_version_questions_groupBox);
             this.create_tests_page.Location = new System.Drawing.Point(4, 30);
             this.create_tests_page.Name = "create_tests_page";
             this.create_tests_page.Padding = new System.Windows.Forms.Padding(3);
             this.create_tests_page.Size = new System.Drawing.Size(1004, 598);
             this.create_tests_page.TabIndex = 0;
             this.create_tests_page.Text = "Создать тест";
+            // 
+            // create_test_groupBox
+            // 
+            this.create_test_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.create_test_groupBox.BackColor = System.Drawing.Color.Lavender;
+            this.create_test_groupBox.Controls.Add(this.comment_textBox);
+            this.create_test_groupBox.Controls.Add(this.label2);
+            this.create_test_groupBox.Controls.Add(this.add_new_test_to_db);
+            this.create_test_groupBox.Controls.Add(this.new_timer_textBox);
+            this.create_test_groupBox.Controls.Add(this.new_test_name_textBox);
+            this.create_test_groupBox.Location = new System.Drawing.Point(0, 40);
+            this.create_test_groupBox.Name = "create_test_groupBox";
+            this.create_test_groupBox.Size = new System.Drawing.Size(782, 411);
+            this.create_test_groupBox.TabIndex = 3;
+            this.create_test_groupBox.TabStop = false;
+            this.create_test_groupBox.Text = "Создание теста";
+            this.create_test_groupBox.Visible = false;
+            this.create_test_groupBox.VisibleChanged += new System.EventHandler(this.Create_test_groupBox_VisibleChanged);
+            // 
+            // comment_textBox
+            // 
+            this.comment_textBox.Location = new System.Drawing.Point(6, 227);
+            this.comment_textBox.Multiline = true;
+            this.comment_textBox.Name = "comment_textBox";
+            this.comment_textBox.Size = new System.Drawing.Size(763, 96);
+            this.comment_textBox.TabIndex = 2;
+            this.comment_textBox.Text = "Комментарий к тесту (необязательно)";
+            this.comment_textBox.Click += new System.EventHandler(this.Comment_textBox_Click);
+            this.comment_textBox.TextChanged += new System.EventHandler(this.Comment_textBox_TextChanged);
+            this.comment_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Comment_textBox_KeyPress);
+            this.comment_textBox.Leave += new System.EventHandler(this.New_test_name_textBox_Leave);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(334, 21);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Введите ограничение по времени в минутах:";
+            // 
+            // add_new_test_to_db
+            // 
+            this.add_new_test_to_db.BackColor = System.Drawing.Color.SteelBlue;
+            this.add_new_test_to_db.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.add_new_test_to_db.FlatAppearance.BorderSize = 2;
+            this.add_new_test_to_db.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add_new_test_to_db.Location = new System.Drawing.Point(470, 350);
+            this.add_new_test_to_db.Name = "add_new_test_to_db";
+            this.add_new_test_to_db.Size = new System.Drawing.Size(299, 46);
+            this.add_new_test_to_db.TabIndex = 3;
+            this.add_new_test_to_db.Text = "Создать тест";
+            this.add_new_test_to_db.UseVisualStyleBackColor = false;
+            this.add_new_test_to_db.Click += new System.EventHandler(this.Add_new_test_to_db_Click);
+            // 
+            // new_timer_textBox
+            // 
+            this.new_timer_textBox.Location = new System.Drawing.Point(6, 160);
+            this.new_timer_textBox.Name = "new_timer_textBox";
+            this.new_timer_textBox.Size = new System.Drawing.Size(125, 28);
+            this.new_timer_textBox.TabIndex = 1;
+            this.new_timer_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_timer_textBox_KeyPress);
+            // 
+            // new_test_name_textBox
+            // 
+            this.new_test_name_textBox.Location = new System.Drawing.Point(6, 38);
+            this.new_test_name_textBox.Multiline = true;
+            this.new_test_name_textBox.Name = "new_test_name_textBox";
+            this.new_test_name_textBox.Size = new System.Drawing.Size(763, 54);
+            this.new_test_name_textBox.TabIndex = 0;
+            this.new_test_name_textBox.Text = "Введите название теста";
+            this.new_test_name_textBox.Click += new System.EventHandler(this.New_test_name_textBox_Click);
+            this.new_test_name_textBox.TextChanged += new System.EventHandler(this.New_test_name_textBox_TextChanged);
+            this.new_test_name_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_test_name_textBox_KeyPress);
+            this.new_test_name_textBox.Leave += new System.EventHandler(this.New_test_name_textBox_Leave);
             // 
             // create_version_questions_groupBox
             // 
@@ -698,8 +775,8 @@
             this.create_version_questions_groupBox.Controls.Add(this.finish_creating_test_button);
             this.create_version_questions_groupBox.Controls.Add(this.finish_editing_button);
             this.create_version_questions_groupBox.Controls.Add(this.create_next_version);
-            this.create_version_questions_groupBox.Controls.Add(this.select_existing_question_panel);
             this.create_version_questions_groupBox.Controls.Add(this.create_new_question_panel);
+            this.create_version_questions_groupBox.Controls.Add(this.select_existing_question_panel);
             this.create_version_questions_groupBox.Location = new System.Drawing.Point(0, 0);
             this.create_version_questions_groupBox.Name = "create_version_questions_groupBox";
             this.create_version_questions_groupBox.Size = new System.Drawing.Size(1007, 605);
@@ -798,6 +875,146 @@
             this.create_next_version.Text = "Следующий вариант";
             this.create_next_version.UseVisualStyleBackColor = false;
             this.create_next_version.Click += new System.EventHandler(this.Create_next_version_Click);
+            // 
+            // create_new_question_panel
+            // 
+            this.create_new_question_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.create_new_question_panel.Controls.Add(this.question_textBox);
+            this.create_new_question_panel.Controls.Add(this.question_type_comboBox);
+            this.create_new_question_panel.Controls.Add(this.answer_textBox1);
+            this.create_new_question_panel.Controls.Add(this.checkBox4);
+            this.create_new_question_panel.Controls.Add(this.answer_textBox2);
+            this.create_new_question_panel.Controls.Add(this.answer_textBox3);
+            this.create_new_question_panel.Controls.Add(this.answer_textBox4);
+            this.create_new_question_panel.Controls.Add(this.checkBox1);
+            this.create_new_question_panel.Controls.Add(this.checkBox3);
+            this.create_new_question_panel.Controls.Add(this.checkBox2);
+            this.create_new_question_panel.Location = new System.Drawing.Point(0, 101);
+            this.create_new_question_panel.Name = "create_new_question_panel";
+            this.create_new_question_panel.Size = new System.Drawing.Size(994, 436);
+            this.create_new_question_panel.TabIndex = 7;
+            this.create_new_question_panel.Visible = false;
+            this.create_new_question_panel.VisibleChanged += new System.EventHandler(this.Create_new_question_panel_VisibleChanged);
+            // 
+            // question_textBox
+            // 
+            this.question_textBox.Location = new System.Drawing.Point(7, 68);
+            this.question_textBox.Multiline = true;
+            this.question_textBox.Name = "question_textBox";
+            this.question_textBox.Size = new System.Drawing.Size(956, 72);
+            this.question_textBox.TabIndex = 1;
+            this.question_textBox.Text = "Введите текст вопроса";
+            this.question_textBox.Click += new System.EventHandler(this.Question_textBox_Click);
+            this.question_textBox.TextChanged += new System.EventHandler(this.Question_textBox_TextChanged);
+            this.question_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Question_textBox_KeyPress);
+            this.question_textBox.Leave += new System.EventHandler(this.Question_textBox_Leave);
+            // 
+            // question_type_comboBox
+            // 
+            this.question_type_comboBox.FormattingEnabled = true;
+            this.question_type_comboBox.Items.AddRange(new object[] {
+            "Вопрос с одним правильным вариантом ответа",
+            "Вопрос с несколькими правильными вариантами ответа"});
+            this.question_type_comboBox.Location = new System.Drawing.Point(6, 7);
+            this.question_type_comboBox.Name = "question_type_comboBox";
+            this.question_type_comboBox.Size = new System.Drawing.Size(635, 29);
+            this.question_type_comboBox.TabIndex = 0;
+            this.question_type_comboBox.Text = "Выберите тип вопроса";
+            this.question_type_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Question_type_comboBox_KeyPress);
+            // 
+            // answer_textBox1
+            // 
+            this.answer_textBox1.Location = new System.Drawing.Point(7, 175);
+            this.answer_textBox1.Multiline = true;
+            this.answer_textBox1.Name = "answer_textBox1";
+            this.answer_textBox1.Size = new System.Drawing.Size(693, 43);
+            this.answer_textBox1.TabIndex = 2;
+            this.answer_textBox1.Text = "Введите ответ №1";
+            this.answer_textBox1.Click += new System.EventHandler(this.Answer_textBox1_Click);
+            this.answer_textBox1.TextChanged += new System.EventHandler(this.Answer_textBox1_TextChanged);
+            this.answer_textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox1_KeyPress);
+            this.answer_textBox1.Leave += new System.EventHandler(this.Answer_textBox1_Leave);
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(749, 379);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(174, 25);
+            this.checkBox4.TabIndex = 9;
+            this.checkBox4.Text = "Правильный ответ?";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // answer_textBox2
+            // 
+            this.answer_textBox2.Location = new System.Drawing.Point(7, 240);
+            this.answer_textBox2.Multiline = true;
+            this.answer_textBox2.Name = "answer_textBox2";
+            this.answer_textBox2.Size = new System.Drawing.Size(693, 43);
+            this.answer_textBox2.TabIndex = 4;
+            this.answer_textBox2.Text = "Введите ответ №2";
+            this.answer_textBox2.Click += new System.EventHandler(this.Answer_textBox2_Click);
+            this.answer_textBox2.TextChanged += new System.EventHandler(this.Answer_textBox2_TextChanged);
+            this.answer_textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox2_KeyPress);
+            this.answer_textBox2.Leave += new System.EventHandler(this.Answer_textBox2_Leave);
+            // 
+            // answer_textBox3
+            // 
+            this.answer_textBox3.Location = new System.Drawing.Point(7, 305);
+            this.answer_textBox3.Multiline = true;
+            this.answer_textBox3.Name = "answer_textBox3";
+            this.answer_textBox3.Size = new System.Drawing.Size(693, 43);
+            this.answer_textBox3.TabIndex = 6;
+            this.answer_textBox3.Text = "Введите ответ №3";
+            this.answer_textBox3.Click += new System.EventHandler(this.Answer_textBox3_Click);
+            this.answer_textBox3.TextChanged += new System.EventHandler(this.Answer_textBox3_TextChanged);
+            this.answer_textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox3_KeyPress);
+            this.answer_textBox3.Leave += new System.EventHandler(this.Answer_textBox3_Leave);
+            // 
+            // answer_textBox4
+            // 
+            this.answer_textBox4.Location = new System.Drawing.Point(7, 370);
+            this.answer_textBox4.Multiline = true;
+            this.answer_textBox4.Name = "answer_textBox4";
+            this.answer_textBox4.Size = new System.Drawing.Size(693, 43);
+            this.answer_textBox4.TabIndex = 8;
+            this.answer_textBox4.Text = "Введите ответ №4";
+            this.answer_textBox4.Click += new System.EventHandler(this.Answer_textBox4_Click);
+            this.answer_textBox4.TextChanged += new System.EventHandler(this.Answer_textBox4_TextChanged);
+            this.answer_textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox4_KeyPress);
+            this.answer_textBox4.Leave += new System.EventHandler(this.Answer_textBox4_Leave);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(749, 184);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(174, 25);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "Правильный ответ?";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(749, 314);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(174, 25);
+            this.checkBox3.TabIndex = 7;
+            this.checkBox3.Text = "Правильный ответ?";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(749, 248);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(174, 25);
+            this.checkBox2.TabIndex = 5;
+            this.checkBox2.Text = "Правильный ответ?";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // select_existing_question_panel
             // 
@@ -977,223 +1194,6 @@
             this.select_existing_question_comboBox.SelectionChangeCommitted += new System.EventHandler(this.Select_existing_question_comboBox_SelectionChangeCommitted);
             this.select_existing_question_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Select_existing_question_comboBox_KeyPress);
             // 
-            // create_new_question_panel
-            // 
-            this.create_new_question_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.create_new_question_panel.Controls.Add(this.question_textBox);
-            this.create_new_question_panel.Controls.Add(this.question_type_comboBox);
-            this.create_new_question_panel.Controls.Add(this.answer_textBox1);
-            this.create_new_question_panel.Controls.Add(this.checkBox4);
-            this.create_new_question_panel.Controls.Add(this.answer_textBox2);
-            this.create_new_question_panel.Controls.Add(this.answer_textBox3);
-            this.create_new_question_panel.Controls.Add(this.answer_textBox4);
-            this.create_new_question_panel.Controls.Add(this.checkBox1);
-            this.create_new_question_panel.Controls.Add(this.checkBox3);
-            this.create_new_question_panel.Controls.Add(this.checkBox2);
-            this.create_new_question_panel.Location = new System.Drawing.Point(0, 101);
-            this.create_new_question_panel.Name = "create_new_question_panel";
-            this.create_new_question_panel.Size = new System.Drawing.Size(994, 436);
-            this.create_new_question_panel.TabIndex = 7;
-            this.create_new_question_panel.Visible = false;
-            this.create_new_question_panel.VisibleChanged += new System.EventHandler(this.Create_new_question_panel_VisibleChanged);
-            // 
-            // question_textBox
-            // 
-            this.question_textBox.Location = new System.Drawing.Point(7, 68);
-            this.question_textBox.Multiline = true;
-            this.question_textBox.Name = "question_textBox";
-            this.question_textBox.Size = new System.Drawing.Size(956, 72);
-            this.question_textBox.TabIndex = 1;
-            this.question_textBox.Text = "Введите текст вопроса";
-            this.question_textBox.Click += new System.EventHandler(this.Question_textBox_Click);
-            this.question_textBox.TextChanged += new System.EventHandler(this.Question_textBox_TextChanged);
-            this.question_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Question_textBox_KeyPress);
-            this.question_textBox.Leave += new System.EventHandler(this.Question_textBox_Leave);
-            // 
-            // question_type_comboBox
-            // 
-            this.question_type_comboBox.FormattingEnabled = true;
-            this.question_type_comboBox.Items.AddRange(new object[] {
-            "Вопрос с одним правильным вариантом ответа",
-            "Вопрос с несколькими правильными вариантами ответа"});
-            this.question_type_comboBox.Location = new System.Drawing.Point(6, 7);
-            this.question_type_comboBox.Name = "question_type_comboBox";
-            this.question_type_comboBox.Size = new System.Drawing.Size(635, 29);
-            this.question_type_comboBox.TabIndex = 0;
-            this.question_type_comboBox.Text = "Выберите тип вопроса";
-            this.question_type_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Question_type_comboBox_KeyPress);
-            // 
-            // answer_textBox1
-            // 
-            this.answer_textBox1.Location = new System.Drawing.Point(7, 175);
-            this.answer_textBox1.Multiline = true;
-            this.answer_textBox1.Name = "answer_textBox1";
-            this.answer_textBox1.Size = new System.Drawing.Size(693, 43);
-            this.answer_textBox1.TabIndex = 2;
-            this.answer_textBox1.Text = "Введите ответ №1";
-            this.answer_textBox1.Click += new System.EventHandler(this.Answer_textBox1_Click);
-            this.answer_textBox1.TextChanged += new System.EventHandler(this.Answer_textBox1_TextChanged);
-            this.answer_textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox1_KeyPress);
-            this.answer_textBox1.Leave += new System.EventHandler(this.Answer_textBox1_Leave);
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(749, 379);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(174, 25);
-            this.checkBox4.TabIndex = 9;
-            this.checkBox4.Text = "Правильный ответ?";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // answer_textBox2
-            // 
-            this.answer_textBox2.Location = new System.Drawing.Point(7, 240);
-            this.answer_textBox2.Multiline = true;
-            this.answer_textBox2.Name = "answer_textBox2";
-            this.answer_textBox2.Size = new System.Drawing.Size(693, 43);
-            this.answer_textBox2.TabIndex = 4;
-            this.answer_textBox2.Text = "Введите ответ №2";
-            this.answer_textBox2.Click += new System.EventHandler(this.Answer_textBox2_Click);
-            this.answer_textBox2.TextChanged += new System.EventHandler(this.Answer_textBox2_TextChanged);
-            this.answer_textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox2_KeyPress);
-            this.answer_textBox2.Leave += new System.EventHandler(this.Answer_textBox2_Leave);
-            // 
-            // answer_textBox3
-            // 
-            this.answer_textBox3.Location = new System.Drawing.Point(7, 305);
-            this.answer_textBox3.Multiline = true;
-            this.answer_textBox3.Name = "answer_textBox3";
-            this.answer_textBox3.Size = new System.Drawing.Size(693, 43);
-            this.answer_textBox3.TabIndex = 6;
-            this.answer_textBox3.Text = "Введите ответ №3";
-            this.answer_textBox3.Click += new System.EventHandler(this.Answer_textBox3_Click);
-            this.answer_textBox3.TextChanged += new System.EventHandler(this.Answer_textBox3_TextChanged);
-            this.answer_textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox3_KeyPress);
-            this.answer_textBox3.Leave += new System.EventHandler(this.Answer_textBox3_Leave);
-            // 
-            // answer_textBox4
-            // 
-            this.answer_textBox4.Location = new System.Drawing.Point(7, 370);
-            this.answer_textBox4.Multiline = true;
-            this.answer_textBox4.Name = "answer_textBox4";
-            this.answer_textBox4.Size = new System.Drawing.Size(693, 43);
-            this.answer_textBox4.TabIndex = 8;
-            this.answer_textBox4.Text = "Введите ответ №4";
-            this.answer_textBox4.Click += new System.EventHandler(this.Answer_textBox4_Click);
-            this.answer_textBox4.TextChanged += new System.EventHandler(this.Answer_textBox4_TextChanged);
-            this.answer_textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Answer_textBox4_KeyPress);
-            this.answer_textBox4.Leave += new System.EventHandler(this.Answer_textBox4_Leave);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(749, 184);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(174, 25);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Правильный ответ?";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(749, 314);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(174, 25);
-            this.checkBox3.TabIndex = 7;
-            this.checkBox3.Text = "Правильный ответ?";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(749, 248);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(174, 25);
-            this.checkBox2.TabIndex = 5;
-            this.checkBox2.Text = "Правильный ответ?";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // create_test_groupBox
-            // 
-            this.create_test_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.create_test_groupBox.BackColor = System.Drawing.Color.Lavender;
-            this.create_test_groupBox.Controls.Add(this.comment_textBox);
-            this.create_test_groupBox.Controls.Add(this.label2);
-            this.create_test_groupBox.Controls.Add(this.add_new_test_to_db);
-            this.create_test_groupBox.Controls.Add(this.new_timer_textBox);
-            this.create_test_groupBox.Controls.Add(this.new_test_name_textBox);
-            this.create_test_groupBox.Location = new System.Drawing.Point(0, 40);
-            this.create_test_groupBox.Name = "create_test_groupBox";
-            this.create_test_groupBox.Size = new System.Drawing.Size(782, 411);
-            this.create_test_groupBox.TabIndex = 3;
-            this.create_test_groupBox.TabStop = false;
-            this.create_test_groupBox.Text = "Создание теста";
-            this.create_test_groupBox.Visible = false;
-            this.create_test_groupBox.VisibleChanged += new System.EventHandler(this.Create_test_groupBox_VisibleChanged);
-            // 
-            // comment_textBox
-            // 
-            this.comment_textBox.Location = new System.Drawing.Point(6, 227);
-            this.comment_textBox.Multiline = true;
-            this.comment_textBox.Name = "comment_textBox";
-            this.comment_textBox.Size = new System.Drawing.Size(763, 96);
-            this.comment_textBox.TabIndex = 2;
-            this.comment_textBox.Text = "Комментарий к тесту (необязательно)";
-            this.comment_textBox.Click += new System.EventHandler(this.Comment_textBox_Click);
-            this.comment_textBox.TextChanged += new System.EventHandler(this.Comment_textBox_TextChanged);
-            this.comment_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Comment_textBox_KeyPress);
-            this.comment_textBox.Leave += new System.EventHandler(this.New_test_name_textBox_Leave);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 130);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(334, 21);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Введите ограничение по времени в минутах:";
-            // 
-            // add_new_test_to_db
-            // 
-            this.add_new_test_to_db.BackColor = System.Drawing.Color.SteelBlue;
-            this.add_new_test_to_db.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.add_new_test_to_db.FlatAppearance.BorderSize = 2;
-            this.add_new_test_to_db.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.add_new_test_to_db.Location = new System.Drawing.Point(470, 350);
-            this.add_new_test_to_db.Name = "add_new_test_to_db";
-            this.add_new_test_to_db.Size = new System.Drawing.Size(299, 46);
-            this.add_new_test_to_db.TabIndex = 3;
-            this.add_new_test_to_db.Text = "Создать тест";
-            this.add_new_test_to_db.UseVisualStyleBackColor = false;
-            this.add_new_test_to_db.Click += new System.EventHandler(this.Add_new_test_to_db_Click);
-            // 
-            // new_timer_textBox
-            // 
-            this.new_timer_textBox.Location = new System.Drawing.Point(6, 160);
-            this.new_timer_textBox.Name = "new_timer_textBox";
-            this.new_timer_textBox.Size = new System.Drawing.Size(125, 28);
-            this.new_timer_textBox.TabIndex = 1;
-            this.new_timer_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_timer_textBox_KeyPress);
-            // 
-            // new_test_name_textBox
-            // 
-            this.new_test_name_textBox.Location = new System.Drawing.Point(6, 38);
-            this.new_test_name_textBox.Multiline = true;
-            this.new_test_name_textBox.Name = "new_test_name_textBox";
-            this.new_test_name_textBox.Size = new System.Drawing.Size(763, 54);
-            this.new_test_name_textBox.TabIndex = 0;
-            this.new_test_name_textBox.Text = "Введите название теста";
-            this.new_test_name_textBox.Click += new System.EventHandler(this.New_test_name_textBox_Click);
-            this.new_test_name_textBox.TextChanged += new System.EventHandler(this.New_test_name_textBox_TextChanged);
-            this.new_test_name_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_test_name_textBox_KeyPress);
-            this.new_test_name_textBox.Leave += new System.EventHandler(this.New_test_name_textBox_Leave);
-            // 
             // edit_tests_page
             // 
             this.edit_tests_page.BackColor = System.Drawing.Color.AliceBlue;
@@ -1215,13 +1215,14 @@
             this.edit_test_groupBox.Controls.Add(this.label14);
             this.edit_test_groupBox.Controls.Add(this.cancel_edit_button);
             this.edit_test_groupBox.Controls.Add(this.confirm_change_button);
-            this.edit_test_groupBox.Controls.Add(this.available_teacher_tests_comboBox);
             this.edit_test_groupBox.Controls.Add(this.new_comment_panel);
             this.edit_test_groupBox.Controls.Add(this.delete_task_panel);
             this.edit_test_groupBox.Controls.Add(this.add_task_or_delete_version_panel);
             this.edit_test_groupBox.Controls.Add(this.new_name_panel);
             this.edit_test_groupBox.Controls.Add(this.new_timer_panel);
+            this.edit_test_groupBox.Controls.Add(this.available_teacher_tests_comboBox);
             this.edit_test_groupBox.Controls.Add(this.edit_task_panel);
+            this.edit_test_groupBox.Controls.Add(this.edit_task_panel2);
             this.edit_test_groupBox.Location = new System.Drawing.Point(1, 0);
             this.edit_test_groupBox.Name = "edit_test_groupBox";
             this.edit_test_groupBox.Size = new System.Drawing.Size(1000, 599);
@@ -1229,6 +1230,17 @@
             this.edit_test_groupBox.TabStop = false;
             this.edit_test_groupBox.Visible = false;
             this.edit_test_groupBox.VisibleChanged += new System.EventHandler(this.Edit_test_groupBox_VisibleChanged);
+            // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label14.Location = new System.Drawing.Point(12, 30);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(968, 59);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Выберите тип изменения и изменяемый объект из выпадающего списка (чтобы открыть с" +
+    "писок нажмите на вкладку \"Редактировать тест\"). Затем заполние поля и нажмите кн" +
+    "опку \"Подтвердить\".";
             // 
             // cancel_edit_button
             // 
@@ -1262,19 +1274,6 @@
             this.confirm_change_button.Text = "Подтвердить";
             this.confirm_change_button.UseVisualStyleBackColor = false;
             this.confirm_change_button.Click += new System.EventHandler(this.Confirm_change_button_Click);
-            // 
-            // available_teacher_tests_comboBox
-            // 
-            this.available_teacher_tests_comboBox.FormattingEnabled = true;
-            this.available_teacher_tests_comboBox.Location = new System.Drawing.Point(12, 100);
-            this.available_teacher_tests_comboBox.Name = "available_teacher_tests_comboBox";
-            this.available_teacher_tests_comboBox.Size = new System.Drawing.Size(855, 29);
-            this.available_teacher_tests_comboBox.TabIndex = 5;
-            this.available_teacher_tests_comboBox.TabStop = false;
-            this.available_teacher_tests_comboBox.Text = "Выберите тест";
-            this.available_teacher_tests_comboBox.SelectionChangeCommitted += new System.EventHandler(this.Available_teacher_tests_comboBox_SelectionChangeCommitted);
-            this.available_teacher_tests_comboBox.VisibleChanged += new System.EventHandler(this.available_teacher_tests_comboBox_VisibleChanged);
-            this.available_teacher_tests_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Available_teacher_tests_comboBox_KeyPress);
             // 
             // new_comment_panel
             // 
@@ -1352,42 +1351,104 @@
     "Даже после того, как вы удалите его, оно останется в общем списке тестовых задан" +
     "ий.";
             // 
-            // edit_task_panel
+            // add_task_or_delete_version_panel
             // 
-            this.edit_task_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.add_task_or_delete_version_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.edit_task_panel.ContextMenuStrip = this.contextMenuStrip1;
-            this.edit_task_panel.Controls.Add(this.choose_task_comboBox);
-            this.edit_task_panel.Controls.Add(this.label11);
-            this.edit_task_panel.Controls.Add(this.edit_task_panel2);
-            this.edit_task_panel.Location = new System.Drawing.Point(0, 0);
-            this.edit_task_panel.Name = "edit_task_panel";
-            this.edit_task_panel.Size = new System.Drawing.Size(1000, 528);
-            this.edit_task_panel.TabIndex = 6;
-            this.edit_task_panel.Visible = false;
+            this.add_task_or_delete_version_panel.BackColor = System.Drawing.Color.Lavender;
+            this.add_task_or_delete_version_panel.Controls.Add(this.choose_deleted_version_comboBox);
+            this.add_task_or_delete_version_panel.Location = new System.Drawing.Point(6, 135);
+            this.add_task_or_delete_version_panel.Name = "add_task_or_delete_version_panel";
+            this.add_task_or_delete_version_panel.Size = new System.Drawing.Size(987, 393);
+            this.add_task_or_delete_version_panel.TabIndex = 14;
+            this.add_task_or_delete_version_panel.Visible = false;
+            this.add_task_or_delete_version_panel.VisibleChanged += new System.EventHandler(this.Delete_version_panel_VisibleChanged);
             // 
-            // choose_task_comboBox
+            // choose_deleted_version_comboBox
             // 
-            this.choose_task_comboBox.FormattingEnabled = true;
-            this.choose_task_comboBox.Location = new System.Drawing.Point(10, 76);
-            this.choose_task_comboBox.Name = "choose_task_comboBox";
-            this.choose_task_comboBox.Size = new System.Drawing.Size(858, 29);
-            this.choose_task_comboBox.TabIndex = 17;
-            this.choose_task_comboBox.TabStop = false;
-            this.choose_task_comboBox.Text = "Выберите вопрос для редактирования";
+            this.choose_deleted_version_comboBox.FormattingEnabled = true;
+            this.choose_deleted_version_comboBox.Location = new System.Drawing.Point(6, 46);
+            this.choose_deleted_version_comboBox.Name = "choose_deleted_version_comboBox";
+            this.choose_deleted_version_comboBox.Size = new System.Drawing.Size(416, 29);
+            this.choose_deleted_version_comboBox.TabIndex = 5;
+            this.choose_deleted_version_comboBox.TabStop = false;
+            this.choose_deleted_version_comboBox.Text = "Выберите вариант";
+            this.choose_deleted_version_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Choose_deleted_version_comboBox_KeyPress);
             // 
-            // label11
+            // new_name_panel
             // 
-            this.label11.BackColor = System.Drawing.Color.Lavender;
-            this.label11.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(6, 14);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(812, 59);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Выберите тестовое задание, которое хотите изменить . После этого появится панель " +
-    "с  текущими данными. Измените информацию только в тех полях, данные в которых не" +
-    "обходимо отредактировать.";
+            this.new_name_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.new_name_panel.BackColor = System.Drawing.Color.Lavender;
+            this.new_name_panel.Controls.Add(this.new_name_textBox);
+            this.new_name_panel.Location = new System.Drawing.Point(6, 135);
+            this.new_name_panel.Name = "new_name_panel";
+            this.new_name_panel.Size = new System.Drawing.Size(990, 393);
+            this.new_name_panel.TabIndex = 7;
+            this.new_name_panel.Visible = false;
+            this.new_name_panel.VisibleChanged += new System.EventHandler(this.New_name_panel_VisibleChanged);
+            // 
+            // new_name_textBox
+            // 
+            this.new_name_textBox.Location = new System.Drawing.Point(7, 42);
+            this.new_name_textBox.Multiline = true;
+            this.new_name_textBox.Name = "new_name_textBox";
+            this.new_name_textBox.Size = new System.Drawing.Size(920, 75);
+            this.new_name_textBox.TabIndex = 0;
+            this.new_name_textBox.TabStop = false;
+            this.new_name_textBox.Text = "Введите новое название";
+            this.new_name_textBox.Click += new System.EventHandler(this.New_name_textBox_Click);
+            this.new_name_textBox.TextChanged += new System.EventHandler(this.New_name_textBox_TextChanged);
+            this.new_name_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_name_textBox_KeyPress);
+            this.new_name_textBox.Leave += new System.EventHandler(this.New_name_textBox_Leave);
+            // 
+            // new_timer_panel
+            // 
+            this.new_timer_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.new_timer_panel.BackColor = System.Drawing.Color.Lavender;
+            this.new_timer_panel.Controls.Add(this.edit_timer_textBox);
+            this.new_timer_panel.Controls.Add(this.label8);
+            this.new_timer_panel.Location = new System.Drawing.Point(2, 135);
+            this.new_timer_panel.Name = "new_timer_panel";
+            this.new_timer_panel.Size = new System.Drawing.Size(994, 393);
+            this.new_timer_panel.TabIndex = 9;
+            this.new_timer_panel.Visible = false;
+            this.new_timer_panel.VisibleChanged += new System.EventHandler(this.New_timer_panel_VisibleChanged);
+            // 
+            // edit_timer_textBox
+            // 
+            this.edit_timer_textBox.Location = new System.Drawing.Point(12, 69);
+            this.edit_timer_textBox.Name = "edit_timer_textBox";
+            this.edit_timer_textBox.Size = new System.Drawing.Size(125, 28);
+            this.edit_timer_textBox.TabIndex = 1;
+            this.edit_timer_textBox.TabStop = false;
+            this.edit_timer_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Edit_timer_textBox_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 35);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(334, 21);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Введите ограничение по времени в минутах:";
+            // 
+            // available_teacher_tests_comboBox
+            // 
+            this.available_teacher_tests_comboBox.FormattingEnabled = true;
+            this.available_teacher_tests_comboBox.Location = new System.Drawing.Point(12, 100);
+            this.available_teacher_tests_comboBox.Name = "available_teacher_tests_comboBox";
+            this.available_teacher_tests_comboBox.Size = new System.Drawing.Size(855, 29);
+            this.available_teacher_tests_comboBox.TabIndex = 5;
+            this.available_teacher_tests_comboBox.TabStop = false;
+            this.available_teacher_tests_comboBox.Text = "Выберите тест";
+            this.available_teacher_tests_comboBox.SelectionChangeCommitted += new System.EventHandler(this.Available_teacher_tests_comboBox_SelectionChangeCommitted);
+            this.available_teacher_tests_comboBox.VisibleChanged += new System.EventHandler(this.available_teacher_tests_comboBox_VisibleChanged);
+            this.available_teacher_tests_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Available_teacher_tests_comboBox_KeyPress);
             // 
             // edit_task_panel2
             // 
@@ -1413,11 +1474,12 @@
             this.edit_task_panel2.Controls.Add(this.checkBox9);
             this.edit_task_panel2.Controls.Add(this.checkBox11);
             this.edit_task_panel2.Controls.Add(this.checkBox10);
-            this.edit_task_panel2.Location = new System.Drawing.Point(3, 54);
+            this.edit_task_panel2.Location = new System.Drawing.Point(0, 0);
             this.edit_task_panel2.Name = "edit_task_panel2";
-            this.edit_task_panel2.Size = new System.Drawing.Size(994, 474);
+            this.edit_task_panel2.Size = new System.Drawing.Size(997, 476);
             this.edit_task_panel2.TabIndex = 16;
             this.edit_task_panel2.Visible = false;
+            this.edit_task_panel2.VisibleChanged += new System.EventHandler(this.Edit_task_panel2_VisibleChanged);
             // 
             // edit_answer_id_textBox4
             // 
@@ -1583,91 +1645,43 @@
             this.checkBox10.Text = "Правильный ответ?";
             this.checkBox10.UseVisualStyleBackColor = true;
             // 
-            // add_task_or_delete_version_panel
+            // edit_task_panel
             // 
-            this.add_task_or_delete_version_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.edit_task_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.add_task_or_delete_version_panel.BackColor = System.Drawing.Color.Lavender;
-            this.add_task_or_delete_version_panel.Controls.Add(this.choose_deleted_version_comboBox);
-            this.add_task_or_delete_version_panel.Location = new System.Drawing.Point(6, 135);
-            this.add_task_or_delete_version_panel.Name = "add_task_or_delete_version_panel";
-            this.add_task_or_delete_version_panel.Size = new System.Drawing.Size(987, 393);
-            this.add_task_or_delete_version_panel.TabIndex = 14;
-            this.add_task_or_delete_version_panel.Visible = false;
-            this.add_task_or_delete_version_panel.VisibleChanged += new System.EventHandler(this.Delete_version_panel_VisibleChanged);
+            this.edit_task_panel.ContextMenuStrip = this.contextMenuStrip1;
+            this.edit_task_panel.Controls.Add(this.choose_task_comboBox);
+            this.edit_task_panel.Controls.Add(this.label11);
+            this.edit_task_panel.Location = new System.Drawing.Point(0, 0);
+            this.edit_task_panel.Name = "edit_task_panel";
+            this.edit_task_panel.Size = new System.Drawing.Size(1000, 528);
+            this.edit_task_panel.TabIndex = 6;
+            this.edit_task_panel.Visible = false;
+            this.edit_task_panel.VisibleChanged += new System.EventHandler(this.Edit_task_panel_VisibleChanged);
             // 
-            // choose_deleted_version_comboBox
+            // choose_task_comboBox
             // 
-            this.choose_deleted_version_comboBox.FormattingEnabled = true;
-            this.choose_deleted_version_comboBox.Location = new System.Drawing.Point(6, 46);
-            this.choose_deleted_version_comboBox.Name = "choose_deleted_version_comboBox";
-            this.choose_deleted_version_comboBox.Size = new System.Drawing.Size(416, 29);
-            this.choose_deleted_version_comboBox.TabIndex = 5;
-            this.choose_deleted_version_comboBox.TabStop = false;
-            this.choose_deleted_version_comboBox.Text = "Выберите вариант";
-            this.choose_deleted_version_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Choose_deleted_version_comboBox_KeyPress);
+            this.choose_task_comboBox.FormattingEnabled = true;
+            this.choose_task_comboBox.Location = new System.Drawing.Point(10, 92);
+            this.choose_task_comboBox.Name = "choose_task_comboBox";
+            this.choose_task_comboBox.Size = new System.Drawing.Size(858, 29);
+            this.choose_task_comboBox.TabIndex = 17;
+            this.choose_task_comboBox.TabStop = false;
+            this.choose_task_comboBox.Text = "Выберите вопрос для редактирования";
+            this.choose_task_comboBox.SelectionChangeCommitted += new System.EventHandler(this.choose_task_comboBox_SelectionChangeCommitted);
             // 
-            // new_name_panel
+            // label11
             // 
-            this.new_name_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.new_name_panel.BackColor = System.Drawing.Color.Lavender;
-            this.new_name_panel.Controls.Add(this.new_name_textBox);
-            this.new_name_panel.Location = new System.Drawing.Point(6, 135);
-            this.new_name_panel.Name = "new_name_panel";
-            this.new_name_panel.Size = new System.Drawing.Size(990, 393);
-            this.new_name_panel.TabIndex = 7;
-            this.new_name_panel.Visible = false;
-            this.new_name_panel.VisibleChanged += new System.EventHandler(this.New_name_panel_VisibleChanged);
-            // 
-            // new_name_textBox
-            // 
-            this.new_name_textBox.Location = new System.Drawing.Point(7, 42);
-            this.new_name_textBox.Multiline = true;
-            this.new_name_textBox.Name = "new_name_textBox";
-            this.new_name_textBox.Size = new System.Drawing.Size(920, 75);
-            this.new_name_textBox.TabIndex = 0;
-            this.new_name_textBox.TabStop = false;
-            this.new_name_textBox.Text = "Введите новое название";
-            this.new_name_textBox.Click += new System.EventHandler(this.New_name_textBox_Click);
-            this.new_name_textBox.TextChanged += new System.EventHandler(this.New_name_textBox_TextChanged);
-            this.new_name_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.New_name_textBox_KeyPress);
-            this.new_name_textBox.Leave += new System.EventHandler(this.New_name_textBox_Leave);
-            // 
-            // new_timer_panel
-            // 
-            this.new_timer_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.new_timer_panel.BackColor = System.Drawing.Color.Lavender;
-            this.new_timer_panel.Controls.Add(this.edit_timer_textBox);
-            this.new_timer_panel.Controls.Add(this.label8);
-            this.new_timer_panel.Location = new System.Drawing.Point(2, 135);
-            this.new_timer_panel.Name = "new_timer_panel";
-            this.new_timer_panel.Size = new System.Drawing.Size(994, 393);
-            this.new_timer_panel.TabIndex = 9;
-            this.new_timer_panel.Visible = false;
-            this.new_timer_panel.VisibleChanged += new System.EventHandler(this.New_timer_panel_VisibleChanged);
-            // 
-            // edit_timer_textBox
-            // 
-            this.edit_timer_textBox.Location = new System.Drawing.Point(12, 69);
-            this.edit_timer_textBox.Name = "edit_timer_textBox";
-            this.edit_timer_textBox.Size = new System.Drawing.Size(125, 28);
-            this.edit_timer_textBox.TabIndex = 1;
-            this.edit_timer_textBox.TabStop = false;
-            this.edit_timer_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Edit_timer_textBox_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 35);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(334, 21);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Введите ограничение по времени в минутах:";
+            this.label11.BackColor = System.Drawing.Color.Lavender;
+            this.label11.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(6, 14);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(812, 59);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Выберите тестовое задание, которое хотите изменить . После этого появится панель " +
+    "с  текущими данными. Измените информацию только в тех полях, данные в которых не" +
+    "обходимо отредактировать.";
             // 
             // profile_page
             // 
@@ -2198,17 +2212,114 @@
             // 
             this.students_page.BackColor = System.Drawing.Color.Lavender;
             this.students_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.students_page.Controls.Add(this.test_access_panel);
             this.students_page.Controls.Add(this.change_student_group_panel);
             this.students_page.Controls.Add(this.change_group_name_panel);
             this.students_page.Controls.Add(this.splitContainer1);
             this.students_page.Controls.Add(this.create_student_groupBox);
-            this.students_page.Controls.Add(this.test_access_panel);
             this.students_page.Location = new System.Drawing.Point(4, 30);
             this.students_page.Name = "students_page";
             this.students_page.Padding = new System.Windows.Forms.Padding(3);
             this.students_page.Size = new System.Drawing.Size(1008, 628);
             this.students_page.TabIndex = 3;
             this.students_page.Text = "Студенты и группы";
+            // 
+            // test_access_panel
+            // 
+            this.test_access_panel.BackColor = System.Drawing.Color.Lavender;
+            this.test_access_panel.Controls.Add(this.prohibit_radioButton);
+            this.test_access_panel.Controls.Add(this.allow_radioButton);
+            this.test_access_panel.Controls.Add(this.label24);
+            this.test_access_panel.Controls.Add(this.label23);
+            this.test_access_panel.Controls.Add(this.cancel_test_access_button);
+            this.test_access_panel.Controls.Add(this.ok_test_access_button);
+            this.test_access_panel.Controls.Add(this.test_access_comboBox);
+            this.test_access_panel.Location = new System.Drawing.Point(10, 10);
+            this.test_access_panel.Name = "test_access_panel";
+            this.test_access_panel.Size = new System.Drawing.Size(601, 292);
+            this.test_access_panel.TabIndex = 4;
+            this.test_access_panel.Visible = false;
+            this.test_access_panel.VisibleChanged += new System.EventHandler(this.Test_access_panel_VisibleChanged);
+            // 
+            // prohibit_radioButton
+            // 
+            this.prohibit_radioButton.AutoSize = true;
+            this.prohibit_radioButton.Location = new System.Drawing.Point(16, 181);
+            this.prohibit_radioButton.Name = "prohibit_radioButton";
+            this.prohibit_radioButton.Size = new System.Drawing.Size(157, 25);
+            this.prohibit_radioButton.TabIndex = 2;
+            this.prohibit_radioButton.TabStop = true;
+            this.prohibit_radioButton.Text = "Запретить доступ";
+            this.tip3.SetToolTip(this.prohibit_radioButton, "Все результаты студента/группы будут удалены.");
+            this.prohibit_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // allow_radioButton
+            // 
+            this.allow_radioButton.AutoSize = true;
+            this.allow_radioButton.Location = new System.Drawing.Point(16, 142);
+            this.allow_radioButton.Name = "allow_radioButton";
+            this.allow_radioButton.Size = new System.Drawing.Size(161, 25);
+            this.allow_radioButton.TabIndex = 1;
+            this.allow_radioButton.TabStop = true;
+            this.allow_radioButton.Text = "Разрешить доступ";
+            this.tip3.SetToolTip(this.allow_radioButton, "Студент получит возможность пройти тест 1 раз. \r\nЕсли необходимы еще попытка снов" +
+        "а предоставьте доступ к тесту.");
+            this.allow_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(20, 109);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(154, 21);
+            this.label24.TabIndex = 10;
+            this.label24.Text = "Выберите действие:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(20, 32);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(118, 21);
+            this.label23.TabIndex = 8;
+            this.label23.Text = "Выберите тест:";
+            // 
+            // cancel_test_access_button
+            // 
+            this.cancel_test_access_button.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_test_access_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_test_access_button.FlatAppearance.BorderSize = 2;
+            this.cancel_test_access_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel_test_access_button.Location = new System.Drawing.Point(241, 235);
+            this.cancel_test_access_button.Name = "cancel_test_access_button";
+            this.cancel_test_access_button.Size = new System.Drawing.Size(110, 42);
+            this.cancel_test_access_button.TabIndex = 3;
+            this.cancel_test_access_button.Text = "Отмена";
+            this.cancel_test_access_button.UseVisualStyleBackColor = false;
+            this.cancel_test_access_button.Click += new System.EventHandler(this.Cancel_test_access_button_Click);
+            // 
+            // ok_test_access_button
+            // 
+            this.ok_test_access_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.ok_test_access_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.ok_test_access_button.FlatAppearance.BorderSize = 2;
+            this.ok_test_access_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ok_test_access_button.Location = new System.Drawing.Point(357, 235);
+            this.ok_test_access_button.Name = "ok_test_access_button";
+            this.ok_test_access_button.Size = new System.Drawing.Size(207, 42);
+            this.ok_test_access_button.TabIndex = 4;
+            this.ok_test_access_button.Text = "Подтвердить";
+            this.ok_test_access_button.UseVisualStyleBackColor = false;
+            this.ok_test_access_button.Click += new System.EventHandler(this.Ok_test_access_button_Click);
+            // 
+            // test_access_comboBox
+            // 
+            this.test_access_comboBox.FormattingEnabled = true;
+            this.test_access_comboBox.Location = new System.Drawing.Point(16, 63);
+            this.test_access_comboBox.Name = "test_access_comboBox";
+            this.test_access_comboBox.Size = new System.Drawing.Size(548, 29);
+            this.test_access_comboBox.TabIndex = 0;
+            this.test_access_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Test_access_comboBox_KeyPress);
             // 
             // change_student_group_panel
             // 
@@ -2397,7 +2508,7 @@
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.students_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.students_dataGridView.RowHeadersWidth = 10;
-            this.students_dataGridView.RowTemplate.Height = 24;
+            this.students_dataGridView.RowTemplate.Height = 50;
             this.students_dataGridView.RowTemplate.ReadOnly = true;
             this.students_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.students_dataGridView.Size = new System.Drawing.Size(663, 535);
@@ -2664,103 +2775,6 @@
             this.full_name_textBox1.TextChanged += new System.EventHandler(this.Full_name_textBox1_TextChanged);
             this.full_name_textBox1.Leave += new System.EventHandler(this.Full_name_textBox1_Leave);
             // 
-            // test_access_panel
-            // 
-            this.test_access_panel.BackColor = System.Drawing.Color.Lavender;
-            this.test_access_panel.Controls.Add(this.prohibit_radioButton);
-            this.test_access_panel.Controls.Add(this.allow_radioButton);
-            this.test_access_panel.Controls.Add(this.label24);
-            this.test_access_panel.Controls.Add(this.label23);
-            this.test_access_panel.Controls.Add(this.cancel_test_access_button);
-            this.test_access_panel.Controls.Add(this.ok_test_access_button);
-            this.test_access_panel.Controls.Add(this.test_access_comboBox);
-            this.test_access_panel.Location = new System.Drawing.Point(10, 10);
-            this.test_access_panel.Name = "test_access_panel";
-            this.test_access_panel.Size = new System.Drawing.Size(601, 292);
-            this.test_access_panel.TabIndex = 4;
-            this.test_access_panel.Visible = false;
-            this.test_access_panel.VisibleChanged += new System.EventHandler(this.Test_access_panel_VisibleChanged);
-            // 
-            // prohibit_radioButton
-            // 
-            this.prohibit_radioButton.AutoSize = true;
-            this.prohibit_radioButton.Location = new System.Drawing.Point(16, 181);
-            this.prohibit_radioButton.Name = "prohibit_radioButton";
-            this.prohibit_radioButton.Size = new System.Drawing.Size(157, 25);
-            this.prohibit_radioButton.TabIndex = 2;
-            this.prohibit_radioButton.TabStop = true;
-            this.prohibit_radioButton.Text = "Запретить доступ";
-            this.tip3.SetToolTip(this.prohibit_radioButton, "Все результаты студента/группы будут удалены.");
-            this.prohibit_radioButton.UseVisualStyleBackColor = true;
-            // 
-            // allow_radioButton
-            // 
-            this.allow_radioButton.AutoSize = true;
-            this.allow_radioButton.Location = new System.Drawing.Point(16, 142);
-            this.allow_radioButton.Name = "allow_radioButton";
-            this.allow_radioButton.Size = new System.Drawing.Size(161, 25);
-            this.allow_radioButton.TabIndex = 1;
-            this.allow_radioButton.TabStop = true;
-            this.allow_radioButton.Text = "Разрешить доступ";
-            this.tip3.SetToolTip(this.allow_radioButton, "Студент получит возможность пройти тест 1 раз. \r\nЕсли необходимы еще попытка снов" +
-        "а предоставьте доступ к тесту.");
-            this.allow_radioButton.UseVisualStyleBackColor = true;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(20, 109);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(154, 21);
-            this.label24.TabIndex = 10;
-            this.label24.Text = "Выберите действие:";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(20, 32);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(118, 21);
-            this.label23.TabIndex = 8;
-            this.label23.Text = "Выберите тест:";
-            // 
-            // cancel_test_access_button
-            // 
-            this.cancel_test_access_button.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.cancel_test_access_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.cancel_test_access_button.FlatAppearance.BorderSize = 2;
-            this.cancel_test_access_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancel_test_access_button.Location = new System.Drawing.Point(241, 235);
-            this.cancel_test_access_button.Name = "cancel_test_access_button";
-            this.cancel_test_access_button.Size = new System.Drawing.Size(110, 42);
-            this.cancel_test_access_button.TabIndex = 3;
-            this.cancel_test_access_button.Text = "Отмена";
-            this.cancel_test_access_button.UseVisualStyleBackColor = false;
-            this.cancel_test_access_button.Click += new System.EventHandler(this.Cancel_test_access_button_Click);
-            // 
-            // ok_test_access_button
-            // 
-            this.ok_test_access_button.BackColor = System.Drawing.Color.SteelBlue;
-            this.ok_test_access_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.ok_test_access_button.FlatAppearance.BorderSize = 2;
-            this.ok_test_access_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ok_test_access_button.Location = new System.Drawing.Point(357, 235);
-            this.ok_test_access_button.Name = "ok_test_access_button";
-            this.ok_test_access_button.Size = new System.Drawing.Size(207, 42);
-            this.ok_test_access_button.TabIndex = 4;
-            this.ok_test_access_button.Text = "Подтвердить";
-            this.ok_test_access_button.UseVisualStyleBackColor = false;
-            this.ok_test_access_button.Click += new System.EventHandler(this.Ok_test_access_button_Click);
-            // 
-            // test_access_comboBox
-            // 
-            this.test_access_comboBox.FormattingEnabled = true;
-            this.test_access_comboBox.Location = new System.Drawing.Point(16, 63);
-            this.test_access_comboBox.Name = "test_access_comboBox";
-            this.test_access_comboBox.Size = new System.Drawing.Size(548, 29);
-            this.test_access_comboBox.TabIndex = 0;
-            this.test_access_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Test_access_comboBox_KeyPress);
-            // 
             // marks_journal_page
             // 
             this.marks_journal_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -2952,17 +2966,6 @@
             this.tip2.ShowAlways = true;
             this.tip2.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
-            // label14
-            // 
-            this.label14.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label14.Location = new System.Drawing.Point(12, 30);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(968, 59);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "Выберите тип изменения и изменяемый объект из выпадающего списка (чтобы открыть с" +
-    "писок нажмите на вкладку \"Редактировать тест\"). Затем заполние поля и нажмите кн" +
-    "опку \"Подтвердить\".";
-            // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2988,27 +2991,27 @@
             this.tasks_table_page.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.available_teacher_tasks_table)).EndInit();
             this.create_tests_page.ResumeLayout(false);
-            this.create_version_questions_groupBox.ResumeLayout(false);
-            this.create_version_questions_groupBox.PerformLayout();
-            this.select_existing_question_panel.ResumeLayout(false);
-            this.select_existing_question_panel.PerformLayout();
-            this.create_new_question_panel.ResumeLayout(false);
-            this.create_new_question_panel.PerformLayout();
             this.create_test_groupBox.ResumeLayout(false);
             this.create_test_groupBox.PerformLayout();
+            this.create_version_questions_groupBox.ResumeLayout(false);
+            this.create_version_questions_groupBox.PerformLayout();
+            this.create_new_question_panel.ResumeLayout(false);
+            this.create_new_question_panel.PerformLayout();
+            this.select_existing_question_panel.ResumeLayout(false);
+            this.select_existing_question_panel.PerformLayout();
             this.edit_tests_page.ResumeLayout(false);
             this.edit_test_groupBox.ResumeLayout(false);
             this.new_comment_panel.ResumeLayout(false);
             this.new_comment_panel.PerformLayout();
             this.delete_task_panel.ResumeLayout(false);
-            this.edit_task_panel.ResumeLayout(false);
-            this.edit_task_panel2.ResumeLayout(false);
-            this.edit_task_panel2.PerformLayout();
             this.add_task_or_delete_version_panel.ResumeLayout(false);
             this.new_name_panel.ResumeLayout(false);
             this.new_name_panel.PerformLayout();
             this.new_timer_panel.ResumeLayout(false);
             this.new_timer_panel.PerformLayout();
+            this.edit_task_panel2.ResumeLayout(false);
+            this.edit_task_panel2.PerformLayout();
+            this.edit_task_panel.ResumeLayout(false);
             this.profile_page.ResumeLayout(false);
             this.teacher_profile_main_panel.ResumeLayout(false);
             this.teacher_profile_main_panel.PerformLayout();
@@ -3022,6 +3025,8 @@
             this.teacher_identity_check_panel.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.students_page.ResumeLayout(false);
+            this.test_access_panel.ResumeLayout(false);
+            this.test_access_panel.PerformLayout();
             this.change_student_group_panel.ResumeLayout(false);
             this.change_student_group_panel.PerformLayout();
             this.change_group_name_panel.ResumeLayout(false);
@@ -3036,8 +3041,6 @@
             this.panel3.ResumeLayout(false);
             this.create_student_groupBox.ResumeLayout(false);
             this.create_student_groupBox.PerformLayout();
-            this.test_access_panel.ResumeLayout(false);
-            this.test_access_panel.PerformLayout();
             this.marks_journal_page.ResumeLayout(false);
             this.tabControl4.ResumeLayout(false);
             this.group_journal_page.ResumeLayout(false);

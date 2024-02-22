@@ -10,21 +10,22 @@ namespace testing_program
             combobox.SelectedIndex = -1;
         }
 
+        public void Add_item(ComboBox combobox, string item)
+        {
+            combobox.Items.Add(item);
+        }
+
         public void Delete_collection(ComboBox combobox)
         {
             combobox.Items.Clear();
         }
+
         public void Delete_collection(ComboBox[] arr)
         {
             for (int i = 0; i < arr.Length; ++i)
             {
                 arr[i].Items.Clear();
             }
-        }
-
-        public void Add_item(ComboBox combobox, string item)
-        {
-            combobox.Items.Add(item);
         }
 
         public void Return_original_text(ComboBox combobox, string text)
@@ -42,14 +43,15 @@ namespace testing_program
             }    
         }
 
+        public void Change_visible(ComboBox comboBox, bool value)
+        {
+            comboBox.Visible = value;
+        }
+
         public void Change_visible(ComboBox[] arr, bool value)
         {
             for (int i = 0; i < arr.Length; ++i)
                 arr[i].Visible = value;
-        }
-        public void Change_visible(ComboBox comboBox, bool value)
-        {
-            comboBox.Visible = value;
         }
 
         public bool Check_selected_index_changed(ComboBox combobox)

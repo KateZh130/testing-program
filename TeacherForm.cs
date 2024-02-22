@@ -8,6 +8,7 @@ namespace testing_program
 {
     public partial class TeacherForm : Form
     {
+        #region Class instancees
         readonly TextboxClass textbox = new TextboxClass();
         readonly CheckboxClass checkbox = new CheckboxClass();
         readonly ComboboxClass combobox = new ComboboxClass();
@@ -15,6 +16,9 @@ namespace testing_program
         readonly RadiobuttonClass radiobutton = new RadiobuttonClass();
         readonly GroupboxPanelClass panel = new GroupboxPanelClass();
         readonly DatabaseClass database;
+        #endregion
+
+        #region Variables
         DialogResult dialogResult;
         private int test_id = 0;
         private int version_id = 0;
@@ -27,7 +31,11 @@ namespace testing_program
         bool edit_mode = false;
         bool create_mode = false;
         bool contextmenustrip1_enabled = false;
+        #endregion
+
+        #region Lists
         List<string> questions_text = new List<string>();
+        #endregion
 
         public TeacherForm(DatabaseClass database, int user_id)
         {
@@ -39,7 +47,8 @@ namespace testing_program
             data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table);
             data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
         }
-        //*****************закрытие приложения*********************
+
+        #region Close application
         private void TeacherForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (create_mode && test_id != 0)
@@ -58,14 +67,19 @@ namespace testing_program
             }
             else Application.Exit();
         }
-        //********************вкладка профиль*****************************************
-        //***********************выход из профиля*********************
+        #endregion
+
+        #region Profile tab
+
+        #region Log out
         private void Exit_student_profile_button_Click(object sender, EventArgs e)
         {
             Application.OpenForms[0].Show();
             this.Hide();
         }
-        //***********************удаление профиля************************
+        #endregion
+
+        #region Delete an account
         private void Delete_teacher_profile_button_Click(object sender, EventArgs e)
         {
             dialogResult = MessageBox.Show("Вы уверены, что ходите безвозвратно удалить аккаунт? ", "Предупреждение", MessageBoxButtons.YesNo);
@@ -77,7 +91,12 @@ namespace testing_program
                 this.Hide();
             }
         }
-        //*************заполнение/очищение панелей профиля************
+        #endregion
+
+        #region Managing panels
+
+        #region Filling in/clearing profile panels
+
         private void Update_teacher_profile_panel()
         {
             panel.Change_visible(teacher_profile_main_panel, true);
@@ -96,7 +115,10 @@ namespace testing_program
                 Update_teacher_profile_panel();
             }
         }
-        //************открытие панелей изменения данных профиля***************
+        #endregion
+
+        # region Opening the account data modification panels
+
         private void Change_teacher_login_button_Click(object sender, EventArgs e)
         {
             panel.Change_visible(new Panel[] { change_teacher_login_panel, teacher_profile_main_panel }, new bool[] { true, false });
@@ -111,7 +133,10 @@ namespace testing_program
         {
             panel.Change_visible(new Panel[] { change_full_name_panel, teacher_profile_main_panel }, new bool[] { true, false });
         }
-        //****************отмена изменения данных профиля******************
+        #endregion
+
+        #region Cancel the account data change
+
         private void Cancel_change_teacher_login_button_Click(object sender, EventArgs e)
         {
             panel.Change_visible(new Panel[] { change_teacher_login_panel, teacher_profile_main_panel }, new bool[] { false, true });
@@ -134,7 +159,14 @@ namespace testing_program
             textbox.Clear(new TextBox[] { new_surname_textBox, new_teacher_name_textBox, new_patronymic_textBox });
             panel.Change_visible(new Panel[] { change_full_name_panel, teacher_profile_main_panel }, new bool[] { false, true });
         }
-        //**************изменение данных профиля****************
+        #endregion
+
+        #endregion
+
+        #region Changing account data
+
+        #region Login
+
         private void New_teacher_login_button_Click(object sender, EventArgs e)
         {
             if (textbox.Check_text_changed(new_teacher_login_textbox))
@@ -148,6 +180,9 @@ namespace testing_program
             }
             else MessageBox.Show("Заполните обязательные поля!");
         }
+        #endregion
+
+        #region Password
 
         private void New_teacher_password_button_Click(object sender, EventArgs e)
         {
@@ -179,6 +214,9 @@ namespace testing_program
             }
             else MessageBox.Show("Заполните обязательные поля!");
         }
+        #endregion
+
+        #region Name
 
         private void Continue_change_teacher_name_button_Click(object sender, EventArgs e)
         {
@@ -195,8 +233,16 @@ namespace testing_program
             }
             else MessageBox.Show("Заполните обязательные поля!");
         }
-        //********************вкладка конструктор тестов*************************************
-        //*****************вкладка тесты******************
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region Test constructor tab
+
+        #region Tests section
+
         private void Teacher_available_tests_table_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1)
@@ -247,8 +293,12 @@ namespace testing_program
                 combobox.Return_original_text(open_version_in_test_comboBox, "Выберите вариант");
             }
         }
-        //***************вкладка создания теста*******************
-        //****************Добавление в бд основной информации по тесту при создании*********************
+        #endregion
+
+        #region Create a test section
+
+        #region Start creating test
+
         private void Add_new_test_to_db_Click(object sender, EventArgs e)
         {
             if (textbox.Check_text_changed(new_test_name_textBox, "Введите название теста") && textbox.Check_text_changed(new_timer_textBox, "0"))
@@ -268,7 +318,10 @@ namespace testing_program
             }
             else MessageBox.Show("Заполните обязательные поля!");
         }
-        //***************переход на следующий вопрос****************
+        #endregion
+
+        #region Moving on to the next task
+
         private void Add_next_question_button_Click(object sender, EventArgs e)
         {
             string[] text = { "Введите текст вопроса", "Введите ответ №1", "Введите ответ №2", "Введите ответ №3", "Введите ответ №4" };
@@ -291,7 +344,10 @@ namespace testing_program
                 radiobutton.Clear_selection(select_existing_method_radioButton);
             }
         }
-        //***************переход на следующий вариант****************
+        #endregion
+
+        #region Moving on to the next version
+
         private void Create_next_version_Click(object sender, EventArgs e)
         {
             string[] text = { "Введите текст вопроса", "Введите ответ №1", "Введите ответ №2", "Введите ответ №3", "Введите ответ №4" };
@@ -318,7 +374,10 @@ namespace testing_program
                 radiobutton.Clear_selection(select_existing_method_radioButton);
             }
         }
-        //****************завершение создания теста**********************
+        #endregion
+
+        #region Finish creating test
+
         private void Finish_creating_test_Click(object sender, EventArgs e)
         {
             string[] text = { "Введите текст вопроса", "Введите ответ №1", "Введите ответ №2", "Введите ответ №3", "Введите ответ №4" };
@@ -345,11 +404,15 @@ namespace testing_program
                 data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
             }
         }
-        //******************сохранение тестового задания****************
+        #endregion
+
+        #region Save task
+
         private void Save_test_question(TextBox[] textBoxes, CheckBox[] checkBoxes)
         {
             int answer_id;
-            int question_id = database.Create_question_text(question_type_comboBox.SelectedIndex + 1, question_textBox.Text);
+            int question_id = database.Create_question_text(
+                question_type_comboBox.SelectedIndex + 1, question_textBox.Text);
             database.Create_version_question_connection(question_id, version_id);
             for (int i = 1; i < textBoxes.Length; ++i)
             {
@@ -357,10 +420,14 @@ namespace testing_program
                 database.Create_task(question_id, answer_id, checkBoxes[i - 1].Checked);
             }
         }
-        //*******проверка заполнения панелей и на соответствие количества правильных ответов типу вопроса****************
+        #endregion
+
+        #region Checking the task
+
         private bool Check_question_panel_is_filled(TextBox[] textBoxes, string[] text)
         {
-            if (combobox.Check_selected_index_changed(question_type_comboBox) && textbox.Check_text_changed(textBoxes, text))
+            if (combobox.Check_selected_index_changed(question_type_comboBox) && 
+                textbox.Check_text_changed(textBoxes, text))
                 return true;
             MessageBox.Show("Заполните обязательные поля!");
             return false;
@@ -378,7 +445,8 @@ namespace testing_program
             }
             if (type == 0 && counter == 1 || type == 1 && counter > 1)
                 return true;
-            MessageBox.Show("Тип вопроса не совпадает с количеством выбранных правильных ответов");
+            MessageBox.Show("Тип вопроса не совпадает " +
+                "с количеством выбранных правильных ответов");
             return false;
         }
 
@@ -403,7 +471,10 @@ namespace testing_program
                 return false;
             return true;
         }
-        //**************открытие панелей создания тестовых заданий*******************
+        #endregion
+
+        #region Opening the task creation panels
+
         private void New_method_radioButton_CheckedChanged(object sender, EventArgs e)
         {
             bool value = false;
@@ -420,7 +491,10 @@ namespace testing_program
                 value = true;
             panel.Change_visible(select_existing_question_panel, value);
         }
-        //*****************очищение/ заполнение панелей создания*****************
+        #endregion
+
+        #region Filling in/clearing creation panels
+
         private void Create_version_questions_groupBox_VisibleChanged(object sender, EventArgs e)
         {
             if (create_version_questions_groupBox.Visible)
@@ -533,8 +607,91 @@ namespace testing_program
                 }
             }
         }
-        //***********************вкладка редактирования теста**************
-        //********************редактирование*********************
+        #endregion
+
+        #endregion
+
+        #region Edit the test section
+
+        #region Editing
+
+        private void Confirm_change_button_Click(object sender, EventArgs e)
+        {
+            if (combobox.Check_selected_index_changed(available_teacher_tests_comboBox) || edit_method == 6)
+            {
+                string test_name = "";
+                if (combobox.Check_selected_index_changed(available_teacher_tests_comboBox))
+                    test_name = available_teacher_tests_comboBox.SelectedItem.ToString();
+                switch (edit_method)
+                {
+                    case 0:
+                        MessageBox.Show("Выберите раздел редактирования");
+                        break;
+                    case 1:
+                        Go_to_create_page(test_name);
+                        break;
+                    case 2:
+                        if (combobox.Check_selected_index_changed(choose_deleted_version_comboBox))
+                            Go_to_create_page(test_name);
+                        else MessageBox.Show("Заполните обязательные поля!");
+                        break;
+                    case 3:
+                        Update_test_name(test_name);
+                        break;
+                    case 4:
+                        Update_test_timer(test_name);
+                        break;
+                    case 5:
+                        Update_test_comment();
+                        break;
+                    case 6:
+                        if (selected_task_name!="")
+                        {
+                            if (!database.Check_question_exist(edit_test_name_textBox.Text, edit_question_type_comboBox.SelectedIndex + 1, user_id,
+                                Convert.ToInt32(edit_question_id_textBox.Text)) && Check_right_answers_number(new CheckBox[]
+                                { checkBox9, checkBox10, checkBox11, checkBox12 }, edit_question_type_comboBox.SelectedIndex)
+                                && textbox.Check_invalid_characters(new TextBox[] { edit_test_name_textBox, textBox1, textBox2, textBox3, textBox4 }, true))
+                            {
+                                Update_task();
+                                panel.Change_visible(edit_task_panel, false);
+                                panel.Change_visible(edit_task_panel2, false);
+
+                                combobox.Change_visible(available_teacher_tests_comboBox, true);
+                            }
+                        }
+                        else MessageBox.Show("Заполните обязательные поля!");
+                        break;
+                    case 7:
+                        if (combobox.Check_selected_index_changed(delete_mode_choose_version_comboBox) && combobox.Check_selected_index_changed(delete_task_comboBox))
+                        {
+                            Delete_task(test_name, Convert.ToInt32(delete_mode_choose_version_comboBox.SelectedItem), delete_task_comboBox.SelectedItem.ToString());
+                            panel.Change_visible(delete_task_panel, false);
+                        }
+                        else MessageBox.Show("Заполните обязательные поля!");
+                        break;
+                    case 8:
+                        if (combobox.Check_selected_index_changed(choose_deleted_version_comboBox))
+                        {
+                            Delete_version(test_name, Convert.ToInt32(choose_deleted_version_comboBox.SelectedItem));
+                            panel.Change_visible(add_task_or_delete_version_panel, false);
+                        }
+                        else MessageBox.Show("Заполните обязательные поля!");
+                        break;
+                    case 9:
+                        Delete_test(test_name);
+                        break;
+                }
+                combobox.Delete_collection(available_teacher_tests_comboBox);
+                combobox.Return_original_text(available_teacher_tests_comboBox, "Выберите тест");
+                database.Get_teacher_available_tests(user_id, available_teacher_tests_comboBox);
+                data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table);
+                data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
+                contextMenuStrip1.Show();
+            }
+            else MessageBox.Show("Заполните обязательные поля!");
+        }
+
+        #region Delete
         private void Delete_test(string test)
         {
             dialogResult = MessageBox.Show("Вы уверены, что хотите безвозвратно удалить выбранный тест?", "Предупреждение", MessageBoxButtons.YesNo);
@@ -591,98 +748,47 @@ namespace testing_program
                     database.Delete_version(user_id, Convert.ToInt32(delete_mode_choose_version_comboBox.SelectedItem), test);
             }
         }
+        #endregion
 
-        private void Confirm_change_button_Click(object sender, EventArgs e)
+        #region Update
+        private void Update_test_name(string test_name)
         {
-            if (combobox.Check_selected_index_changed(available_teacher_tests_comboBox) || edit_method == 6)
+            if (textbox.Check_text_changed(new_name_textBox, "Введите новое название"))
             {
-                string test_name = "";
-                if (combobox.Check_selected_index_changed(available_teacher_tests_comboBox))
-                    test_name = available_teacher_tests_comboBox.SelectedItem.ToString();
-                switch (edit_method)
+                if (!database.Check_test_exist(new_name_textBox.Text, user_id) && textbox.Check_invalid_characters(new_name_textBox, true))
                 {
-                    case 0:
-                        MessageBox.Show("Выберите раздел редактирования");
-                        break;
-                    case 1:
-                        Go_to_create_page(test_name);
-                        break;
-                    case 2:
-                        if (combobox.Check_selected_index_changed(choose_deleted_version_comboBox)) //проверить что панель заполнена
-                            Go_to_create_page(test_name);
-                        else MessageBox.Show("Заполните обязательные поля!");
-                        break;
-                    case 3:
-                        if (textbox.Check_text_changed(new_name_textBox, "Введите новое название"))
-                        {
-                            if (!database.Check_test_exist(new_name_textBox.Text, user_id) && textbox.Check_invalid_characters(new_name_textBox, true))
-                            {
-                                database.Update_test_name(user_id, test_name, new_name_textBox.Text);
-                                panel.Change_visible(new_name_panel, false);
-                            }
-                        }
-                        else MessageBox.Show("Заполните обязательные поля!");
-                        break;
-                    case 4:
-                        if (textbox.Check_text_changed(edit_timer_textBox))
-                        {
-                            database.Update_test_timer(user_id, Convert.ToInt32(edit_timer_textBox.Text), test_name);
-                            panel.Change_visible(new_timer_panel, false);
-
-                        }
-                        else MessageBox.Show("Заполните обязательные поля!");
-                        break;
-                    case 5:
-                        if (textbox.Check_text_changed(new_comment_textBox, "Введите комментарий к тесту") &&
-                            textbox.Check_invalid_characters(new_comment_textBox, true))
-                        {
-                            database.Update_test_comment(user_id, test_name, new_comment_textBox.Text);
-                            panel.Change_visible(new_comment_panel, false);
-
-                        }
-                        else MessageBox.Show("Заполните обязательные поля!");
-                        break;
-                    case 6:
-                        if (combobox.Check_selected_index_changed(choose_task_comboBox))
-                        {
-                            if (!database.Check_question_exist(edit_test_name_textBox.Text, edit_question_type_comboBox.SelectedIndex + 1, user_id,
-                                Convert.ToInt32(edit_question_id_textBox.Text)) && Check_right_answers_number(new CheckBox[]
-                                { checkBox9, checkBox10, checkBox11, checkBox12 }, edit_question_type_comboBox.SelectedIndex)
-                                && textbox.Check_invalid_characters(new TextBox[] { edit_test_name_textBox, textBox1, textBox2, textBox3, textBox4 }, true))
-                            {
-                                Update_task();
-                                panel.Change_visible(edit_task_panel, false);
-                                combobox.Change_visible(available_teacher_tests_comboBox, true);
-                            }
-                        }
-                        else MessageBox.Show("Заполните обязательные поля!");
-                        break;
-                    case 7:
-                        if (combobox.Check_selected_index_changed(delete_mode_choose_version_comboBox) && combobox.Check_selected_index_changed(delete_task_comboBox))
-                        {
-                            Delete_task(test_name, Convert.ToInt32(delete_mode_choose_version_comboBox.SelectedItem), delete_task_comboBox.SelectedItem.ToString());
-                            panel.Change_visible(delete_task_panel, false);
-                        }
-                        else MessageBox.Show("Заполните обязательные поля!");
-                        break;
-                    case 8:
-                        if (combobox.Check_selected_index_changed(choose_deleted_version_comboBox))
-                        {
-                            Delete_version(test_name, Convert.ToInt32(choose_deleted_version_comboBox.SelectedItem));
-                            panel.Change_visible(add_task_or_delete_version_panel, false);
-                        }
-                        else MessageBox.Show("Заполните обязательные поля!");
-                        break;
-                    case 9:
-                        Delete_test(test_name);
-                        break;
+                    database.Update_test_name(user_id, test_name, new_name_textBox.Text);
+                    panel.Change_visible(new_name_panel, false);
                 }
-                combobox.Delete_collection(available_teacher_tests_comboBox);
-                combobox.Return_original_text(available_teacher_tests_comboBox, "Выберите тест");
-                database.Get_teacher_available_tests(user_id, available_teacher_tests_comboBox);
-                data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table);
-                data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
-                contextMenuStrip1.Show();
+            }
+            else MessageBox.Show("Заполните обязательные поля!");
+        }
+
+        private void Update_test_timer(string test_name)
+        {
+            if (textbox.Check_text_changed(edit_timer_textBox))
+            {
+                database.Update_test_timer(user_id, Convert.ToInt32(edit_timer_textBox.Text), test_name);
+                panel.Change_visible(new_timer_panel, false);
+            }
+            else MessageBox.Show("Заполните обязательные поля!");
+        }
+
+        private void Update_test_comment()
+        {
+            if (selected_task_name != "")
+            {
+                if (!database.Check_question_exist(edit_test_name_textBox.Text, edit_question_type_comboBox.SelectedIndex + 1, user_id,
+                    Convert.ToInt32(edit_question_id_textBox.Text)) && Check_right_answers_number(new CheckBox[]
+                    { checkBox9, checkBox10, checkBox11, checkBox12 }, edit_question_type_comboBox.SelectedIndex)
+                    && textbox.Check_invalid_characters(new TextBox[] { edit_test_name_textBox, textBox1, textBox2, textBox3, textBox4 }, true))
+                {
+                    Update_task();
+                    panel.Change_visible(edit_task_panel, false);
+                    panel.Change_visible(edit_task_panel2, false);
+
+                    combobox.Change_visible(available_teacher_tests_comboBox, true);
+                }
             }
             else MessageBox.Show("Заполните обязательные поля!");
         }
@@ -703,7 +809,9 @@ namespace testing_program
                 database.Update_answer_correctness(Convert.ToInt32(hide_textBoxes[i].Text), Convert.ToInt32(edit_question_id_textBox.Text), is_right);
             }
         }
-        //********************редактирование на панели создания****************
+        #endregion
+
+        #region Add
         private void Go_to_create_page(string test)
         {
             edit_mode = true;
@@ -752,11 +860,27 @@ namespace testing_program
             data.Reset_teacher_test_table(database, user_id, teacher_available_tests_table);
             data.Reset_teacher_task_table(database, user_id, available_teacher_tasks_table);
         }
-        //*******************открытие панелей редактирования***********************
-        private void Choose_task_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        #endregion
+
+        #endregion
+
+        #region Opening editing panels
+
+        private void available_teacher_tests_comboBox_VisibleChanged(object sender, EventArgs e)
         {
-            panel.Change_visible(edit_task_panel2, true);
-            combobox.Change_visible(choose_task_comboBox, false);
+            if (available_teacher_tests_comboBox.Visible)
+                label14.Visible = true;
+            else
+            {
+                label14.Visible = false;
+                combobox.Return_original_text(available_teacher_tests_comboBox, "Выберите тест");
+            }
+        }
+
+        private void choose_task_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            edit_task_panel2.Visible = true;
+            edit_task_panel.Visible = false;
         }
 
         private void Add_version_ToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -846,17 +970,25 @@ namespace testing_program
             contextMenuStrip1.Visible = false;
             combobox.Change_visible(available_teacher_tests_comboBox, true);
         }
-        //*********************кнопка отмены редактирования***********
+        #endregion
+
+        #region Cancel editing
+
         private void Cancel_edit_button_Click(object sender, EventArgs e)
         {
             Panel[] panels = { delete_task_panel, new_name_panel, new_timer_panel, new_comment_panel, edit_task_panel, add_task_or_delete_version_panel };
             contextMenuStrip1.Visible = true;
             panel.Change_visible(edit_test_groupBox, true);
             panel.Change_visible(panels, false);
+            panel.Change_visible(edit_task_panel2, false);
+            panel.Change_visible(edit_task_panel, false);
             combobox.Change_visible(available_teacher_tests_comboBox, true);
             edit_method = 0;
         }
-        //*********очищение и заполнение панелей для редактирования*******************
+        #endregion
+
+        #region Filling in/clearing editing panels
+
         private void Fill_edit_task_panel2(string question, int version, List<string> edit_existing_answers,
             List<int> edit_answers_id, List<string> edit_existing_right_answers)
         {
@@ -949,7 +1081,8 @@ namespace testing_program
         {
             if (edit_task_panel2.Visible)
             {
-                string question = choose_task_comboBox.SelectedItem.ToString();
+                edit_task_panel.Visible = false;
+                string question = selected_task_name;
                 int version = database.Get_teacher_question_version_id(user_id, question);
                 Fill_edit_task_panel2(question, version,
                     database.Get_answers_text(version, question),
@@ -958,10 +1091,13 @@ namespace testing_program
             }
         }
 
+        string selected_task_name = "";
         private void Edit_task_panel_VisibleChanged(object sender, EventArgs e)
         {
             if (!edit_task_panel.Visible)
             {
+                if (choose_task_comboBox.SelectedIndex != -1)
+                    selected_task_name = choose_task_comboBox.SelectedItem.ToString();
                 combobox.Delete_collection(choose_task_comboBox);
                 combobox.Return_original_text(choose_task_comboBox, "Выберите вопрос для редактирования");
                 combobox.Clear_selection(edit_question_type_comboBox);
@@ -986,9 +1122,17 @@ namespace testing_program
             }
             else contextmenustrip1_enabled = false;
             }
-            //****************вкладка студенты и группы*********************
-            //*************заполнение таблиц и взаимодействия с ними***************************
-            private void Choose_group_for_marks_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region Students and groups tab
+
+        #region Managing table
+
+        private void Choose_group_for_marks_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             data.Clear_rows(group_marks_table);
             data.Reset_group_marks_table(database, choose_group_for_marks_comboBox.SelectedItem.ToString(), group_marks_table, user_id);
@@ -1031,7 +1175,12 @@ namespace testing_program
                 student_id = data.Get_null_column_hiden_id(students_dataGridView, students_dataGridView.SelectedCells[0]);
             }
         }
-        //****************редактирование(кроме доступа к тестам)****************
+        #endregion
+
+        #region Managing students and group lists 
+
+        #region Students
+
         private void Create_student_button_Click(object sender, EventArgs e)
         {
             TextBox[] textBoxes = { full_name_textBox1, full_name_textBox2, full_name_textBox3 };
@@ -1068,6 +1217,26 @@ namespace testing_program
             else MessageBox.Show("Заполните обязательные поля!");
         }
 
+        private void Delete_student_profile_button_Click(object sender, EventArgs e)
+        {
+            if (student_id != -1)
+            {
+                dialogResult = MessageBox.Show("Данное действие необратимо, вы уверены, что хотите удалить этот аккаунт? " +
+                    "У студента больше не будет возможности пользоваться своим профилем.", "Предупреждение", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    database.Delete_user(student_id, "student");
+                    splitContainer1.Visible = false;
+                    MessageBox.Show("Аккаунт удалён");
+                    splitContainer1.Visible = true;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Groups
+
         private void Ok_change_group_name_button_Click(object sender, EventArgs e)
         {
             if (textbox.Check_text_changed(group_name_textBox, "Введите название группы"))
@@ -1093,22 +1262,6 @@ namespace testing_program
             else MessageBox.Show("Заполните обязательные поля!");
         }
 
-        private void Delete_student_profile_button_Click(object sender, EventArgs e)
-        {
-            if (student_id != -1)
-            {
-                dialogResult = MessageBox.Show("Данное действие необратимо, вы уверены, что хотите удалить этот аккаунт? " +
-                    "У студента больше не будет возможности пользоваться своим профилем.", "Предупреждение", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    database.Delete_user(student_id, "student");
-                    splitContainer1.Visible = false;
-                    MessageBox.Show("Аккаунт удалён");
-                    splitContainer1.Visible = true;
-                }
-            }
-        }
-
         private void Delete_group_button_Click(object sender, EventArgs e)
         {
             if (group_id != -1)
@@ -1124,12 +1277,18 @@ namespace testing_program
                 }
             }
         }
-        //**********************открытие вкладок редактирования******************
+        #endregion
+
+        #endregion
+
+        #region Managing panels
+
+        #region Opening editing panels
+
         private void Change_student_group_button_Click(object sender, EventArgs e)
         {
             if (student_id != -1)
             {
-
                 change_student_group_panel.Visible = true;
                 splitContainer1.Visible = false;
             }
@@ -1174,7 +1333,10 @@ namespace testing_program
             panel.Change_visible(change_group_name_panel, true);
             splitContainer1.Visible = false;
         }
-        //************заполнение/очищение панелей************ 
+        #endregion
+
+        #region Filling in/clearing panels
+
         private void SplitContainer1_VisibleChanged(object sender, EventArgs e)
         {
             Button[] student = { change_student_group_button, change_student_access_to_test_button, delete_student_profile_button };
@@ -1249,7 +1411,10 @@ namespace testing_program
                 radiobutton.Clear_selection(new RadioButton[] { allow_radioButton, prohibit_radioButton });
             }
         }
-        //************отмена редактирования**********
+        #endregion
+
+        #region Cancel editing
+
         private void Cancel_create_student_button_Click(object sender, EventArgs e)
         {
             panel.Change_visible(create_student_groupBox, false);
@@ -1273,8 +1438,13 @@ namespace testing_program
             panel.Change_visible(test_access_panel, false);
             splitContainer1.Visible = true;
         }
-        //*******************изменение доступа************************
-        //****************изменение доступа для нового/переведенного студента**************
+        #endregion
+        #endregion
+
+        #region Access to tests
+
+        #region New/transferred student
+
         private void Allow_new_student_group_tests(int id, string group)
         {
             database.Delete_access_status(id);
@@ -1283,7 +1453,12 @@ namespace testing_program
             foreach (string test in new_tests)
                 database.Add_access_status(id, test, "group");
         }
-        //************определение типа изменения доступа**************
+        #endregion
+
+        #region Types of access change
+
+        #region Group
+
         private string Determine_group_type_of_access_status_change(int id, string test, ref string exist_status, ref bool connection_without_mark, bool allow)
         {
             bool connection = database.Check_access_connection_exist(id, test);
@@ -1314,6 +1489,9 @@ namespace testing_program
                 return "update closed";
             return "already closed";
         }
+        #endregion
+
+        #region Student
 
         private string Determine_student_type_of_access_status_change(int id, string test, ref string exist_status, ref bool connection_without_mark, bool allow)
         {
@@ -1357,7 +1535,14 @@ namespace testing_program
                 return "update closed";
             return "Доступ к выбранному вами тесту уже закрыт для этого студента";
         }
-        //****************изменение доступа*********************
+        #endregion
+
+        #endregion
+
+        #region Changing access
+
+        #region Group
+
         private string Make_group_access(List<int> students, bool allow, string test)
         {
             int no_group_connection = 0;
@@ -1394,7 +1579,7 @@ namespace testing_program
                         break;
                 }
             }
-            if (no_group_connection + already_closed == students.Count && already_closed != students.Count)
+            if (no_group_connection + already_closed == students.Count && already_closed < students.Count)
                 return "У выбранной вами группы нет доступа к этому тесту.";
             if (have_group_access == students.Count)
                 return "У выбранной вами группы уже есть доступ к этому тесту.";
@@ -1402,6 +1587,9 @@ namespace testing_program
                 return "Доступ к этому тесту уже закрыт у выбранной вами группы.";
             return "Успешно.";
         }
+        #endregion
+
+        #region Personal
 
         private string Make_personal_access(List<int> students, bool allow, string test)
         {
@@ -1436,6 +1624,7 @@ namespace testing_program
             }
             return "Успешно.";
         }
+        #endregion
 
         private void Ok_test_access_button_Click(object sender, EventArgs e)
         {
@@ -1467,7 +1656,14 @@ namespace testing_program
             }
             else MessageBox.Show("Заполните обязательные поля!");
         }
-        //************вкладка журнал успеваемости*****************
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region Marks journal tab
+
         private void Choose_student_group_for_marks_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             combobox.Change_visible(choose_student_for_marks_comboBox, true);
@@ -1481,7 +1677,10 @@ namespace testing_program
             data.Reset_student_marks_table(database, choose_student_group_for_marks_comboBox.SelectedItem.ToString(),
                choose_student_for_marks_comboBox.SelectedItem.ToString(), student_marks_table, user_id);
         }
-        //**************управление вкладками**********************
+        #endregion
+
+        #region Tabs managing
+
         private void TabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl2.SelectedIndex == 2)
@@ -1560,22 +1759,20 @@ namespace testing_program
                 }
             }
         }
-        //****************взаимодействие с обычным TextBox*************************************
-        bool comment_changed = false;
-        private void Comment_textBox_TextChanged(object sender, EventArgs e)
-        {
-            comment_changed = textbox.Check_text_changed(comment_textBox, "Комментарий к тесту (необязательно)");
-        }
 
-        private void Comment_textBox_Click(object sender, EventArgs e)
+        private void ContextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            comment_changed = textbox.Check_is_cleared(comment_textBox, "Комментарий к тесту (необязательно)", comment_changed);
+            if (contextmenustrip1_enabled)
+                e.Cancel = false;
+            else e.Cancel = true;
         }
+        #endregion
 
-        private void Comment_textBox_Leave(object sender, EventArgs e)
-        {
-            textbox.Return_original_text(comment_textBox, "Комментарий к тесту (необязательно)");
-        }
+        #region TextBox managing
+
+        #region Test name TextBoxes
+
+        #region Create panel
 
         bool new_test_name_changed = false;
         private void New_test_name_textBox_TextChanged(object sender, EventArgs e)
@@ -1592,6 +1789,9 @@ namespace testing_program
         {
             textbox.Return_original_text(new_test_name_textBox, "Введите название теста");
         }
+        #endregion
+
+        #region Edit panel
 
         bool new_name_textBox_changed = false;
         private void New_name_textBox_Click(object sender, EventArgs e)
@@ -1608,6 +1808,32 @@ namespace testing_program
         {
             textbox.Return_original_text(new_name_textBox, "Введите новое название");
         }
+        #endregion
+
+        #endregion
+
+        #region Comment TextBoxes
+
+        #region Create panel
+
+        bool comment_changed = false;
+        private void Comment_textBox_TextChanged(object sender, EventArgs e)
+        {
+            comment_changed = textbox.Check_text_changed(comment_textBox, "Комментарий к тесту (необязательно)");
+        }
+
+        private void Comment_textBox_Click(object sender, EventArgs e)
+        {
+            comment_changed = textbox.Check_is_cleared(comment_textBox, "Комментарий к тесту (необязательно)", comment_changed);
+        }
+
+        private void Comment_textBox_Leave(object sender, EventArgs e)
+        {
+            textbox.Return_original_text(comment_textBox, "Комментарий к тесту (необязательно)");
+        }
+        #endregion
+
+        #region Edit panel
 
         bool new_comment_textBox_changed = false;
         private void New_comment_textBox_Click(object sender, EventArgs e)
@@ -1624,7 +1850,10 @@ namespace testing_program
         {
             textbox.Return_original_text(new_comment_textBox, "Введите комментарий");
         }
+        #endregion
+        #endregion
 
+        #region Group name TextBox
         bool group_name_textBox_changed = false;
         private void Group_name_textBox_Click(object sender, EventArgs e)
         {
@@ -1640,6 +1869,9 @@ namespace testing_program
         {
             group_name_textBox_changed = textbox.Check_text_changed(group_name_textBox, "Введите название группы");
         }
+        #endregion
+
+        #region Full name TextBoxes
 
         bool full_name_textBox1_changed = false;
         private void Full_name_textBox1_Click(object sender, EventArgs e)
@@ -1688,6 +1920,9 @@ namespace testing_program
         {
             textbox.Return_original_text(full_name_textBox3, "Отчество");
         }
+        #endregion
+
+        #region Question TextBox
 
         bool question_text_changed = false;
         private void Question_textBox_Click(object sender, EventArgs e)
@@ -1704,6 +1939,11 @@ namespace testing_program
         {
             textbox.Return_original_text(question_textBox, "Введите текст вопроса");
         }
+        #endregion
+
+        #region Answers Textboxes
+
+        #region 1 answer
 
         bool answer1_text_changed = false;
         private void Answer_textBox1_Click(object sender, EventArgs e)
@@ -1720,23 +1960,9 @@ namespace testing_program
         {
             textbox.Return_original_text(answer_textBox1, "Введите ответ №1");
         }
+        #endregion
 
-        bool answer3_text_changed = false;
-        private void Answer_textBox3_Click(object sender, EventArgs e)
-        {
-            answer3_text_changed = textbox.Check_is_cleared(answer_textBox3, "Введите ответ №3", answer3_text_changed);
-        }
-
-        private void Answer_textBox3_TextChanged(object sender, EventArgs e)
-        {
-            answer3_text_changed = textbox.Check_text_changed(answer_textBox3, "Введите ответ №3");
-        }
-
-        private void Answer_textBox3_Leave(object sender, EventArgs e)
-        {
-            textbox.Return_original_text(answer_textBox3, "Введите ответ №3");
-        }
-
+        #region 2 answer
         bool answer2_text_changed = false;
         private void Answer_textBox2_Click(object sender, EventArgs e)
         {
@@ -1752,6 +1978,27 @@ namespace testing_program
         {
             textbox.Return_original_text(answer_textBox2, "Введите ответ №2");
         }
+        #endregion
+
+        #region 3 answer
+        bool answer3_text_changed = false;
+        private void Answer_textBox3_Click(object sender, EventArgs e)
+        {
+            answer3_text_changed = textbox.Check_is_cleared(answer_textBox3, "Введите ответ №3", answer3_text_changed);
+        }
+
+        private void Answer_textBox3_TextChanged(object sender, EventArgs e)
+        {
+            answer3_text_changed = textbox.Check_text_changed(answer_textBox3, "Введите ответ №3");
+        }
+
+        private void Answer_textBox3_Leave(object sender, EventArgs e)
+        {
+            textbox.Return_original_text(answer_textBox3, "Введите ответ №3");
+        }
+        #endregion
+
+        #region 4 answer
 
         bool answer4_text_changed = false;
         private void Answer_textBox4_Click(object sender, EventArgs e)
@@ -1768,34 +2015,22 @@ namespace testing_program
         {
             textbox.Return_original_text(answer_textBox4, "Введите ответ №4");
         }
-        //*************запрет на открытие contextMenuStrip1 на других вкладках**************
-        private void ContextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (contextmenustrip1_enabled)
-                e.Cancel = false;
-            else e.Cancel = true;
-        }
-        //*******************************?????********************************
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region KeyPress events
+
+        #region ComboBox
+
         private void Choose_deleted_version_comboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (edit_method != 2)
                 e.Handled = true;
         }
-        //*************запрет на ввод(кроме цифр и клавиши BackSpace) в TextBox*******************************
-        private void Edit_timer_textBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-            if (!char.IsDigit(number) && number != 8)
-                e.Handled = true;
-        }
 
-        private void New_timer_textBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-            if (!char.IsDigit(number) && number != 8)
-                e.Handled = true;
-        }
-        //*************запрет на ввод в comboBox*******************************
         private void Question_type_comboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -1865,7 +2100,24 @@ namespace testing_program
         {
             e.Handled = true;
         }
-        //**************ограничение на нажатие Enter в многострочных TextBox*******************
+        #endregion
+
+        #region TextBox
+
+        private void Edit_timer_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!char.IsDigit(number) && number != 8)
+                e.Handled = true;
+        }
+
+        private void New_timer_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!char.IsDigit(number) && number != 8)
+                e.Handled = true;
+        }
+
         private void New_name_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -1925,16 +2177,7 @@ namespace testing_program
             if (e.KeyChar == 13)
                 e.Handled = true;
         }
-
-        private void available_teacher_tests_comboBox_VisibleChanged(object sender, EventArgs e)
-        {
-            if (available_teacher_tests_comboBox.Visible)
-                label14.Visible = true;
-            else
-            {
-                label14.Visible = false;
-                combobox.Return_original_text(available_teacher_tests_comboBox, "Выберите тест");
-            }
-        }
+        #endregion
+        #endregion
     }
 }

@@ -10,6 +10,7 @@ namespace testing_program
 {
     public partial class StudentForm : Form
     {
+        #region Class instancees
         readonly DatabaseClass database;
         readonly CheckboxClass checkbox = new CheckboxClass();
         readonly ComboboxClass combobox = new ComboboxClass();
@@ -18,10 +19,16 @@ namespace testing_program
         readonly RadiobuttonClass radiobutton = new RadiobuttonClass();
         readonly GroupboxPanelClass panel = new GroupboxPanelClass();
         readonly Stopwatch stopWatch = new Stopwatch();
+        #endregion
+
+        #region Lists
         List<string> right_answers = new List<string>();
         List<string> answers_text = new List<string>();
         List<string> questions = new List<string>();
         List<bool> student_answers = new List<bool>();
+        #endregion
+
+        #region Variables
         readonly int user_id;
         int test_id = 0;
         int number_of_questions;
@@ -31,6 +38,7 @@ namespace testing_program
         int question_index = 0;
         int question_type = 0;
         int attempt_id = 0;
+        #endregion
 
         public StudentForm(DatabaseClass database, int user_id)
         {
@@ -39,18 +47,24 @@ namespace testing_program
             this.user_id = user_id;
             student_profile_main_panel.Visible = true;
         }
-        //*********************закрытие программы**********************
+
+        #region Close application
         private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-        //*********************выход из профиля************************
+        #endregion
+
+        #region Log out
         private void Exit_student_profile_button_Click(object sender, EventArgs e)
         {
             Application.OpenForms[0].Show();
             this.Hide();
         }
-        //****************начало тестирования********************
+        #endregion
+
+        #region Testing
+        #region Start testing
         private void Start_test_button_Click(object sender, EventArgs e)
         {
             if (test_id == 0)
@@ -79,7 +93,9 @@ namespace testing_program
                 }
             }
         }
-        //***********получение данных о тесте/задании************
+        #endregion
+        #region Get test/task information
+
         private void Get_test_version()
         {
             List<int> versions = database.Get_test_versions(test_id);
@@ -107,7 +123,8 @@ namespace testing_program
                 Finish_testing();
             }
         }
-        //***************подсчет оценки и завершение тестирования************************
+        #endregion
+        #region Calculate mark and finish testing
         private int Calculate_mark()
         {
             int percent;
@@ -149,7 +166,9 @@ namespace testing_program
             attempt_id = 0;
             panel.Change_visible(choose_test_panel, true);
         }
-        //**********проверка и сохранение ответов, переход на следующий вопрос************
+        #endregion
+        #region Checking and saving student's answers, moving to the next question
+
         private void One_answer_button_Click(object sender, EventArgs e)
         {
             Save_and_count_scores(Check_one_answer_task());
@@ -197,8 +216,8 @@ namespace testing_program
                 ++scores;
             student_answers.Insert(question_index,answer);
         }
-
-        //**************ограничение по времени*************************
+        #endregion
+        #region Time limit
         private void Test_timer_Tick(object sender, EventArgs e)
         {
             test_timer.Stop();
@@ -215,43 +234,11 @@ namespace testing_program
             }
             Finish_testing();
         }
-        //****************отмена изменения данных профиля******************
+        #endregion
+        #endregion
 
-        private void Cancel_change_name_button_Click(object sender, EventArgs e)
-        {
-            panel.Change_visible(new Panel[] { change_full_name_panel, student_profile_main_panel }, new bool[] { false, true });
-        }
+        #region Changing account data
 
-        private void Cancel_student_change_password_button_Click(object sender, EventArgs e)
-        {
-            panel.Change_visible(new Panel[] { student_identity_check_panel, student_profile_main_panel }, new bool[] { false, true });
-        }
-
-        private void Cancel_change_student_login_button_Click(object sender, EventArgs e)
-        {
-            panel.Change_visible(new Panel[] { change_student_login_panel, student_profile_main_panel }, new bool[] { false, true });
-        }
-
-        private void Cancel_change_student_password_button_Click(object sender, EventArgs e)
-        {
-            panel.Change_visible(new Panel[] { change_student_password_panel, student_profile_main_panel }, new bool[] { false, true });
-        }
-        //************открытие панелей изменения данных профиля***************
-        private void Change_student_login_button_Click(object sender, EventArgs e)
-        {
-            panel.Change_visible(new Panel[] { change_student_login_panel, student_profile_main_panel }, new bool[] { true, false });
-        }
-
-        private void Change_student_password_button_Click(object sender, EventArgs e)
-        {
-            panel.Change_visible(new Panel[] { student_identity_check_panel, student_profile_main_panel }, new bool[] { true, false });
-        }
-
-        private void Change_name_button_Click(object sender, EventArgs e)
-        {
-            panel.Change_visible(new Panel[] { change_full_name_panel, student_profile_main_panel }, new bool[] { true, false });
-        }
-        //**************изменение данных профиля****************
         private void Change_full_name_button_Click(object sender, EventArgs e)
         {
             TextBox[] textBoxes = { new_surname_textBox, new_student_name_textBox, new_patronymic_textBox };
@@ -308,33 +295,9 @@ namespace testing_program
             }
             else MessageBox.Show("Заполните обязательные поля!");
         }
-        //***************заполнение панели профиля*************
-        private void Student_profile_main_panel_VisibleChanged(object sender, EventArgs e)
-        {
-            if (student_profile_main_panel.Visible)
-            {
-                List<string> profil_info_list = new List<string>();
-                database.Get_studentForm_profil_info(user_id, profil_info_list);
-                textbox.Fill(new TextBox[] { full_name_student_profile, group_student_profile, login_student_profile, password_student_profile },
-                    new string[] { profil_info_list[0], profil_info_list[1], profil_info_list[2], profil_info_list[3] });
-                Text = database.Get_user_name(user_id, "student");
-            }
-        }
-        //********заполнение/очищение ComboBox с решёнными тестами**********
-        private void Results_panel_VisibleChanged(object sender, EventArgs e)
-        {
-            if (results_panel.Visible)
-            {
-                database.Get_student_completed_tests(user_id, passed_tests);
-            }
-            else
-            {
-                combobox.Return_original_text(passed_tests, "Выберите тест");
-                combobox.Delete_collection(passed_tests);
-                radiobutton.Clear_selection(new RadioButton[] { show_list_of_completed_tests, show_one_test_result });
-            }
-        }
-        //****************управление вкладками*******************
+        #endregion
+
+        #region Managing tabs
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedIndex == 0)
@@ -359,7 +322,129 @@ namespace testing_program
         {
             panel.Change_visible(results_panel, false);
         }
-        //***********заполнение/очищение панелей изменения данных профиля***********
+        #endregion
+
+        #region Managing tables
+
+        private void Passed_tests_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            attempt_id = database.Get_attempt_id(passed_tests.SelectedItem.ToString(), user_id, true);
+            data.Reset_one_test_result_table(database, one_result_dataGridView, attempt_id);
+        }
+
+        private void Choose_test_panel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (choose_test_panel.Visible)
+            {
+                data.Reset_student_available_test_table(database, user_id, available_test_table);
+            }
+        }
+
+        private void Show_list_of_completed_tests_CheckedChanged(object sender, EventArgs e)
+        {
+            if (show_list_of_completed_tests.Checked)
+                data.Reset_completed_tests_list_table(database, user_id, results_dataGridView);
+            else data.Hide(results_dataGridView);
+        }
+
+        private void Show_one_test_result_CheckedChanged(object sender, EventArgs e)
+        {
+            if (show_one_test_result.Checked)
+                combobox.Change_visible(passed_tests, true);
+            else
+            {
+                combobox.Return_original_text(passed_tests, "Выберите тест");
+                combobox.Change_visible(passed_tests, false);
+                data.Hide(one_result_dataGridView);
+            }
+        }
+
+        private void Available_test_table_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+            test_id = Convert.ToInt32(available_test_table.SelectedCells[0].Value);
+            data.Change_back_color(available_test_table, Color.LightSteelBlue);
+            data.Change_fore_color(available_test_table, Color.Black);
+        }
+        #endregion
+
+        #region Managing panels
+
+        #region Cancel the account data change
+        private void Cancel_change_name_button_Click(object sender, EventArgs e)
+        {
+            panel.Change_visible(new Panel[] { change_full_name_panel, student_profile_main_panel }, new bool[] { false, true });
+        }
+
+        private void Cancel_student_change_password_button_Click(object sender, EventArgs e)
+        {
+            panel.Change_visible(new Panel[] { student_identity_check_panel, student_profile_main_panel }, new bool[] { false, true });
+        }
+
+        private void Cancel_change_student_login_button_Click(object sender, EventArgs e)
+        {
+            panel.Change_visible(new Panel[] { change_student_login_panel, student_profile_main_panel }, new bool[] { false, true });
+        }
+
+        private void Cancel_change_student_password_button_Click(object sender, EventArgs e)
+        {
+            panel.Change_visible(new Panel[] { change_student_password_panel, student_profile_main_panel }, new bool[] { false, true });
+        }
+        #endregion
+
+        #region Opening the account data modification panels
+
+        private void Change_student_login_button_Click(object sender, EventArgs e)
+        {
+            panel.Change_visible(new Panel[] { change_student_login_panel, student_profile_main_panel }, new bool[] { true, false });
+        }
+
+        private void Change_student_password_button_Click(object sender, EventArgs e)
+        {
+            panel.Change_visible(new Panel[] { student_identity_check_panel, student_profile_main_panel }, new bool[] { true, false });
+        }
+
+        private void Change_name_button_Click(object sender, EventArgs e)
+        {
+            panel.Change_visible(new Panel[] { change_full_name_panel, student_profile_main_panel }, new bool[] { true, false });
+        }
+        #endregion
+
+        #region Filling in the profile panel
+
+        private void Student_profile_main_panel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (student_profile_main_panel.Visible)
+            {
+                List<string> profil_info_list = new List<string>();
+                database.Get_studentForm_profil_info(user_id, profil_info_list);
+                textbox.Fill(new TextBox[] { full_name_student_profile, group_student_profile, login_student_profile, password_student_profile },
+                    new string[] { profil_info_list[0], profil_info_list[1], profil_info_list[2], profil_info_list[3] });
+                Text = database.Get_user_name(user_id, "student");
+            }
+        }
+        #endregion
+
+        #region Filling/clearing passed_tests ComboBox
+
+        private void Results_panel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (results_panel.Visible)
+            {
+                database.Get_student_completed_tests(user_id, passed_tests);
+            }
+            else
+            {
+                combobox.Return_original_text(passed_tests, "Выберите тест");
+                combobox.Delete_collection(passed_tests);
+                radiobutton.Clear_selection(new RadioButton[] { show_list_of_completed_tests, show_one_test_result });
+            }
+        }
+        #endregion
+
+        #region Filling/clearing the account data modification panels
+
         private void Change_student_login_panel_VisibleChanged(object sender, EventArgs e)
         {
             if (!change_student_login_panel.Visible)
@@ -389,7 +474,10 @@ namespace testing_program
             if (!change_full_name_panel.Visible)
                 textbox.Clear(new TextBox[] { new_surname_textBox, new_student_name_textBox, new_patronymic_textBox });
         }
-        //***********заполнение/очищение панелей с вопросами***********
+        #endregion
+
+        #region  Filling/clearing panels with test tasks
+
         private void One_answer_panel_VisibleChanged(object sender, EventArgs e)
         {
             if (one_answer_panel.Visible)
@@ -434,49 +522,12 @@ namespace testing_program
             }
 
         }
-        //*************заполнение таблиц и взаимодействия с ними***************************
-        private void Passed_tests_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            attempt_id = database.Get_attempt_id(passed_tests.SelectedItem.ToString(), user_id, true);
-            data.Reset_one_test_result_table(database, one_result_dataGridView, attempt_id);
-        }
+        #endregion
 
-        private void Choose_test_panel_VisibleChanged(object sender, EventArgs e)
-        {
-            if (choose_test_panel.Visible)
-            {
-                data.Reset_student_available_test_table(database, user_id, available_test_table);
-            }
-        }
+        #endregion
 
-        private void Show_list_of_completed_tests_CheckedChanged(object sender, EventArgs e)
-        {
-            if (show_list_of_completed_tests.Checked)
-                data.Reset_completed_tests_list_table(database, user_id, results_dataGridView);
-            else data.Hide(results_dataGridView);
-        }
+        #region KeyPress events
 
-        private void Show_one_test_result_CheckedChanged(object sender, EventArgs e)
-        {
-            if (show_one_test_result.Checked)
-                combobox.Change_visible(passed_tests, true);
-            else
-            {
-                combobox.Return_original_text(passed_tests, "Выберите тест");
-                combobox.Change_visible(passed_tests, false);
-                data.Hide(one_result_dataGridView);
-            }
-        }
-
-        private void Available_test_table_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == -1)
-                return;
-            test_id = Convert.ToInt32(available_test_table.SelectedCells[0].Value);
-            data.Change_back_color(available_test_table, Color.LightSteelBlue);
-            data.Change_fore_color(available_test_table, Color.Black);
-        }
-        //*************запрет на ввод в comboBox*******************************
         private void Choose_test_result_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -501,8 +552,8 @@ namespace testing_program
         {
             e.Handled = true;
         }
+        #endregion
     }
-
 }
 
 

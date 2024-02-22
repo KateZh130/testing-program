@@ -33,20 +33,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.profile_page = new System.Windows.Forms.TabPage();
-            this.change_student_login_panel = new System.Windows.Forms.Panel();
-            this.cancel_change_student_login_button = new System.Windows.Forms.Button();
-            this.new_student_login_button = new System.Windows.Forms.Button();
-            this.new_student_login_textbox = new System.Windows.Forms.TextBox();
-            this.change_student_login_label = new System.Windows.Forms.Label();
             this.change_student_password_panel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.new_student_password_button = new System.Windows.Forms.Button();
@@ -81,16 +76,12 @@
             this.new_patronymic_textBox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.new_surname_textBox = new System.Windows.Forms.TextBox();
+            this.change_student_login_panel = new System.Windows.Forms.Panel();
+            this.cancel_change_student_login_button = new System.Windows.Forms.Button();
+            this.new_student_login_button = new System.Windows.Forms.Button();
+            this.new_student_login_textbox = new System.Windows.Forms.TextBox();
+            this.change_student_login_label = new System.Windows.Forms.Label();
             this.test_page = new System.Windows.Forms.TabPage();
-            this.many_answer_panel = new System.Windows.Forms.Panel();
-            this.many_answer_button = new System.Windows.Forms.Button();
-            this.question_text_label = new System.Windows.Forms.Label();
-            this.question_number_label = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.choose_test_panel = new System.Windows.Forms.Panel();
             this.available_test_table = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -104,6 +95,15 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.question_number_label2 = new System.Windows.Forms.Label();
+            this.many_answer_panel = new System.Windows.Forms.Panel();
+            this.many_answer_button = new System.Windows.Forms.Button();
+            this.question_text_label = new System.Windows.Forms.Label();
+            this.question_number_label = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.result_page = new System.Windows.Forms.TabPage();
             this.results_panel = new System.Windows.Forms.Panel();
             this.passed_tests = new System.Windows.Forms.ComboBox();
@@ -114,18 +114,18 @@
             this.test_timer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.profile_page.SuspendLayout();
-            this.change_student_login_panel.SuspendLayout();
             this.change_student_password_panel.SuspendLayout();
             this.student_identity_check_panel.SuspendLayout();
             this.student_profile_main_panel.SuspendLayout();
             this.change_full_name_panel.SuspendLayout();
+            this.change_student_login_panel.SuspendLayout();
             this.test_page.SuspendLayout();
-            this.many_answer_panel.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.choose_test_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.available_test_table)).BeginInit();
             this.one_answer_panel.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.many_answer_panel.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.result_page.SuspendLayout();
             this.results_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.one_result_dataGridView)).BeginInit();
@@ -155,75 +155,17 @@
             // 
             this.profile_page.BackColor = System.Drawing.Color.Lavender;
             this.profile_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.profile_page.Controls.Add(this.change_student_password_panel);
-            this.profile_page.Controls.Add(this.student_identity_check_panel);
             this.profile_page.Controls.Add(this.student_profile_main_panel);
             this.profile_page.Controls.Add(this.change_full_name_panel);
             this.profile_page.Controls.Add(this.change_student_login_panel);
+            this.profile_page.Controls.Add(this.change_student_password_panel);
+            this.profile_page.Controls.Add(this.student_identity_check_panel);
             this.profile_page.Location = new System.Drawing.Point(4, 30);
             this.profile_page.Name = "profile_page";
             this.profile_page.Size = new System.Drawing.Size(829, 496);
             this.profile_page.TabIndex = 2;
             this.profile_page.Text = "Профиль";
             this.profile_page.Leave += new System.EventHandler(this.Profile_page_Leave);
-            // 
-            // change_student_login_panel
-            // 
-            this.change_student_login_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.change_student_login_panel.Controls.Add(this.cancel_change_student_login_button);
-            this.change_student_login_panel.Controls.Add(this.new_student_login_button);
-            this.change_student_login_panel.Controls.Add(this.new_student_login_textbox);
-            this.change_student_login_panel.Controls.Add(this.change_student_login_label);
-            this.change_student_login_panel.Location = new System.Drawing.Point(6, 23);
-            this.change_student_login_panel.Name = "change_student_login_panel";
-            this.change_student_login_panel.Size = new System.Drawing.Size(805, 194);
-            this.change_student_login_panel.TabIndex = 1;
-            this.change_student_login_panel.Visible = false;
-            this.change_student_login_panel.VisibleChanged += new System.EventHandler(this.Change_student_login_panel_VisibleChanged);
-            // 
-            // cancel_change_student_login_button
-            // 
-            this.cancel_change_student_login_button.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.cancel_change_student_login_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.cancel_change_student_login_button.FlatAppearance.BorderSize = 2;
-            this.cancel_change_student_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancel_change_student_login_button.Location = new System.Drawing.Point(446, 122);
-            this.cancel_change_student_login_button.Name = "cancel_change_student_login_button";
-            this.cancel_change_student_login_button.Size = new System.Drawing.Size(111, 42);
-            this.cancel_change_student_login_button.TabIndex = 1;
-            this.cancel_change_student_login_button.Text = "Отмена";
-            this.cancel_change_student_login_button.UseVisualStyleBackColor = false;
-            this.cancel_change_student_login_button.Click += new System.EventHandler(this.Cancel_change_student_login_button_Click);
-            // 
-            // new_student_login_button
-            // 
-            this.new_student_login_button.BackColor = System.Drawing.Color.SteelBlue;
-            this.new_student_login_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.new_student_login_button.FlatAppearance.BorderSize = 2;
-            this.new_student_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.new_student_login_button.Location = new System.Drawing.Point(563, 122);
-            this.new_student_login_button.Name = "new_student_login_button";
-            this.new_student_login_button.Size = new System.Drawing.Size(200, 42);
-            this.new_student_login_button.TabIndex = 2;
-            this.new_student_login_button.Text = "Изменить логин";
-            this.new_student_login_button.UseVisualStyleBackColor = false;
-            this.new_student_login_button.Click += new System.EventHandler(this.New_student_login_button_Click);
-            // 
-            // new_student_login_textbox
-            // 
-            this.new_student_login_textbox.Location = new System.Drawing.Point(303, 40);
-            this.new_student_login_textbox.Name = "new_student_login_textbox";
-            this.new_student_login_textbox.Size = new System.Drawing.Size(460, 28);
-            this.new_student_login_textbox.TabIndex = 0;
-            // 
-            // change_student_login_label
-            // 
-            this.change_student_login_label.AutoSize = true;
-            this.change_student_login_label.Location = new System.Drawing.Point(57, 47);
-            this.change_student_login_label.Name = "change_student_login_label";
-            this.change_student_login_label.Size = new System.Drawing.Size(169, 21);
-            this.change_student_login_label.TabIndex = 0;
-            this.change_student_login_label.Text = "Введите новый логин:";
             // 
             // change_student_password_panel
             // 
@@ -460,9 +402,6 @@
             // 
             // password_student_profile
             // 
-            this.password_student_profile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.password_student_profile.BackColor = System.Drawing.Color.Lavender;
             this.password_student_profile.Location = new System.Drawing.Point(224, 319);
             this.password_student_profile.Name = "password_student_profile";
@@ -633,13 +572,71 @@
             this.new_surname_textBox.Size = new System.Drawing.Size(505, 28);
             this.new_surname_textBox.TabIndex = 0;
             // 
+            // change_student_login_panel
+            // 
+            this.change_student_login_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.change_student_login_panel.Controls.Add(this.cancel_change_student_login_button);
+            this.change_student_login_panel.Controls.Add(this.new_student_login_button);
+            this.change_student_login_panel.Controls.Add(this.new_student_login_textbox);
+            this.change_student_login_panel.Controls.Add(this.change_student_login_label);
+            this.change_student_login_panel.Location = new System.Drawing.Point(6, 23);
+            this.change_student_login_panel.Name = "change_student_login_panel";
+            this.change_student_login_panel.Size = new System.Drawing.Size(805, 194);
+            this.change_student_login_panel.TabIndex = 1;
+            this.change_student_login_panel.Visible = false;
+            this.change_student_login_panel.VisibleChanged += new System.EventHandler(this.Change_student_login_panel_VisibleChanged);
+            // 
+            // cancel_change_student_login_button
+            // 
+            this.cancel_change_student_login_button.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_student_login_button.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.cancel_change_student_login_button.FlatAppearance.BorderSize = 2;
+            this.cancel_change_student_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel_change_student_login_button.Location = new System.Drawing.Point(446, 122);
+            this.cancel_change_student_login_button.Name = "cancel_change_student_login_button";
+            this.cancel_change_student_login_button.Size = new System.Drawing.Size(111, 42);
+            this.cancel_change_student_login_button.TabIndex = 1;
+            this.cancel_change_student_login_button.Text = "Отмена";
+            this.cancel_change_student_login_button.UseVisualStyleBackColor = false;
+            this.cancel_change_student_login_button.Click += new System.EventHandler(this.Cancel_change_student_login_button_Click);
+            // 
+            // new_student_login_button
+            // 
+            this.new_student_login_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.new_student_login_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.new_student_login_button.FlatAppearance.BorderSize = 2;
+            this.new_student_login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.new_student_login_button.Location = new System.Drawing.Point(563, 122);
+            this.new_student_login_button.Name = "new_student_login_button";
+            this.new_student_login_button.Size = new System.Drawing.Size(200, 42);
+            this.new_student_login_button.TabIndex = 2;
+            this.new_student_login_button.Text = "Изменить логин";
+            this.new_student_login_button.UseVisualStyleBackColor = false;
+            this.new_student_login_button.Click += new System.EventHandler(this.New_student_login_button_Click);
+            // 
+            // new_student_login_textbox
+            // 
+            this.new_student_login_textbox.Location = new System.Drawing.Point(303, 40);
+            this.new_student_login_textbox.Name = "new_student_login_textbox";
+            this.new_student_login_textbox.Size = new System.Drawing.Size(460, 28);
+            this.new_student_login_textbox.TabIndex = 0;
+            // 
+            // change_student_login_label
+            // 
+            this.change_student_login_label.AutoSize = true;
+            this.change_student_login_label.Location = new System.Drawing.Point(57, 47);
+            this.change_student_login_label.Name = "change_student_login_label";
+            this.change_student_login_label.Size = new System.Drawing.Size(169, 21);
+            this.change_student_login_label.TabIndex = 0;
+            this.change_student_login_label.Text = "Введите новый логин:";
+            // 
             // test_page
             // 
             this.test_page.BackColor = System.Drawing.Color.SlateGray;
             this.test_page.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.test_page.Controls.Add(this.many_answer_panel);
             this.test_page.Controls.Add(this.choose_test_panel);
             this.test_page.Controls.Add(this.one_answer_panel);
+            this.test_page.Controls.Add(this.many_answer_panel);
             this.test_page.Location = new System.Drawing.Point(4, 30);
             this.test_page.Name = "test_page";
             this.test_page.Padding = new System.Windows.Forms.Padding(3);
@@ -647,126 +644,6 @@
             this.test_page.TabIndex = 0;
             this.test_page.Text = "Тестирование";
             this.test_page.Leave += new System.EventHandler(this.Test_page_Leave);
-            // 
-            // many_answer_panel
-            // 
-            this.many_answer_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.many_answer_panel.BackColor = System.Drawing.Color.Lavender;
-            this.many_answer_panel.Controls.Add(this.many_answer_button);
-            this.many_answer_panel.Controls.Add(this.question_text_label);
-            this.many_answer_panel.Controls.Add(this.question_number_label);
-            this.many_answer_panel.Controls.Add(this.panel3);
-            this.many_answer_panel.Location = new System.Drawing.Point(0, 0);
-            this.many_answer_panel.Name = "many_answer_panel";
-            this.many_answer_panel.Size = new System.Drawing.Size(824, 491);
-            this.many_answer_panel.TabIndex = 28;
-            this.many_answer_panel.Visible = false;
-            this.many_answer_panel.VisibleChanged += new System.EventHandler(this.Many_answer_panel_VisibleChanged);
-            // 
-            // many_answer_button
-            // 
-            this.many_answer_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.many_answer_button.BackColor = System.Drawing.Color.SteelBlue;
-            this.many_answer_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.many_answer_button.FlatAppearance.BorderSize = 2;
-            this.many_answer_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.many_answer_button.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.many_answer_button.ForeColor = System.Drawing.Color.White;
-            this.many_answer_button.Location = new System.Drawing.Point(543, 406);
-            this.many_answer_button.Name = "many_answer_button";
-            this.many_answer_button.Size = new System.Drawing.Size(257, 53);
-            this.many_answer_button.TabIndex = 17;
-            this.many_answer_button.TabStop = false;
-            this.many_answer_button.Text = "many_answer_button";
-            this.many_answer_button.UseVisualStyleBackColor = false;
-            this.many_answer_button.Click += new System.EventHandler(this.Many_answers_button_Click);
-            // 
-            // question_text_label
-            // 
-            this.question_text_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.question_text_label.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.question_text_label.Location = new System.Drawing.Point(0, 58);
-            this.question_text_label.Name = "question_text_label";
-            this.question_text_label.Size = new System.Drawing.Size(824, 127);
-            this.question_text_label.TabIndex = 16;
-            this.question_text_label.Text = "question_text_label";
-            // 
-            // question_number_label
-            // 
-            this.question_number_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.question_number_label.BackColor = System.Drawing.Color.SteelBlue;
-            this.question_number_label.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.question_number_label.ForeColor = System.Drawing.Color.White;
-            this.question_number_label.Location = new System.Drawing.Point(1, 0);
-            this.question_number_label.Name = "question_number_label";
-            this.question_number_label.Size = new System.Drawing.Size(823, 49);
-            this.question_number_label.TabIndex = 8;
-            this.question_number_label.Text = "question_number_label";
-            this.question_number_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.Lavender;
-            this.panel3.Controls.Add(this.checkBox4);
-            this.panel3.Controls.Add(this.checkBox3);
-            this.panel3.Controls.Add(this.checkBox2);
-            this.panel3.Controls.Add(this.checkBox1);
-            this.panel3.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.panel3.Location = new System.Drawing.Point(3, 163);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(824, 237);
-            this.panel3.TabIndex = 15;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(30, 191);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(114, 27);
-            this.checkBox4.TabIndex = 9;
-            this.checkBox4.TabStop = false;
-            this.checkBox4.Text = "checkBox4";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(30, 136);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(114, 27);
-            this.checkBox3.TabIndex = 8;
-            this.checkBox3.TabStop = false;
-            this.checkBox3.Text = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(30, 81);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(114, 27);
-            this.checkBox2.TabIndex = 7;
-            this.checkBox2.TabStop = false;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(30, 26);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(114, 27);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.TabStop = false;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // choose_test_panel
             // 
@@ -789,7 +666,8 @@
             this.available_test_table.AllowUserToDeleteRows = false;
             this.available_test_table.AllowUserToResizeColumns = false;
             this.available_test_table.AllowUserToResizeRows = false;
-            this.available_test_table.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.available_test_table.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.available_test_table.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.available_test_table.BackgroundColor = System.Drawing.Color.SlateGray;
@@ -917,8 +795,7 @@
             // 
             // question_text_label2
             // 
-            this.question_text_label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.question_text_label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.question_text_label2.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.question_text_label2.Location = new System.Drawing.Point(6, 55);
@@ -996,6 +873,125 @@
             this.question_number_label2.Text = "question_number_label2";
             this.question_number_label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // many_answer_panel
+            // 
+            this.many_answer_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.many_answer_panel.BackColor = System.Drawing.Color.Lavender;
+            this.many_answer_panel.Controls.Add(this.many_answer_button);
+            this.many_answer_panel.Controls.Add(this.question_text_label);
+            this.many_answer_panel.Controls.Add(this.question_number_label);
+            this.many_answer_panel.Controls.Add(this.panel3);
+            this.many_answer_panel.Location = new System.Drawing.Point(0, 0);
+            this.many_answer_panel.Name = "many_answer_panel";
+            this.many_answer_panel.Size = new System.Drawing.Size(824, 491);
+            this.many_answer_panel.TabIndex = 28;
+            this.many_answer_panel.Visible = false;
+            this.many_answer_panel.VisibleChanged += new System.EventHandler(this.Many_answer_panel_VisibleChanged);
+            // 
+            // many_answer_button
+            // 
+            this.many_answer_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.many_answer_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.many_answer_button.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.many_answer_button.FlatAppearance.BorderSize = 2;
+            this.many_answer_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.many_answer_button.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.many_answer_button.ForeColor = System.Drawing.Color.White;
+            this.many_answer_button.Location = new System.Drawing.Point(543, 406);
+            this.many_answer_button.Name = "many_answer_button";
+            this.many_answer_button.Size = new System.Drawing.Size(257, 53);
+            this.many_answer_button.TabIndex = 17;
+            this.many_answer_button.TabStop = false;
+            this.many_answer_button.Text = "many_answer_button";
+            this.many_answer_button.UseVisualStyleBackColor = false;
+            this.many_answer_button.Click += new System.EventHandler(this.Many_answers_button_Click);
+            // 
+            // question_text_label
+            // 
+            this.question_text_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.question_text_label.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.question_text_label.Location = new System.Drawing.Point(0, 58);
+            this.question_text_label.Name = "question_text_label";
+            this.question_text_label.Size = new System.Drawing.Size(824, 127);
+            this.question_text_label.TabIndex = 16;
+            this.question_text_label.Text = "question_text_label";
+            // 
+            // question_number_label
+            // 
+            this.question_number_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.question_number_label.BackColor = System.Drawing.Color.SteelBlue;
+            this.question_number_label.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.question_number_label.ForeColor = System.Drawing.Color.White;
+            this.question_number_label.Location = new System.Drawing.Point(1, 0);
+            this.question_number_label.Name = "question_number_label";
+            this.question_number_label.Size = new System.Drawing.Size(823, 49);
+            this.question_number_label.TabIndex = 8;
+            this.question_number_label.Text = "question_number_label";
+            this.question_number_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.Lavender;
+            this.panel3.Controls.Add(this.checkBox4);
+            this.panel3.Controls.Add(this.checkBox3);
+            this.panel3.Controls.Add(this.checkBox2);
+            this.panel3.Controls.Add(this.checkBox1);
+            this.panel3.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.panel3.Location = new System.Drawing.Point(3, 163);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(824, 237);
+            this.panel3.TabIndex = 15;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(30, 191);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(114, 27);
+            this.checkBox4.TabIndex = 9;
+            this.checkBox4.TabStop = false;
+            this.checkBox4.Text = "checkBox4";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(30, 136);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(114, 27);
+            this.checkBox3.TabIndex = 8;
+            this.checkBox3.TabStop = false;
+            this.checkBox3.Text = "checkBox3";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(30, 81);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(114, 27);
+            this.checkBox2.TabIndex = 7;
+            this.checkBox2.TabStop = false;
+            this.checkBox2.Text = "checkBox2";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(30, 26);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(114, 27);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.TabStop = false;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // result_page
             // 
             this.result_page.BackColor = System.Drawing.Color.Lavender;
@@ -1015,8 +1011,8 @@
             this.results_panel.Controls.Add(this.passed_tests);
             this.results_panel.Controls.Add(this.show_one_test_result);
             this.results_panel.Controls.Add(this.show_list_of_completed_tests);
-            this.results_panel.Controls.Add(this.one_result_dataGridView);
             this.results_panel.Controls.Add(this.results_dataGridView);
+            this.results_panel.Controls.Add(this.one_result_dataGridView);
             this.results_panel.Location = new System.Drawing.Point(0, 0);
             this.results_panel.Name = "results_panel";
             this.results_panel.Size = new System.Drawing.Size(819, 491);
@@ -1069,35 +1065,35 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.one_result_dataGridView.BackgroundColor = System.Drawing.Color.SlateGray;
             this.one_result_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.one_result_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.one_result_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.one_result_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.one_result_dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.one_result_dataGridView.DefaultCellStyle = dataGridViewCellStyle9;
             this.one_result_dataGridView.Location = new System.Drawing.Point(3, 80);
             this.one_result_dataGridView.MultiSelect = false;
             this.one_result_dataGridView.Name = "one_result_dataGridView";
             this.one_result_dataGridView.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.one_result_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.one_result_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.one_result_dataGridView.RowHeadersWidth = 51;
             this.one_result_dataGridView.RowTemplate.Height = 51;
             this.one_result_dataGridView.Size = new System.Drawing.Size(808, 406);
@@ -1114,35 +1110,35 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.results_dataGridView.BackgroundColor = System.Drawing.Color.SlateGray;
             this.results_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.results_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.results_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.results_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.results_dataGridView.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.results_dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this.results_dataGridView.Location = new System.Drawing.Point(3, 80);
             this.results_dataGridView.MultiSelect = false;
             this.results_dataGridView.Name = "results_dataGridView";
             this.results_dataGridView.ReadOnly = true;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.results_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.results_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.results_dataGridView.RowHeadersWidth = 51;
             this.results_dataGridView.RowTemplate.Height = 24;
             this.results_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1170,8 +1166,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StudentForm_FormClosed);
             this.tabControl1.ResumeLayout(false);
             this.profile_page.ResumeLayout(false);
-            this.change_student_login_panel.ResumeLayout(false);
-            this.change_student_login_panel.PerformLayout();
             this.change_student_password_panel.ResumeLayout(false);
             this.change_student_password_panel.PerformLayout();
             this.student_identity_check_panel.ResumeLayout(false);
@@ -1180,15 +1174,17 @@
             this.student_profile_main_panel.PerformLayout();
             this.change_full_name_panel.ResumeLayout(false);
             this.change_full_name_panel.PerformLayout();
+            this.change_student_login_panel.ResumeLayout(false);
+            this.change_student_login_panel.PerformLayout();
             this.test_page.ResumeLayout(false);
-            this.many_answer_panel.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.choose_test_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.available_test_table)).EndInit();
             this.one_answer_panel.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.many_answer_panel.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.result_page.ResumeLayout(false);
             this.results_panel.ResumeLayout(false);
             this.results_panel.PerformLayout();

@@ -10,6 +10,7 @@ namespace testing_program
 
                 arr[i].Location = new System.Drawing.Point(value1, value2[i]);
         }
+
         public bool Check_is_cleared(TextBox textbox, string text, bool is_changed)
         {
             if (is_changed == false || textbox.Text == text)
@@ -29,42 +30,47 @@ namespace testing_program
             }
             return false;
         }
-        
+
+        public void Fill(TextBox textBox, string text)
+        {
+            textBox.Text = text;
+        }
+
         public void Fill(TextBox[] arr, string[] text)
         {
             for (int i = 0; i < arr.Length; ++i)
                 arr[i].Text = text[i];
         }
-        public void Fill(TextBox textBox, string text)
-        {
-            textBox.Text = text;
-        }
-        public bool Check_text_changed(TextBox textbox, string text)
-        {
-            if (textbox.Text != "" && textbox.Text != text)
-                return true;
-            return false;
-        }
+
         public bool Check_text_changed(TextBox textbox)
         {
             if (textbox.Text != "")
                 return true;
             return false;
         }
-        public bool Check_text_changed(TextBox[] tArr, string[] sArr)
+
+        public bool Check_text_changed(TextBox textbox, string text)
         {
-            for (int i = 0; i < tArr.Length; ++i)
-            {
-                if (tArr[i].Text == "" || tArr[i].Text == sArr[i])
-                    return false;
-            }
-            return true;
+            if (textbox.Text != "" && textbox.Text != text)
+                return true;
+            return false;
         }
+
         public bool Check_text_changed(TextBox[] tArr)
         {
             for (int i = 0; i < tArr.Length; ++i)
             {
                 if (tArr[i].Text == "")
+                    return false;
+            }
+            return true;
+        }
+
+        public bool Check_text_changed(TextBox[] tArr, string[] sArr)
+        {
+            for (int i = 0; i < tArr.Length; ++i)
+            {
+                if (tArr[i].Text == "" || tArr[i].Text == sArr[i])
                     return false;
             }
             return true;
@@ -80,26 +86,26 @@ namespace testing_program
             return true;
         }
 
+        public void Change_visible(TextBox textBox, bool value)
+        {
+            textBox.Visible = value;
+        }
+
         public void Change_visible(TextBox[] arr, bool value)
         {
             for (int i = 0; i < arr.Length; ++i)
                 arr[i].Visible = value;
         }
 
-        public void Change_visible(TextBox textBox, bool value)
+        public void Clear(TextBox textBox)
         {
-            textBox.Visible = value;
+            textBox.Clear();
         }
 
         public void Clear(TextBox[] arr)
         {
             for (int i = 0; i < arr.Length; ++i)
                 arr[i].Clear();
-        }
-
-        public void Clear(TextBox textBox)
-        {
-            textBox.Clear();
         }
 
         public bool Check_invalid_characters_with_space(TextBox textbox)
